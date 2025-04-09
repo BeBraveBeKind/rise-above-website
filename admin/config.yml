@@ -1,8 +1,9 @@
 backend:
   name: github
   repo: BeBraveBeKind/rise-above-website
+  branch: main
   auth_scope: repo
-  base_url: https://your-netlify-site.netlify.app
+  base_url: https://rise-above.net
   auth_endpoint: api/auth
 
 media_folder: "images/content"

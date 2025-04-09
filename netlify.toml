@@ -1,10 +1,19 @@
-[[plugins]]
-package = "@netlify/plugin-lighthouse"
+[build]
+  publish = "/"
+  functions = "netlify/functions"
 
 [[plugins]]
-package = "netlify-plugin-image-optim"
+  package = "@netlify/plugin-lighthouse"
+
+[[plugins]]
+  package = "netlify-plugin-image-optim"
 
 [[headers]]
-for = "/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000"
+  for = "/*"
+    [headers.values]
+      Cache-Control = "public, max-age=31536000"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
