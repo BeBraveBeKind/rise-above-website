@@ -1,0 +1,21 @@
+{
+  "heroTitle": "Elevate Your Brand in Niche Markets",
+  "heroDescription": "Rise Above Partners specializes in crafting strategic marketing initiatives tailored for niche industries. We help you establish yourself as an industry leader.",
+  "features": [
+    {
+      "title": "Strategic Insight",
+      "description": "We dig deep to understand your market, audience, and competition to develop strategies that set you apart.",
+      "icon": "strategic"
+    },
+    {
+      "title": "Creative Excellence",
+      "description": "Our team crafts compelling content and designs that capture attention and communicate your value proposition.",
+      "icon": "creative"
+    },
+    {
+      "title": "Data-Driven Decisions",
+      "description": "We analyze performance metrics to continuously refine our approach and maximize your return on investment.",
+      "icon": "data"
+    }
+  ]
+}
