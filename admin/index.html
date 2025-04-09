@@ -3,9 +3,75 @@
 <head>
   <meta charset="utf-8" />
   <title>Rise Above Partners - Admin</title>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <!-- Auth0 Script -->
+  <script src="https://cdn.auth0.com/js/auth0/9.18.0/auth0.min.js"></script>
 </head>
 <body>
+  <!-- Decap CMS Script -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  
+  <script>
+    // Auth0 configuration
+    const auth0 = new auth0.WebAuth({
+      domain: 'dev-oqi2li2wvbjxcrng.us.auth0.com',
+      clientID: 'y8UXAFiO30WKYNLZ53s0YWGjvq4jsXtu',
+      redirectUri: window.location.origin + '/admin/',
+      responseType: 'code',
+      scope: 'openid profile email'
+    });
+
+    // Configure Decap CMS with Auth0
+    window.netlifyIdentity = {
+      on: (event, callback) => {
+        if (event === 'init') {
+          const urlParams = new URLSearchParams(window.location.search);
+          const code = urlParams.get('code');
+          
+          if (code) {
+            // Handle Auth0 callback with code
+            fetch('/.netlify/functions/auth?code=' + code)
+              .then(response => response.json())
+              .then(data => {
+                if (data.token) {
+                  localStorage.setItem('netlifySiteURL', window.location.origin);
+                  localStorage.setItem('netlifyAccessToken', data.token);
+                  callback(data.user);
+                } else {
+                  callback(null);
+                }
+              })
+              .catch(error => {
+                console.error('Auth error:', error);
+                callback(null);
+              });
+          } else {
+            const token = localStorage.getItem('netlifyAccessToken');
+            if (token) {
+              // Get user info with token
+              fetch('/.netlify/functions/auth-user', {
+                headers: {
+                  Authorization: `Bearer ${token}`
+                }
+              })
+                .then(response => response.json())
+                .then(user => callback(user))
+                .catch(() => callback(null));
+            } else {
+              callback(null);
+            }
+          }
+        } else if (event === 'login') {
+          auth0.authorize();
+        } else if (event === 'logout') {
+          localStorage.removeItem('netlifyAccessToken');
+          window.location.href = '/';
+        }
+      },
+      currentUser: () => {
+        const token = localStorage.getItem('netlifyAccessToken');
+        return token ? { token } : null;
+      }
+    };
+  </script>
 </body>
 </html>

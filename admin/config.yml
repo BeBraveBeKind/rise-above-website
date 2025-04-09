@@ -1,6 +1,9 @@
 backend:
-  name: git-gateway
-  branch: main
+  name: github
+  repo: BeBraveBeKind/rise-above-website
+  auth_scope: repo
+  base_url: https://your-netlify-site.netlify.app
+  auth_endpoint: api/auth
 
 media_folder: "images/content"
 public_folder: "/images/content"
