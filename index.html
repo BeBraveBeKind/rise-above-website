@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="css/styles.css">
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,18 +9,18 @@
   <meta name="description" content="Rise Above Partners - Strategic marketing for niche industries">
   <meta name="keywords" content="niche marketing, strategic marketing, content creation, web presence">
   
-  <!-- Open Graph Meta Tags for social sharing -->
+  <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="Rise Above Partners">
   <meta property="og:description" content="Elevating brands in niche markets through strategic marketing">
   <meta property="og:image" content="https://rise-above.net/images/brand/og-image.jpg">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://rise-above.net">
   
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/styles.css">
-  
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
   
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
@@ -31,7 +30,7 @@
     "name": "Rise Above Partners",
     "description": "Strategic marketing for niche industries",
     "url": "https://rise-above.net",
-    "logo": "https://rise-above.net/images/brand/logo.png",
+    "logo": "https://rise-above.net/images/brand/logo.svg",
     "sameAs": [
       "https://linkedin.com/company/rise-above-partners",
       "https://twitter.com/riseabovepartners"
@@ -40,8 +39,275 @@
   </script>
 </head>
 <body>
-  <!-- Your website content will go here -->
-  
+  <!-- Header with navigation -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo">
+          <svg class="logo-mark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+            <rect x="5" y="5" width="90" height="90" stroke="#6D98BA" stroke-width="2" fill="none"/>
+            <path d="M20 50 L40 30 L60 50 L80 30" stroke="#6D98BA" stroke-width="2" fill="none"/>
+            <path d="M20 70 L40 50 L60 70 L80 50" stroke="#6D98BA" stroke-width="2" fill="none"/>
+          </svg>
+          <div class="logo-text">
+            <span>RISE ABOVE</span>
+            <span>PARTNERS</span>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#process">Process</a>
+          <a href="#testimonials">Testimonials</a>
+          <a href="#contact" class="btn btn-primary">Contact Us</a>
+        </div>
+        <!-- Mobile navigation toggle -->
+        <div class="menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 data-content="heroTitle">Elevate Your Brand in Niche Markets</h1>
+        <p data-content="heroDescription">Rise Above Partners specializes in crafting strategic marketing initiatives tailored for niche industries. We help you establish yourself as an industry leader.</p>
+        <a href="#contact" class="btn btn-light">Get Started</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features section section-gray">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Approach</h2>
+        <p>We combine strategic thinking with creative execution to deliver marketing solutions that drive real results.</p>
+      </div>
+      <div class="feature-grid" id="features-container">
+        <!-- Features will be populated dynamically from CMS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about section">
+    <div class="container">
+      <div class="about-container grid grid-2">
+        <div class="about-content">
+          <h2>Who We Are</h2>
+          <p>Rise Above Partners is a dynamic marketing firm specializing in crafting and executing strategic marketing initiatives tailored for niche industries.</p>
+          <p>Recognizing the unique challenges and opportunities within specialized sectors, we focus on elevating our clients' professional web presence through targeted digital strategies, compelling content creation, and data-driven insights.</p>
+          <p>By understanding the intricacies of each niche market, we empower businesses to not only stand out but also to establish themselves as industry leaders, driving growth and fostering lasting client relationships.</p>
+        </div>
+        <div class="about-image">
+          <img src="https://via.placeholder.com/600x400" alt="Marketing strategy session" class="about-image-main">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services section section-gray">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Services</h2>
+        <p>Comprehensive marketing solutions tailored to your industry's unique needs.</p>
+      </div>
+      <div class="services-grid grid grid-3" id="services-container">
+        <!-- Services will be populated dynamically from CMS -->
+        <div class="service-card">
+          <div class="service-image">
+            <img src="https://via.placeholder.com/400x200" alt="Digital Strategy" class="lazy" data-src="https://via.placeholder.com/400x200">
+          </div>
+          <div class="service-content">
+            <h3>Digital Strategy</h3>
+            <p>Comprehensive digital marketing strategies tailored to your niche industry and target audience.</p>
+            <a href="#contact">Learn More</a>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-image">
+            <img src="https://via.placeholder.com/400x200" alt="Content Creation" class="lazy" data-src="https://via.placeholder.com/400x200">
+          </div>
+          <div class="service-content">
+            <h3>Content Creation</h3>
+            <p>Compelling content that resonates with your audience and establishes your authority in your industry.</p>
+            <a href="#contact">Learn More</a>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-image">
+            <img src="https://via.placeholder.com/400x200" alt="Web Presence" class="lazy" data-src="https://via.placeholder.com/400x200">
+          </div>
+          <div class="service-content">
+            <h3>Web Presence</h3>
+            <p>Professional website development and optimization that showcases your expertise and converts visitors.</p>
+            <a href="#contact">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section id="process" class="process section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Process</h2>
+        <p>A methodical approach to elevate your brand and drive results.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-marker">1</div>
+          <div class="timeline-content">
+            <h3>Discovery</h3>
+            <p>We immerse ourselves in your industry, getting to know your business, competitors, and target audience to identify opportunities.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker">2</div>
+          <div class="timeline-content">
+            <h3>Strategy Development</h3>
+            <p>Based on our findings, we create a customized marketing strategy with clear objectives, target audience segmentation, and channel selection.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker">3</div>
+          <div class="timeline-content">
+            <h3>Execution</h3>
+            <p>Our team brings the strategy to life through compelling content creation, website development, digital advertising, and more.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker">4</div>
+          <div class="timeline-content">
+            <h3>Analysis & Optimization</h3>
+            <p>We continuously monitor performance metrics, gather insights, and refine our approach to maximize results and ROI.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials section section-gray">
+    <div class="container">
+      <div class="section-header">
+        <h2>Client Success Stories</h2>
+        <p>Hear from businesses we've helped rise above their competition.</p>
+      </div>
+      <div class="testimonial-container" id="testimonials-container">
+        <!-- Testimonials will be populated dynamically from CMS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Contact Us</h2>
+        <p>Ready to discuss how we can help your business rise above the competition?</p>
+      </div>
+      <div class="contact-container grid grid-2">
+        <div class="contact-info">
+          <p>Reach out to us using any of the methods below or fill out the form.</p>
+          
+          <div class="contact-method">
+            <div class="contact-method-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div class="contact-method-text">
+              <h4>Email</h4>
+              <p>hello@riseabovepartners.com</p>
+            </div>
+          </div>
+          
+          <div class="contact-method">
+            <div class="contact-method-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+            </div>
+            <div class="contact-method-text">
+              <h4>Phone</h4>
+              <p>(555) 123-4567</p>
+            </div>
+          </div>
+          
+          <div class="contact-method">
+            <div class="contact-method-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div class="contact-method-text">
+              <h4>Business Hours</h4>
+              <p>Monday - Friday: 9am - 5pm EST</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-form">
+          <!-- Tally form embed will go here -->
+          <div id="tally-embed"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-container grid grid-4">
+        <div class="footer-col">
+          <h4>Rise Above Partners</h4>
+          <p>Specialized marketing for niche industries. We help businesses establish themselves as industry leaders.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Digital Strategy</a></li>
+            <li><a href="#services">Content Creation</a></li>
+            <li><a href="#services">Web Presence</a></li>
+            <li><a href="#services">Social Media</a></li>
+            <li><a href="#services">Analytics</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#process">Our Process</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul class="footer-links">
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Rise Above Partners. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
   <!-- Main JavaScript -->
   <script src="js/main.js"></script>
 </body>
