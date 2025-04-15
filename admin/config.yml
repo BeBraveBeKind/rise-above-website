@@ -1,12 +1,11 @@
 backend:
-  name: auth0
-  domain: dev-oqi2li2wvbjxcrng.us.auth0.com
-  clientID: y8UXAFiO30WKYNLZ53s0YWGjvq4jsXtu
-  allowedConnections: ["Username-Password-Authentication"]
-  redirectUri: https://rise-above.net/admin/
-
+  name: github
+  repo: BeBraveBeKind/rise-above-website
+  branch: main
+  
 media_folder: "images/content"
 public_folder: "/images/content"
+
 
 collections:
   - name: "pages"
