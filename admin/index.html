@@ -2,85 +2,22 @@
 <html>
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rise Above Partners - Admin</title>
-  <!-- Auth0 Script (Using auth0.js v9.18.0) -->
-  <script src="https://cdn.auth0.com/js/auth0/9.18.0/auth0.min.js"></script>
 </head>
 <body>
   <!-- Decap CMS Script -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   
+  <!-- Auth0 Backend for Decap CMS -->
+  <script src="https://unpkg.com/netlify-cms-backend-auth0@^1.0.0/dist/netlify-cms-backend-auth0.min.js"></script>
+  
   <script>
-    // Initialize the Auth0 client configuration.
-    const auth0Client = new auth0.WebAuth({
-      domain: 'dev-oqi2li2wvbjxcrng.us.auth0.com',
-      clientID: 'y8UXAFiO30WKYNLZ53s0YWGjvq4jsXtu',
-      redirectUri: window.location.origin + '/admin/',
-      responseType: 'code', // Authorization Code Flow
-      scope: 'openid profile email'
-    });
-
-    // Create a custom identity object that decap CMS expects, replacing Netlify Identity.
-    window.netlifyIdentity = {
-      on: (event, callback) => {
-        if (event === 'init') {
-          // Look for the authorization code in the URL (callback from Auth0).
-          const urlParams = new URLSearchParams(window.location.search);
-          const code = urlParams.get('code');
-          
-          if (code) {
-            // Exchange the code for a token via your serverless function.
-            fetch('/.netlify/functions/auth?code=' + code)
-              .then(response => response.json())
-              .then(data => {
-                if (data.token) {
-                  localStorage.setItem('netlifySiteURL', window.location.origin);
-                  localStorage.setItem('netlifyAccessToken', data.token);
-                  callback(data.user);
-                } else {
-                  console.error('No token returned from auth function.');
-                  callback(null);
-                }
-              })
-              .catch(error => {
-                console.error('Auth error:', error);
-                callback(null);
-              });
-          } else {
-            // Attempt to retrieve stored token and fetch user details.
-            const token = localStorage.getItem('netlifyAccessToken');
-            if (token) {
-              fetch('/.netlify/functions/auth-user', {
-                headers: {
-                  Authorization: `Bearer ${token}`
-                }
-              })
-                .then(response => response.json())
-                .then(user => callback(user))
-                .catch(error => {
-                  console.error('Error fetching user info:', error);
-                  callback(null);
-                });
-            } else {
-              // No token present, meaning the user is not authenticated.
-              callback(null);
-            }
-          }
-        } else if (event === 'login') {
-          // Trigger Auth0's login flow.
-          auth0Client.authorize();
-        } else if (event === 'logout') {
-          // Remove token from storage and redirect to homepage.
-          localStorage.removeItem('netlifyAccessToken');
-          window.location.href = '/';
-        }
-      },
-      // Return the current user token, if any.
-      currentUser: () => {
-        const token = localStorage.getItem('netlifyAccessToken');
-        return token ? { token } : null;
-      }
-    };
+    // Initialize the Auth0 backend
+    CMS.registerBackend('auth0', Auth0Backend);
+    
+    // Initialize the CMS
+    window.CMS.init();
   </script>
 </body>
 </html>
