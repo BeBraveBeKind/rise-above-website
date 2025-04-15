@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Rise Above Partners website",
   "dependencies": {
-    "axios": "^1.8.4",
-     "netlify-cms-backend-auth0": "^1.0.0"
+    "axios": "^1.8.4"
   }
 }
