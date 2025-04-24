@@ -4,17 +4,17 @@
   "features": [
     {
       "title": "Strategic Insight",
-      "description": "We dig deep to understand your market, audience, and competition to develop strategies that set you apart.",
+      "description": "I dig deep to understand your market, audience, and competition to develop strategies that set you apart.",
       "icon": "strategic"
     },
     {
       "title": "Creative Excellence",
-      "description": "Our team crafts compelling content and designs that capture attention and communicate your value proposition.",
+      "description": "I craft compelling content and designs that capture attention and communicate your value proposition.",
       "icon": "creative"
     },
     {
       "title": "Data-Driven Decisions",
-      "description": "We analyze performance metrics to continuously refine our approach and maximize your return on investment.",
+      "description": "I analyze performance metrics to continuously refine the approach and maximize your return on investment.",
       "icon": "data"
     }
   ]
