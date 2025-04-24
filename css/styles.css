@@ -1595,44 +1595,37 @@ footer {
 
 
 /* ABOUT QUOTE BLOCK */
+/* About quote styling */
 .about-quote {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f9f9f9;
-  padding: 2rem;
-  border-left: 6px solid #496A81;
-  font-style: italic;
-  font-size: 1.25rem;
-  line-height: 1.6;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  background-color: var(--light-gray);
+  border-left: 6px solid var(--primary);
+  padding: 2.5rem;
+  border-radius: var(--rounded-md);
+  position: relative;
+  box-shadow: var(--shadow-md);
+  margin: 2rem 0;
+}
+
+.about-quote::before {
+  content: '"';
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  font-size: 80px;
+  font-family: Georgia, serif;
+  color: var(--primary);
+  opacity: 0.2;
 }
 
 .about-quote blockquote {
+  font-size: 1.25rem;
+  font-style: italic;
+  line-height: 1.5;
   margin: 0;
-  max-width: 600px;
-  color: #333;
+  position: relative;
+  z-index: 1;
 }
 
 .about-quote blockquote p {
   margin: 0;
-  quotes: "“" "”" "‘" "’";
-}
-
-.about-quote blockquote p::before {
-  content: open-quote;
-}
-
-.about-quote blockquote p::after {
-  content: close-quote;
-}
-
-.about-quote cite {
-  display: block;
-  margin-top: 1rem;
-  text-align: right;
-  font-style: normal;
-  font-weight: 600;
-  color: #7D8C75;
 }
