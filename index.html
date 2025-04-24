@@ -1,41 +1,261 @@
-.about-quote {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f9f9f9;
-  padding: 2rem;
-  border-left: 6px solid #496A81; /* Denim Blue from your palette */
-  font-style: italic;
-  font-size: 1.25rem;
-  line-height: 1.6;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rise Above Partners | Big Brand Strategy meets Bootstrap Mentality</title>
 
-.about-quote blockquote {
-  margin: 0;
-  max-width: 600px;
-  color: #333;
-}
+  <!-- SEO Meta -->
+  <meta name="description" content="Rise Above Partners - Strategic marketing for niche industries">
+  <meta name="keywords" content="niche marketing, strategic marketing, content creation, web presence">
 
-.about-quote blockquote p {
-  margin: 0;
-  quotes: "“" "”" "‘" "’";
-}
+  <!-- Open Graph Meta -->
+  <meta property="og:title" content="Rise Above Partners">
+  <meta property="og:description" content="Elevating brands in niche markets through strategic marketing">
+  <meta property="og:image" content="https://rise-above.net/images/brand/logo.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rise-above.net">
 
-.about-quote blockquote p::before {
-  content: open-quote;
-}
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
 
-.about-quote blockquote p::after {
-  content: close-quote;
-}
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/images/brand/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/brand/favicon/favicon-32x32.png">
 
-.about-quote cite {
-  display: block;
-  margin-top: 1rem;
-  text-align: right;
-  font-style: normal;
-  font-weight: 600;
-  color: #7D8C75; /* Sage Green */
-}
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MarketingAgency",
+    "name": "Rise Above Partners",
+    "description": "Strategic marketing for niche industries",
+    "url": "https://rise-above.net",
+    "logo": "https://rise-above.net/images/brand/logomark.svg",
+    "sameAs": [
+      "https://linkedin.com/company/rise-above-partners"
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo">
+          <img src="/images/brand/logomark.svg" alt="Rise Above Partners" class="logo-mark">
+          <div class="logo-text">
+            <span>RISE ABOVE</span>
+            <span>PARTNERS</span>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#process">Process</a>
+          <a href="#testimonials">Testimonials</a>
+          <a href="#contact" class="btn btn-primary">Contact Us</a>
+        </div>
+        <div class="menu-toggle">
+          <span></span><span></span><span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 data-content="heroTitle">Rise Above the Noise</h1>
+        <p data-content="heroDescription">Big brand strategy meets bootstrap mentality. I help driven founders and niche businesses punch above their weight—and win.</p>
+        <a href="#contact" class="btn btn-light">Get Started</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features section section-gray">
+    <div class="container">
+      <div class="section-header">
+        <h2>My Approach</h2>
+        <p>Strategy without execution is just theory. Execution without strategy is just noise. I bridge the gap—bringing big-brand insights to bootstrapped realities.</p>
+      </div>
+      <div class="feature-grid" id="features-container">
+        <!-- Dynamically populated -->
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about section">
+    <div class="container">
+      <div class="about-container grid grid-2">
+        <div class="about-content">
+          <h2>Who Is Rise Above?</h2>
+          <p>Just like you, I live and breathe my business. After nearly two decades in the marketing trenches—working with the outdoor and tech brands you know—I started Rise Above to help small and midsize businesses meet their moment.</p>
+          <p>In a world where the latest tools are a click away, leaders still need seasoned expertise to shape strategy, tell their story, and use resources wisely. That’s where I come in.</p>
+          <p>Think of me as your on-demand marketing brain: part strategist, part implementer, part outsourcer, part sorcerer. Someone who knows the shortcuts, avoids the pitfalls, and delivers results (not just decks).</p>
+        </div>
+        <div class="about-quote">
+          <blockquote>
+            <p>You don’t need a 10-person team. You need someone who actually knows what they’re doing.</p>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="services section section-gray">
+    <div class="container">
+      <div class="section-header">
+        <h2>Services</h2>
+        <p>Built for impact. Whether you need a fresh plan, sharper messaging, or just someone to make it happen—I’ve got your back.</p>
+      </div>
+      <div class="services-grid grid grid-3">
+        <!-- Examples -->
+        <div class="service-card">
+          <div class="service-image">
+            <img src="https://via.placeholder.com/400x200" alt="Digital Strategy">
+          </div>
+          <div class="service-content">
+            <h3>Digital Strategy</h3>
+            <p>Make your marketing smarter, not louder. I craft strategies that focus your energy where it counts.</p>
+            <a href="#contact">Learn More</a>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-image">
+            <img src="https://via.placeholder.com/400x200" alt="Content Creation">
+          </div>
+          <div class="service-content">
+            <h3>Content Creation</h3>
+            <p>Stories that sell. I help you speak clearly, confidently, and with purpose.</p>
+            <a href="#contact">Learn More</a>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-image">
+            <img src="https://via.placeholder.com/400x200" alt="Web Presence">
+          </div>
+          <div class="service-content">
+            <h3>Web Presence</h3>
+            <p>Your digital front door matters. Let’s make it memorable—and measurable.</p>
+            <a href="#contact">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section id="process" class="process section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Process</h2>
+        <p>A methodical approach to elevate your brand and drive results.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-marker">1</div>
+          <div class="timeline-content">
+            <h3>Discovery</h3>
+            <p>I immerse myself in your business to uncover real opportunities.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker">2</div>
+          <div class="timeline-content">
+            <h3>Strategy</h3>
+            <p>We define clear goals, audiences, and a roadmap for success.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker">3</div>
+          <div class="timeline-content">
+            <h3>Execution</h3>
+            <p>From campaigns to content—I get things built, launched, and optimized.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker">4</div>
+          <div class="timeline-content">
+            <h3>Optimization</h3>
+            <p>I continuously review performance and refine to maximize ROI.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Contact</h2>
+        <p>If you've got a gut feeling that your growth should be further along—and you're ready to do something about it—let’s talk.</p>
+      </div>
+      <div class="contact-container grid grid-2">
+        <div class="contact-info">
+          <p>Reach out using the form or drop a line:</p>
+          <div class="contact-method">
+            <h4>Email</h4>
+            <p>hello@rise-above.net</p>
+          </div>
+        </div>
+        <div class="contact-form">
+          <div id="tally-embed"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-container grid grid-4">
+        <div class="footer-col">
+          <h4>Rise Above Partners</h4>
+          <p>Big brand strategy meets bootstrap mentality.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Digital Strategy</a></li>
+            <li><a href="#services">Content Creation</a></li>
+            <li><a href="#services">Web Presence</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul class="footer-links">
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Rise Above Partners. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>
