@@ -2,18 +2,22 @@ backend:
   name: github
   repo: BeBraveBeKind/rise-above-website
   branch: main
-  api_root: https://api.github.com
   base_url: https://rise-above.net
-  auth_endpoint: api/auth
-
-# Display content preview on the CMS dashboard
-show_preview_links: true
-
-# Media handling
+  auth_endpoint: api/auth-callback
+  
 media_folder: "images/content"
 public_folder: "/images/content"
 
-# Define collections for different content types
+local_backend: true
+
+# Site settings
+site_url: https://rise-above.net
+display_url: https://rise-above.net
+logo_url: /images/brand/logomark.svg
+
+# Editorial workflow
+publish_mode: editorial_workflow
+
 collections:
   - name: "pages"
     label: "Pages"
@@ -42,7 +46,7 @@ collections:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Description", name: "description", widget: "text"}
       - {label: "Image", name: "image", widget: "image"}
-      - {label: "Order", name: "order", widget: "number", default: 99}
+      - {label: "Order", name: "order", widget: "number"}
   
   - name: "testimonials"
     label: "Testimonials"
