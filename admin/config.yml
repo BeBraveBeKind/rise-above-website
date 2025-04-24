@@ -2,8 +2,14 @@ backend:
   name: github
   repo: BeBraveBeKind/rise-above-website
   branch: main
+  api_root: https://api.github.com
+  base_url: https://rise-above.net
   auth_endpoint: api/auth
-  
+
+# Display content preview on the CMS dashboard
+show_preview_links: true
+
+# Media folder configuration
 media_folder: "images/content"
 public_folder: "/images/content"
 

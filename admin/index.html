@@ -10,8 +10,47 @@
 <body>
   <!-- Include the script that builds the page and powers Decap CMS -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  
   <script>
-    // You can add custom JavaScript for the admin here if needed
+    // Custom preview styles and widgets
+    if (window.DecapCMS) {
+      // Register a custom preview template for services
+      DecapCMS.registerPreviewTemplate('services', ({ entry }) => {
+        const data = entry.get('data').toJS();
+        return `
+          <div class="service-card">
+            <div class="service-image">
+              ${data.image ? `<img src="${data.image}" alt="${data.title}">` : ''}
+            </div>
+            <div class="service-content">
+              <h3>${data.title || 'Service Title'}</h3>
+              <p>${data.description || 'Service description'}</p>
+            </div>
+          </div>
+        `;
+      });
+
+      // Register a custom preview template for testimonials
+      DecapCMS.registerPreviewTemplate('testimonials', ({ entry }) => {
+        const data = entry.get('data').toJS();
+        return `
+          <div class="testimonial-card">
+            <div class="testimonial-text">${data.testimonial || 'Testimonial text'}</div>
+            <div class="testimonial-author">
+              ${data.avatar ? `
+                <div class="testimonial-avatar">
+                  <img src="${data.avatar}" alt="${data.name}">
+                </div>
+              ` : ''}
+              <div class="testimonial-info">
+                <h4>${data.name || 'Client Name'}</h4>
+                <p>${data.company || 'Company'}</p>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+    }
   </script>
 </body>
 </html>
