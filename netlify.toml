@@ -5,15 +5,25 @@
 [[plugins]]
   package = "@netlify/plugin-lighthouse"
 
+# Admin panel SPA routing
 [[redirects]]
   from = "/admin/*"
   to = "/admin/index.html"
   status = 200
 
+# API redirects for Netlify Functions
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"
   status = 200
+
+# DO NOT use redirects that start with /.netlify as they will be rejected
+# Remove or comment out this invalid redirect:
+# [[redirects]]
+#   from = "/.netlify/identity/*"
+#   to = "/.netlify/identity/:splat"
+#   status = 200
+#   force = true
 
 [[headers]]
   for = "/*"
