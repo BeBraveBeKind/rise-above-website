@@ -1601,7 +1601,7 @@ footer {
   justify-content: center;
   background-color: #f9f9f9;
   padding: 2rem;
-  border-left: 6px solid #496A81; /* Denim Blue from your palette */
+  border-left: 6px solid #496A81;
   font-style: italic;
   font-size: 1.25rem;
   line-height: 1.6;
@@ -1634,48 +1634,5 @@ footer {
   text-align: right;
   font-style: normal;
   font-weight: 600;
-  color: #7D8C75; /* Sage Green */
-}
-
-/* ABOUT QUOTE BLOCK */
-.about-quote {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f9f9f9;
-  padding: 2rem;
-  border-left: 6px solid #496A81; /* Denim Blue from your palette */
-  font-style: italic;
-  font-size: 1.25rem;
-  line-height: 1.6;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
-.about-quote blockquote {
-  margin: 0;
-  max-width: 600px;
-  color: #333;
-}
-
-.about-quote blockquote p {
-  margin: 0;
-  quotes: "“" "”" "‘" "’";
-}
-
-.about-quote blockquote p::before {
-  content: open-quote;
-}
-
-.about-quote blockquote p::after {
-  content: close-quote;
-}
-
-.about-quote cite {
-  display: block;
-  margin-top: 1rem;
-  text-align: right;
-  font-style: normal;
-  font-weight: 600;
-  color: #7D8C75; /* Sage Green */
+  color: #7D8C75;
 }
