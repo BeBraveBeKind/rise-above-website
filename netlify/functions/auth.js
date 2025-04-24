@@ -1,4 +1,7 @@
 exports.handler = async (event, context) => {
+  // For Netlify Identity, we don't need this custom auth handler
+  // But we'll keep it for compatibility and potential future use
+  
   // Get the authorization token from the request
   const token = event.headers.authorization?.split(' ')[1];
   
@@ -10,14 +13,12 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    // For custom backend auth, this would validate the token
-    // and possibly make a request to the GitHub API
-    // For now, we'll just return a successful response
+    // With Netlify Identity, token validation is handled automatically
     return {
       statusCode: 200,
       body: JSON.stringify({
         token,
-        provider: 'github',
+        provider: 'netlify-identity',
         user: {
           login: 'authenticated-user',
           name: 'Authenticated User'

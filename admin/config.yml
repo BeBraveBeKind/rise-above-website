@@ -1,11 +1,8 @@
 backend:
-  name: github
-  repo: BeBraveBeKind/rise-above-website
-  branch: main
+  name: netlify-identity
   
 media_folder: "images/content"
 public_folder: "/images/content"
-
 
 collections:
   - name: "pages"
@@ -29,6 +26,8 @@ collections:
     label: "Services"
     folder: "_data/services"
     create: true
+    extension: "json"
+    format: "json"
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Description", name: "description", widget: "text"}
@@ -39,6 +38,8 @@ collections:
     label: "Testimonials"
     folder: "_data/testimonials"
     create: true
+    extension: "json"
+    format: "json"
     fields:
       - {label: "Client Name", name: "name", widget: "string"}
       - {label: "Company", name: "company", widget: "string"}
