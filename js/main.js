@@ -10,6 +10,72 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
+  // Function to fetch and parse JSON data
+async function fetchJSONData(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return null;
+  }
+}
+
+// Load home page data
+async function loadHomeData() {
+  const homeData = await fetchJSONData('/_data/home.json');
+  if (homeData) {
+    // Update hero section
+    const heroTitle = document.querySelector('[data-content="heroTitle"]');
+    const heroDescription = document.querySelector('[data-content="heroDescription"]');
+    
+    if (heroTitle) heroTitle.textContent = homeData.heroTitle;
+    if (heroDescription) heroDescription.textContent = homeData.heroDescription;
+    
+    // Update features
+    const featuresContainer = document.getElementById('features-container');
+    if (featuresContainer && homeData.features) {
+      featuresContainer.innerHTML = '';
+      
+      homeData.features.forEach(feature => {
+        const card = document.createElement('div');
+        card.className = 'feature-card';
+        
+        let iconSvg = '';
+        switch(feature.icon) {
+          case 'strategic':
+            iconSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>';
+            break;
+          case 'creative':
+            iconSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>';
+            break;
+          case 'data':
+            iconSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>';
+            break;
+        }
+        
+        card.innerHTML = `
+          <div class="feature-icon">
+            ${iconSvg}
+          </div>
+          <h3>${feature.title}</h3>
+          <p>${feature.description}</p>
+        `;
+        
+        featuresContainer.appendChild(card);
+      });
+    }
+  }
+}
+
+// Call the function when page loads
+document.addEventListener('DOMContentLoaded', function() {
+  loadHomeData();
+  // ... rest of your existing code
+
   // Smooth scrolling for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
