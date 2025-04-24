@@ -1,5 +1,8 @@
 backend:
-  name: netlify-identity
+  name: github
+  repo: BeBraveBeKind/rise-above-website
+  branch: main
+  auth_endpoint: api/auth
   
 media_folder: "images/content"
 public_folder: "/images/content"
