@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initialize mobile navigation
   initMobileNav();
 
+  // Initialize smooth scrolling for anchor links
+  initSmoothScroll();
+
   // Initialize Tally form embed
   initTallyForm();
 });
@@ -63,25 +66,25 @@ function loadServices() {
   const services = [
     {
       title: "Digital Strategy",
-      description: "Comprehensive digital marketing strategies tailored to your niche industry and target audience.",
-      image: "https://via.placeholder.com/400x200",
+      description: "Make your marketing smarter, not louder. I craft strategies that focus your energy where it counts.",
+      image: "https://via.placeholder.com/400x300",
       order: 1
     },
     {
       title: "Content Creation",
-      description: "Compelling content that resonates with your audience and establishes your authority in your industry.",
-      image: "https://via.placeholder.com/400x200", 
+      description: "Stories that sell. I help you speak clearly, confidently, and with purpose.",
+      image: "https://via.placeholder.com/400x300", 
       order: 2
     },
     {
       title: "Web Presence",
-      description: "Professional website development and optimization that showcases your expertise and converts visitors.",
-      image: "https://via.placeholder.com/400x200",
+      description: "Your digital front door matters. Let's make it memorable—and measurable.",
+      image: "https://via.placeholder.com/400x300",
       order: 3
     }
   ];
   
-  const servicesContainer = document.getElementById('services-container');
+  const servicesContainer = document.querySelector('.services-grid');
   if (servicesContainer) {
     // Clear existing content
     servicesContainer.innerHTML = '';
@@ -269,7 +272,10 @@ function initLazyLoading() {
         if (entry.isIntersecting) {
           const img = entry.target;
           img.src = img.dataset.src;
-          img.classList.remove('lazy');
+          img.classList.add('loaded');
+          img.addEventListener('load', () => {
+            img.classList.remove('lazy');
+          });
           observer.unobserve(img);
         }
       });
@@ -284,6 +290,7 @@ function initLazyLoading() {
     document.querySelectorAll('img.lazy').forEach(img => {
       img.src = img.dataset.src;
       img.classList.remove('lazy');
+      img.classList.add('loaded');
     });
   }
 }
@@ -298,34 +305,69 @@ function initMobileNav() {
       navLinks.classList.toggle('active');
       menuToggle.classList.toggle('active');
     });
+    
+    // Close mobile menu when clicking a nav link
+    const navLinkElements = navLinks.querySelectorAll('a');
+    navLinkElements.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        menuToggle.classList.remove('active');
+      });
+    });
   }
+}
+
+// Smooth scrolling for anchor links
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        // Get header height for offset
+        const headerHeight = document.querySelector('header').offsetHeight;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
 }
 
 // Initialize Tally form embed
 function initTallyForm() {
   const tallyEmbed = document.getElementById('tally-embed');
-  if (tallyEmbed) {
-    // Placeholder for Tally form - you'll add the actual embed code later
-    tallyEmbed.innerHTML = `
-      <form>
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" class="form-control" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" class="form-control" required>
-        </div>
-        <div class="form-group">
-          <label for="company">Company</label>
-          <input type="text" id="company" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="message">How Can We Help?</label>
-          <textarea id="message" class="form-control" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
-      </form>
-    `;
-  }
+  
+  if (!tallyEmbed) return;
+  
+  // Replace the placeholder form with the actual Tally embed
+  // The src should be replaced with your actual Tally form URL
+  tallyEmbed.innerHTML = `
+    <iframe 
+      src="https://tally.so/embed/w8r0vP?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
+      width="100%" 
+      height="500" 
+      frameborder="0" 
+      marginheight="0" 
+      marginwidth="0" 
+      title="Contact Form">
+    </iframe>
+  `;
+  
+  // Handle iframe height adjustment
+  window.addEventListener('message', function(e) {
+    if (e.data.type === 'tally.iframe.height') {
+      const iframe = document.querySelector('#tally-embed iframe');
+      if (iframe) {
+        iframe.style.height = `${e.data.height}px`;
+      }
+    }
+  }, false);
 }
