@@ -127,6 +127,34 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
+  // Lazy loading implementation
+  document.addEventListener('DOMContentLoaded', () => {
+    // Select all images that should be lazy loaded
+    const lazyImages = document.querySelectorAll('img[data-src]');
+  
+    // Create intersection observer
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        // Only load images when they come into viewport
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+        
+          // Optionally remove data-src after loading
+          img.removeAttribute('data-src');
+        
+          // Stop observing image
+          observer.unobserve(img);
+        }
+    });
+  });
+  
+  // Observe each image
+  lazyImages.forEach(img => {
+    imageObserver.observe(img);
+  });
+});
+
   // Lazy loading for images
   const lazyImages = document.querySelectorAll('img.lazy');
   if ('IntersectionObserver' in window) {
