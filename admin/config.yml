@@ -9,10 +9,11 @@ backend:
 # Display content preview on the CMS dashboard
 show_preview_links: true
 
-# Media folder configuration
+# Media handling
 media_folder: "images/content"
 public_folder: "/images/content"
 
+# Define collections for different content types
 collections:
   - name: "pages"
     label: "Pages"
@@ -41,7 +42,7 @@ collections:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Description", name: "description", widget: "text"}
       - {label: "Image", name: "image", widget: "image"}
-      - {label: "Order", name: "order", widget: "number"}
+      - {label: "Order", name: "order", widget: "number", default: 99}
   
   - name: "testimonials"
     label: "Testimonials"
