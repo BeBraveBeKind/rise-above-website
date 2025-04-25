@@ -1,9 +1,9 @@
 backend:
-  name: github
-  repo: BeBraveBeKind/rise-above-website
-  branch: main
-  base_url: https://rise-above.net
-  auth_endpoint: api/auth-callback
+  name: auth0
+  domain: dev-oqi2li2wvbjxcrng.us.auth0.com
+  client_id: y8UXAFiO30WKYNLZ53s0YWGjvq4jsXtu
+  redirect_uri: https://rise-above.net/admin/
+  scope: openid profile email
 
 # Media settings
 media_folder: "images/content"
