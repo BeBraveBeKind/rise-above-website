@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Config Debug</title>
+</head>
+<body>
+  <h1>Config File Debug</h1>
+  <div id="result">Loading...</div>
+  
+  <script>
+    // Try to fetch the config file
+    fetch('/admin/config.yml')
+      .then(response => {
+        document.getElementById('result').innerHTML += 
+          `<p>Status: ${response.status} ${response.statusText}</p>
+           <p>Content-Type: ${response.headers.get('content-type')}</p>`;
+        
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status}`);
+        }
+        
+        return response.text();
+      })
+      .then(text => {
+        document.getElementById('result').innerHTML += 
+          `<pre>${text.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</pre>`;
+      })
+      .catch(error => {
+        document.getElementById('result').innerHTML += 
+          `<p>Error: ${error.message}</p>`;
+      });
+  </script>
+</body>
+</html>
