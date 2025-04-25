@@ -1,3 +1,8 @@
+[[headers]]
+  for = "*.yml"
+  [headers.values]
+    Content-Type = "text/yaml"
+    
 [build]
   publish = "/"
   functions = "netlify/functions"
