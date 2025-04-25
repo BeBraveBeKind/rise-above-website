@@ -11,17 +11,15 @@ exports.handler = async (event) => {
   }
 
   try {
-    // Exchange the code for a token
+    // Exchange the code for a token with GitHub
     const tokenResponse = await axios({
       method: 'post',
-      url: `https://${process.env.AUTH0_DOMAIN}/oauth/token`,
-      headers: { 'content-type': 'application/json' },
+      url: 'https://github.com/login/oauth/access_token',
+      headers: { 'Accept': 'application/json' },
       data: {
-        grant_type: 'authorization_code',
-        client_id: process.env.AUTH0_CLIENT_ID,
-        client_secret: process.env.AUTH0_CLIENT_SECRET,
-        code,
-        redirect_uri: `${process.env.URL}/admin/`
+        client_id: process.env.GITHUB_CLIENT_ID,
+        client_secret: process.env.GITHUB_CLIENT_SECRET,
+        code
       }
     });
 
@@ -29,7 +27,8 @@ exports.handler = async (event) => {
     return {
       statusCode: 200,
       body: JSON.stringify({
-        access_token: tokenResponse.data.access_token
+        token: tokenResponse.data.access_token,
+        provider: 'github'
       })
     };
   } catch (error) {
