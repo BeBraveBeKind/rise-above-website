@@ -1,5 +1,16 @@
 /* ENHANCED VISUAL INFRASTRUCTURE - Rise Above Partners */
 
+:root {
+  --primary: #6D98BA;
+  --white: #FFFFFF;
+  --dark: #333333;
+  --rounded-lg: 12px;
+  --rounded-md: 8px;
+  --rounded-sm: 4px;
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+  --shadow-md: 0 4px 15px rgba(0,0,0,0.1);
+}
+
 /* HERO BACKGROUND SYSTEM */
 .hero {
   background: linear-gradient(135deg, var(--primary) 0%, #5a819f 100%);
