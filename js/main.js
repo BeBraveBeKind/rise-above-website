@@ -11,70 +11,68 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   // Function to fetch and parse JSON data
-async function fetchJSONData(url) {
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+  async function fetchJSONData(url) {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return await response.json();
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      return null;
     }
-    return await response.json();
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    return null;
   }
-}
 
-// Load home page data
-async function loadHomeData() {
-  const homeData = await fetchJSONData('/_data/home.json');
-  if (homeData) {
-    // Update hero section
-    const heroTitle = document.querySelector('[data-content="heroTitle"]');
-    const heroDescription = document.querySelector('[data-content="heroDescription"]');
-    
-    if (heroTitle) heroTitle.textContent = homeData.heroTitle;
-    if (heroDescription) heroDescription.textContent = homeData.heroDescription;
-    
-    // Update features
-    const featuresContainer = document.getElementById('features-container');
-    if (featuresContainer && homeData.features) {
-      featuresContainer.innerHTML = '';
+  // Load home page data
+  async function loadHomeData() {
+    const homeData = await fetchJSONData('/_data/home.json');
+    if (homeData) {
+      // Update hero section
+      const heroTitle = document.querySelector('[data-content="heroTitle"]');
+      const heroDescription = document.querySelector('[data-content="heroDescription"]');
       
-      homeData.features.forEach(feature => {
-        const card = document.createElement('div');
-        card.className = 'feature-card';
+      if (heroTitle) heroTitle.textContent = homeData.heroTitle;
+      if (heroDescription) heroDescription.textContent = homeData.heroDescription;
+      
+      // Update features
+      const featuresContainer = document.getElementById('features-container');
+      if (featuresContainer && homeData.features) {
+        featuresContainer.innerHTML = '';
         
-        let iconSvg = '';
-        switch(feature.icon) {
-          case 'strategic':
-            iconSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>';
-            break;
-          case 'creative':
-            iconSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>';
-            break;
-          case 'data':
-            iconSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>';
-            break;
-        }
-        
-        card.innerHTML = `
-          <div class="feature-icon">
-            ${iconSvg}
-          </div>
-          <h3>${feature.title}</h3>
-          <p>${feature.description}</p>
-        `;
-        
-        featuresContainer.appendChild(card);
-      });
+        homeData.features.forEach(feature => {
+          const card = document.createElement('div');
+          card.className = 'feature-card';
+          
+          let iconSvg = '';
+          switch(feature.icon) {
+            case 'strategic':
+              iconSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>';
+              break;
+            case 'creative':
+              iconSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>';
+              break;
+            case 'data':
+              iconSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>';
+              break;
+          }
+          
+          card.innerHTML = `
+            <div class="feature-icon">
+              ${iconSvg}
+            </div>
+            <h3>${feature.title}</h3>
+            <p>${feature.description}</p>
+          `;
+          
+          featuresContainer.appendChild(card);
+        });
+      }
     }
   }
-}
 
-// Call the function when page loads
-document.addEventListener('DOMContentLoaded', function() {
+  // Call loadHomeData
   loadHomeData();
-  // ... rest of your existing code
 
   // Smooth scrolling for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -100,9 +98,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  // Feature cards - Dynamic data loading
+  // Feature cards fallback - only if features-container exists but is empty
   const featuresContainer = document.getElementById('features-container');
-  if (featuresContainer) {
+  if (featuresContainer && featuresContainer.children.length === 0) {
     const features = [
       {
         title: "Strategic Insight",
@@ -185,8 +183,8 @@ document.addEventListener('DOMContentLoaded', function() {
   loadTallyForm();
   
   // Load the form when navigating to the contact section
-  const contactLink = document.querySelectorAll('a[href="#contact"]');
-  contactLink.forEach(link => {
+  const contactLinks = document.querySelectorAll('a[href="#contact"]');
+  contactLinks.forEach(link => {
     link.addEventListener('click', function(e) {
       // Small delay to ensure section is visible
       setTimeout(loadTallyForm, 200);
@@ -194,10 +192,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // Lazy loading implementation
-  document.addEventListener('DOMContentLoaded', () => {
-    // Select all images that should be lazy loaded
-    const lazyImages = document.querySelectorAll('img[data-src]');
-  
+  const lazyImages = document.querySelectorAll('img[data-src]');
+  if (lazyImages.length > 0) {
     // Create intersection observer
     const imageObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
@@ -205,25 +201,25 @@ document.addEventListener('DOMContentLoaded', function() {
         if (entry.isIntersecting) {
           const img = entry.target;
           img.src = img.dataset.src;
-        
+          
           // Optionally remove data-src after loading
           img.removeAttribute('data-src');
-        
+          
           // Stop observing image
           observer.unobserve(img);
         }
+      });
     });
-  });
-  
-  // Observe each image
-  lazyImages.forEach(img => {
-    imageObserver.observe(img);
-  });
-});
+    
+    // Observe each image
+    lazyImages.forEach(img => {
+      imageObserver.observe(img);
+    });
+  }
 
-  // Lazy loading for images
-  const lazyImages = document.querySelectorAll('img.lazy');
-  if ('IntersectionObserver' in window) {
+  // Lazy loading for images with .lazy class
+  const lazyImagesClass = document.querySelectorAll('img.lazy');
+  if ('IntersectionObserver' in window && lazyImagesClass.length > 0) {
     const imageObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -235,12 +231,12 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
     
-    lazyImages.forEach(image => {
+    lazyImagesClass.forEach(image => {
       imageObserver.observe(image);
     });
-  } else {
+  } else if (lazyImagesClass.length > 0) {
     // Fallback for browsers without IntersectionObserver
-    lazyImages.forEach(image => {
+    lazyImagesClass.forEach(image => {
       image.src = image.dataset.src;
       image.classList.add('loaded');
     });
