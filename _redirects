@@ -1,9 +1,2 @@
-# Admin redirects - ensure admin access
-/admin  /admin/index.html  200
-/admin/*  /admin/index.html  200!
-
-# Netlify Identity redirects
-/.netlify/identity/*  /.netlify/identity/:splat  200!
-
-# API redirects
+# API redirects for future Netlify Functions
 /api/*  /.netlify/functions/:splat  200!
