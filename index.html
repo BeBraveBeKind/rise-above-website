@@ -70,16 +70,31 @@
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-overlay"></div>
-    <div class="container">
-      <div class="hero-content">
-        <h1>Small Business. Digital Advantage. Real Results.</h1>
-        <p>I bridge the technology gap for small-town businesses and rural communities. Strategic marketing meets practical innovation—helping non-tech owners leverage digital tools to compete and win.</p>
-        <a href="#contact" class="btn btn-light">Discover Your Digital Advantage</a>
-      </div>
+  <picture class="hero-background">
+    <source media="(max-width: 768px)" 
+            srcset="images/hero/hero-mobile.webp" 
+            type="image/webp">
+    <source media="(max-width: 768px)" 
+            srcset="images/hero/hero-mobile.jpg">
+    <source media="(min-width: 769px)" 
+            srcset="images/hero/hero-desktop.webp" 
+            type="image/webp">
+    <source media="(min-width: 769px)" 
+            srcset="images/hero/hero-desktop.jpg">
+    <img src="images/hero/hero-desktop.jpg" 
+         alt="Rural business landscape representing digital opportunity"
+         loading="eager"
+         class="hero-image">
+  </picture>
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-content">
+      <h1>Small Business. Digital Advantage. Real Results.</h1>
+      <p>I bridge the technology gap for small-town businesses and rural communities. Strategic marketing meets practical innovation—helping non-tech owners leverage digital tools to compete and win.</p>
+      <a href="#contact" class="btn btn-light">Discover Your Digital Advantage</a>
     </div>
-  </section>
-
+  </div>
+</section>
   <!-- Proof Points -->
   <section class="proof-points section section-gray">
     <div class="container">

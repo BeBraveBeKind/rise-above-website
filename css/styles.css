@@ -214,7 +214,8 @@ header {
   border-color: var(--white);
 }
 
-/* Hero Section */
+
+/* HIGH-PERFORMANCE HERO SYSTEM */
 .hero {
   background: linear-gradient(135deg, var(--primary) 0%, #5a819f 100%);
   color: var(--white);
@@ -225,41 +226,39 @@ header {
   min-height: 600px;
 }
 
-.hero::before {
-  content: '';
+/* SMART BACKGROUND IMAGE SYSTEM */
+.hero-background {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('../images/hero/hero-image.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 1.0;
+  width: 100%;
+  height: 100%;
   z-index: 0;
 }
 
-/* TEMPORARILY DISABLED TO TEST IMAGE
-.hero::after {
-  content: '';
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* PROFESSIONAL OVERLAY SYSTEM */
+.hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background: linear-gradient(135deg, 
-    rgba(109, 152, 186, 0.9) 0%, 
-    rgba(90, 129, 159, 0.8) 50%,
-    rgba(109, 152, 186, 0.9) 100%);
+    rgba(109, 152, 186, 0.8) 0%, 
+    rgba(90, 129, 159, 0.7) 50%,
+    rgba(109, 152, 186, 0.8) 100%);
   z-index: 1;
 }
-*/
 
-.hero-overlay {
-  display: none;
-}
-
+/* CONTENT PRIORITY SYSTEM */
 .hero-content {
   max-width: 650px;
   position: relative;
@@ -276,6 +275,22 @@ header {
   font-size: 1.3rem;
   margin-bottom: 2rem;
   opacity: 0.95;
+}
+
+/* MOBILE OPTIMIZATION MAGIC */
+@media (max-width: 768px) {
+  .hero {
+    padding: 6rem 0 4rem;
+    min-height: 500px;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero p {
+    font-size: 1.1rem;
+  }
 }
 
 /* Cards and Components */
