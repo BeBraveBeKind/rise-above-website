@@ -132,7 +132,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.2rem 0;
+  padding: 1rem 0;
+  gap: 2rem;
 }
 
 .logo {
@@ -142,9 +143,10 @@ header {
 }
 
 .logo-mark {
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   filter: drop-shadow(0 2px 8px hsla(var(--glass-h), var(--glass-s), 30%, 0.3));
+  flex-shrink: 0;
 }
 
 .logo-text {
@@ -281,11 +283,11 @@ header {
     hsla(var(--glass-h), var(--glass-s), 60%, 0.95) 0%, 
     hsla(var(--glass-h), var(--glass-s), 45%, 0.9) 100%);
   color: var(--white);
-  padding: 10rem 0 8rem;
+  padding: 6rem 0 5rem;
   margin-top: 90px;
   position: relative;
   overflow: hidden;
-  min-height: 70vh;
+  min-height: 50vh;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
@@ -335,11 +337,11 @@ header {
   right: 0;
   bottom: 0;
   background: linear-gradient(135deg, 
-    hsla(var(--glass-h), var(--glass-s), 30%, 0.8) 0%, 
-    hsla(var(--glass-h), var(--glass-s), 20%, 0.6) 50%,
-    hsla(var(--glass-h), var(--glass-s), 30%, 0.8) 100%);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+    hsla(var(--glass-h), var(--glass-s), 30%, 0.4) 0%, 
+    hsla(var(--glass-h), var(--glass-s), 20%, 0.3) 50%,
+    hsla(var(--glass-h), var(--glass-s), 30%, 0.4) 100%);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
   z-index: 1;
 }
 
@@ -597,8 +599,27 @@ header {
 
 /* Enhanced About Section */
 .about-container {
-  align-items: center;
-  gap: 5rem;
+  align-items: flex-start;
+  gap: 4rem;
+}
+
+.about-content {
+  padding: 2rem 0;
+}
+
+.about-content h2 {
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  color: var(--dark);
+  font-weight: 700;
+}
+
+.about-content p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  font-weight: 500;
 }
 
 .about-image {
@@ -795,8 +816,8 @@ footer {
 
 .methodology-steps {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 3rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
   margin-top: 4rem;
 }
 
@@ -805,13 +826,17 @@ footer {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: var(--rounded-lg);
-  padding: 3rem 2rem;
+  padding: 2.5rem 1.5rem;
   text-align: center;
   box-shadow: var(--shadow-glass);
   border: 1px solid hsla(var(--glass-h), var(--glass-s), 80%, 0.2);
   transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .method-step::before {
@@ -896,8 +921,8 @@ footer {
 
 .innovation-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 3.5rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
   margin-top: 4rem;
 }
 
@@ -1002,11 +1027,15 @@ footer {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: var(--rounded-lg);
-  padding: 3rem 2.5rem;
+  padding: 2.5rem 2rem;
   box-shadow: var(--shadow-glass);
   border: 1px solid hsla(var(--glass-h), var(--glass-s), 80%, 0.2);
   transition: all 0.4s ease;
   position: relative;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .capability-tier.featured {
@@ -1069,16 +1098,18 @@ footer {
 .tier-content ul {
   list-style: none;
   padding: 0;
-  margin: 0 0 2.5rem 0;
+  margin: 0 0 2rem 0;
+  flex-grow: 1;
 }
 
 .tier-content li {
-  padding: 1rem 0;
+  padding: 0.8rem 0;
   border-bottom: 1px solid hsla(var(--glass-h), var(--glass-s), 80%, 0.3);
   position: relative;
   padding-left: 2.5rem;
   color: #555;
   font-weight: 500;
+  font-size: 0.95rem;
 }
 
 /* PROFESSIONAL ARROW SYSTEM - FIXED! */
@@ -1136,8 +1167,8 @@ footer {
   }
   
   .hero {
-    padding: 8rem 0 6rem;
-    min-height: 60vh;
+    padding: 5rem 0 4rem;
+    min-height: 50vh;
   }
   
   .hero h1 {
@@ -1158,12 +1189,30 @@ footer {
   
   .methodology-steps {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2rem;
   }
   
   .innovation-grid {
     grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  
+  .innovation-item {
+    min-height: auto;
+    padding: 2.5rem 2rem;
+  }
+  
+  .method-step {
+    min-height: auto;
+    padding: 2rem 1.5rem;
+  }
+  
+  .about-container {
     gap: 3rem;
+  }
+  
+  .about-content h2 {
+    font-size: 2rem;
   }
   
   .capability-tier.featured {
