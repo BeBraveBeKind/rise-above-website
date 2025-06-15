@@ -7,11 +7,15 @@ html, body, *, *::before, *::after {
   padding: 0 !important;
 }
 
-/* FORCE ZERO SPACING */
-html {
+/* AGGRESSIVE: Complete elimination of any bars/spacing */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
   height: 100% !important;
   overflow-x: hidden !important;
-  scroll-behavior: smooth !important;
 }
 
 body {
@@ -134,20 +138,18 @@ header {
   background: hsla(var(--glass-h), var(--glass-s), 98%, 0.8);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: var(--shadow-glass);
   position: fixed;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   z-index: 1000;
   border: none !important;
-  border-bottom: 1px solid hsla(var(--glass-h), var(--glass-s), 80%, 0.2);
   margin: 0 !important;
   padding: 0 !important;
   transform: translateY(0) !important;
   border-top: none !important;
   outline: none !important;
-  box-shadow: 0 2px 20px hsla(var(--glass-h), var(--glass-s), 20%, 0.15);
+  box-shadow: none !important;
 }
 
 .navbar {
@@ -300,7 +302,9 @@ header {
   color: var(--white);
   padding: 10rem 0 8rem !important;
   /* NUCLEAR: Start directly after header with ZERO gap */
-  margin: 84px 0 0 0 !important;
+  margin: 0 !important;
+  margin-top: 0 !important;
+  padding-top: calc(10rem + 84px) !important;
   position: relative;
   overflow: hidden;
   min-height: 70vh;
