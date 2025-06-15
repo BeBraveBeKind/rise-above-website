@@ -53,6 +53,8 @@ body {
   min-height: 100vh;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  margin: 0;
+  padding: 0;
 }
 
 /* Enhanced Layout System */
@@ -355,10 +357,9 @@ header {
   object-fit: cover;
   object-position: center;
   display: block;
-  filter: saturate(1.2) contrast(1.1);
 }
 
-/* PROFESSIONAL OVERLAY SYSTEM */
+/* MINIMAL OVERLAY FOR TEXT READABILITY */
 .hero-overlay {
   position: absolute;
   top: 0;
@@ -366,11 +367,11 @@ header {
   right: 0;
   bottom: 0;
   background: linear-gradient(135deg, 
-    hsla(var(--glass-h), var(--glass-s), 30%, 0.4) 0%, 
-    hsla(var(--glass-h), var(--glass-s), 20%, 0.3) 50%,
-    hsla(var(--glass-h), var(--glass-s), 30%, 0.4) 100%);
-  backdrop-filter: blur(0.5px);
-  -webkit-backdrop-filter: blur(0.5px);
+    hsla(var(--glass-h), var(--glass-s), 30%, 0.2) 0%, 
+    hsla(var(--glass-h), var(--glass-s), 20%, 0.15) 50%,
+    hsla(var(--glass-h), var(--glass-s), 30%, 0.2) 100%);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
   z-index: 1;
 }
 
