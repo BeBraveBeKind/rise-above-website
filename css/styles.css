@@ -140,11 +140,14 @@ header {
   left: 0 !important;
   right: 0 !important;
   z-index: 1000;
+  border: none !important;
   border-bottom: 1px solid hsla(var(--glass-h), var(--glass-s), 80%, 0.2);
   margin: 0 !important;
   padding: 0 !important;
   transform: translateY(0) !important;
   border-top: none !important;
+  outline: none !important;
+  box-shadow: 0 2px 20px hsla(var(--glass-h), var(--glass-s), 20%, 0.15);
 }
 
 .navbar {
