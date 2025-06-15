@@ -267,6 +267,24 @@
 
   <!-- Services Hero -->
   <section class="hero services-hero">
+    <picture class="hero-background">
+      <source media="(max-width: 768px)" 
+              srcset="images/services/services-mobile.webp" 
+              type="image/webp">
+      <source media="(max-width: 768px)" 
+              srcset="images/services/services-mobile.jpg">
+      <source media="(min-width: 769px)" 
+              srcset="images/services/services-desktop.webp" 
+              type="image/webp">
+      <source media="(min-width: 769px)" 
+              srcset="images/services/services-desktop.jpg">
+      <img src="images/services/services-desktop.jpg" 
+           alt="Rural business professionals representing comprehensive service offerings"
+           loading="eager"
+           width="1200"
+           height="800"
+           class="hero-image">
+    </picture>
     <div class="hero-overlay"></div>
     <div class="container">
       <div class="hero-content">
