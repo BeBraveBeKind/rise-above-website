@@ -607,6 +607,20 @@ footer {
 .tier-content li:hover::before { border-left-color: #5a819f; transform: translateX(4px); transition: all 0.3s ease; }
 .tier-cta { text-align: center; }
 
+/* Services CTA on Homepage */
+.services-cta {
+  text-align: center;
+  margin: 4rem 0 0 0 !important;
+  padding: 0 !important;
+}
+
+.services-cta .btn {
+  font-size: 1.1rem;
+  padding: 1.2rem 3rem !important;
+  text-transform: none;
+  letter-spacing: 1px;
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .nav-links { position: fixed; top: 100%; left: 0; right: 0; background: hsla(var(--glass-h), var(--glass-s), 98%, 0.95); flex-direction: column; padding: 2rem !important; transform: translateY(-100vh); transition: transform 0.3s ease; }
