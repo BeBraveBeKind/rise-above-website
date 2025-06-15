@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grant Opportunities | Rise Above Partners - Rural Business Funding</title>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Current grant opportunities for rural businesses, small towns, and community development projects. Updated weekly with new funding sources.">
+  <meta name="keywords" content="rural business grants, small town funding, community development grants, agricultural grants, technology grants">
+
+  <!-- Open Graph Meta -->
+  <meta property="og:title" content="Grant Opportunities - Rise Above Partners">
+  <meta property="og:description" content="Current grant opportunities for rural businesses and community development. Updated weekly with new funding sources.">
+  <meta property="og:image" content="https://rise-above.net/images/brand/logo.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rise-above.net/grants">
+
+  <!-- PERFORMANCE: Preconnect to external domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://tally.so">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/images/brand/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/brand/favicon/favicon-32x32.png">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <!-- Grants Page Specific Styles -->
+  <style>
+    .grants-hero {
+      background: linear-gradient(135deg, 
+        hsla(var(--glass-h), var(--glass-s), 60%, 0.95) 0%, 
+        hsla(var(--glass-h), var(--glass-s), 45%, 0.9) 100%);
+      padding: calc(8rem + 84px) 0 6rem !important;
+      margin-top: 0 !important;
+    }
+
+    .grant-filters {
+      display: flex;
+      gap: 1rem;
+      margin: 0 0 3rem 0 !important;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .filter-tag {
+      background: hsla(var(--glass-h), var(--glass-s), 98%, 0.8);
+      border: 2px solid hsla(var(--glass-h), var(--glass-s), 80%, 0.3);
+      color: var(--dark);
+      padding: 0.8rem 1.5rem !important;
+      border-radius: var(--rounded-md);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 0 !important;
+    }
+
+    .filter-tag.active,
+    .filter-tag:hover {
+      background: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+    }
+
+    .grants-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 2.5rem;
+      margin: 0 !important;
+    }
+
+    .grant-card {
+      background: hsla(var(--glass-h), var(--glass-s), 98%, 0.8);
+      backdrop-filter: blur(20px);
+      border-radius: var(--rounded-lg);
+      padding: 2.5rem !important;
+      box-shadow: var(--shadow-glass);
+      border: 1px solid hsla(var(--glass-h), var(--glass-s), 80%, 0.2);
+      transition: all 0.4s ease;
+      position: relative;
+      margin: 0 !important;
+    }
+
+    .grant-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px hsla(var(--glass-h), var(--glass-s), 20%, 0.15), var(--shadow-glass);
+    }
+
+    .grant-card.new {
+      border-color: #2d5530;
+      box-shadow: 
+        0 0 0 2px hsla(120, 30%, 25%, 0.2),
+        var(--shadow-glass);
+    }
+
+    .new-badge {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      background: linear-gradient(135deg, #2d5530 0%, #3d6b40 100%);
+      color: var(--white);
+      padding: 0.5rem 1.2rem !important;
+      border-radius: var(--rounded-sm);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      box-shadow: var(--shadow-md);
+    }
+
+    .grant-header {
+      margin: 0 0 1.5rem 0 !important;
+    }
+
+    .grant-title {
+      color: var(--dark);
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0 0 0.5rem 0 !important;
+      line-height: 1.3;
+    }
+
+    .grant-source {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin: 0 !important;
+    }
+
+    .grant-amount {
+      background: linear-gradient(135deg, var(--primary) 0%, #5a819f 100%);
+      color: var(--white);
+      font-size: 1.8rem;
+      font-weight: 800;
+      padding: 1rem !important;
+      border-radius: var(--rounded-md);
+      text-align: center;
+      margin: 0 0 1.5rem 0 !important;
+      box-shadow: var(--shadow-md);
+    }
+
+    .grant-details {
+      margin: 0 0 2rem 0 !important;
+    }
+
+    .grant-detail {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 0 !important;
+      border-bottom: 1px solid hsla(var(--glass-h), var(--glass-s), 80%, 0.3);
+      margin: 0 !important;
+    }
+
+    .grant-detail:last-child {
+      border-bottom: none;
+    }
+
+    .detail-label {
+      color: #555;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .detail-value {
+      color: var(--dark);
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-align: right;
+      max-width: 60%;
+    }
+
+    .detail-value.urgent {
+      color: #d63384;
+    }
+
+    .detail-value.easy {
+      color: #2d5530;
+    }
+
+    .detail-value.competitive {
+      color: #fd7e14;
+    }
+
+    .grant-cta {
+      text-align: center;
+    }
+
+    .grant-cta .btn {
+      width: 100%;
+      font-size: 0.9rem;
+      padding: 1rem !important;
+    }
+
+    .access-full-database {
+      background: linear-gradient(135deg, 
+        hsla(var(--glass-h), var(--glass-s), 98%, 0.9) 0%, 
+        hsla(var(--glass-h), var(--glass-s), 95%, 0.8) 100%);
+      backdrop-filter: blur(20px);
+      border-radius: var(--rounded-lg);
+      padding: 4rem 3rem !important;
+      box-shadow: var(--shadow-glass);
+      text-align: center;
+      margin: 4rem 0 0 0 !important;
+      border: 2px solid hsla(var(--glass-h), var(--glass-s), 80%, 0.3);
+    }
+
+    .access-full-database h3 {
+      color: var(--dark);
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0 0 1rem 0 !important;
+    }
+
+    .access-full-database p {
+      color: #555;
+      font-size: 1.2rem;
+      margin: 0 0 2.5rem 0 !important;
+      max-width: 600px;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+    .database-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 2rem;
+      margin: 0 0 3rem 0 !important;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      color: var(--primary);
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1;
+      margin: 0 0 0.5rem 0 !important;
+    }
+
+    .stat-label {
+      color: #666;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .grants-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .grant-card {
+        padding: 2rem !important;
+      }
+      
+      .grants-hero {
+        padding: calc(6rem + 84px) 0 4rem !important;
+      }
+
+      .grant-filters {
+        justify-content: flex-start;
+      }
+
+      .filter-tag {
+        font-size: 0.8rem;
+        padding: 0.6rem 1.2rem !important;
+      }
+    }
+  </style>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Grant Opportunity Database",
+    "description": "Current grant opportunities for rural businesses and community development projects",
+    "provider": {
+      "@type": "Organization",
+      "name": "Rise Above Partners",
+      "url": "https://rise-above.net"
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo">
+          <img src="/images/brand/logomark.svg" alt="Rise Above Partners" class="logo-mark" width="45" height="45">
+          <div class="logo-text">
+            <span>RISE ABOVE</span>
+            <span>PARTNERS</span>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a href="/services.html">Services</a>
+          <a href="/grants.html" class="nav-active">Grants</a>
+          <a href="/#about">About</a>
+          <a href="#contact" class="btn btn-primary">Get Started</a>
+        </div>
+        <div class="menu-toggle">
+          <span></span><span></span><span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Grants Hero -->
+  <section class="hero grants-hero">
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <div class="hero-content">
+        <h1>Current Grant Opportunities</h1>
+        <p>Real funding opportunities for rural businesses, community development, and growth projects. Updated weekly with new sources and deadlines.</p>
+        <a href="#grants-database" class="btn btn-light">Browse Current Opportunities</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Grant Opportunities -->
+  <section id="grants-database" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Available Funding Opportunities</h2>
+        <p>These are just a preview of current opportunities. Get access to the full database with application strategies and personalized matching.</p>
+      </div>
+
+      <!-- Filter Tags -->
+      <div class="grant-filters">
+        <div class="filter-tag active">All Categories</div>
+        <div class="filter-tag">Rural Business</div>
+        <div class="filter-tag">Technology</div>
+        <div class="filter-tag">Community Development</div>
+        <div class="filter-tag">Agriculture</div>
+        <div class="filter-tag">Tourism</div>
+      </div>
+
+      <!-- Grants Grid -->
+      <div class="grants-grid">
+        
+        <!-- USDA Rural Business Development Grant -->
+        <div class="grant-card new">
+          <div class="new-badge">New This Week</div>
+          <div class="grant-header">
+            <h3 class="grant-title">Rural Business Development Grant</h3>
+            <p class="grant-source">USDA Rural Development</p>
+          </div>
+          <div class="grant-amount">Up to $500K</div>
+          <div class="grant-details">
+            <div class="grant-detail">
+              <span class="detail-label">Deadline:</span>
+              <span class="detail-value urgent">March 15, 2025</span>
+            </div>
+            <div class="grant-detail">
+              <span class="detail-label">Eligibility:</span>
+              <span class="detail-value">Rural communities under 50K population</span>
+            </div>
+            <div class="grant-detail">
+              <span class="detail-label">Purpose:</span>
+              <span class="detail-value">Business expansion, equipment, infrastructure</span>
+            </div>
+            <div class="grant-detail">
+              <span class="detail-label">Application:</span>
+              <span class="detail-value competitive">Highly Competitive</span>
+            </div>
+            <div class="grant-detail">
+              <span class="detail-label">Match Required:</span>
+              <span class="detail-value">25% local match</span>
+            </div>
+          </div>
+          <div class="grant-cta">
+            <a href="#contact" class="btn btn-primary">Get Full Details</a>
+          </div>
+        </div>
+
+        <!-- Wisconsin Economic Development Corporation -->
+        <div class="grant-card">
+          <div class="grant-header">
+            <h3 class="grant-title">Community Development Block Grant</h3>
+            <p class="grant-source">Wisconsin Economic Development Corporation</p>
+          </div>
+          <div class="grant-amount">$50K - $150K</div>
+          <div class="grant-details">
+            <div class="grant-detail">
+              <span class="detail-label">Deadline:</span>
+              <span class="detail-value">April 30, 2025</span>
+            </div>
+            <div class="grant-detail">
+              <span class="detail-label">Eligibility:</span>
+              <span class="detail-value">Wisconsin businesses, 5-50 employees</span>
+            </div>
+            <div class="grant-detail">
+              <span class="detail-label">Purpose:</span>
+              <span class="detail-value">Job creation, infrastructure improvements</span>
+            </div>
+            <div class="grant-detail">
+              <span class="detail-label">Application:</span>
+              <span class="detail-value easy">Moderate Requirements</span>
+            </div>
+            <div class="grant-detail">
+              <span class="detail-label">Success Rate:</span>
+              <span class="detail-value">~40% approval rate</span>
+            </div>
+          </div>
+          <div class="grant-cta">
+            <a href="#contact" class="btn btn-primary">Get Full Details</a>
+          </div>
+        </div>
+
+        <!-- EPA Brownfields -->
+        <div class="grant-card">
+          <div class="grant-header">
+            <h3 class="grant-title">Brownfields Cleanup Revolving Loan Fund</h3>
+            <p class="grant-source">EPA Environmental Protection Agency</p>
+          </div>
+          <div class="grant-amount">Up to $1M</div>
+          <div class="grant-details">
+            <div class="grant-detail">
+              <span class="detail-label">Deadline:</span>
+              <span class="detail-value">May 22, 2025</span>
+            </div>
+            <div class="grant-detail">
+              <span class="detail-label">Eligibility:</span>
+              <span class="detail-value">Communities, nonprofits, tribes</span>
+            </div>
+            <div class="grant-detail">
+              <span class="detail-label">Purpose:</span>
+              <span class="detail-value">Environmental cleanup, site development</span>
+            </div>
+            <div class="grant-detail">
+              <span class="detail-label">Application:</span>
+              <span class="detail-value competitive">Complex Application</span>
+            </div>
+            <div class="grant-detail">
+              <span class="detail-label">Payback:</span>
+              <span class="detail-value">Low-interest loan program</span>
+            </div>
+          </div>
+          <div class="grant-cta">
+            <a href="#contact" class="btn btn-primary">Get Full Details</a>
+          </div>
+        </div>
+
+        <!-- Rural Energy for America Program -->
+        <div class="grant-card new">
+          <div class="new-badge">New This Week</div>
+          <div class="grant-header">
+            <h3 class="grant-title">Rural Energy for America Program (REAP)</h3>
+            <p class="grant-source">USDA Rural Development</p>
+          </div>
+          <div class="grant-amount">$2.5K - $1M</div>
+          <div class="grant-details">
+            <div class="grant-detail">
+              <span class="detail-label">Deadline:</span>
+              <span class="detail-value">June 30, 2025</span>
+            </div>
+            <div class="grant-detail">
+              <span class="detail-label">Eligibility:</span>
+              <span class="detail-value">Rural businesses, agricultural producers</span>
+            </div>
+            <div class="grant-detail">
+              <span class="detail-label">Purpose:</span>
+              <span class="detail-value">Renewable energy, energy efficiency</span>
+            </div>
+            <div class="grant-detail">
+              <span class="detail-label">Application:</span>
+              <span class="detail-value easy">Straightforward Process</span>
+            </div>
+            <div class="grant-detail">
+              <span class="detail-label">Match Required:</span>
+              <span class="detail-value">25% (varies by project size)</span>
+            </div>
+          </div>
+          <div class="grant-cta">
+            <a href="#contact" class="btn btn-primary">Get Full Details</a>
+          </div>
+        </div>
+
+        <!-- Tourism Marketing -->
+        <div class="grant-card">
+          <div class="grant-header">
+            <h3 class="grant-title">Tourism Marketing Grant Program</h3>
+            <p class="grant-source">Wisconsin Department of Tourism</p>
+          </div>
+          <div class="grant-amount">$5K - $25K</div>
+          <div class="grant-details">
+            <div class="grant-detail">
+              <span class="detail-label">Deadline:</span>
+              <span class="detail-value">Rolling Applications</span>
+            </div>
+            <div class="grant-detail">
+              <span class="detail-label">Eligibility:</span>
+              <span class="detail-value">Tourism businesses, organizations</span>
+            </div>
+            <div class="grant-detail">
+              <span class="detail-label">Purpose:</span>
+              <span class="detail-value">Marketing campaigns, promotional events</span>
+            </div>
+            <div class="grant-detail">
+              <span class="detail-label">Application:</span>
+              <span class="detail-value easy">Simple Application</span>
+            </div>
+            <div class="grant-detail">
+              <span class="detail-label">Match Required:</span>
+              <span class="detail-value">50% match required</span>
+            </div>
+          </div>
+          <div class="grant-cta">
+            <a href="#contact" class="btn btn-primary">Get Full Details</a>
+          </div>
+        </div>
+
+        <!-- Small Business Innovation Research -->
+        <div class="grant-card">
+          <div class="grant-header">
+            <h3 class="grant-title">Small Business Innovation Research (SBIR)</h3>
+            <p class="grant-source">Multiple Federal Agencies</p>
+          </div>
+          <div class="grant-amount">$50K - $1.7M</div>
+          <div class="grant-details">
+            <div class="grant-detail">
+              <span class="detail-label">Deadline:</span>
+              <span class="detail-value">Varies by Agency</span>
+            </div>
+            <div class="grant-detail">
+              <span class="detail-label">Eligibility:</span>
+              <span class="detail-value">Small businesses with innovative technology</span>
+            </div>
+            <div class="grant-detail">
+              <span class="detail-label">Purpose:</span>
+              <span class="detail-value">R&D, technology commercialization</span>
+            </div>
+            <div class="grant-detail">
+              <span class="detail-label">Application:</span>
+              <span class="detail-value competitive">Highly Technical</span>
+            </div>
+            <div class="grant-detail">
+              <span class="detail-label">Success Rate:</span>
+              <span class="detail-value">~15% approval rate</span>
+            </div>
+          </div>
+          <div class="grant-cta">
+            <a href="#contact" class="btn btn-primary">Get Full Details</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Access Full Database -->
+  <section class="section section-gray">
+    <div class="container">
+      <div class="access-full-database">
+        <h3>Access the Full Grant Database</h3>
+        <p>These 6 opportunities are just a preview. Get access to 200+ active grants, personalized matching, and step-by-step application strategies.</p>
+        
+        <div class="database-stats">
+          <div class="stat-item">
+            <div class="stat-number">200+</div>
+            <div class="stat-label">Active Grants</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">Weekly</div>
+            <div class="stat-label">Updates</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">$50K</div>
+            <div class="stat-label">Avg Award</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">Categories</div>
+          </div>
+        </div>
+
+        <a href="#contact" class="btn btn-primary" style="font-size: 1.1rem; padding: 1.2rem 3rem;">Get Full Database Access</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="services-contact">
+        <h3>Ready to Find Your Perfect Grant?</h3>
+        <p>Fill out the form below and I'll send you personalized grant opportunities plus application strategies within 24 hours.</p>
+        
+        <!-- Tally Form Embed -->
+        <iframe src="https://tally.so/embed/w8r0vP?hideTitle=1&transparentBackground=1"
+          width="100%" 
+          height="500" 
+          frameborder="0" 
+          marginheight="0" 
+          marginwidth="0" 
+          title="Grant Inquiry Form"
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-container grid grid-4">
+        <div class="footer-col">
+          <h4>Rise Above Partners</h4>
+          <p>Rural business funding and marketing expertise.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Grant Categories</h4>
+          <ul class="footer-links">
+            <li><a href="#grants-database">Rural Business</a></li>
+            <li><a href="#grants-database">Community Development</a></li>
+            <li><a href="#grants-database">Technology</a></li>
+            <li><a href="#grants-database">Agriculture</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="/services.html">Grant Writing</a></li>
+            <li><a href="/services.html">Content Marketing</a></li>
+            <li><a href="/services.html">Digital Advertising</a></li>
+            <li><a href="/services.html">All Services</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul class="footer-links">
+            <li><a href="https://www.linkedin.com/company/86726287">LinkedIn</a></li>
+            <li><a href="#contact">Get Grant Help</a></li>
+            <li><a href="/">Back to Home</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Rise Above Partners. Helping rural businesses secure funding for growth.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile menu toggle
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+          menuToggle.classList.toggle('active');
+          navLinks.classList.toggle('active');
+        });
+      }
+
+      // Filter functionality
+      const filterTags = document.querySelectorAll('.filter-tag');
+      const grantCards = document.querySelectorAll('.grant-card');
+      
+      filterTags.forEach(tag => {
+        tag.addEventListener('click', function() {
+          // Remove active class from all tags
+          filterTags.forEach(t => t.classList.remove('active'));
+          // Add active class to clicked tag
+          this.classList.add('active');
+          
+          const filter = this.textContent.toLowerCase();
+          
+          // Show/hide cards based on filter
+          grantCards.forEach(card => {
+            if (filter === 'all categories') {
+              card.style.display = 'block';
+            } else {
+              const cardText = card.textContent.toLowerCase();
+              if (cardText.includes(filter.replace(' ', ''))) {
+                card.style.display = 'block';
+              } else {
+                card.style.display = 'none';
+              }
+            }
+          });
+        });
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            // Close mobile menu if open
+            if (menuToggle && menuToggle.classList.contains('active')) {
+              menuToggle.classList.remove('active');
+              navLinks.classList.remove('active');
+            }
+            
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

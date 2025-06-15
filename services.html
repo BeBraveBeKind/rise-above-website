@@ -36,9 +36,9 @@
     .services-hero {
       background: linear-gradient(135deg, 
         hsla(var(--glass-h), var(--glass-s), 60%, 0.95) 0%, 
-        hsla(var(--glass-h), var(--glass-s), 45%, 0.9) 100%);
-      padding: 8rem 0 6rem !important;
-      margin-top: 84px !important;
+        hsla(var(--glass-h), var(--glass-s), 45%, 0.9) 100%);   
+      padding: calc(8rem + 84px) 0 6rem !important;
+      margin-top: 0 !important;
     }
 
     .services-grid {
@@ -218,7 +218,7 @@
       }
       
       .services-hero {
-        padding: 6rem 0 4rem !important;
+        padding: calc(6rem + 84px) 0 4rem !important;
       }
     }
   </style>
@@ -254,8 +254,7 @@
         <div class="nav-links">
           <a href="/">Home</a>
           <a href="/services.html" class="nav-active">Services</a>
-          <a href="/case-studies.html">Case Studies</a>
-          <a href="/about.html">About</a>
+          <a href="/#about">About</a>
           <a href="#contact" class="btn btn-primary">Get Started</a>
         </div>
         <div class="menu-toggle">
