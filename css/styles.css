@@ -517,7 +517,7 @@ a.btn {
 .pillar-content p { text-align: center; color: #555; margin: 0 !important; font-size: 0.95rem; line-height: 1.4; }
 
 
-/* Mobile Timeline Styles - FIXED OVERLAP ISSUE */
+/* Mobile Timeline Styles */
 @media (max-width: 768px) {
   .advantage-grid {
     grid-template-columns: 1fr;
@@ -529,47 +529,30 @@ a.btn {
     padding: 2rem !important;
   }
   
-  /* Timeline Mobile Fix */
-  .timeline-container {
-    padding: 0 1rem !important;
-    max-width: 100%;
-  }
-  
-  .timeline-container::before {
-    left: 25px;
+  /* TARGETED: Fix only timeline mobile overlap */
+  .methodology .timeline-container::before {
+    left: 20px;
     width: 2px;
   }
   
-  .timeline-step {
-    padding-left: 70px !important;
+  .methodology .timeline-step {
+    padding-left: 60px !important;
     padding-right: 0 !important;
     text-align: left !important;
-    margin: 0 0 3rem 0 !important;
   }
   
-  .timeline-step::before {
-    left: 0;
-    top: 1rem;
+  .methodology .timeline-step::before {
+    left: 0px;
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
     transform: none;
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
   }
   
-  .timeline-content {
+  .methodology .timeline-content {
     max-width: none;
     margin: 0 !important;
     padding: 1.5rem !important;
-  }
-  
-  .timeline-content h4 {
-    font-size: 1.2rem;
-    margin: 0 0 0.8rem 0 !important;
-  }
-  
-  .timeline-content p {
-    font-size: 0.9rem;
-    line-height: 1.5;
   }
 }
 
