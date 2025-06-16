@@ -129,7 +129,8 @@ function createGrantCard(grant) {
     fundingDisplay = `From ${formatCurrency(grant.Funding_Min)}`;
   }
 
-  // Determine deadline urgency
+  // Format deadline - FIXED: Handle Google Sheets timestamp format
+  const formattedDeadline = formatDeadline(grant.Deadline);
   const deadlineClass = getDeadlineClass(grant.Deadline);
   
   // Determine complexity class
@@ -146,7 +147,7 @@ function createGrantCard(grant) {
       <div class="grant-details">
         <div class="grant-detail">
           <span class="detail-label">Deadline:</span>
-          <span class="detail-value ${deadlineClass}">${grant.Deadline || 'Ongoing'}</span>
+          <span class="detail-value ${deadlineClass}">${formattedDeadline}</span>
         </div>
         <div class="grant-detail">
           <span class="detail-label">Eligibility:</span>
@@ -188,6 +189,39 @@ function formatCurrency(amount) {
     return '$' + (num / 1000).toFixed(0) + 'K';
   } else {
     return '$' + num.toLocaleString();
+  }
+}
+
+// Format deadline - NEW: Handle Google Sheets timestamp format
+function formatDeadline(deadline) {
+  if (!deadline) return 'Ongoing';
+  
+  // Handle common text values
+  const deadlineStr = deadline.toString().toLowerCase();
+  if (deadlineStr.includes('rolling') || deadlineStr.includes('ongoing') || deadlineStr.includes('tbd')) {
+    return deadline;
+  }
+  
+  try {
+    // Handle Google Sheets timestamp format (2025-06-30T05:00:00.000Z)
+    let date;
+    if (deadline.includes('T') && deadline.includes('Z')) {
+      date = new Date(deadline);
+    } else {
+      date = new Date(deadline);
+    }
+    
+    // Check if date is valid
+    if (isNaN(date.getTime())) {
+      return deadline; // Return original if can't parse
+    }
+    
+    // Format as M/D/YYYY
+    return (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
+    
+  } catch (error) {
+    console.log('Error formatting deadline:', deadline);
+    return deadline; // Return original if error
   }
 }
 
@@ -276,7 +310,7 @@ function getFallbackData() {
       Grant_Name: "Recreational Trails Program (RTP)",
       Source_Organization: "Wisconsin Department of Natural Resources",
       Funding_Min: "",
-      Funding_Max: "$100,000",
+      Funding_Max: "100000",
       Deadline: "5/1/2025",
       Application_Period: "Annual application cycle",
       Eligibility: "Towns, villages, cities, counties, tribal governing bodies, school districts, state agencies, federal agencies, incorporated organizations",
@@ -293,8 +327,8 @@ function getFallbackData() {
     {
       Grant_Name: "Small Business Development Grant",
       Source_Organization: "Wisconsin Economic Development Corporation (WEDC)",
-      Funding_Min: "$50,000",
-      Funding_Max: "$250,000",
+      Funding_Min: "50000",
+      Funding_Max: "250000",
       Deadline: "Rolling",
       Application_Period: "Fiscal Year 2025 ongoing",
       Eligibility: "Communities and economic development partners",
@@ -307,78 +341,6 @@ function getFallbackData() {
       Source_URL: "https://wedc.org/programs/small-business-development-grant/",
       Last_Updated: "1/15/2025",
       Featured: "TRUE"
-    },
-    {
-      Grant_Name: "USDA Rural Business Development Grant",
-      Source_Organization: "USDA Rural Development",
-      Funding_Min: "Not specified",
-      Funding_Max: "Not specified",
-      Deadline: "4/6/2025",
-      Application_Period: "Annual competitive cycle",
-      Eligibility: "Public bodies, nonprofits, Indian tribes serving rural areas under 50,000 population",
-      Purpose: "Training/technical assistance, business counseling, market research, feasibility studies, technology-based economic development, rural business incubators",
-      Complexity: "Complex",
-      Match_Required: "No match requirement",
-      Success_Rate: "Competitive",
-      Category: "Rural Business",
-      Status: "Active",
-      Source_URL: "https://www.rd.usda.gov/programs-services/business-programs/rural-business-development-grants/wi",
-      Last_Updated: "1/15/2025",
-      Featured: "TRUE"
-    },
-    {
-      Grant_Name: "Thrive Rural Wisconsin Initiative",
-      Source_Organization: "Wisconsin Economic Development Corporation (WEDC)",
-      Funding_Min: "$25,000",
-      Funding_Max: "$25,000",
-      Deadline: "Next cycle TBD",
-      Application_Period: "Biennial program",
-      Eligibility: "Rural communities under 50,000 population",
-      Purpose: "Two years technical assistance, grant-writing support, planning assistance for economic development",
-      Complexity: "Moderate",
-      Match_Required: "No match specified",
-      Success_Rate: "10 communities selected per cycle",
-      Category: "Community Development",
-      Status: "Active",
-      Source_URL: "https://wedc.org/helping-rural-residents-build-their-future/",
-      Last_Updated: "1/15/2025",
-      Featured: "FALSE"
-    },
-    {
-      Grant_Name: "Wisconsin Broadband Infrastructure Grant",
-      Source_Organization: "Wisconsin Public Service Commission",
-      Funding_Min: "Not specified",
-      Funding_Max: "$1,100,000,000",
-      Deadline: "Rolling",
-      Application_Period: "BEAD Program implementation ongoing",
-      Eligibility: "Internet service providers, local governments, utilities",
-      Purpose: "High-speed internet infrastructure deployment in underserved areas",
-      Complexity: "Complex",
-      Match_Required: "25% minimum match",
-      Success_Rate: "$1.1B total available through 2028",
-      Category: "Technology",
-      Status: "Active",
-      Source_URL: "https://psc.wi.gov/Pages/ServiceType/Broadband/GrantPrograms.aspx",
-      Last_Updated: "1/15/2025",
-      Featured: "TRUE"
-    },
-    {
-      Grant_Name: "Entrepreneurship Partner Grants",
-      Source_Organization: "Wisconsin Economic Development Corporation (WEDC)",
-      Funding_Min: "$50,000",
-      Funding_Max: "$200,000",
-      Deadline: "Next cycle Aug 2025",
-      Application_Period: "Annual cycle (next cycle Aug 2025)",
-      Eligibility: "Nonprofits, communities supporting entrepreneurs",
-      Purpose: "Entrepreneurship training, mentors, technical assistance, seed accelerators",
-      Complexity: "Moderate",
-      Match_Required: "No match required",
-      Success_Rate: "$2.25 million FY2025 budget",
-      Category: "Rural Business",
-      Status: "Active",
-      Source_URL: "https://wedc.org/grants-available-to-organizations-boosting-entrepreneurs-success/",
-      Last_Updated: "1/15/2025",
-      Featured: "FALSE"
     }
   ];
 }
