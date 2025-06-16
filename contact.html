@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Rise Above Partners - Let's Talk About Your Marketing</title>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Ready to stop spinning your wheels on marketing? Let's talk about what actually works for your business. Contact Michael Browne for marketing consultation.">
+  <meta name="keywords" content="marketing consultation, rural business marketing, contact marketing consultant, business growth strategy">
+
+  <!-- Open Graph Meta -->
+  <meta property="og:title" content="Contact - Rise Above Partners">
+  <meta property="og:description" content="Ready to focus on marketing that actually drives results? Let's talk about your business goals.">
+  <meta property="og:image" content="https://rise-above.net/images/brand/logo.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rise-above.net/contact">
+
+  <!-- PERFORMANCE: Preconnect to external domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/images/brand/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/brand/favicon/favicon-32x32.png">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <!-- Contact Page Specific Styles -->
+  <style>
+    .contact-hero {
+      background: linear-gradient(135deg, 
+        hsla(var(--glass-h), var(--glass-s), 60%, 0.95) 0%, 
+        hsla(var(--glass-h), var(--glass-s), 45%, 0.9) 100%);   
+      padding: calc(8rem + 84px) 0 6rem !important;
+      margin-top: 0 !important;
+      color: var(--white);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      min-height: 50vh;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at center,
+        hsla(var(--glass-h), var(--glass-s), 80%, 0.1),
+        hsla(var(--glass-h), var(--glass-s), 60%, 0.05) 70%);
+      animation: float 20s ease-in-out infinite;
+    }
+
+    .contact-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .contact-hero h1 {
+      font-size: 3.5rem;
+      margin: 0 0 1.5rem 0 !important;
+      font-weight: 800;
+      text-shadow: 0 4px 16px hsla(0, 0%, 0%, 0.3);
+    }
+
+    .contact-hero p {
+      font-size: 1.3rem;
+      margin: 0 0 2rem 0 !important;
+      opacity: 0.95;
+      text-shadow: 0 2px 8px hsla(0, 0%, 0%, 0.2);
+    }
+
+    .contact-main {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 4rem;
+      align-items: start;
+      margin: 0 !important;
+    }
+
+    .contact-form-section {
+      background: hsla(var(--glass-h), var(--glass-s), 98%, 0.8);
+      backdrop-filter: blur(20px);
+      border-radius: var(--rounded-lg);
+      padding: 3rem !important;
+      box-shadow: var(--shadow-glass);
+      border: 1px solid hsla(var(--glass-h), var(--glass-s), 80%, 0.2);
+      margin: 0 !important;
+    }
+
+    .form-placeholder {
+      background: hsla(var(--glass-h), var(--glass-s), 95%, 0.8);
+      border: 2px dashed var(--primary);
+      border-radius: var(--rounded-md);
+      padding: 3rem !important;
+      text-align: center;
+      color: var(--primary);
+      margin: 0 !important;
+    }
+
+    .form-placeholder h3 {
+      margin: 0 0 1rem 0 !important;
+      font-weight: 700;
+    }
+
+    .contact-info-section {
+      background: hsla(var(--glass-h), var(--glass-s), 98%, 0.8);
+      backdrop-filter: blur(20px);
+      border-radius: var(--rounded-lg);
+      padding: 3rem !important;
+      box-shadow: var(--shadow-glass);
+      border: 1px solid hsla(var(--glass-h), var(--glass-s), 80%, 0.2);
+      position: sticky;
+      top: 120px;
+      margin: 0 !important;
+    }
+
+    .contact-info-section h2 {
+      color: var(--dark);
+      margin: 0 0 1.5rem 0 !important;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .contact-info-section p {
+      color: #555;
+      margin: 0 0 2.5rem 0 !important;
+      line-height: 1.6;
+    }
+
+    .contact-details {
+      margin: 0 0 2.5rem 0 !important;
+    }
+
+    .contact-item {
+      margin: 0 0 2rem 0 !important;
+      padding: 1.5rem !important;
+      background: hsla(var(--glass-h), var(--glass-s), 95%, 0.6);
+      border-radius: var(--rounded-md);
+      border-left: 4px solid var(--primary);
+    }
+
+    .contact-item h3 {
+      color: var(--primary);
+      margin: 0 0 0.5rem 0 !important;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .contact-item a {
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .contact-item a:hover {
+      color: var(--primary);
+    }
+
+    .contact-item p {
+      margin: 0 !important;
+      color: #666;
+      font-weight: 500;
+    }
+
+    .response-time {
+      background: linear-gradient(135deg, 
+        hsla(var(--glass-h), var(--glass-s), 50%, 0.9) 0%, 
+        hsla(var(--glass-h), var(--glass-s), 40%, 0.95) 100%);
+      color: var(--white);
+      padding: 2rem !important;
+      border-radius: var(--rounded-md);
+      text-align: center;
+      margin: 2rem 0 0 0 !important;
+    }
+
+    .response-time h3 {
+      margin: 0 0 0.5rem 0 !important;
+      font-size: 1.2rem;
+    }
+
+    .response-time p {
+      margin: 0 !important;
+      opacity: 0.9;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .contact-hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .contact-hero {
+        padding: calc(6rem + 84px) 0 4rem !important;
+        min-height: 40vh;
+      }
+      
+      .contact-main {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      
+      .contact-info-section {
+        position: static;
+      }
+      
+      .contact-form-section,
+      .contact-info-section {
+        padding: 2rem !important;
+      }
+    }
+  </style>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Rise Above Partners",
+    "description": "Get in touch with Michael Browne for marketing consultation and business growth strategies",
+    "provider": {
+      "@type": "Organization",
+      "name": "Rise Above Partners",
+      "url": "https://rise-above.net"
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <a href="/" class="logo">
+          <img src="/images/brand/logomark.svg" alt="Rise Above Partners" class="logo-mark" width="45" height="45">
+          <div class="logo-text">
+            <span>RISE ABOVE</span>
+            <span>PARTNERS</span>
+          </div>
+        </a>
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a href="/services.html">Services</a>
+          <a href="/grants.html">Grants</a>
+          <a href="/#about">About</a>
+          <a href="/contact.html" class="btn btn-primary nav-active">Get Started</a>
+        </div>
+        <div class="menu-toggle">
+          <span></span><span></span><span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contact Hero -->
+  <section class="contact-hero">
+    <div class="container">
+      <div class="contact-hero-content">
+        <h1>Let's Talk About Your Marketing</h1>
+        <p>Ready to stop spinning your wheels and focus on what actually drives results? I help business owners get clear on their marketing and build systems that work.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Content -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-main">
+        
+        <!-- Contact Form -->
+        <div class="contact-form-section">
+          <h2 style="margin: 0 0 2rem 0; color: var(--dark); font-size: 1.6rem;">Get Started Today</h2>
+          
+          <!-- Formspree Form Placeholder -->
+          <div class="form-placeholder">
+            <h3>🚀 Formspree Form Goes Here</h3>
+            <p>This will be replaced with your Formspree form when ready.</p>
+            <p style="font-size: 0.9rem; margin-top: 1rem;">For now, use the contact details on the right to get in touch.</p>
+          </div>
+          
+          <p style="margin-top: 1.5rem; color: #666; font-size: 0.9rem; text-align: center;">
+            Your information is secure and will only be used to discuss partnership opportunities.
+          </p>
+        </div>
+
+        <!-- Contact Info Sidebar -->
+        <div class="contact-info-section">
+          <h2>I'm Michael Browne</h2>
+          <p>Think of me as your marketing translator: someone who cuts through the noise and focuses on what drives results for your business.</p>
+          
+          <div class="contact-details">
+            <div class="contact-item">
+              <h3>📧 Email</h3>
+              <a href="mailto:hello@rise-above.net">hello@rise-above.net</a>
+            </div>
+            
+            <div class="contact-item">
+              <h3>⏰ Working Hours</h3>
+              <p>Monday - Friday<br>10am - 4pm CST</p>
+            </div>
+            
+            <div class="contact-item">
+              <h3>🎯 Best For</h3>
+              <p>Small to medium businesses ready to invest in marketing that actually works</p>
+            </div>
+          </div>
+
+          <div class="response-time">
+            <h3>⚡ Quick Response</h3>
+            <p>I typically respond within 24 hours during business days</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What Happens Next -->
+  <section class="section section-gray">
+    <div class="container">
+      <div class="section-header">
+        <h2>What Happens Next?</h2>
+        <p>Here's exactly what you can expect after reaching out.</p>
+      </div>
+      
+      <div class="timeline-container" style="max-width: 900px;">
+        <div class="timeline-step">
+          <div class="timeline-content">
+            <h4>Initial Response</h4>
+            <p>I'll respond within 24 hours to acknowledge your message and ask any clarifying questions about your business.</p>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-content">
+            <h4>Discovery Call</h4>
+            <p>We'll schedule a 30-minute call to discuss your current marketing challenges and business goals.</p>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-content">
+            <h4>Custom Proposal</h4>
+            <p>Based on our conversation, I'll create a tailored proposal with specific services and investment options.</p>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-content">
+            <h4>Get Started</h4>
+            <p>If we're a good fit, we'll kick off with clear expectations and a roadmap for your marketing success.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-container grid grid-4">
+        <div class="footer-col">
+          <h4>Rise Above Partners</h4>
+          <p>Rural business marketing that works for your reality.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Popular Services</h4>
+          <ul class="footer-links">
+            <li><a href="/services.html">Grant Writing & Funding</a></li>
+            <li><a href="/services.html">Content Marketing</a></li>
+            <li><a href="/services.html">Digital Advertising</a></li>
+            <li><a href="/services.html">AI & Automation</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul class="footer-links">
+            <li><a href="https://gum.new/gum/cmaqe5z1g002o03jlck5c232f">Strategy in Motion</a></li>
+            <li><a href="/grants.html">Current Grants</a></li>
+            <li><a href="/">Tools & Resources</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul class="footer-links">
+            <li><a href="https://www.linkedin.com/company/86726287">LinkedIn</a></li>
+            <li><a href="mailto:hello@rise-above.net">Email</a></li>
+            <li><a href="/">Back to Home</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Rise Above Partners. Marketing that works for rural business reality.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile menu toggle
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+          menuToggle.classList.toggle('active');
+          navLinks.classList.toggle('active');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

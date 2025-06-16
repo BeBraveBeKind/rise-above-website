@@ -339,16 +339,15 @@ a.btn {
   transform: translateY(-3px);
 }
 
-/* HERO - RESPONSIVE FULL WIDTH WITH PROPER MOBILE SUPPORT */
+/* HERO - CONSISTENT LAYOUT MATCHING GRANTS PAGE */
 .hero {
   background: linear-gradient(135deg, 
     hsla(var(--glass-h), var(--glass-s), 60%, 0.95) 0%, 
     hsla(var(--glass-h), var(--glass-s), 45%, 0.9) 100%);
   color: var(--white);
-  padding: 10rem 0 8rem !important;
+  padding: calc(8rem + 84px) 0 6rem !important;
   margin: 0 !important;
   margin-top: 0 !important;
-  padding-top: calc(10rem + 84px) !important;
   position: relative;
   overflow: hidden;
   min-height: 70vh;
@@ -415,9 +414,8 @@ a.btn {
   right: 0;
   bottom: 0;
   background: linear-gradient(135deg, 
-    hsla(var(--glass-h), var(--glass-s), 30%, 0.2) 0%, 
-    hsla(var(--glass-h), var(--glass-s), 20%, 0.15) 50%,
-    hsla(var(--glass-h), var(--glass-s), 30%, 0.2) 100%);
+    hsla(var(--glass-h), var(--glass-s), 30%, 0.1) 0%, 
+    hsla(var(--glass-h), var(--glass-s), 20%, 0.05) 100%);
   z-index: 1;
 }
 
@@ -853,10 +851,9 @@ footer {
   
   /* Mobile Hero - Fixed width and content */
   .hero { 
-    padding: 6rem 0 4rem !important; 
+    padding: calc(6rem + 84px) 0 4rem !important; 
     min-height: 50vh; 
     margin: 0 !important;
-    margin-top: 80px !important;
     /* Remove problematic full-width on mobile */
     width: 100% !important;
     left: auto !important;
