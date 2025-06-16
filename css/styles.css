@@ -316,14 +316,13 @@ a.btn {
   transform: translateY(-3px);
 }
 
-/* NUCLEAR: HERO - ABSOLUTE ZERO WHITE SPACE */
+/* NUCLEAR: HERO - ABSOLUTE ZERO WHITE SPACE + FULL WIDTH FIX */
 .hero {
   background: linear-gradient(135deg, 
     hsla(var(--glass-h), var(--glass-s), 60%, 0.95) 0%, 
     hsla(var(--glass-h), var(--glass-s), 45%, 0.9) 100%);
   color: var(--white);
   padding: 10rem 0 8rem !important;
-  /* NUCLEAR: Start directly after header with ZERO gap */
   margin: 0 !important;
   margin-top: 0 !important;
   padding-top: calc(10rem + 84px) !important;
@@ -332,6 +331,11 @@ a.btn {
   min-height: 70vh;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  width: 100vw !important;
+  left: 50% !important;
+  right: 50% !important;
+  margin-left: -50vw !important;
+  margin-right: -50vw !important;
 }
 
 @media (min-width: 1024px) and (max-width: 1600px) {
@@ -356,8 +360,22 @@ a.btn {
   50% { transform: rotate(180deg) scale(1.1); }
 }
 
-.hero-background { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
-.hero-image { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+.hero-background { 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  z-index: 0;
+}
+
+.hero-image { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  object-position: center; 
+  display: block;
+}
 
 .hero-overlay {
   position: absolute;
@@ -499,7 +517,7 @@ a.btn {
 .pillar-content p { text-align: center; color: #555; margin: 0 !important; font-size: 0.95rem; line-height: 1.4; }
 
 
-/* Mobile Timeline Styles */
+/* Mobile Timeline Styles - FIXED OVERLAP ISSUE */
 @media (max-width: 768px) {
   .advantage-grid {
     grid-template-columns: 1fr;
@@ -511,24 +529,47 @@ a.btn {
     padding: 2rem !important;
   }
   
+  /* Timeline Mobile Fix */
+  .timeline-container {
+    padding: 0 1rem !important;
+    max-width: 100%;
+  }
+  
   .timeline-container::before {
-    left: 2rem;
+    left: 25px;
+    width: 2px;
   }
   
   .timeline-step {
-    padding-left: 4rem !important;
+    padding-left: 70px !important;
     padding-right: 0 !important;
     text-align: left !important;
+    margin: 0 0 3rem 0 !important;
   }
   
   .timeline-step::before {
-    left: 1.25rem;
+    left: 0;
+    top: 1rem;
     transform: none;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
   }
   
   .timeline-content {
     max-width: none;
     margin: 0 !important;
+    padding: 1.5rem !important;
+  }
+  
+  .timeline-content h4 {
+    font-size: 1.2rem;
+    margin: 0 0 0.8rem 0 !important;
+  }
+  
+  .timeline-content p {
+    font-size: 0.9rem;
+    line-height: 1.5;
   }
 }
 
