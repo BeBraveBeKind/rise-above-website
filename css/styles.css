@@ -241,10 +241,10 @@ header {
   border-radius: 2px;
 }
 
-/* Button System - FIXED PADDING */
+/* Button System - AGGRESSIVE PADDING FIX */
 .btn {
   display: inline-block;
-  padding: 1rem 2.5rem !important;
+  padding: 1.2rem 2.8rem !important;
   text-decoration: none;
   border-radius: var(--rounded-md);
   font-weight: 700;
@@ -259,6 +259,20 @@ header {
   margin: 0 !important;
   min-width: 120px;
   box-sizing: border-box !important;
+  line-height: 1.4;
+}
+
+/* Force padding on ALL button classes */
+.btn-primary,
+.btn-light,
+a.btn {
+  padding: 1.2rem 2.8rem !important;
+  box-sizing: border-box !important;
+}
+
+/* Extra specific for nav button */
+.nav-links .btn {
+  padding: 1.2rem 2.8rem !important;
 }
 
 .btn::before {

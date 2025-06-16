@@ -284,9 +284,6 @@
         <blockquote>
           <p>Want to get started? <a href="https://riseabovepartners.gumroad.com/l/strategy-in-motion-audience/r1aycf4" target="_blank" style="color: var(--primary); font-weight: 600;">Download the FREE Audience Module</a> or <a href="https://gum.new/gum/cmaqe5z1g002o03jlck5c232f" target="_blank" style="color: var(--primary); font-weight: 600;">explore the full Strategy in Motion guide</a>.</p>
         </blockquote>
-        <div style="text-align: center; margin-top: 2rem;">
-          <a href="#contact" class="btn btn-primary">Explore Partnership Models</a>
-        </div>
       </div>
     </div>
   </section>
@@ -423,7 +420,7 @@
     </div>
   </footer>
 
-  <!-- Minimal JavaScript -->
+  <!-- FIXED JavaScript for Smooth Scrolling -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // Mobile menu toggle
@@ -437,15 +434,19 @@
         });
       }
 
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      // FIXED: Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
         anchor.addEventListener('click', function(e) {
           e.preventDefault();
           
           const targetId = this.getAttribute('href');
+          console.log('Clicking link to:', targetId); // Debug log
+          
           if (targetId === '#') return;
           
           const targetElement = document.querySelector(targetId);
+          console.log('Target element found:', targetElement); // Debug log
+          
           if (targetElement) {
             // Close mobile menu if open
             if (menuToggle && menuToggle.classList.contains('active')) {
@@ -453,10 +454,19 @@
               navLinks.classList.remove('active');
             }
             
+            // Calculate offset position
+            const headerHeight = 100; // Account for fixed header
+            const targetPosition = targetElement.offsetTop - headerHeight;
+            
+            console.log('Scrolling to position:', targetPosition); // Debug log
+            
+            // Force scroll
             window.scrollTo({
-              top: targetElement.offsetTop - 80,
+              top: targetPosition,
               behavior: 'smooth'
             });
+          } else {
+            console.log('Target element not found for:', targetId);
           }
         });
       });
