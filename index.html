@@ -420,7 +420,7 @@
     </div>
   </footer>
 
-  <!-- FIXED JavaScript for Smooth Scrolling -->
+  <!-- ENHANCED JavaScript for Smooth Scrolling -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // Mobile menu toggle
@@ -434,42 +434,51 @@
         });
       }
 
-      // FIXED: Smooth scrolling for anchor links
+      // ENHANCED: Smooth scrolling with better targeting
+      function smoothScrollTo(targetId) {
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          const headerHeight = 120; // Extra space for header
+          const targetPosition = targetElement.offsetTop - headerHeight;
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+          return true;
+        }
+        return false;
+      }
+
+      // Handle all anchor links
       document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
         anchor.addEventListener('click', function(e) {
           e.preventDefault();
           
           const targetId = this.getAttribute('href');
-          console.log('Clicking link to:', targetId); // Debug log
+          console.log('🚀 Clicking link to:', targetId);
           
           if (targetId === '#') return;
           
-          const targetElement = document.querySelector(targetId);
-          console.log('Target element found:', targetElement); // Debug log
-          
-          if (targetElement) {
-            // Close mobile menu if open
-            if (menuToggle && menuToggle.classList.contains('active')) {
-              menuToggle.classList.remove('active');
-              navLinks.classList.remove('active');
-            }
-            
-            // Calculate offset position
-            const headerHeight = 100; // Account for fixed header
-            const targetPosition = targetElement.offsetTop - headerHeight;
-            
-            console.log('Scrolling to position:', targetPosition); // Debug log
-            
-            // Force scroll
-            window.scrollTo({
-              top: targetPosition,
-              behavior: 'smooth'
-            });
-          } else {
-            console.log('Target element not found for:', targetId);
+          // Close mobile menu if open
+          if (menuToggle && menuToggle.classList.contains('active')) {
+            menuToggle.classList.remove('active');
+            navLinks.classList.remove('active');
           }
+          
+          // Scroll with delay to ensure menu closes
+          setTimeout(() => {
+            const success = smoothScrollTo(targetId);
+            console.log(success ? '✅ Scrolled successfully' : '❌ Target not found');
+          }, 100);
         });
       });
+      
+      // Special handling for Get Started button
+      const getStartedBtn = document.querySelector('a[href="#contact"].btn-primary');
+      if (getStartedBtn) {
+        console.log('✅ Get Started button found and ready');
+      }
     });
   </script>
 </body>
