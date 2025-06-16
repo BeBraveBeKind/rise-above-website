@@ -231,6 +231,8 @@ header {
   gap: 5px;
   padding: 0.5rem !important;
   margin: 0 !important;
+  z-index: 1002;
+  position: relative;
 }
 
 .menu-toggle span {
@@ -239,6 +241,18 @@ header {
   background: linear-gradient(90deg, var(--primary), #5a819f);
   transition: 0.3s;
   border-radius: 2px;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
 }
 
 /* Button System - AGGRESSIVE PADDING FIX */
@@ -316,7 +330,7 @@ a.btn {
   transform: translateY(-3px);
 }
 
-/* NUCLEAR: HERO - ABSOLUTE ZERO WHITE SPACE + FULL WIDTH FIX */
+/* HERO - RESPONSIVE FULL WIDTH WITH PROPER MOBILE SUPPORT */
 .hero {
   background: linear-gradient(135deg, 
     hsla(var(--glass-h), var(--glass-s), 60%, 0.95) 0%, 
@@ -331,11 +345,19 @@ a.btn {
   min-height: 70vh;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  width: 100vw !important;
-  left: 50% !important;
-  right: 50% !important;
-  margin-left: -50vw !important;
-  margin-right: -50vw !important;
+  /* Full width only on desktop */
+  width: 100%;
+}
+
+/* Desktop full-width expansion */
+@media (min-width: 769px) {
+  .hero {
+    width: 100vw !important;
+    left: 50% !important;
+    right: 50% !important;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+  }
 }
 
 @media (min-width: 1024px) and (max-width: 1600px) {
@@ -399,6 +421,9 @@ a.btn {
   line-height: 1.1;
   font-weight: 800;
   text-shadow: 0 4px 16px hsla(0, 0%, 0%, 0.3);
+  /* Better mobile text wrapping */
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 .hero p {
@@ -408,6 +433,8 @@ a.btn {
   opacity: 0.95;
   line-height: 1.6;
   text-shadow: 0 2px 8px hsla(0, 0%, 0%, 0.2);
+  /* Better mobile text wrapping */
+  word-wrap: break-word;
 }
 
 /* All remaining styles with simplified liquid glass effects */
@@ -758,14 +785,103 @@ footer {
   letter-spacing: 1px;
 }
 
-/* Mobile Responsive */
+/* Enhanced Mobile Responsive */
 @media (max-width: 768px) {
-  .nav-links { position: fixed; top: 100%; left: 0; right: 0; background: hsla(var(--glass-h), var(--glass-s), 98%, 0.95); flex-direction: column; padding: 2rem !important; transform: translateY(-100vh); transition: transform 0.3s ease; }
-  .nav-links.active { transform: translateY(0); }
+  /* Mobile Navigation */
+  .nav-links { 
+    position: fixed; 
+    top: 100%; 
+    left: 0; 
+    right: 0; 
+    background: hsla(var(--glass-h), var(--glass-s), 98%, 0.98); 
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    flex-direction: column; 
+    padding: 2rem !important; 
+    transform: translateY(-100vh); 
+    transition: transform 0.3s ease;
+    z-index: 999;
+    gap: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nav-links.active { 
+    transform: translateY(0);
+  }
+  
+  .nav-links a {
+    padding: 1rem 0 !important;
+    font-size: 1.1rem;
+    text-align: center;
+    border-bottom: 1px solid hsla(var(--glass-h), var(--glass-s), 80%, 0.3);
+  }
+  
+  .nav-links a:last-child {
+    border-bottom: none;
+    margin-top: 1rem;
+  }
   .menu-toggle { display: flex; }
-  .hero { padding: 8rem 0 6rem !important; min-height: 60vh; margin: 76px 0 0 0 !important; }
-  .hero h1 { font-size: 2.8rem; }
-  .hero p { font-size: 1.2rem; }
+  
+  /* Mobile Logo - Ensure visibility */
+  .logo {
+    z-index: 1001;
+    position: relative;
+  }
+  
+  .logo-mark {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .logo-text {
+    font-size: 0.85rem;
+  }
+  
+  /* Mobile Hero - Fixed width and content */
+  .hero { 
+    padding: 6rem 0 4rem !important; 
+    min-height: 50vh; 
+    margin: 0 !important;
+    margin-top: 80px !important;
+    /* Remove problematic full-width on mobile */
+    width: 100% !important;
+    left: auto !important;
+    right: auto !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  
+  .hero-content {
+    max-width: 100%;
+    padding: 0 1rem !important;
+  }
+  
+  .hero h1 { 
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin: 0 0 1.5rem 0 !important;
+    /* Prevent text overflow */
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  
+  .hero p { 
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin: 0 0 2rem 0 !important;
+    /* Prevent text overflow */
+    overflow-wrap: break-word;
+  }
+  
+  /* Mobile Button */
+  .hero .btn {
+    padding: 1rem 2rem !important;
+    font-size: 0.9rem;
+    width: auto;
+    min-width: auto;
+  }
+  
+  /* Other Mobile Adjustments */
   .advantage-grid { grid-template-columns: 1fr; }
   .section-header h2 { font-size: 2.2rem; }
   .methodology-steps { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -774,4 +890,39 @@ footer {
   .capability-tier.featured:hover { transform: translateY(-12px); }
   .capabilities-grid { gap: 2.5rem; }
   .step-number { width: 70px; height: 70px; font-size: 1.6rem; }
+}
+
+/* Tablet view for better content spacing */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    max-width: 90%;
+    padding: 0 2rem !important;
+  }
+  
+  .hero h1 {
+    font-size: 3.2rem;
+  }
+  
+  .hero p {
+    font-size: 1.3rem;
+  }
+  
+  .section-header h2 {
+    font-size: 2.5rem;
+  }
+}
+
+/* Large screen optimization */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1400px;
+  }
+  
+  .hero h1 {
+    font-size: 4.5rem;
+  }
+  
+  .hero p {
+    font-size: 1.5rem;
+  }
 }

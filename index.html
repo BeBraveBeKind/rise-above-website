@@ -64,7 +64,7 @@
           <a href="/services.html">Services</a>
           <a href="/grants.html">Grants</a>
           <a href="#about">About</a>
-          <a href="#contact" class="btn btn-primary">Get Started</a>
+          <a href="/contact.html" class="btn btn-primary">Get Started</a>
         </div>
         <div class="menu-toggle">
           <span></span><span></span><span></span>
@@ -330,7 +330,7 @@
           </div>
           <h3>Rural Marketing Automation</h3>
           <p>Simplified marketing automation solutions that integrate with existing rural business operations. Technology that amplifies community relationships.</p>
-          <a href="#contact" class="innovation-link">Learn More →</a>
+          <a href="/contact.html" class="innovation-link">Learn More →</a>
         </div>
       </div>
     </div>
@@ -402,15 +402,15 @@
           <h4>Innovation</h4>
           <ul class="footer-links">
             <li><a href="https://gum.new/gum/cmaqe5z1g002o03jlck5c232f">Strategy in Motion</a></li>
-            <li><a href="#contact">Grant Writing</a></li>
-            <li><a href="#contact">Rural Automation</a></li>
+            <li><a href="/contact.html">Grant Writing</a></li>
+            <li><a href="/contact.html">Rural Automation</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Connect</h4>
           <ul class="footer-links">
             <li><a href="https://www.linkedin.com/company/86726287">LinkedIn</a></li>
-            <li><a href="#contact">Schedule Consultation</a></li>
+            <li><a href="/contact.html">Schedule Consultation</a></li>
           </ul>
         </div>
       </div>
@@ -420,7 +420,7 @@
     </div>
   </footer>
 
-  <!-- ENHANCED JavaScript for Smooth Scrolling -->
+  <!-- Enhanced JavaScript for Smooth Scrolling -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // Mobile menu toggle
@@ -432,17 +432,25 @@
           menuToggle.classList.toggle('active');
           navLinks.classList.toggle('active');
         });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+          if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+            menuToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+          }
+        });
       }
 
-      // ENHANCED: Smooth scrolling with better targeting
+      // Enhanced smooth scrolling function
       function smoothScrollTo(targetId) {
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
-          const headerHeight = 120; // Extra space for header
+          const headerHeight = window.innerWidth <= 768 ? 100 : 120;
           const targetPosition = targetElement.offsetTop - headerHeight;
           
           window.scrollTo({
-            top: targetPosition,
+            top: Math.max(0, targetPosition),
             behavior: 'smooth'
           });
           return true;
@@ -450,15 +458,14 @@
         return false;
       }
 
-      // Handle all anchor links
+      // Handle all anchor links with improved targeting
       document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
         anchor.addEventListener('click', function(e) {
           e.preventDefault();
           
           const targetId = this.getAttribute('href');
-          console.log('🚀 Clicking link to:', targetId);
           
-          if (targetId === '#') return;
+          if (targetId === '#' || targetId === '') return;
           
           // Close mobile menu if open
           if (menuToggle && menuToggle.classList.contains('active')) {
@@ -466,19 +473,41 @@
             navLinks.classList.remove('active');
           }
           
-          // Scroll with delay to ensure menu closes
-          setTimeout(() => {
-            const success = smoothScrollTo(targetId);
-            console.log(success ? '✅ Scrolled successfully' : '❌ Target not found');
-          }, 100);
+          // Immediate scroll for better UX
+          const success = smoothScrollTo(targetId);
+          
+          // If target not found, try alternative targets
+          if (!success) {
+            if (targetId === '#proof-points') {
+              smoothScrollTo('#contact');
+            }
+          }
         });
       });
       
-      // Special handling for Get Started button
-      const getStartedBtn = document.querySelector('a[href="#contact"].btn-primary');
-      if (getStartedBtn) {
-        console.log('✅ Get Started button found and ready');
+      // Special handling for "Get Marketing That Actually Works" button
+      const heroButton = document.querySelector('.hero .btn-light');
+      if (heroButton) {
+        heroButton.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // First try proof-points, fallback to contact
+          let targetFound = smoothScrollTo('#proof-points');
+          if (!targetFound) {
+            targetFound = smoothScrollTo('#contact');
+          }
+          
+          console.log('Hero button clicked - target found:', targetFound);
+        });
       }
+      
+      // Ensure scroll targets exist
+      const requiredSections = ['#proof-points', '#contact', '#about', '#advantage'];
+      requiredSections.forEach(sectionId => {
+        if (!document.querySelector(sectionId)) {
+          console.warn(`Missing section: ${sectionId}`);
+        }
+      });
     });
   </script>
 </body>
