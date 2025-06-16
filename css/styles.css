@@ -244,7 +244,7 @@ header {
 /* Button System */
 .btn {
   display: inline-block;
-  padding: 1.2rem 3rem !important;
+  padding: 1.5rem 3.5rem !important;
   text-decoration: none;
   border-radius: var(--rounded-md);
   font-weight: 700;
@@ -431,18 +431,23 @@ header {
 .section-callout p { margin: 0 !important; font-size: 1.4rem; font-weight: 600; }
 
 /* Simplified remaining styles for performance */
-.advantage-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem; margin: 4rem 0 0 0 !important; }
+.advantage-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; margin: 4rem 0 0 0 !important; max-width: 900px; margin-left: auto !important; margin-right: auto !important; }
 
 .advantage-pillar {
   background: hsla(var(--glass-h), var(--glass-s), 98%, 0.8);
   backdrop-filter: blur(20px);
   border-radius: var(--rounded-lg);
-  padding: 3.5rem 2.5rem !important;
+  padding: 2.5rem 2rem !important;
   box-shadow: var(--shadow-glass);
   border: 1px solid hsla(var(--glass-h), var(--glass-s), 80%, 0.2);
   transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
+  aspect-ratio: 1.1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 
 .advantage-pillar::before {
@@ -458,9 +463,9 @@ header {
 .advantage-pillar:hover { transform: translateY(-15px); box-shadow: 0 30px 80px hsla(var(--glass-h), var(--glass-s), 20%, 0.2), var(--shadow-glass); }
 
 .pillar-icon {
-  width: 90px;
-  height: 90px;
-  margin: 0 auto 2.5rem auto !important;
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 1.5rem auto !important;
   background: linear-gradient(135deg, 
     hsla(var(--glass-h), var(--glass-s), 60%, 0.9) 0%, 
     hsla(var(--glass-h), var(--glass-s), 45%, 0.95) 100%);
@@ -471,40 +476,44 @@ header {
   box-shadow: var(--shadow-glass);
 }
 
-.pillar-icon img { width: 50px; height: 50px; filter: brightness(0) invert(1); }
-.pillar-header { text-align: center; margin: 0 0 2rem 0 !important; }
-.pillar-header h3 { color: var(--dark); margin: 0 0 1.5rem 0 !important; font-size: 1.5rem; font-weight: 700; }
-.pillar-content p { text-align: center; color: #555; margin: 0 0 2.5rem 0 !important; font-size: 1.1rem; }
+.pillar-icon img { width: 40px; height: 40px; filter: brightness(0) invert(1); }
+.pillar-header { text-align: center; margin: 0 0 1rem 0 !important; }
+.pillar-header h3 { color: var(--dark); margin: 0 !important; font-size: 1.25rem; font-weight: 700; line-height: 1.2; }
+.pillar-content p { text-align: center; color: #555; margin: 0 !important; font-size: 0.95rem; line-height: 1.4; }
 
 
 /* Mobile Timeline Styles */
 @media (max-width: 768px) {
+  .advantage-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .advantage-pillar {
+    aspect-ratio: auto;
+    padding: 2rem !important;
+  }
+  
   .timeline-container::before {
-    left: 2rem;
+    left: 1.5rem;
   }
   
-  .timeline-left,
-  .timeline-right {
-    text-align: left;
+  .timeline-step {
     padding-left: 4rem !important;
-    padding-right: 0 !important;
   }
   
-  .timeline-left::before,
-  .timeline-right::before {
-    left: -14px;
-    right: auto;
+  .timeline-step::before {
+    left: 0.75rem;
   }
   
-  .timeline-left .timeline-content,
-  .timeline-right .timeline-content {
-    margin-left: 2rem !important;
-    margin-right: 0 !important;
+  .timeline-content {
+    overflow: hidden;
   }
   
-  .timeline-left .timeline-content .step-number,
-  .timeline-right .timeline-content .step-number {
-    margin: 0 auto 1.5rem 0 !important;
+  .timeline-content::after {
+    content: '';
+    display: table;
+    clear: both;
   }
 }
 
@@ -564,10 +573,10 @@ footer {
 .methodology-intro h3 { color: var(--primary); font-size: 2.2rem; margin: 0 0 1.5rem 0 !important; font-weight: 800; }
 .methodology-intro p { font-size: 1.25rem; color: #555; line-height: 1.7; max-width: 900px; margin: 0 auto !important; }
 
-/* Timeline Styles */
+/* Timeline Styles - Cleaner Design */
 .timeline-container {
   position: relative;
-  max-width: 1000px;
+  max-width: 800px;
   margin: 4rem auto 0 auto !important;
   padding: 0 2rem !important;
 }
@@ -576,106 +585,78 @@ footer {
   content: '';
   position: absolute;
   top: 0;
-  left: 50%;
-  width: 4px;
+  left: 2rem;
+  width: 2px;
   height: 100%;
-  background: linear-gradient(180deg, var(--primary) 0%, #5a819f  100%);
-  transform: translateX(-50%);
+  background: var(--primary);
   z-index: 1;
 }
 
 .timeline-step {
   position: relative;
-  margin: 0 0 4rem 0 !important;
-  width: 100%;
+  margin: 0 0 3rem 0 !important;
+  padding-left: 5rem !important;
+  min-height: 120px;
 }
 
 .timeline-step::before {
   content: '';
   position: absolute;
-  top: 1.5rem;
-  width: 20px;
-  height: 20px;
+  top: 1rem;
+  left: 1.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
   background: var(--primary);
-  border: 4px solid var(--white);
+  border: 3px solid var(--white);
   border-radius: 50%;
   z-index: 2;
-  box-shadow: 0 4px 12px rgba(109, 152, 186, 0.3);
-}
-
-.timeline-left {
-  text-align: right;
-  padding-right: 4rem !important;
-}
-
-.timeline-left::before {
-  right: -14px;
-}
-
-.timeline-left .timeline-content {
-  margin-right: 2rem !important;
-}
-
-.timeline-right {
-  text-align: left;
-  padding-left: 4rem !important;
-}
-
-.timeline-right::before {
-  left: -14px;
-}
-
-.timeline-right .timeline-content {
-  margin-left: 2rem !important;
+  box-shadow: 0 2px 8px rgba(109, 152, 186, 0.3);
 }
 
 .timeline-content {
   background: hsla(var(--glass-h), var(--glass-s), 98%, 0.8);
   backdrop-filter: blur(20px);
   border-radius: var(--rounded-lg);
-  padding: 2.5rem !important;
+  padding: 2rem !important;
   box-shadow: var(--shadow-glass);
   border: 1px solid hsla(var(--glass-h), var(--glass-s), 80%, 0.2);
   transition: all 0.4s ease;
-  position: relative;
-  display: inline-block;
-  max-width: 400px;
-  width: 100%;
   margin: 0 !important;
+  overflow: hidden;
+}
+
+.timeline-content::after {
+  content: '';
+  display: table;
+  clear: both;
 }
 
 .timeline-content:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 50px hsla(var(--glass-h), var(--glass-s), 20%, 0.15), var(--shadow-glass);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px hsla(var(--glass-h), var(--glass-s), 20%, 0.15), var(--shadow-glass);
 }
 
 .timeline-content .step-number {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   background: linear-gradient(135deg, var(--primary) 0%, #5a819f 100%);
   color: var(--white);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 800;
-  margin: 0 auto 1.5rem auto !important;
+  margin: 0 0 1rem 0 !important;
   box-shadow: 0 4px 12px rgba(109, 152, 186, 0.3);
-}
-
-.timeline-left .timeline-content .step-number {
-  margin: 0 0 1.5rem auto !important;
-}
-
-.timeline-right .timeline-content .step-number {
-  margin: 0 auto 1.5rem 0 !important;
+  float: left;
+  margin-right: 1.5rem !important;
 }
 
 .timeline-content h4 {
   color: var(--dark);
-  margin: 0 0 1rem 0 !important;
-  font-size: 1.3rem;
+  margin: 0 0 0.8rem 0 !important;
+  font-size: 1.4rem;
   font-weight: 700;
   line-height: 1.3;
 }
