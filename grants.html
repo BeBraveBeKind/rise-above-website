@@ -74,6 +74,7 @@
       grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
       gap: 2.5rem;
       margin: 0 !important;
+      min-height: 400px;
     }
 
     .grant-card {
@@ -93,14 +94,14 @@
       box-shadow: 0 20px 50px hsla(var(--glass-h), var(--glass-s), 20%, 0.15), var(--shadow-glass);
     }
 
-    .grant-card.new {
+    .grant-card.featured {
       border-color: #2d5530;
       box-shadow: 
         0 0 0 2px hsla(120, 30%, 25%, 0.2),
         var(--shadow-glass);
     }
 
-    .new-badge {
+    .featured-badge {
       position: absolute;
       top: -12px;
       right: 20px;
@@ -253,6 +254,54 @@
       font-size: 0.9rem;
     }
 
+    /* Loading and Error States */
+    .loading-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 300px;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .error-message {
+      background: #f8d7da;
+      color: #721c24;
+      padding: 1rem;
+      border-radius: var(--rounded-md);
+      margin: 1rem 0;
+      text-align: center;
+    }
+
+    .retry-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: var(--rounded-sm);
+      cursor: pointer;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+
+    .retry-btn:hover {
+      background: #5a819f;
+    }
+
     @media (max-width: 768px) {
       .grants-grid {
         grid-template-columns: 1fr;
@@ -337,228 +386,26 @@
     <div class="container">
       <div class="section-header">
         <h2>Available Funding Opportunities</h2>
-        <p>These are just a preview of current opportunities. Get access to the full database with application strategies and personalized matching.</p>
+        <p>Live database of current opportunities. Get access to application strategies and personalized matching.</p>
       </div>
 
       <!-- Filter Tags -->
       <div class="grant-filters">
-        <div class="filter-tag active">All Categories</div>
-        <div class="filter-tag">Rural Business</div>
-        <div class="filter-tag">Technology</div>
-        <div class="filter-tag">Community Development</div>
-        <div class="filter-tag">Agriculture</div>
-        <div class="filter-tag">Tourism</div>
+        <div class="filter-tag active" data-filter="all">All Categories</div>
+        <div class="filter-tag" data-filter="Rural Business">Rural Business</div>
+        <div class="filter-tag" data-filter="Technology">Technology</div>
+        <div class="filter-tag" data-filter="Community Development">Community Development</div>
+        <div class="filter-tag" data-filter="Agriculture">Agriculture</div>
+        <div class="filter-tag" data-filter="Arts Education">Arts & Education</div>
       </div>
 
       <!-- Grants Grid -->
-      <div class="grants-grid">
-        
-        <!-- USDA Rural Business Development Grant -->
-        <div class="grant-card new">
-          <div class="new-badge">New This Week</div>
-          <div class="grant-header">
-            <h3 class="grant-title">Rural Business Development Grant</h3>
-            <p class="grant-source">USDA Rural Development</p>
-          </div>
-          <div class="grant-amount">Up to $500K</div>
-          <div class="grant-details">
-            <div class="grant-detail">
-              <span class="detail-label">Deadline:</span>
-              <span class="detail-value urgent">March 15, 2025</span>
-            </div>
-            <div class="grant-detail">
-              <span class="detail-label">Eligibility:</span>
-              <span class="detail-value">Rural communities under 50K population</span>
-            </div>
-            <div class="grant-detail">
-              <span class="detail-label">Purpose:</span>
-              <span class="detail-value">Business expansion, equipment, infrastructure</span>
-            </div>
-            <div class="grant-detail">
-              <span class="detail-label">Application:</span>
-              <span class="detail-value competitive">Highly Competitive</span>
-            </div>
-            <div class="grant-detail">
-              <span class="detail-label">Match Required:</span>
-              <span class="detail-value">25% local match</span>
-            </div>
-          </div>
-          <div class="grant-cta">
-            <a href="#contact" class="btn btn-primary">Get Full Details</a>
-          </div>
+      <div class="grants-grid" id="grants-container">
+        <!-- Loading state initially -->
+        <div class="loading-container">
+          <div class="loading-spinner"></div>
+          <p>Loading current grant opportunities...</p>
         </div>
-
-        <!-- Wisconsin Economic Development Corporation -->
-        <div class="grant-card">
-          <div class="grant-header">
-            <h3 class="grant-title">Community Development Block Grant</h3>
-            <p class="grant-source">Wisconsin Economic Development Corporation</p>
-          </div>
-          <div class="grant-amount">$50K - $150K</div>
-          <div class="grant-details">
-            <div class="grant-detail">
-              <span class="detail-label">Deadline:</span>
-              <span class="detail-value">April 30, 2025</span>
-            </div>
-            <div class="grant-detail">
-              <span class="detail-label">Eligibility:</span>
-              <span class="detail-value">Wisconsin businesses, 5-50 employees</span>
-            </div>
-            <div class="grant-detail">
-              <span class="detail-label">Purpose:</span>
-              <span class="detail-value">Job creation, infrastructure improvements</span>
-            </div>
-            <div class="grant-detail">
-              <span class="detail-label">Application:</span>
-              <span class="detail-value easy">Moderate Requirements</span>
-            </div>
-            <div class="grant-detail">
-              <span class="detail-label">Success Rate:</span>
-              <span class="detail-value">~40% approval rate</span>
-            </div>
-          </div>
-          <div class="grant-cta">
-            <a href="#contact" class="btn btn-primary">Get Full Details</a>
-          </div>
-        </div>
-
-        <!-- EPA Brownfields -->
-        <div class="grant-card">
-          <div class="grant-header">
-            <h3 class="grant-title">Brownfields Cleanup Revolving Loan Fund</h3>
-            <p class="grant-source">EPA Environmental Protection Agency</p>
-          </div>
-          <div class="grant-amount">Up to $1M</div>
-          <div class="grant-details">
-            <div class="grant-detail">
-              <span class="detail-label">Deadline:</span>
-              <span class="detail-value">May 22, 2025</span>
-            </div>
-            <div class="grant-detail">
-              <span class="detail-label">Eligibility:</span>
-              <span class="detail-value">Communities, nonprofits, tribes</span>
-            </div>
-            <div class="grant-detail">
-              <span class="detail-label">Purpose:</span>
-              <span class="detail-value">Environmental cleanup, site development</span>
-            </div>
-            <div class="grant-detail">
-              <span class="detail-label">Application:</span>
-              <span class="detail-value competitive">Complex Application</span>
-            </div>
-            <div class="grant-detail">
-              <span class="detail-label">Payback:</span>
-              <span class="detail-value">Low-interest loan program</span>
-            </div>
-          </div>
-          <div class="grant-cta">
-            <a href="#contact" class="btn btn-primary">Get Full Details</a>
-          </div>
-        </div>
-
-        <!-- Rural Energy for America Program -->
-        <div class="grant-card new">
-          <div class="new-badge">New This Week</div>
-          <div class="grant-header">
-            <h3 class="grant-title">Rural Energy for America Program (REAP)</h3>
-            <p class="grant-source">USDA Rural Development</p>
-          </div>
-          <div class="grant-amount">$2.5K - $1M</div>
-          <div class="grant-details">
-            <div class="grant-detail">
-              <span class="detail-label">Deadline:</span>
-              <span class="detail-value">June 30, 2025</span>
-            </div>
-            <div class="grant-detail">
-              <span class="detail-label">Eligibility:</span>
-              <span class="detail-value">Rural businesses, agricultural producers</span>
-            </div>
-            <div class="grant-detail">
-              <span class="detail-label">Purpose:</span>
-              <span class="detail-value">Renewable energy, energy efficiency</span>
-            </div>
-            <div class="grant-detail">
-              <span class="detail-label">Application:</span>
-              <span class="detail-value easy">Straightforward Process</span>
-            </div>
-            <div class="grant-detail">
-              <span class="detail-label">Match Required:</span>
-              <span class="detail-value">25% (varies by project size)</span>
-            </div>
-          </div>
-          <div class="grant-cta">
-            <a href="#contact" class="btn btn-primary">Get Full Details</a>
-          </div>
-        </div>
-
-        <!-- Tourism Marketing -->
-        <div class="grant-card">
-          <div class="grant-header">
-            <h3 class="grant-title">Tourism Marketing Grant Program</h3>
-            <p class="grant-source">Wisconsin Department of Tourism</p>
-          </div>
-          <div class="grant-amount">$5K - $25K</div>
-          <div class="grant-details">
-            <div class="grant-detail">
-              <span class="detail-label">Deadline:</span>
-              <span class="detail-value">Rolling Applications</span>
-            </div>
-            <div class="grant-detail">
-              <span class="detail-label">Eligibility:</span>
-              <span class="detail-value">Tourism businesses, organizations</span>
-            </div>
-            <div class="grant-detail">
-              <span class="detail-label">Purpose:</span>
-              <span class="detail-value">Marketing campaigns, promotional events</span>
-            </div>
-            <div class="grant-detail">
-              <span class="detail-label">Application:</span>
-              <span class="detail-value easy">Simple Application</span>
-            </div>
-            <div class="grant-detail">
-              <span class="detail-label">Match Required:</span>
-              <span class="detail-value">50% match required</span>
-            </div>
-          </div>
-          <div class="grant-cta">
-            <a href="#contact" class="btn btn-primary">Get Full Details</a>
-          </div>
-        </div>
-
-        <!-- Small Business Innovation Research -->
-        <div class="grant-card">
-          <div class="grant-header">
-            <h3 class="grant-title">Small Business Innovation Research (SBIR)</h3>
-            <p class="grant-source">Multiple Federal Agencies</p>
-          </div>
-          <div class="grant-amount">$50K - $1.7M</div>
-          <div class="grant-details">
-            <div class="grant-detail">
-              <span class="detail-label">Deadline:</span>
-              <span class="detail-value">Varies by Agency</span>
-            </div>
-            <div class="grant-detail">
-              <span class="detail-label">Eligibility:</span>
-              <span class="detail-value">Small businesses with innovative technology</span>
-            </div>
-            <div class="grant-detail">
-              <span class="detail-label">Purpose:</span>
-              <span class="detail-value">R&D, technology commercialization</span>
-            </div>
-            <div class="grant-detail">
-              <span class="detail-label">Application:</span>
-              <span class="detail-value competitive">Highly Technical</span>
-            </div>
-            <div class="grant-detail">
-              <span class="detail-label">Success Rate:</span>
-              <span class="detail-value">~15% approval rate</span>
-            </div>
-          </div>
-          <div class="grant-cta">
-            <a href="#contact" class="btn btn-primary">Get Full Details</a>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
@@ -568,11 +415,11 @@
     <div class="container">
       <div class="access-full-database">
         <h3>Access the Full Grant Database</h3>
-        <p>These 6 opportunities are just a preview. Get access to 200+ active grants, personalized matching, and step-by-step application strategies.</p>
+        <p>These opportunities are just a preview. Get access to our complete database with personalized matching and step-by-step application strategies.</p>
         
         <div class="database-stats">
           <div class="stat-item">
-            <div class="stat-number">200+</div>
+            <div class="stat-number" id="total-grants">11+</div>
             <div class="stat-label">Active Grants</div>
           </div>
           <div class="stat-item">
@@ -656,73 +503,12 @@
     </div>
   </footer>
 
-  <!-- JavaScript -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Mobile menu toggle
-      const menuToggle = document.querySelector('.menu-toggle');
-      const navLinks = document.querySelector('.nav-links');
-      
-      if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', function() {
-          menuToggle.classList.toggle('active');
-          navLinks.classList.toggle('active');
-        });
-      }
-
-      // Filter functionality
-      const filterTags = document.querySelectorAll('.filter-tag');
-      const grantCards = document.querySelectorAll('.grant-card');
-      
-      filterTags.forEach(tag => {
-        tag.addEventListener('click', function() {
-          // Remove active class from all tags
-          filterTags.forEach(t => t.classList.remove('active'));
-          // Add active class to clicked tag
-          this.classList.add('active');
-          
-          const filter = this.textContent.toLowerCase();
-          
-          // Show/hide cards based on filter
-          grantCards.forEach(card => {
-            if (filter === 'all categories') {
-              card.style.display = 'block';
-            } else {
-              const cardText = card.textContent.toLowerCase();
-              if (cardText.includes(filter.replace(' ', ''))) {
-                card.style.display = 'block';
-              } else {
-                card.style.display = 'none';
-              }
-            }
-          });
-        });
-      });
-
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          
-          const targetId = this.getAttribute('href');
-          if (targetId === '#') return;
-          
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            // Close mobile menu if open
-            if (menuToggle && menuToggle.classList.contains('active')) {
-              menuToggle.classList.remove('active');
-              navLinks.classList.remove('active');
-            }
-            
-            window.scrollTo({
-              top: targetElement.offsetTop - 80,
-              behavior: 'smooth'
-            });
-          }
-        });
-      });
-    });
-  </script>
+  <!-- Include main.js -->
+  <script src="/js/main.js"></script>
+  
+  <!-- Include grants.js -->
+  <script src="/js/grants.js"></script>
+  
+  <!-- Note: All grants functionality is now in grants.js -->
 </body>
 </html>
