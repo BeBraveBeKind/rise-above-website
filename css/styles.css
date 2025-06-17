@@ -7,6 +7,28 @@ html, body, *, *::before, *::after {
   padding: 0 !important;
 }
 
+/* ENHANCED: Smooth scrolling and scroll behavior */
+html {
+  scroll-behavior: smooth !important;
+  scroll-padding-top: 120px !important; /* Account for fixed header */
+}
+
+/* Better scroll anchoring for all target elements */
+*[id] {
+  scroll-margin-top: 130px !important; /* Ensure proper offset for all anchored elements */
+}
+
+/* Prevent scroll snap from interfering with smooth scrolling */
+body {
+  scroll-snap-type: none !important;
+}
+
+/* Improve scrolling performance */
+* {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: none;
+}
+
 /* AGGRESSIVE: Complete elimination of any bars/spacing */
 html, body {
   margin: 0 !important;
