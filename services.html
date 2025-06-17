@@ -290,6 +290,13 @@
     .hero-overlay, .hero-background {
       pointer-events: none !important;
     }
+    
+    /* Hide hero button on desktop only */
+    @media (min-width: 769px) {
+      .services-hero .btn-light {
+        display: none !important;
+      }
+    }
   </style>
 
   <!-- Structured Data -->

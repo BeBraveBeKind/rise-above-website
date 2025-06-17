@@ -330,6 +330,51 @@ header {
   }
 }
 
+/* FIX: Large viewport navigation (1200px+) */
+@media (min-width: 1200px) {
+  /* Adjust container to use more available space */
+  header .container {
+    max-width: 90%;
+    padding: 0 3rem !important;
+  }
+  
+  /* Give nav links more breathing room */
+  .nav-links {
+    gap: 2.5rem; /* Slightly less than default 3rem */
+  }
+  
+  .nav-links a {
+    font-size: 0.95rem; /* Slightly smaller text */
+    white-space: nowrap; /* Prevent text wrapping */
+  }
+  
+  /* Optimize button size */
+  .nav-links .btn {
+    padding: 0.9rem 2.2rem !important;
+    font-size: 0.85rem;
+  }
+}
+
+/* FIX: Extra large viewport navigation (1400px+) */
+@media (min-width: 1400px) {
+  header .container {
+    max-width: 1400px; /* Use the same as body container */
+  }
+  
+  .nav-links {
+    gap: 3.5rem; /* More generous spacing on very wide screens */
+  }
+  
+  .nav-links a {
+    font-size: 1rem; /* Return to normal size */
+  }
+  
+  .nav-links .btn {
+    padding: 1rem 2.5rem !important;
+    font-size: 0.9rem;
+  }
+}
+
 .nav-links a {
   text-decoration: none;
   color: var(--dark);
