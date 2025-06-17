@@ -1280,14 +1280,18 @@ footer {
 
 /* ===== CRITICAL FIXES - Add these to the END of styles.css ===== */
 
-/* FIX 1: Ensure hero buttons are ALWAYS clickable */
+/* FIX 1: Ensure hero buttons are ALWAYS clickable - ENHANCED FOR DESKTOP */
 .hero .btn,
 .hero .btn-primary,
 .hero .btn-light,
 .hero a.btn,
 .home-hero .btn,
 .services-hero .btn,
-.grants-hero .btn {
+.grants-hero .btn,
+.hero-content .btn,
+.hero-content a.btn,
+.hero-content .btn-light,
+.hero-content .btn-primary {
   position: relative !important;
   z-index: 9999 !important;
   pointer-events: auto !important;
@@ -1296,23 +1300,52 @@ footer {
   isolation: isolate !important; /* Creates new stacking context */
 }
 
-/* Ensure hero content is above background/overlay */
-.hero-content,
-.hero .hero-content {
-  position: relative !important;
-  z-index: 100 !important;
-  pointer-events: none !important; /* Make container not block clicks */
+/* DESKTOP SPECIFIC FIX - Remove pointer-events blocking on desktop */
+@media (min-width: 769px) {
+  .hero-content,
+  .hero .hero-content,
+  .home-hero .hero-content,
+  .services-hero .hero-content,
+  .grants-hero .hero-content {
+    position: relative !important;
+    z-index: 100 !important;
+    pointer-events: auto !important; /* Allow all events on desktop */
+  }
+  
+  /* Extra specificity for desktop hero buttons */
+  .hero .container .hero-content .btn,
+  .hero .container .hero-content a.btn {
+    position: relative !important;
+    z-index: 9999 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    display: inline-block !important;
+  }
 }
 
-/* But allow clicks on all children of hero-content */
-.hero-content * {
-  pointer-events: auto !important;
+/* Mobile keeps the container non-blocking */
+@media (max-width: 768px) {
+  .hero-content,
+  .hero .hero-content {
+    pointer-events: none !important;
+  }
+  
+  .hero-content * {
+    pointer-events: auto !important;
+  }
 }
 
-/* Make sure overlays don't block interaction */
-.hero-overlay {
+/* Make sure overlays NEVER block interaction */
+.hero-overlay,
+.hero::before,
+.hero-background {
   pointer-events: none !important;
   z-index: 1 !important;
+}
+
+/* Remove any transform that might affect click areas */
+.hero .btn:not(:hover) {
+  transform: none !important;
 }
 
 /* FIX 2: Mobile Navigation Improvements */

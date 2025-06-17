@@ -127,19 +127,50 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
-  // ENHANCED: Ensure hero buttons are clickable
-  // Force pointer events on all buttons
-  const allButtons = document.querySelectorAll('.btn, .btn-primary, .btn-light, .innovation-link');
+  // ENHANCED: Ensure hero buttons are clickable - DESKTOP FIX
+  // Force pointer events on all buttons with more aggressive targeting
+  const allButtons = document.querySelectorAll('.btn, .btn-primary, .btn-light, .innovation-link, .hero .btn, .hero-content .btn, .hero-content a');
   allButtons.forEach(btn => {
-    btn.style.pointerEvents = 'auto';
-    btn.style.cursor = 'pointer';
-    btn.style.position = 'relative';
-    btn.style.zIndex = '999';
+    // Force inline styles to override everything
+    btn.style.setProperty('pointer-events', 'auto', 'important');
+    btn.style.setProperty('cursor', 'pointer', 'important');
+    btn.style.setProperty('position', 'relative', 'important');
+    btn.style.setProperty('z-index', '9999', 'important');
+    btn.style.setProperty('display', 'inline-block', 'important');
+    
+    // Remove any click blockers
+    btn.onclick = null; // Clear any existing onclick
     
     // Add click handler for debugging
     btn.addEventListener('click', function(e) {
       console.log('✅ Button clicked successfully:', this.href || this.textContent);
+      // Don't stop propagation - let the click through
+    }, false);
+    
+    // Also add mousedown/mouseup for better responsiveness
+    btn.addEventListener('mousedown', function(e) {
+      console.log('🖱️ Mouse down on button');
     });
+    
+    btn.addEventListener('mouseup', function(e) {
+      console.log('🖱️ Mouse up on button');
+    });
+  });
+  
+  // DESKTOP SPECIFIC: Ensure hero containers don't block on desktop
+  if (window.innerWidth > 768) {
+    const heroContents = document.querySelectorAll('.hero-content');
+    heroContents.forEach(container => {
+      container.style.setProperty('pointer-events', 'auto', 'important');
+    });
+  }
+  
+  // Remove any overlays that might block clicks
+  const overlays = document.querySelectorAll('.hero-overlay, .hero::before');
+  overlays.forEach(overlay => {
+    if (overlay) {
+      overlay.style.setProperty('pointer-events', 'none', 'important');
+    }
   });
   
   // Touch event support for mobile
