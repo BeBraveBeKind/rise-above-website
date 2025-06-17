@@ -7,14 +7,30 @@ document.addEventListener('DOMContentLoaded', function() {
   const navLinks = document.querySelector('.nav-links');
   
   if (menuToggle && navLinks) {
-    menuToggle.addEventListener('click', function() {
+    menuToggle.addEventListener('click', function(e) {
+      e.stopPropagation(); // Prevent event bubbling
+      console.log('🍔 Menu toggle clicked');
       menuToggle.classList.toggle('active');
       navLinks.classList.toggle('active');
     });
 
     // Close menu when clicking outside
     document.addEventListener('click', function(e) {
+      // Check if click is outside menu and toggle
       if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+        if (navLinks.classList.contains('active')) {
+          console.log('📍 Clicked outside menu - closing');
+          menuToggle.classList.remove('active');
+          navLinks.classList.remove('active');
+        }
+      }
+    });
+
+    // Prevent clicks inside navLinks from closing the menu
+    navLinks.addEventListener('click', function(e) {
+      // Only close if clicking on a link, not the container
+      if (e.target.tagName === 'A') {
+        console.log('🔗 Nav link clicked - closing menu');
         menuToggle.classList.remove('active');
         navLinks.classList.remove('active');
       }
@@ -59,71 +75,69 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Setup smooth scrolling for all anchor links
   function setupSmoothScrolling() {
-    const anchors = document.querySelectorAll('a[href^="#"]');
-    console.log('🔗 Found', anchors.length, 'anchor links to setup');
-    
-    anchors.forEach(function(anchor, index) {
-      console.log('Setting up anchor', index + 1, ':', anchor.getAttribute('href'), '"' + anchor.textContent.trim() + '"');
+    // Use event delegation for better performance and dynamic content
+    document.addEventListener('click', function(e) {
+      // Find the closest anchor tag (in case we clicked on something inside the anchor)
+      const anchor = e.target.closest('a[href^="#"]');
       
-      // Remove any existing listeners to prevent duplicates
-      anchor.removeEventListener('click', handleAnchorClick);
-      anchor.addEventListener('click', handleAnchorClick);
-    });
-  }
-  
-  function handleAnchorClick(e) {
-    console.log('🖱️ Button clicked:', this.textContent.trim(), 'href:', this.getAttribute('href'));
-    e.preventDefault();
-    
-    let targetId = this.getAttribute('href');
-    
-    // Skip empty or just # links
-    if (targetId === '#' || targetId === '') {
-      console.log('⚠️ Empty href, skipping');
-      return;
-    }
-    
-    // Clean up the target ID
-    if (targetId.includes('/#')) {
-      targetId = targetId.split('/#')[1];
-      targetId = '#' + targetId;
-    }
-    
-    // Remove the # for querySelector
-    const elementId = targetId.replace('#', '');
-    
-    console.log('🎯 Looking for element with ID:', elementId);
-    
-    // Find the target element
-    const targetElement = document.getElementById(elementId) || document.querySelector(targetId);
-    
-    if (targetElement) {
-      console.log('✅ Found target element:', targetElement.tagName, 'id="' + targetElement.id + '"');
-      smoothScrollToElement(targetElement, true);
-    } else {
-      console.warn('❌ Target element not found:', targetId);
+      if (!anchor) return;
       
-      // Try alternative selectors as fallback
-      const alternatives = [
-        `[data-section="${elementId}"]`,
-        `[name="${elementId}"]`,
-        `.${elementId}`
-      ];
+      console.log('🖱️ Anchor clicked:', anchor.textContent.trim(), 'href:', anchor.getAttribute('href'));
       
-      for (let selector of alternatives) {
-        const altElement = document.querySelector(selector);
-        if (altElement) {
-          console.log('✅ Found alternative target:', selector);
-          smoothScrollToElement(altElement, true);
-          return;
-        }
+      const targetId = anchor.getAttribute('href');
+      
+      // Skip empty or just # links
+      if (targetId === '#' || targetId === '') {
+        console.log('⚠️ Empty href, skipping');
+        return;
       }
       
-      console.log('💡 Available elements with IDs:');
-      document.querySelectorAll('[id]').forEach(el => {
-        console.log('  - #' + el.id, '(' + el.tagName + ')');
-      });
-    }
+      // Prevent default behavior
+      e.preventDefault();
+      
+      // Clean up the target ID
+      let elementId = targetId;
+      if (targetId.includes('/#')) {
+        elementId = targetId.split('/#')[1];
+        elementId = '#' + elementId;
+      }
+      
+      // Remove the # for querySelector
+      elementId = elementId.replace('#', '');
+      
+      console.log('🎯 Looking for element with ID:', elementId);
+      
+      // Find the target element
+      const targetElement = document.getElementById(elementId) || document.querySelector('#' + elementId);
+      
+      if (targetElement) {
+        console.log('✅ Found target element:', targetElement.tagName, 'id="' + targetElement.id + '"');
+        smoothScrollToElement(targetElement, true);
+      } else {
+        console.warn('❌ Target element not found:', targetId);
+        
+        // Try alternative selectors as fallback
+        const alternatives = [
+          `[data-section="${elementId}"]`,
+          `[name="${elementId}"]`,
+          `.${elementId}`
+        ];
+        
+        for (let selector of alternatives) {
+          const altElement = document.querySelector(selector);
+          if (altElement) {
+            console.log('✅ Found alternative target:', selector);
+            smoothScrollToElement(altElement, true);
+            return;
+          }
+        }
+        
+        console.log('💡 Available elements with IDs:');
+        document.querySelectorAll('[id]').forEach(el => {
+          console.log('  - #' + el.id, '(' + el.tagName + ')');
+        });
+      }
+    });
   }
   
   // Handle browser back/forward buttons
@@ -150,35 +164,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initialize smooth scrolling
   console.log('🔧 Setting up smooth scrolling...');
   setupSmoothScrolling();
-  
-  // Re-setup on dynamic content changes
-  const observer = new MutationObserver(function(mutations) {
-    let shouldResetup = false;
-    mutations.forEach(function(mutation) {
-      if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-        // Check if any added nodes contain anchor links
-        mutation.addedNodes.forEach(node => {
-          if (node.nodeType === 1) { // Element node
-            if (node.matches && node.matches('a[href^="#"]')) {
-              shouldResetup = true;
-            } else if (node.querySelector && node.querySelector('a[href^="#"]')) {
-              shouldResetup = true;
-            }
-          }
-        });
-      }
-    });
-    
-    if (shouldResetup) {
-      console.log('🔄 Re-setting up smooth scrolling due to DOM changes');
-      setupSmoothScrolling();
-    }
-  });
-  
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true
-  });
   
   // Handle page load with hash
   if (window.location.hash) {

@@ -1277,3 +1277,132 @@ footer {
     font-size: 1.5rem;
   }
 }
+/* ============================================
+   BUTTON FUNCTIONALITY FIXES
+   ============================================ */
+
+/* Ensure all hero buttons are properly clickable */
+.hero .btn,
+.hero-content .btn,
+.home-hero .btn,
+.services-hero .btn,
+.grants-hero .btn,
+.contact-hero .btn {
+  position: relative !important;
+  z-index: 999 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  display: inline-block !important;
+  isolation: isolate !important; /* Create new stacking context */
+}
+
+/* Ensure hero content doesn't block buttons */
+.hero-content {
+  pointer-events: none !important;
+}
+
+.hero-content > * {
+  pointer-events: auto !important;
+}
+
+/* Make sure hero overlays don't interfere */
+.hero-overlay {
+  pointer-events: none !important;
+}
+
+/* ============================================
+   MOBILE NAVIGATION FIXES
+   ============================================ */
+
+/* Fix mobile navigation positioning and animation */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: hsla(var(--glass-h), var(--glass-s), 98%, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    flex-direction: column;
+    padding: 2rem !important;
+    /* Use transform3d for better performance */
+    transform: translate3d(0, -120%, 0);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 998;
+    gap: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    /* Ensure it's not cut off */
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .nav-links.active {
+    transform: translate3d(0, 0, 0);
+  }
+  
+  /* Ensure menu toggle is always clickable */
+  .menu-toggle {
+    position: relative !important;
+    z-index: 1002 !important;
+    cursor: pointer !important;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+  
+  /* Add touch-friendly sizing */
+  .menu-toggle {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* ============================================
+   ADDITIONAL INTERACTION IMPROVEMENTS
+   ============================================ */
+
+/* Improve button hover states on touch devices */
+@media (hover: hover) {
+  .btn:hover {
+    /* Only apply hover effects on devices that support hover */
+  }
+}
+
+/* Remove tap highlight on iOS */
+.btn,
+.menu-toggle,
+.nav-links a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Ensure buttons have proper touch target size */
+.btn {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Fix for iOS Safari button rendering */
+.btn {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* ============================================
+   Z-INDEX HIERARCHY FIX
+   ============================================ */
+
+/* Establish proper z-index hierarchy */
+.hero-background { z-index: 0; }
+.hero-overlay { z-index: 1; }
+.hero-content { z-index: 2; }
+.hero-content .btn { z-index: 10 !important; }
+header { z-index: 1000; }
+.menu-toggle { z-index: 1002; }
+.nav-links { z-index: 998; }
+.nav-links.active { z-index: 999; }
