@@ -572,5 +572,36 @@
   
   <!-- Include Grants Database JavaScript -->
   <script src="js/grants.js"></script>
+  
+  <!-- EMERGENCY BUTTON FIX -->
+  <script>
+    // Force all buttons to be clickable - nuclear option
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get all buttons and links that look like buttons
+      const buttons = document.querySelectorAll('.btn, .btn-primary, .btn-light, a[class*="btn"], .filter-tag');
+      
+      buttons.forEach(button => {
+        // Force clickability with inline styles
+        button.style.position = 'relative';
+        button.style.zIndex = '9999';
+        button.style.pointerEvents = 'auto';
+        button.style.cursor = 'pointer';
+      });
+      
+      // Make sure overlays can't block
+      const overlays = document.querySelectorAll('.hero-overlay, .hero-background');
+      overlays.forEach(overlay => {
+        overlay.style.pointerEvents = 'none';
+        overlay.style.zIndex = '1';
+      });
+      
+      // Extra insurance - re-apply after a delay
+      setTimeout(() => {
+        buttons.forEach(button => {
+          button.style.cssText += 'position: relative !important; z-index: 9999 !important; pointer-events: auto !important; cursor: pointer !important;';
+        });
+      }, 100);
+    });
+  </script>
 </body>
 </html>
