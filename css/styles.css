@@ -1,4 +1,4 @@
-/* RISE ABOVE PARTNERS - RESPONSIVE LAYOUT FIXES */
+/* RISE ABOVE PARTNERS - COMPLETE RESPONSIVE FIX */
 /* NUCLEAR RESET - ELIMINATES ALL BROWSER DEFAULTS */
 html, body, *, *::before, *::after {
   border: 0 !important;
@@ -159,7 +159,7 @@ footer .container {
 .grid-3 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
 .grid-4 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
 
-/* FIXED: Header with better mobile logo handling */
+/* FIXED: Header with better mobile logo handling AND desktop spacing */
 header {
   background: hsla(var(--glass-h), var(--glass-s), 98%, 0.8);
   backdrop-filter: blur(20px);
@@ -176,7 +176,19 @@ header {
   border-top: none !important;
   outline: none !important;
   box-shadow: none !important;
-  height: 84px; /* Fixed height for consistency */
+  height: 84px; /* Default mobile height */
+}
+
+/* DESKTOP HEADER IMPROVEMENTS */
+@media (min-width: 769px) {
+  header {
+    background: hsla(var(--glass-h), var(--glass-s), 98%, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    height: 100px; /* Increased for desktop */
+    box-shadow: 0 2px 20px rgba(109, 152, 186, 0.15);
+    border-bottom: 1px solid hsla(var(--glass-h), var(--glass-s), 80%, 0.2);
+  }
 }
 
 .navbar {
@@ -187,6 +199,14 @@ header {
   margin: 0 !important;
   height: 100%;
   min-height: 84px; /* Ensure minimum height */
+}
+
+/* DESKTOP NAVBAR IMPROVEMENTS */
+@media (min-width: 769px) {
+  .navbar {
+    padding: 1.5rem 0 !important; /* More padding for desktop */
+    min-height: 100px;
+  }
 }
 
 /* FIXED: Logo with better mobile handling */
@@ -213,6 +233,14 @@ header {
   flex-shrink: 0; /* Prevent image from shrinking */
 }
 
+/* DESKTOP LOGO IMPROVEMENTS */
+@media (min-width: 769px) {
+  .logo-mark {
+    width: 50px; /* Slightly bigger on desktop */
+    height: 50px;
+  }
+}
+
 .logo-text {
   display: flex;
   flex-direction: column;
@@ -224,6 +252,13 @@ header {
   white-space: nowrap; /* Prevent text wrapping */
 }
 
+/* DESKTOP LOGO TEXT IMPROVEMENTS */
+@media (min-width: 769px) {
+  .logo-text {
+    font-size: 1rem; /* Slightly bigger on desktop */
+  }
+}
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -231,6 +266,13 @@ header {
   list-style: none;
   margin: 0 !important;
   padding: 0 !important;
+}
+
+/* DESKTOP NAV IMPROVEMENTS */
+@media (min-width: 769px) {
+  .nav-links {
+    gap: 3rem; /* More space between nav items */
+  }
 }
 
 .nav-links a {
@@ -241,6 +283,13 @@ header {
   padding: 0.5rem 0 !important;
   margin: 0 !important;
   position: relative;
+}
+
+/* DESKTOP NAV LINKS IMPROVEMENTS */
+@media (min-width: 769px) {
+  .nav-links a {
+    padding: 0.75rem 0 !important; /* More padding for better click area */
+  }
 }
 
 .nav-links a::after {
@@ -324,6 +373,14 @@ a.btn {
   padding: 1.2rem 2.8rem !important;
 }
 
+/* DESKTOP NAV BUTTON IMPROVEMENTS */
+@media (min-width: 769px) {
+  .nav-links .btn {
+    padding: 1rem 2.5rem !important;
+    margin-left: 1rem; /* Add space before the button */
+  }
+}
+
 .btn::before {
   content: '';
   position: absolute;
@@ -378,7 +435,16 @@ a.btn {
   min-height: 70vh;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  /* REMOVED problematic full-width styling that caused issues */
+}
+
+/* DESKTOP HERO IMPROVEMENTS */
+@media (min-width: 769px) {
+  .hero,
+  .home-hero,
+  .services-hero,
+  .grants-hero {
+    padding: calc(8rem + 100px) 0 6rem !important; /* Use desktop header height */
+  }
 }
 
 /* Ensure all page-specific hero classes follow the same pattern */

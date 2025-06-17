@@ -1,8 +1,6 @@
-// RISE ABOVE PARTNERS - OPTIMIZED JAVASCRIPT
-// Minimal, performance-focused implementation
-
+// FIXED: Enhanced JavaScript with proper desktop header calculation
 document.addEventListener('DOMContentLoaded', function() {
-  // Mobile menu toggle - ESSENTIAL ONLY
+  // Mobile menu toggle
   const menuToggle = document.querySelector('.menu-toggle');
   const navLinks = document.querySelector('.nav-links');
   
@@ -11,17 +9,27 @@ document.addEventListener('DOMContentLoaded', function() {
       menuToggle.classList.toggle('active');
       navLinks.classList.toggle('active');
     });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+      }
+    });
   }
 
-  // Smooth scrolling for anchor links - ENHANCED CROSS-PAGE SUPPORT
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  // FIXED: Smooth scrolling with correct header heights
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
       
       const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
+      
+      if (targetId === '#' || targetId === '') return;
       
       const targetElement = document.querySelector(targetId);
+      
       if (targetElement) {
         // Close mobile menu if open
         if (menuToggle && menuToggle.classList.contains('active')) {
@@ -29,72 +37,55 @@ document.addEventListener('DOMContentLoaded', function() {
           navLinks.classList.remove('active');
         }
         
-        // Smooth scroll with performance optimization
-        targetElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
-    });
-  });
-  
-  // Handle cross-page navigation (e.g., /#contact from other pages)
-  document.querySelectorAll('a[href^="/#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const href = this.getAttribute('href');
-      const targetId = href.substring(1); // Remove the leading slash
-      
-      // If we're not on the home page, navigate there
-      if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') {
-        // Let the browser navigate to home page - the target will be handled by URL hash
-        return; // Allow default behavior
-      }
-      
-      // If we're already on home page, prevent default and scroll
-      e.preventDefault();
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        // Close mobile menu if open
-        if (menuToggle && menuToggle.classList.contains('active')) {
-          menuToggle.classList.remove('active');
-          navLinks.classList.remove('active');
-        }
+        // FIXED: Use correct header heights
+        const headerHeight = window.innerWidth <= 768 ? 80 : 100; // Desktop = 100px, Mobile = 80px
+        const targetPosition = targetElement.offsetTop - headerHeight - 20; // Add 20px buffer
         
-        targetElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
+        // Smooth scroll
+        window.scrollTo({
+          top: Math.max(0, targetPosition),
+          behavior: 'smooth'
         });
+        
+        console.log('Scrolling to:', targetId, 'Header height:', headerHeight, 'Target position:', targetPosition);
+      } else {
+        console.warn('Target not found:', targetId);
       }
     });
   });
   
-  // Handle URL hash on page load (for cross-page navigation)
-  window.addEventListener('load', function() {
-    if (window.location.hash) {
-      setTimeout(() => {
-        const targetElement = document.querySelector(window.location.hash);
-        if (targetElement) {
-          targetElement.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      }, 100); // Small delay to ensure page is fully loaded
+  // Debug: Check if target sections exist and log their positions
+  const sections = ['#proof-points', '#contact', '#about', '#advantage'];
+  sections.forEach(sectionId => {
+    const element = document.querySelector(sectionId);
+    if (element) {
+      console.log('Section found:', sectionId, 'Offset:', element.offsetTop);
+    } else {
+      console.warn('Section missing:', sectionId);
     }
   });
   
-  // Performance: Passive scroll listener for better performance
-  let ticking = false;
-  
-  function updateScrollEffects() {
-    // Add any scroll-based effects here if needed
-    ticking = false;
-  }
-  
+  // ADDITIONAL: Add active state handling for better UX
   window.addEventListener('scroll', function() {
-    if (!ticking) {
-      requestAnimationFrame(updateScrollEffects);
-      ticking = true;
-    }
-  }, { passive: true });
+    const scrollPos = window.scrollY + (window.innerWidth <= 768 ? 80 : 100) + 50;
+    
+    sections.forEach(sectionId => {
+      const element = document.querySelector(sectionId);
+      const navLink = document.querySelector(`a[href="${sectionId}"]`);
+      
+      if (element && navLink) {
+        const sectionTop = element.offsetTop;
+        const sectionBottom = sectionTop + element.offsetHeight;
+        
+        if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+          // Remove active from all nav links
+          document.querySelectorAll('.nav-links a').forEach(link => {
+            link.classList.remove('active');
+          });
+          // Add active to current section link
+          navLink.classList.add('active');
+        }
+      }
+    });
+  });
 });
