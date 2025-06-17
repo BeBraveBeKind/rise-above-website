@@ -1368,47 +1368,14 @@ footer {
     display: block;
   }
   
-  /* CRITICAL FIX: Prevent hero images from stretching on wide screens */
-  .hero, .home-hero, .services-hero, .grants-hero {
-    max-width: 2000px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .hero-background {
-    max-width: 2000px;
+  /* Simple constraint for ultra-wide screens without breaking layouts */
+  .hero-content {
+    max-width: 1200px;
     margin: 0 auto;
   }
-  
-  .hero-image {
-    max-width: 2000px;
-    object-position: center center;
-  }
 }
 
-/* Additional hero constraint for all screen sizes */
-.hero, .home-hero, .services-hero, .grants-hero {
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-background {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 2000px;
-  height: 100%;
-  z-index: 0;
-}
-
-.hero-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
+/* REMOVED problematic hero constraints that were causing gray overlay */
 
 /* Mobile menu improvements */
 @media (max-width: 768px) {
