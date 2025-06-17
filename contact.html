@@ -162,23 +162,28 @@
 
     .response-time {
       background: linear-gradient(135deg, 
-        hsla(var(--glass-h), var(--glass-s), 50%, 0.9) 0%, 
-        hsla(var(--glass-h), var(--glass-s), 40%, 0.95) 100%);
-      color: var(--white);
+        hsla(var(--glass-h), var(--glass-s), 95%, 0.9) 0%, 
+        hsla(var(--glass-h), var(--glass-s), 90%, 0.95) 100%);
+      color: var(--dark);
       padding: 2rem !important;
       border-radius: var(--rounded-md);
       text-align: center;
       margin: 2rem 0 0 0 !important;
+      border: 2px solid var(--primary);
+      box-shadow: var(--shadow-glass);
     }
 
     .response-time h3 {
       margin: 0 0 0.5rem 0 !important;
       font-size: 1.2rem;
+      color: var(--primary);
+      font-weight: 700;
     }
 
     .response-time p {
       margin: 0 !important;
-      opacity: 0.9;
+      color: #555;
+      font-weight: 600;
     }
 
     /* Mobile Responsive */
@@ -324,7 +329,7 @@
           </div>
 
           <div class="response-time">
-            <h3>⚡ Quick Response</h3>
+            <h3>⚡ QUICK RESPONSE</h3>
             <p>I typically respond within 24 hours during business days</p>
           </div>
         </div>
@@ -409,44 +414,7 @@
     </div>
   </footer>
 
-  <!-- JavaScript -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Mobile menu toggle
-      const menuToggle = document.querySelector('.menu-toggle');
-      const navLinks = document.querySelector('.nav-links');
-      
-      if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', function() {
-          menuToggle.classList.toggle('active');
-          navLinks.classList.toggle('active');
-        });
-      }
-
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          
-          const targetId = this.getAttribute('href');
-          if (targetId === '#') return;
-          
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            // Close mobile menu if open
-            if (menuToggle && menuToggle.classList.contains('active')) {
-              menuToggle.classList.remove('active');
-              navLinks.classList.remove('active');
-            }
-            
-            window.scrollTo({
-              top: targetElement.offsetTop - 80,
-              behavior: 'smooth'
-            });
-          }
-        });
-      });
-    });
-  </script>
+  <!-- Include main.js for consistent functionality -->
+  <script src="/js/main.js"></script>
 </body>
 </html>

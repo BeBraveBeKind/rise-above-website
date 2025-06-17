@@ -128,7 +128,7 @@
           <a href="/">Home</a>
           <a href="/services.html">Services</a>
           <a href="/grants.html">Grants</a>
-          <a href="#about">About</a>
+          <a href="/#about">About</a>
           <a href="/contact.html" class="btn btn-primary">Get Started</a>
         </div>
         <div class="menu-toggle">
@@ -485,87 +485,7 @@
     </div>
   </footer>
 
-  <!-- Enhanced JavaScript for Smooth Scrolling -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Mobile menu toggle
-      const menuToggle = document.querySelector('.menu-toggle');
-      const navLinks = document.querySelector('.nav-links');
-      
-      if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', function() {
-          menuToggle.classList.toggle('active');
-          navLinks.classList.toggle('active');
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-          if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
-            menuToggle.classList.remove('active');
-            navLinks.classList.remove('active');
-          }
-        });
-      }
-
-      // Enhanced smooth scrolling with better offset calculation
-      document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          
-          const targetId = this.getAttribute('href');
-          
-          if (targetId === '#' || targetId === '') return;
-          
-          const targetElement = document.querySelector(targetId);
-          
-          if (targetElement) {
-            // Close mobile menu if open
-            if (menuToggle && menuToggle.classList.contains('active')) {
-              menuToggle.classList.remove('active');
-              navLinks.classList.remove('active');
-            }
-            
-            // Better header height calculation
-            const headerElement = document.querySelector('header');
-            const headerHeight = headerElement ? headerElement.offsetHeight : (window.innerWidth <= 768 ? 80 : 100);
-            
-            // Add some extra padding for better visual spacing
-            const extraPadding = 20;
-            const targetPosition = targetElement.offsetTop - headerHeight - extraPadding;
-            
-            // Smooth scroll with fallback
-            if ('scrollBehavior' in document.documentElement.style) {
-              window.scrollTo({
-                top: Math.max(0, targetPosition),
-                behavior: 'smooth'
-              });
-            } else {
-              // Fallback for older browsers
-              window.scrollTo(0, Math.max(0, targetPosition));
-            }
-            
-            console.log('Scrolling to:', targetId, 'Header height:', headerHeight, 'Target position:', targetPosition);
-          } else {
-            console.warn('Target element not found:', targetId);
-          }
-        });
-      });
-      
-      // Debug: Check if target sections exist
-      const sections = ['#proof-points', '#contact', '#about', '#advantage', '#methodology'];
-      sections.forEach(sectionId => {
-        const element = document.querySelector(sectionId);
-        console.log('Section check:', sectionId, element ? 'EXISTS' : 'MISSING');
-      });
-      
-      // Additional check for button functionality
-      const marketingButton = document.querySelector('a[href="#proof-points"]');
-      if (marketingButton) {
-        console.log('"Get Marketing That Actually Works" button found and should work');
-      } else {
-        console.warn('Marketing button not found');
-      }
-    });
-  </script>
+  <!-- Include main.js for smooth scrolling -->
+  <script src="/js/main.js"></script>
 </body>
 </html>
