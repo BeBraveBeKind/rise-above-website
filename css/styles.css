@@ -339,7 +339,7 @@ a.btn {
   transform: translateY(-3px);
 }
 
-/* HERO - CONSISTENT LAYOUT MATCHING GRANTS PAGE */
+/* HERO - CONSISTENT LAYOUT FOR ALL PAGES */
 .hero {
   background: linear-gradient(135deg, 
     hsla(var(--glass-h), var(--glass-s), 60%, 0.95) 0%, 
@@ -355,6 +355,65 @@ a.btn {
   -webkit-backdrop-filter: blur(20px);
   /* Full width only on desktop */
   width: 100%;
+}
+
+/* Ensure all page-specific hero classes follow the same pattern */
+.home-hero,
+.services-hero,
+.grants-hero {
+  background: linear-gradient(135deg, 
+    hsla(var(--glass-h), var(--glass-s), 60%, 0.95) 0%, 
+    hsla(var(--glass-h), var(--glass-s), 45%, 0.9) 100%);   
+  padding: calc(8rem + 84px) 0 6rem !important;
+  margin-top: 0 !important;
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+  min-height: 70vh;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.home-hero .hero-background,
+.services-hero .hero-background,
+.grants-hero .hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.home-hero .hero-image,
+.services-hero .hero-image,
+.grants-hero .hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.home-hero .hero-overlay,
+.services-hero .hero-overlay,
+.grants-hero .hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    hsla(var(--glass-h), var(--glass-s), 30%, 0.1) 0%, 
+    hsla(var(--glass-h), var(--glass-s), 20%, 0.05) 100%);
+  z-index: 1;
+}
+
+.home-hero .hero-content,
+.services-hero .hero-content,
+.grants-hero .hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
 }
 
 /* Desktop full-width expansion */
@@ -849,8 +908,11 @@ footer {
     font-size: 0.85rem;
   }
   
-  /* Mobile Hero - Fixed width and content */
-  .hero { 
+  /* Mobile Hero - Fixed width and content for all hero types */
+  .hero,
+  .home-hero,
+  .services-hero,
+  .grants-hero { 
     padding: calc(6rem + 84px) 0 4rem !important; 
     min-height: 50vh; 
     margin: 0 !important;

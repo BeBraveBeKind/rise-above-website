@@ -39,11 +39,15 @@
         hsla(var(--glass-h), var(--glass-s), 45%, 0.9) 100%);
       padding: calc(8rem + 84px) 0 6rem !important;
       margin-top: 0 !important;
+      color: var(--white);
       position: relative;
       overflow: hidden;
+      min-height: 70vh;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
     }
 
-    .hero-background {
+    .grants-hero .hero-background {
       position: absolute;
       top: 0;
       left: 0;
@@ -52,14 +56,14 @@
       z-index: 0;
     }
 
-    .hero-bg-img {
+    .grants-hero .hero-image {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center;
     }
 
-    .hero-overlay {
+    .grants-hero .hero-overlay {
       position: absolute;
       top: 0;
       left: 0;
@@ -71,9 +75,10 @@
       z-index: 1;
     }
 
-    .hero-content {
+    .grants-hero .hero-content {
       position: relative;
       z-index: 2;
+      max-width: 700px;
     }
 
     .grant-filters {
@@ -349,6 +354,7 @@
       
       .grants-hero {
         padding: calc(6rem + 84px) 0 4rem !important;
+        min-height: 50vh;
       }
 
       .grant-filters {
@@ -405,7 +411,7 @@
   </header>
 
   <!-- Grants Hero -->
-  <section class="grants grants-hero">
+  <section class="hero grants-hero">
     <picture class="hero-background">
       <source media="(max-width: 768px)" 
               srcset="images/grants/grants-mobile.webp" 
