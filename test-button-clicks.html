@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desktop Button Click Tester</title>
+  
+  <!-- Include your styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <style>
+    /* Test overlay to show click areas */
+    .click-test-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10000;
+    }
+    
+    .click-indicator {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      animation: pulse 0.5s ease-out;
+      pointer-events: none;
+    }
+    
+    @keyframes pulse {
+      0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+      100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
+    }
+    
+    .test-panel {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      z-index: 10001;
+      max-width: 400px;
+    }
+    
+    .test-log {
+      background: #f0f0f0;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      max-height: 300px;
+      overflow-y: auto;
+      font-family: monospace;
+      font-size: 12px;
+    }
+    
+    /* Highlight elements for testing */
+    .test-highlight-button {
+      outline: 3px solid green !important;
+      outline-offset: 2px;
+    }
+    
+    .test-highlight-blocking {
+      outline: 3px solid red !important;
+      outline-offset: 2px;
+      opacity: 0.5 !important;
+    }
+  </style>
+</head>
+<body>
+  <!-- Include your header -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <a href="/" class="logo">
+          <img src="images/brand/logomark.svg" alt="Rise Above Partners" class="logo-mark" width="45" height="45">
+          <div class="logo-text">
+            <span>RISE ABOVE</span>
+            <span>PARTNERS</span>
+          </div>
+        </a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="grants.html">Grants</a>
+          <a href="#about">About</a>
+          <a href="contact.html" class="btn btn-primary">Get Started</a>
+        </div>
+        <div class="menu-toggle">
+          <span></span><span></span><span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Test Hero -->
+  <section class="hero home-hero">
+    <picture class="hero-background">
+      <img src="images/hero/hero-desktop.jpg" alt="Test background" class="hero-image">
+    </picture>
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <div class="hero-content">
+        <h1>Desktop Button Click Test</h1>
+        <p>Click anywhere to see what element receives the click. The button below should be clickable.</p>
+        <a href="#test" class="btn btn-light">Test Hero Button Click</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Test section -->
+  <section id="test" class="section">
+    <div class="container">
+      <h2>Click Test Results</h2>
+      <p>If you successfully clicked the button and arrived here, it's working!</p>
+    </div>
+  </section>
+
+  <!-- Click test overlay -->
+  <div class="click-test-overlay" id="clickOverlay"></div>
+
+  <!-- Test panel -->
+  <div class="test-panel">
+    <h3>Click Test Monitor</h3>
+    <button onclick="startClickTest()">Start Click Test</button>
+    <button onclick="identifyBlockers()">Find Blocking Elements</button>
+    <button onclick="applyQuickFix()">Apply Quick Fix</button>
+    <div class="test-log" id="testLog">
+      Ready to test...
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script>
+    let testMode = false;
+    const log = document.getElementById('testLog');
+    const overlay = document.getElementById('clickOverlay');
+    
+    function addLog(message, type = 'info') {
+      const time = new Date().toLocaleTimeString();
+      const color = type === 'error' ? 'red' : type === 'success' ? 'green' : 'black';
+      log.innerHTML += `<div style="color: ${color}">${time} - ${message}</div>`;
+      log.scrollTop = log.scrollHeight;
+    }
+    
+    function startClickTest() {
+      testMode = !testMode;
+      addLog(testMode ? 'Click test STARTED - click anywhere' : 'Click test STOPPED', 'success');
+      
+      if (testMode) {
+        document.addEventListener('click', trackClick, true);
+        document.addEventListener('mousedown', trackMouseDown, true);
+        document.addEventListener('mouseup', trackMouseUp, true);
+      } else {
+        document.removeEventListener('click', trackClick, true);
+        document.removeEventListener('mousedown', trackMouseDown, true);
+        document.removeEventListener('mouseup', trackMouseUp, true);
+      }
+    }
+    
+    function trackClick(e) {
+      if (e.target.closest('.test-panel')) return;
+      
+      // Show click location
+      const indicator = document.createElement('div');
+      indicator.className = 'click-indicator';
+      indicator.style.left = e.clientX + 'px';
+      indicator.style.top = e.clientY + 'px';
+      overlay.appendChild(indicator);
+      setTimeout(() => indicator.remove(), 500);
+      
+      // Log what was clicked
+      const element = e.target;
+      const isButton = element.classList.contains('btn') || element.closest('.btn');
+      
+      addLog(`CLICK: ${element.tagName}.${element.className || 'no-class'}`, isButton ? 'success' : 'info');
+      
+      if (isButton) {
+        addLog('✅ Button click detected!', 'success');
+      } else {
+        addLog(`❌ Clicked ${element.tagName} instead of button`, 'error');
+        
+        // Find what button should have been clicked
+        const rect = element.getBoundingClientRect();
+        const buttons = document.querySelectorAll('.hero .btn');
+        buttons.forEach(btn => {
+          const btnRect = btn.getBoundingClientRect();
+          if (e.clientX >= btnRect.left && e.clientX <= btnRect.right &&
+              e.clientY >= btnRect.top && e.clientY <= btnRect.bottom) {
+            addLog(`⚠️ Click was over button but hit ${element.tagName} instead!`, 'error');
+          }
+        });
+      }
+    }
+    
+    function trackMouseDown(e) {
+      if (e.target.closest('.test-panel')) return;
+      addLog(`MOUSEDOWN: ${e.target.tagName}.${e.target.className || 'no-class'}`);
+    }
+    
+    function trackMouseUp(e) {
+      if (e.target.closest('.test-panel')) return;
+      addLog(`MOUSEUP: ${e.target.tagName}.${e.target.className || 'no-class'}`);
+    }
+    
+    function identifyBlockers() {
+      addLog('Analyzing button blockage...', 'info');
+      
+      const buttons = document.querySelectorAll('.hero .btn');
+      
+      buttons.forEach((btn, index) => {
+        btn.classList.add('test-highlight-button');
+        
+        const rect = btn.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        
+        // Temporarily hide the button
+        const originalPointerEvents = btn.style.pointerEvents;
+        btn.style.pointerEvents = 'none';
+        
+        // See what's at that point
+        const elementAtPoint = document.elementFromPoint(centerX, centerY);
+        
+        // Restore button
+        btn.style.pointerEvents = originalPointerEvents;
+        
+        if (elementAtPoint && elementAtPoint !== btn) {
+          elementAtPoint.classList.add('test-highlight-blocking');
+          addLog(`Button ${index + 1} blocked by: ${elementAtPoint.tagName}.${elementAtPoint.className}`, 'error');
+          
+          // Check computed styles
+          const blockingStyles = window.getComputedStyle(elementAtPoint);
+          addLog(`Blocker z-index: ${blockingStyles.zIndex}, pointer-events: ${blockingStyles.pointerEvents}`);
+        } else {
+          addLog(`Button ${index + 1} is NOT blocked ✅`, 'success');
+        }
+      });
+      
+      // Check z-index stack
+      const heroElements = document.querySelectorAll('.hero *');
+      const zIndexElements = [];
+      
+      heroElements.forEach(el => {
+        const zIndex = window.getComputedStyle(el).zIndex;
+        if (zIndex !== 'auto' && parseInt(zIndex) > 1) {
+          zIndexElements.push({
+            element: el,
+            zIndex: parseInt(zIndex),
+            tag: el.tagName,
+            classes: el.className
+          });
+        }
+      });
+      
+      zIndexElements.sort((a, b) => b.zIndex - a.zIndex);
+      
+      addLog('High z-index elements:', 'info');
+      zIndexElements.slice(0, 5).forEach(item => {
+        addLog(`  z-${item.zIndex}: ${item.tag}.${item.classes}`);
+      });
+    }
+    
+    function applyQuickFix() {
+      addLog('Applying quick fix...', 'info');
+      
+      // Nuclear fix
+      const buttons = document.querySelectorAll('.hero .btn, .hero-content .btn, .hero-content a');
+      
+      buttons.forEach((btn, index) => {
+        btn.style.cssText += `
+          position: relative !important;
+          z-index: 999999 !important;
+          pointer-events: auto !important;
+          cursor: pointer !important;
+          display: inline-block !important;
+          isolation: isolate !important;
+        `;
+        
+        addLog(`Fixed button ${index + 1}: ${btn.textContent}`, 'success');
+      });
+      
+      // Fix containers
+      document.querySelectorAll('.hero-content').forEach(el => {
+        el.style.pointerEvents = 'auto';
+      });
+      
+      document.querySelectorAll('.hero-overlay, .hero-background').forEach(el => {
+        el.style.pointerEvents = 'none';
+        el.style.zIndex = '1';
+      });
+      
+      addLog('Quick fix applied! Test the buttons now.', 'success');
+    }
+    
+    // Auto-analyze on load
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        addLog('Page loaded. Ready for testing.', 'success');
+        identifyBlockers();
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
