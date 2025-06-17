@@ -47,6 +47,13 @@
       -webkit-backdrop-filter: blur(20px);
     }
 
+    /* DESKTOP SERVICES HERO FIX */
+    @media (min-width: 769px) {
+      .services-hero {
+        padding: calc(8rem + 100px) 0 6rem !important;
+      }
+    }
+
     .services-hero .hero-background {
       position: absolute;
       top: 0;
@@ -265,7 +272,7 @@
       }
       
       .services-hero {
-        padding: calc(6rem + 84px) 0 4rem !important;
+        padding: calc(6rem + 80px) 0 4rem !important;
         min-height: 50vh;
       }
     }
@@ -570,15 +577,23 @@
           menuToggle.classList.toggle('active');
           navLinks.classList.toggle('active');
         });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+          if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+            menuToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+          }
+        });
       }
 
-      // Smooth scrolling for anchor links
+      // Enhanced smooth scrolling for anchor links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           e.preventDefault();
           
           const targetId = this.getAttribute('href');
-          if (targetId === '#') return;
+          if (targetId === '#' || targetId === '') return;
           
           const targetElement = document.querySelector(targetId);
           if (targetElement) {
@@ -588,13 +603,46 @@
               navLinks.classList.remove('active');
             }
             
-            window.scrollTo({
-              top: targetElement.offsetTop - 80,
-              behavior: 'smooth'
-            });
+            // Better header height calculation
+            const headerElement = document.querySelector('header');
+            const headerHeight = headerElement ? headerElement.offsetHeight : (window.innerWidth <= 768 ? 80 : 100);
+            
+            // Add some extra padding for better visual spacing
+            const extraPadding = 20;
+            const targetPosition = targetElement.offsetTop - headerHeight - extraPadding;
+            
+            // Smooth scroll with fallback
+            if ('scrollBehavior' in document.documentElement.style) {
+              window.scrollTo({
+                top: Math.max(0, targetPosition),
+                behavior: 'smooth'
+              });
+            } else {
+              // Fallback for older browsers
+              window.scrollTo(0, Math.max(0, targetPosition));
+            }
+            
+            console.log('Scrolling to:', targetId, 'Header height:', headerHeight, 'Target position:', targetPosition);
+          } else {
+            console.warn('Target element not found:', targetId);
           }
         });
       });
+      
+      // Debug: Check if target sections exist
+      const sections = ['#services-grid', '#contact'];
+      sections.forEach(sectionId => {
+        const element = document.querySelector(sectionId);
+        console.log('Section check:', sectionId, element ? 'EXISTS' : 'MISSING');
+      });
+      
+      // Additional check for button functionality
+      const exploreButton = document.querySelector('a[href="#services-grid"]');
+      if (exploreButton) {
+        console.log('"Explore Services" button found and should work');
+      } else {
+        console.warn('Explore Services button not found');
+      }
     });
   </script>
 </body>

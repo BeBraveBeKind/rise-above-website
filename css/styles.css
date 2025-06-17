@@ -188,6 +188,7 @@ header {
     height: 100px; /* Increased for desktop */
     box-shadow: 0 2px 20px rgba(109, 152, 186, 0.15);
     border-bottom: 1px solid hsla(var(--glass-h), var(--glass-s), 80%, 0.2);
+    z-index: 1000; /* Ensure header stays above everything */
   }
 }
 

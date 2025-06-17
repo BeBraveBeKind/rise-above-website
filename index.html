@@ -47,6 +47,13 @@
       -webkit-backdrop-filter: blur(20px);
     }
 
+    /* DESKTOP HERO FIX */
+    @media (min-width: 769px) {
+      .home-hero {
+        padding: calc(8rem + 100px) 0 6rem !important;
+      }
+    }
+
     .home-hero .hero-background {
       position: absolute;
       top: 0;
@@ -83,7 +90,7 @@
 
     @media (max-width: 768px) {
       .home-hero {
-        padding: calc(6rem + 84px) 0 4rem !important;
+        padding: calc(6rem + 80px) 0 4rem !important;
         min-height: 50vh;
       }
     }
@@ -500,23 +507,7 @@
         });
       }
 
-      // Enhanced smooth scrolling function
-      function smoothScrollTo(targetId) {
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          const headerHeight = window.innerWidth <= 768 ? 100 : 120;
-          const targetPosition = targetElement.offsetTop - headerHeight;
-          
-          window.scrollTo({
-            top: Math.max(0, targetPosition),
-            behavior: 'smooth'
-          });
-          return true;
-        }
-        return false;
-      }
-
-      // Handle all anchor links with improved targeting
+      // Enhanced smooth scrolling with better offset calculation
       document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
         anchor.addEventListener('click', function(e) {
           e.preventDefault();
@@ -525,47 +516,55 @@
           
           if (targetId === '#' || targetId === '') return;
           
-          // Close mobile menu if open
-          if (menuToggle && menuToggle.classList.contains('active')) {
-            menuToggle.classList.remove('active');
-            navLinks.classList.remove('active');
-          }
+          const targetElement = document.querySelector(targetId);
           
-          // Immediate scroll for better UX
-          const success = smoothScrollTo(targetId);
-          
-          // If target not found, try alternative targets
-          if (!success) {
-            if (targetId === '#proof-points') {
-              smoothScrollTo('#contact');
+          if (targetElement) {
+            // Close mobile menu if open
+            if (menuToggle && menuToggle.classList.contains('active')) {
+              menuToggle.classList.remove('active');
+              navLinks.classList.remove('active');
             }
+            
+            // Better header height calculation
+            const headerElement = document.querySelector('header');
+            const headerHeight = headerElement ? headerElement.offsetHeight : (window.innerWidth <= 768 ? 80 : 100);
+            
+            // Add some extra padding for better visual spacing
+            const extraPadding = 20;
+            const targetPosition = targetElement.offsetTop - headerHeight - extraPadding;
+            
+            // Smooth scroll with fallback
+            if ('scrollBehavior' in document.documentElement.style) {
+              window.scrollTo({
+                top: Math.max(0, targetPosition),
+                behavior: 'smooth'
+              });
+            } else {
+              // Fallback for older browsers
+              window.scrollTo(0, Math.max(0, targetPosition));
+            }
+            
+            console.log('Scrolling to:', targetId, 'Header height:', headerHeight, 'Target position:', targetPosition);
+          } else {
+            console.warn('Target element not found:', targetId);
           }
         });
       });
       
-      // Special handling for "Get Marketing That Actually Works" button
-      const heroButton = document.querySelector('.hero .btn-light');
-      if (heroButton) {
-        heroButton.addEventListener('click', function(e) {
-          e.preventDefault();
-          
-          // First try proof-points, fallback to contact
-          let targetFound = smoothScrollTo('#proof-points');
-          if (!targetFound) {
-            targetFound = smoothScrollTo('#contact');
-          }
-          
-          console.log('Hero button clicked - target found:', targetFound);
-        });
+      // Debug: Check if target sections exist
+      const sections = ['#proof-points', '#contact', '#about', '#advantage', '#methodology'];
+      sections.forEach(sectionId => {
+        const element = document.querySelector(sectionId);
+        console.log('Section check:', sectionId, element ? 'EXISTS' : 'MISSING');
+      });
+      
+      // Additional check for button functionality
+      const marketingButton = document.querySelector('a[href="#proof-points"]');
+      if (marketingButton) {
+        console.log('"Get Marketing That Actually Works" button found and should work');
+      } else {
+        console.warn('Marketing button not found');
       }
-      
-      // Ensure scroll targets exist
-      const requiredSections = ['#proof-points', '#contact', '#about', '#advantage'];
-      requiredSections.forEach(sectionId => {
-        if (!document.querySelector(sectionId)) {
-          console.warn(`Missing section: ${sectionId}`);
-        }
-      });
     });
   </script>
 </body>
