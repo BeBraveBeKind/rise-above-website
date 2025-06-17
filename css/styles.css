@@ -1504,3 +1504,19 @@ footer {
     position: relative !important;
   }
 }
+/* DEFINITIVE HERO BUTTON FIX */
+.hero .btn,
+.hero-content .btn,
+.hero-content a.btn {
+  position: relative !important;
+  z-index: 999999 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  isolation: isolate !important;
+}
+
+.hero-overlay,
+.hero::before,
+.hero::after {
+  pointer-events: none !important;
+}
