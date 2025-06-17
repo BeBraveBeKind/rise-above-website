@@ -1440,3 +1440,67 @@ footer {
   outline: 2px solid red !important;
 }
 */
+
+/* FIX 6: Prevent H3 and other headings from blocking hero buttons */
+.hero h1,
+.hero h2,
+.hero h3,
+.hero h4,
+.hero h5,
+.hero h6,
+.hero-content h1,
+.hero-content h2,
+.hero-content h3,
+.hero-content h4,
+.hero-content h5,
+.hero-content h6 {
+  /* Ensure headings don't extend beyond their visual boundaries */
+  position: relative !important;
+  z-index: 1 !important; /* Lower than buttons */
+  pointer-events: none !important; /* Don't intercept clicks */
+  user-select: text !important; /* But allow text selection */
+}
+
+/* Ensure paragraphs also don't block */
+.hero p,
+.hero-content p {
+  position: relative !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+  user-select: text !important;
+}
+
+/* But keep links in paragraphs clickable */
+.hero p a,
+.hero-content p a {
+  pointer-events: auto !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+/* Desktop-specific fix for hero-content */
+@media (min-width: 769px) {
+  .hero-content {
+    pointer-events: none !important;
+  }
+  
+  .hero-content > * {
+    pointer-events: auto !important;
+  }
+  
+  /* Except headings and paragraphs */
+  .hero-content > h1,
+  .hero-content > h2,
+  .hero-content > h3,
+  .hero-content > p {
+    pointer-events: none !important;
+  }
+  
+  /* Buttons must always be clickable */
+  .hero-content > .btn,
+  .hero-content > a.btn {
+    pointer-events: auto !important;
+    z-index: 99999 !important;
+    position: relative !important;
+  }
+}

@@ -181,5 +181,33 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
+  // FIX: Prevent headings from blocking hero buttons
+  function fixHeroHeadings() {
+    // Find all headings in hero sections
+    const heroHeadings = document.querySelectorAll('.hero h1, .hero h2, .hero h3, .hero-content h1, .hero-content h2, .hero-content h3');
+    
+    heroHeadings.forEach(heading => {
+      // Ensure headings don't block buttons
+      heading.style.setProperty('pointer-events', 'none', 'important');
+      heading.style.setProperty('position', 'relative', 'important');
+      heading.style.setProperty('z-index', '1', 'important');
+      
+      console.log('Fixed heading to not block clicks:', heading.tagName);
+    });
+    
+    // Also fix paragraphs
+    const heroParagraphs = document.querySelectorAll('.hero p, .hero-content p');
+    heroParagraphs.forEach(p => {
+      p.style.setProperty('pointer-events', 'none', 'important');
+      p.style.setProperty('z-index', '1', 'important');
+    });
+  }
+  
+  // Run heading fix
+  fixHeroHeadings();
+  
+  // Run again after a delay to catch any dynamic content
+  setTimeout(fixHeroHeadings, 500);
+  
   console.log('✅ main.js setup complete with enhanced handlers!');
 });
