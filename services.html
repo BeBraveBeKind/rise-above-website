@@ -276,15 +276,6 @@
         min-height: 50vh;
       }
     }
-    
-    /* EMERGENCY FIX: Force buttons to be clickable */
-    .btn, .btn-light {
-      pointer-events: auto !important;
-      position: relative !important;
-      z-index: 9999 !important;
-      cursor: pointer !important;
-      display: inline-block !important;
-    }
   </style>
 
   <!-- Structured Data -->
@@ -575,40 +566,6 @@
   </footer>
 
   <!-- Include main.js for enhanced smooth scrolling -->
-  <!-- <script src="js/main.js"></script> -->
-  
-  <!-- DEBUG SCRIPT -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log('🔧 DEBUG: Services page loaded, checking buttons...');
-      
-      // Find all buttons and links
-      const allLinks = document.querySelectorAll('a');
-      console.log('📊 Found', allLinks.length, 'links total');
-      
-      // Add click listeners to all links for debugging
-      allLinks.forEach((link, index) => {
-        link.addEventListener('click', function(e) {
-          console.log('🖱️ CLICK #' + (index + 1) + ':', this.textContent.trim().substring(0, 50));
-          console.log('   href:', this.href);
-          console.log('   classes:', this.className);
-          
-          // Show popup for debugging
-          alert('Link clicked: ' + this.href);
-        });
-      });
-      
-      // Check for the services hero button
-      const heroButton = document.querySelector('a[href="#services-grid"]');
-      const servicesGrid = document.getElementById('services-grid');
-      
-      console.log('🎯 Services hero button found:', heroButton ? 'YES' : 'NO');
-      console.log('🎯 Services grid section found:', servicesGrid ? 'YES' : 'NO');
-      
-      if (heroButton) {
-        console.log('   Button text:', heroButton.textContent.trim());
-      }
-    });
-  </script>
+  <script src="js/main.js"></script>
 </body>
 </html>
