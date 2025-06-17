@@ -1,199 +1,154 @@
-// ENHANCED: Perfect smooth scrolling with history support
+// ENHANCED main.js - Fixed mobile navigation and button handling
 document.addEventListener('DOMContentLoaded', function() {
   console.log('🚀 main.js loaded successfully!');
   
-  // Mobile menu toggle
+  // Mobile menu toggle - ENHANCED with better state management
   const menuToggle = document.querySelector('.menu-toggle');
   const navLinks = document.querySelector('.nav-links');
+  let menuOpen = false;
   
   if (menuToggle && navLinks) {
+    // Toggle menu function
+    function toggleMenu(forceClose = false) {
+      if (forceClose || menuOpen) {
+        // Close menu
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        menuOpen = false;
+        console.log('📍 Menu closed');
+      } else {
+        // Open menu
+        menuToggle.classList.add('active');
+        navLinks.classList.add('active');
+        menuOpen = true;
+        console.log('🍔 Menu opened');
+      }
+    }
+    
+    // Menu toggle click
     menuToggle.addEventListener('click', function(e) {
-      e.stopPropagation(); // Prevent event bubbling
-      console.log('🍔 Menu toggle clicked');
-      menuToggle.classList.toggle('active');
-      navLinks.classList.toggle('active');
+      e.preventDefault();
+      e.stopPropagation();
+      toggleMenu();
     });
 
     // Close menu when clicking outside
     document.addEventListener('click', function(e) {
-      // Check if click is outside menu and toggle
-      if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
-        if (navLinks.classList.contains('active')) {
-          console.log('📍 Clicked outside menu - closing');
-          menuToggle.classList.remove('active');
-          navLinks.classList.remove('active');
-        }
+      // Don't close if clicking inside nav or toggle
+      if (!menuToggle.contains(e.target) && !navLinks.contains(e.target) && menuOpen) {
+        toggleMenu(true);
       }
     });
 
-    // Prevent clicks inside navLinks from closing the menu
+    // Close on nav link click
+    const navLinkElements = navLinks.querySelectorAll('a');
+    navLinkElements.forEach(link => {
+      link.addEventListener('click', function(e) {
+        console.log('🔗 Nav link clicked:', this.href);
+        // Always close menu on link click
+        toggleMenu(true);
+        // Don't prevent default - let the link work normally
+      });
+    });
+    
+    // Prevent menu from closing when clicking inside it (except on links)
     navLinks.addEventListener('click', function(e) {
-      // Only close if clicking on a link, not the container
-      if (e.target.tagName === 'A') {
-        console.log('🔗 Nav link clicked - closing menu');
-        menuToggle.classList.remove('active');
-        navLinks.classList.remove('active');
+      if (e.target.tagName !== 'A') {
+        e.stopPropagation();
       }
     });
   }
 
-  // ENHANCED: Perfect smooth scrolling with proper history management
-  function smoothScrollToElement(targetElement, updateHistory = true) {
-    if (!targetElement) return false;
+  // ENHANCED: Button click handler for hero buttons
+  document.addEventListener('click', function(e) {
+    // Check if we clicked a button or link
+    const clickedElement = e.target;
+    const link = clickedElement.closest('a');
+    const button = clickedElement.closest('.btn');
     
-    console.log('📍 Scrolling to element:', targetElement.id || targetElement.tagName);
-    
-    // Close mobile menu if open
-    if (menuToggle && menuToggle.classList.contains('active')) {
-      menuToggle.classList.remove('active');
-      navLinks.classList.remove('active');
+    // Log all button/link clicks for debugging
+    if (button || link) {
+      console.log('🔘 Button/Link clicked:', {
+        element: button || link,
+        href: (button || link).getAttribute('href'),
+        classes: (button || link).className,
+        tagName: (button || link).tagName
+      });
     }
     
-    // Calculate proper header height dynamically
-    const header = document.querySelector('header');
-    const headerHeight = header ? header.offsetHeight : (window.innerWidth <= 768 ? 84 : 100);
-    const extraBuffer = 30; // Extra breathing room
+    if (!link) return;
     
-    // Calculate target position
-    const targetPosition = Math.max(0, targetElement.offsetTop - headerHeight - extraBuffer);
+    const href = link.getAttribute('href');
+    if (!href) return;
     
-    // Update browser history if requested
-    if (updateHistory && targetElement.id) {
-      const newUrl = window.location.pathname + window.location.search + '#' + targetElement.id;
-      window.history.pushState({scrollTop: window.pageYOffset}, '', newUrl);
+    // Handle anchor links
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const targetId = href.substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        console.log('✅ Scrolling to section:', targetId);
+        scrollToElement(targetElement);
+      } else {
+        console.error('❌ Target section not found:', targetId);
+      }
+    } else if (href.includes('#') && !href.startsWith('http')) {
+      // Cross-page anchor (like services.html#services-grid)
+      console.log('📍 Cross-page navigation:', href);
+      // Let browser handle it naturally
     }
+  });
+  
+  // Enhanced scroll function with better offset calculation
+  function scrollToElement(element) {
+    const headerHeight = document.querySelector('header').offsetHeight || 120;
+    const targetPosition = element.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
     
-    // Perform smooth scroll
     window.scrollTo({
       top: targetPosition,
       behavior: 'smooth'
     });
-    
-    console.log('✓ Smooth scroll to:', targetElement.id || targetElement.tagName, 'Position:', targetPosition);
-    return true;
   }
   
-  // Setup smooth scrolling for all anchor links
-  function setupSmoothScrolling() {
-    // Use event delegation for better performance and dynamic content
-    document.addEventListener('click', function(e) {
-      // Find the closest anchor tag (in case we clicked on something inside the anchor)
-      const anchor = e.target.closest('a[href^="#"]');
-      
-      if (!anchor) return;
-      
-      console.log('🖱️ Anchor clicked:', anchor.textContent.trim(), 'href:', anchor.getAttribute('href'));
-      
-      const targetId = anchor.getAttribute('href');
-      
-      // Skip empty or just # links
-      if (targetId === '#' || targetId === '') {
-        console.log('⚠️ Empty href, skipping');
-        return;
-      }
-      
-      // Prevent default behavior
-      e.preventDefault();
-      
-      // Clean up the target ID
-      let elementId = targetId;
-      if (targetId.includes('/#')) {
-        elementId = targetId.split('/#')[1];
-        elementId = '#' + elementId;
-      }
-      
-      // Remove the # for querySelector
-      elementId = elementId.replace('#', '');
-      
-      console.log('🎯 Looking for element with ID:', elementId);
-      
-      // Find the target element
-      const targetElement = document.getElementById(elementId) || document.querySelector('#' + elementId);
+  // Handle hash on page load
+  window.addEventListener('load', function() {
+    if (window.location.hash) {
+      const targetId = window.location.hash.substring(1);
+      const targetElement = document.getElementById(targetId);
       
       if (targetElement) {
-        console.log('✅ Found target element:', targetElement.tagName, 'id="' + targetElement.id + '"');
-        smoothScrollToElement(targetElement, true);
-      } else {
-        console.warn('❌ Target element not found:', targetId);
-        
-        // Try alternative selectors as fallback
-        const alternatives = [
-          `[data-section="${elementId}"]`,
-          `[name="${elementId}"]`,
-          `.${elementId}`
-        ];
-        
-        for (let selector of alternatives) {
-          const altElement = document.querySelector(selector);
-          if (altElement) {
-            console.log('✅ Found alternative target:', selector);
-            smoothScrollToElement(altElement, true);
-            return;
-          }
-        }
-        
-        console.log('💡 Available elements with IDs:');
-        document.querySelectorAll('[id]').forEach(el => {
-          console.log('  - #' + el.id, '(' + el.tagName + ')');
-        });
-      }
-    });
-  }
-  
-  // Handle browser back/forward buttons
-  window.addEventListener('popstate', function(event) {
-    if (event.state && typeof event.state.scrollTop === 'number') {
-      // Restore previous scroll position without updating history
-      setTimeout(() => {
-        window.scrollTo({
-          top: event.state.scrollTop,
-          behavior: 'smooth'
-        });
-      }, 50);
-    } else if (window.location.hash) {
-      // Navigate to hash without updating history
-      const targetElement = document.querySelector(window.location.hash);
-      if (targetElement) {
+        console.log('📍 Scrolling to hash on load:', targetId);
+        // Small delay to ensure page is fully loaded
         setTimeout(() => {
-          smoothScrollToElement(targetElement, false);
-        }, 50);
+          scrollToElement(targetElement);
+        }, 300);
       }
     }
   });
   
-  // Initialize smooth scrolling
-  console.log('🔧 Setting up smooth scrolling...');
-  setupSmoothScrolling();
+  // ENHANCED: Ensure hero buttons are clickable
+  // Force pointer events on all buttons
+  const allButtons = document.querySelectorAll('.btn, .btn-primary, .btn-light, .innovation-link');
+  allButtons.forEach(btn => {
+    btn.style.pointerEvents = 'auto';
+    btn.style.cursor = 'pointer';
+    btn.style.position = 'relative';
+    btn.style.zIndex = '999';
+    
+    // Add click handler for debugging
+    btn.addEventListener('click', function(e) {
+      console.log('✅ Button clicked successfully:', this.href || this.textContent);
+    });
+  });
   
-  // Handle page load with hash
-  if (window.location.hash) {
-    setTimeout(() => {
-      const targetElement = document.querySelector(window.location.hash);
-      if (targetElement) {
-        smoothScrollToElement(targetElement, false);
-      }
-    }, 500); // Wait for page to fully load
+  // Touch event support for mobile
+  if ('ontouchstart' in window) {
+    menuToggle?.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+      toggleMenu();
+    });
   }
   
-  // Debug function (can be called from console)
-  window.debugSections = function() {
-    console.log('=== AVAILABLE SECTIONS ===');
-    const allIds = document.querySelectorAll('[id]');
-    allIds.forEach(el => {
-      console.log('✓ #' + el.id, '(' + el.tagName + ')', 'Offset:', el.offsetTop);
-    });
-    
-    const allAnchors = document.querySelectorAll('a[href^="#"]');
-    console.log('\n=== ANCHOR LINKS ===');
-    allAnchors.forEach(anchor => {
-      console.log('→', anchor.getAttribute('href'), '(' + anchor.textContent.trim().substring(0, 30) + '...)');
-    });
-    console.log('========================');
-  };
-  
-  // Run initial debug
-  console.log('🔍 Running initial debug...');
-  window.debugSections();
-  
-  console.log('✅ main.js setup complete!');
+  console.log('✅ main.js setup complete with enhanced handlers!');
 });
