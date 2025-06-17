@@ -1177,7 +1177,7 @@ footer {
   .timeline-step:nth-child(odd),
   .timeline-step:nth-child(even) {
     padding-left: 70px !important;
-    padding-right: 1rem !important;
+    padding-right: 1rem !important;v
     text-align: left !important;
   }
   
@@ -1504,19 +1504,139 @@ footer {
     position: relative !important;
   }
 }
-/* DEFINITIVE HERO BUTTON FIX */
-.hero .btn,
-.hero-content .btn,
-.hero-content a.btn {
-  position: relative !important;
-  z-index: 999999 !important;
-  pointer-events: auto !important;
-  cursor: pointer !important;
-  isolation: isolate !important;
+/* ===== ULTRA-WIDE LAYOUT FIXES ===== */
+
+/* FIX 1: Constrain all content properly on ultra-wide screens */
+@media (min-width: 1600px) {
+  /* Ensure all containers have max-width */
+  .container,
+  .section .container,
+  .proof-points .container,
+  .methodology .container,
+  .advantage .container,
+  .about .container,
+  .innovation .container,
+  .contact .container,
+  footer .container {
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+    padding: 0 3rem !important;
+  }
+  
+  /* Fix grant success showcase width */
+  .grant-success-showcase {
+    max-width: 1400px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 0 3rem !important;
+  }
+  
+  /* Constrain the grant image properly */
+  .grant-success-image {
+    max-width: 900px !important; /* Reasonable max width for ultra-wide */
+    width: auto !important; /* Don't force 100% width */
+    height: auto !important;
+    margin: 0 auto !important; /* Center it */
+    display: block !important;
+  }
+  
+  /* Fix innovation grid items */
+  .innovation-grid {
+    max-width: 1200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  /* Fix advantage grid */
+  .advantage-grid {
+    max-width: 1000px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  /* Fix timeline container */
+  .timeline-container {
+    max-width: 1200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
 }
 
-.hero-overlay,
-.hero::before,
-.hero::after {
-  pointer-events: none !important;
+/* Extra wide screens (2000px+) - additional constraints */
+@media (min-width: 2000px) {
+  .container {
+    max-width: 1600px !important;
+    padding: 0 4rem !important;
+  }
+  
+  .grant-success-image {
+    max-width: 1000px !important;
+  }
+}
+
+/* ===== HERO BUTTON DESKTOP FIXES ===== */
+
+/* FIX 2: Make hero buttons ALWAYS clickable on desktop */
+@media (min-width: 769px) {
+  /* Remove pointer-events blocking from hero content container */
+  .hero-content,
+  .home-hero .hero-content,
+  .services-hero .hero-content,
+  .grants-hero .hero-content {
+    pointer-events: none !important; /* Container doesn't capture clicks */
+  }
+  
+  /* But allow all children to be interactive */
+  .hero-content > * {
+    pointer-events: auto !important;
+  }
+  
+  /* Ensure buttons are absolutely clickable with maximum specificity */
+  .hero .btn,
+  .hero a.btn,
+  .hero-content .btn,
+  .hero-content a.btn,
+  .home-hero .btn,
+  .home-hero a.btn,
+  .services-hero .btn,
+  .services-hero a.btn,
+  .grants-hero .btn,
+  .grants-hero a.btn {
+    pointer-events: auto !important;
+    position: relative !important;
+    z-index: 99999 !important;
+    cursor: pointer !important;
+    display: inline-block !important;
+    isolation: isolate !important;
+  }
+}
+
+/* FIX 3: Improved smooth scrolling with better offset */
+html {
+  scroll-behavior: smooth !important;
+}
+
+/* Desktop-specific scroll padding */
+@media (min-width: 769px) {
+  html {
+    scroll-padding-top: 140px !important; /* More padding for desktop header */
+  }
+  
+  *[id] {
+    scroll-margin-top: 140px !important;
+  }
+}
+
+/* FIX 4: Additional specificity for stubborn elements */
+.hero-content h1,
+.hero-content p {
+  user-select: text !important; /* Allow text selection */
+  cursor: text !important; /* Show text cursor */
+}
+
+/* But ensure they don't block button clicks */
+.hero-content h1,
+.hero-content p {
+  position: relative !important;
+  z-index: 1 !important; /* Lower than buttons */
 }
