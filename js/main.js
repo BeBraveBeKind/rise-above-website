@@ -1,213 +1,64 @@
-// ENHANCED main.js - Fixed mobile navigation and button handling
+// Simplified main.js - Clean, minimal approach
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('🚀 main.js loaded successfully!');
-  
-  // Mobile menu toggle - ENHANCED with better state management
+  // Mobile menu toggle
   const menuToggle = document.querySelector('.menu-toggle');
   const navLinks = document.querySelector('.nav-links');
-  let menuOpen = false;
   
   if (menuToggle && navLinks) {
-    // Toggle menu function
-    function toggleMenu(forceClose = false) {
-      if (forceClose || menuOpen) {
-        // Close menu
-        menuToggle.classList.remove('active');
-        navLinks.classList.remove('active');
-        menuOpen = false;
-        console.log('📍 Menu closed');
-      } else {
-        // Open menu
-        menuToggle.classList.add('active');
-        navLinks.classList.add('active');
-        menuOpen = true;
-        console.log('🍔 Menu opened');
-      }
-    }
-    
-    // Menu toggle click
     menuToggle.addEventListener('click', function(e) {
       e.preventDefault();
-      e.stopPropagation();
-      toggleMenu();
+      menuToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
     });
 
-    // Close menu when clicking outside
-    document.addEventListener('click', function(e) {
-      // Don't close if clicking inside nav or toggle
-      if (!menuToggle.contains(e.target) && !navLinks.contains(e.target) && menuOpen) {
-        toggleMenu(true);
-      }
-    });
-
-    // Close on nav link click
+    // Close menu when clicking a nav link
     const navLinkElements = navLinks.querySelectorAll('a');
     navLinkElements.forEach(link => {
-      link.addEventListener('click', function(e) {
-        console.log('🔗 Nav link clicked:', this.href);
-        // Always close menu on link click
-        toggleMenu(true);
-        // Don't prevent default - let the link work normally
+      link.addEventListener('click', function() {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
       });
-    });
-    
-    // Prevent menu from closing when clicking inside it (except on links)
-    navLinks.addEventListener('click', function(e) {
-      if (e.target.tagName !== 'A') {
-        e.stopPropagation();
-      }
     });
   }
 
-  // ENHANCED: Button click handler for hero buttons
+  // Smooth scrolling for anchor links
   document.addEventListener('click', function(e) {
-    // Check if we clicked a button or link
-    const clickedElement = e.target;
-    const link = clickedElement.closest('a');
-    const button = clickedElement.closest('.btn');
-    
-    // Log all button/link clicks for debugging
-    if (button || link) {
-      console.log('🔘 Button/Link clicked:', {
-        element: button || link,
-        href: (button || link).getAttribute('href'),
-        classes: (button || link).className,
-        tagName: (button || link).tagName
-      });
-    }
-    
+    const link = e.target.closest('a');
     if (!link) return;
     
     const href = link.getAttribute('href');
-    if (!href) return;
+    if (!href || !href.startsWith('#')) return;
     
-    // Handle anchor links
-    if (href.startsWith('#')) {
+    const targetId = href.substring(1);
+    const targetElement = document.getElementById(targetId);
+    
+    if (targetElement) {
       e.preventDefault();
-      const targetId = href.substring(1);
-      const targetElement = document.getElementById(targetId);
+      const headerHeight = document.querySelector('header').offsetHeight || 100;
+      const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
       
-      if (targetElement) {
-        console.log('✅ Scrolling to section:', targetId);
-        scrollToElement(targetElement);
-      } else {
-        console.error('❌ Target section not found:', targetId);
-      }
-    } else if (href.includes('#') && !href.startsWith('http')) {
-      // Cross-page anchor (like services.html#services-grid)
-      console.log('📍 Cross-page navigation:', href);
-      // Let browser handle it naturally
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
     }
   });
   
-  // Enhanced scroll function with better offset calculation
-  function scrollToElement(element) {
-    const headerHeight = document.querySelector('header').offsetHeight || 120;
-    const targetPosition = element.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
-    
-    window.scrollTo({
-      top: targetPosition,
-      behavior: 'smooth'
-    });
-  }
-  
   // Handle hash on page load
-  window.addEventListener('load', function() {
-    if (window.location.hash) {
+  if (window.location.hash) {
+    setTimeout(() => {
       const targetId = window.location.hash.substring(1);
       const targetElement = document.getElementById(targetId);
       
       if (targetElement) {
-        console.log('📍 Scrolling to hash on load:', targetId);
-        // Small delay to ensure page is fully loaded
-        setTimeout(() => {
-          scrollToElement(targetElement);
-        }, 300);
+        const headerHeight = document.querySelector('header').offsetHeight || 100;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
       }
-    }
-  });
-  
-  // ENHANCED: Ensure hero buttons are clickable - DESKTOP FIX
-  // Force pointer events on all buttons with more aggressive targeting
-  const allButtons = document.querySelectorAll('.btn, .btn-primary, .btn-light, .innovation-link, .hero .btn, .hero-content .btn, .hero-content a');
-  allButtons.forEach(btn => {
-    // Force inline styles to override everything
-    btn.style.setProperty('pointer-events', 'auto', 'important');
-    btn.style.setProperty('cursor', 'pointer', 'important');
-    btn.style.setProperty('position', 'relative', 'important');
-    btn.style.setProperty('z-index', '9999', 'important');
-    btn.style.setProperty('display', 'inline-block', 'important');
-    
-    // Remove any click blockers
-    btn.onclick = null; // Clear any existing onclick
-    
-    // Add click handler for debugging
-    btn.addEventListener('click', function(e) {
-      console.log('✅ Button clicked successfully:', this.href || this.textContent);
-      // Don't stop propagation - let the click through
-    }, false);
-    
-    // Also add mousedown/mouseup for better responsiveness
-    btn.addEventListener('mousedown', function(e) {
-      console.log('🖱️ Mouse down on button');
-    });
-    
-    btn.addEventListener('mouseup', function(e) {
-      console.log('🖱️ Mouse up on button');
-    });
-  });
-  
-  // DESKTOP SPECIFIC: Ensure hero containers don't block on desktop
-  if (window.innerWidth > 768) {
-    const heroContents = document.querySelectorAll('.hero-content');
-    heroContents.forEach(container => {
-      container.style.setProperty('pointer-events', 'auto', 'important');
-    });
+    }, 100);
   }
-  
-  // Remove any overlays that might block clicks
-  const overlays = document.querySelectorAll('.hero-overlay, .hero::before');
-  overlays.forEach(overlay => {
-    if (overlay) {
-      overlay.style.setProperty('pointer-events', 'none', 'important');
-    }
-  });
-  
-  // Touch event support for mobile
-  if ('ontouchstart' in window) {
-    menuToggle?.addEventListener('touchstart', function(e) {
-      e.preventDefault();
-      toggleMenu();
-    });
-  }
-  
-  // FIX: Prevent headings from blocking hero buttons
-  function fixHeroHeadings() {
-    // Find all headings in hero sections
-    const heroHeadings = document.querySelectorAll('.hero h1, .hero h2, .hero h3, .hero-content h1, .hero-content h2, .hero-content h3');
-    
-    heroHeadings.forEach(heading => {
-      // Ensure headings don't block buttons
-      heading.style.setProperty('pointer-events', 'none', 'important');
-      heading.style.setProperty('position', 'relative', 'important');
-      heading.style.setProperty('z-index', '1', 'important');
-      
-      console.log('Fixed heading to not block clicks:', heading.tagName);
-    });
-    
-    // Also fix paragraphs
-    const heroParagraphs = document.querySelectorAll('.hero p, .hero-content p');
-    heroParagraphs.forEach(p => {
-      p.style.setProperty('pointer-events', 'none', 'important');
-      p.style.setProperty('z-index', '1', 'important');
-    });
-  }
-  
-  // Run heading fix
-  fixHeroHeadings();
-  
-  // Run again after a delay to catch any dynamic content
-  setTimeout(fixHeroHeadings, 500);
-  
-  console.log('✅ main.js setup complete with enhanced handlers!');
 });

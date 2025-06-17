@@ -95,11 +95,11 @@
       }
     }
     
-    /* KEEP: Ensure buttons are clickable */
+    /* Clean button fix - moderate z-index values */
     .btn, .innovation-link {
       pointer-events: auto !important;
       position: relative !important;
-      z-index: 999 !important;
+      z-index: 10 !important; /* Moderate value instead of 999 */
       cursor: pointer !important;
     }
   </style>
@@ -499,47 +499,6 @@
 
   <!-- Include Main JavaScript for Smooth Scrolling -->
   <script src="js/main.js"></script>
-<style>
-/* NUCLEAR CSS OVERRIDE - This will definitely work */
-.hero *:not(.btn):not(a) {
-  pointer-events: none !important;
-}
 
-.hero .btn,
-.hero a.btn,
-.hero-content .btn,
-.hero-content a.btn,
-.hero-content > a,
-a.btn-light,
-a.btn-primary,
-.btn-light,
-.btn-primary {
-  pointer-events: auto !important;
-  position: relative !important;
-  z-index: 2147483647 !important; /* Maximum possible z-index */
-  cursor: pointer !important;
-  display: inline-block !important;
-  transform: translateZ(1000px) !important; /* Force to front in 3D space */
-  isolation: isolate !important;
-}
-
-/* Kill all transforms on parent elements that might affect stacking */
-.hero,
-.hero-content,
-.hero-overlay,
-.hero-background {
-  transform: none !important;
-  transform-style: flat !important;
-}
-
-/* Ensure nothing can be on top */
-.hero::before,
-.hero::after,
-.hero-content::before,
-.hero-content::after {
-  pointer-events: none !important;
-  z-index: -1 !important;
-}
-</style>
 </body>
 </html>

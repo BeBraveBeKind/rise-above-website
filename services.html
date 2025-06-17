@@ -277,11 +277,11 @@
       }
     }
     
-    /* KEEP: Force buttons to be clickable */
+    /* Clean button fix - moderate z-index values */
     .btn, .btn-light {
       pointer-events: auto !important;
       position: relative !important;
-      z-index: 9999 !important;
+      z-index: 10 !important; /* Moderate value instead of 9999 */
       cursor: pointer !important;
       display: inline-block !important;
     }
