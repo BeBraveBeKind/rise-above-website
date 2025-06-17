@@ -298,6 +298,38 @@ header {
   }
 }
 
+/* FIX: Medium viewport navigation issues */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .nav-links {
+    gap: 1.5rem; /* Reduce gap to prevent overflow */
+  }
+  
+  .nav-links a {
+    font-size: 0.9rem; /* Slightly smaller text */
+  }
+  
+  .nav-links .btn {
+    padding: 0.8rem 2rem !important; /* Smaller button padding */
+  }
+}
+
+/* Prevent nav overflow at all desktop sizes */
+@media (min-width: 769px) {
+  .navbar {
+    flex-wrap: nowrap; /* Prevent wrapping */
+  }
+  
+  .nav-links {
+    flex-shrink: 1; /* Allow nav to shrink if needed */
+    min-width: 0; /* Allow flex items to shrink below content size */
+  }
+  
+  .logo {
+    flex-shrink: 0; /* Logo should never shrink */
+    margin-right: 2rem; /* Ensure space between logo and nav */
+  }
+}
+
 .nav-links a {
   text-decoration: none;
   color: var(--dark);
@@ -340,6 +372,34 @@ header {
   z-index: 1002;
   position: relative;
   flex-shrink: 0; /* Prevent menu toggle from shrinking */
+}
+
+/* Show mobile menu at larger breakpoint if nav doesn't fit */
+@media (max-width: 950px) {
+  .menu-toggle {
+    display: flex;
+  }
+  
+  .nav-links {
+    position: fixed;
+    top: 84px;
+    left: 0;
+    right: 0;
+    background: hsla(var(--glass-h), var(--glass-s), 98%, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    flex-direction: column;
+    padding: 2rem !important;
+    transform: translateY(-100vh);
+    transition: transform 0.3s ease;
+    z-index: 999;
+    gap: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nav-links.active {
+    transform: translateY(0);
+  }
 }
 
 .menu-toggle span {
