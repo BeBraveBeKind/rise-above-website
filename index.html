@@ -94,6 +94,14 @@
         min-height: 50vh;
       }
     }
+    
+    /* DEBUG: Ensure buttons are clickable */
+    .btn, .innovation-link {
+      pointer-events: auto !important;
+      position: relative !important;
+      z-index: 999 !important;
+      cursor: pointer !important;
+    }
   </style>
 
   <!-- Structured Data -->
@@ -485,7 +493,40 @@
     </div>
   </footer>
 
-  <!-- Include main.js for smooth scrolling -->
-  <script src="/js/main.js"></script>
+  <!-- TEMPORARILY DISABLED FOR DEBUG -->
+  <!-- <script src="/js/main.js"></script> -->
+  
+  <!-- DEBUG SCRIPT -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('🔧 DEBUG: Page loaded, checking buttons...');
+      
+      // Find all buttons and links
+      const allLinks = document.querySelectorAll('a');
+      console.log('📊 Found', allLinks.length, 'links total');
+      
+      // Add click listeners to all links for debugging
+      allLinks.forEach((link, index) => {
+        link.addEventListener('click', function(e) {
+          console.log('🖱️ CLICK #' + (index + 1) + ':', this.textContent.trim().substring(0, 50));
+          console.log('   href:', this.href);
+          console.log('   classes:', this.className);
+          
+          // Don't prevent default - let the link work normally
+          alert('Link clicked: ' + this.href);
+        });
+      });
+      
+      // List all the important buttons
+      const heroButton = document.querySelector('a[href="#proof-points"]');
+      const servicesButton = document.querySelector('a[href="/services.html"]');
+      const grantsButton = document.querySelector('a[href="/grants.html"]');
+      
+      console.log('🎯 Key buttons found:');
+      console.log('   Hero button:', heroButton ? 'YES' : 'NO');
+      console.log('   Services button:', servicesButton ? 'YES' : 'NO');
+      console.log('   Grants button:', grantsButton ? 'YES' : 'NO');
+    });
+  </script>
 </body>
 </html>
