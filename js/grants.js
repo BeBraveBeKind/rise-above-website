@@ -15,50 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
     loadGrantsData();
     setupFilters();
   }
-  
-  // ENHANCED: Smooth scrolling for grants page
-  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      
-      let targetId = this.getAttribute('href');
-      
-      // Skip empty or just # links
-      if (targetId === '#' || targetId === '') return;
-      
-      console.log('Grants page: Looking for target:', targetId);
-      
-      // Wait a moment for DOM to be ready
-      setTimeout(() => {
-        const targetElement = document.querySelector(targetId);
-        
-        if (targetElement) {
-          // Calculate proper header height
-          const header = document.querySelector('header');
-          const headerHeight = header ? header.offsetHeight : (window.innerWidth <= 768 ? 80 : 100);
-          const extraBuffer = 20; // Extra breathing room
-          
-          // Calculate target position
-          const targetPosition = targetElement.offsetTop - headerHeight - extraBuffer;
-          
-          // Smooth scroll with fallback
-          if ('scrollBehavior' in document.documentElement.style) {
-            window.scrollTo({
-              top: Math.max(0, targetPosition),
-              behavior: 'smooth'
-            });
-          } else {
-            // Fallback for older browsers
-            window.scrollTo(0, Math.max(0, targetPosition));
-          }
-          
-          console.log('Grants page: Scrolling to:', targetId, 'Header height:', headerHeight, 'Target position:', targetPosition);
-        } else {
-          console.warn('Grants page: Target element not found:', targetId);
-        }
-      }, 50); // Small delay to ensure DOM is ready
-    });
-  });
 });
 
 // Load grants data from Google Sheets
