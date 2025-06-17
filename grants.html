@@ -553,35 +553,32 @@
     </div>
   </footer>
 
-  <!-- Working Script - No Popups -->
+  <!-- Original Working Script - Just Removed Alert -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      console.log('🔧 DEBUG: Grants page loaded, checking buttons...');
+      
       // Find all buttons and links
       const allLinks = document.querySelectorAll('a');
+      console.log('📊 Found', allLinks.length, 'links total');
       
-      // Add click listeners for smooth scrolling
-      allLinks.forEach((link) => {
-        if (link.getAttribute('href') && link.getAttribute('href').startsWith('#')) {
-          link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-              // Calculate header height
-              const header = document.querySelector('header');
-              const headerHeight = header ? header.offsetHeight : 100;
-              const targetPosition = Math.max(0, targetElement.offsetTop - headerHeight - 30);
-              
-              // Smooth scroll
-              window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-              });
-            }
-          });
-        }
+      // Add click listeners to all links for debugging
+      allLinks.forEach((link, index) => {
+        link.addEventListener('click', function(e) {
+          console.log('🖱️ CLICK #' + (index + 1) + ':', this.textContent.trim().substring(0, 50));
+          console.log('   href:', this.href);
+          console.log('   classes:', this.className);
+          
+          // REMOVED: alert('Link clicked: ' + this.href);
+        });
       });
+      
+      // Check for the Browse Current Opportunities button
+      const browseButton = document.querySelector('a[href="#grants-database"]');
+      console.log('🎯 Browse button found:', browseButton ? 'YES' : 'NO');
+      if (browseButton) {
+        console.log('   Button text:', browseButton.textContent.trim());
+      }
     });
   </script>
 </body>

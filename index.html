@@ -493,35 +493,97 @@
     </div>
   </footer>
 
-  <!-- Working Script - No Popups -->
+  <!-- Original Working Script - Just Removed Alert -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      console.log('🔧 DEBUG: Page loaded, checking buttons...');
+      
+      // Mobile menu toggle
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+          menuToggle.classList.toggle('active');
+          navLinks.classList.toggle('active');
+        });
+      }
+
+      // Smooth scrolling function
+      function smoothScrollToElement(targetElement, updateHistory = true) {
+        if (!targetElement) return false;
+        
+        console.log('📍 Scrolling to element:', targetElement.id || targetElement.tagName);
+        
+        // Close mobile menu if open
+        if (menuToggle && menuToggle.classList.contains('active')) {
+          menuToggle.classList.remove('active');
+          navLinks.classList.remove('active');
+        }
+        
+        // Calculate proper header height dynamically
+        const header = document.querySelector('header');
+        const headerHeight = header ? header.offsetHeight : (window.innerWidth <= 768 ? 84 : 100);
+        const extraBuffer = 30; // Extra breathing room
+        
+        // Calculate target position
+        const targetPosition = Math.max(0, targetElement.offsetTop - headerHeight - extraBuffer);
+        
+        // Perform smooth scroll
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+        
+        console.log('✓ Smooth scroll to:', targetElement.id || targetElement.tagName, 'Position:', targetPosition);
+        return true;
+      }
+      
       // Find all buttons and links
       const allLinks = document.querySelectorAll('a');
+      console.log('📊 Found', allLinks.length, 'links total');
       
-      // Add click listeners for smooth scrolling
-      allLinks.forEach((link) => {
-        if (link.getAttribute('href') && link.getAttribute('href').startsWith('#')) {
-          link.addEventListener('click', function(e) {
+      // Add click listeners to all links
+      allLinks.forEach((link, index) => {
+        link.addEventListener('click', function(e) {
+          console.log('🖱️ CLICK #' + (index + 1) + ':', this.textContent.trim().substring(0, 50));
+          console.log('   href:', this.href);
+          console.log('   classes:', this.className);
+          
+          // REMOVED: alert('Link clicked: ' + this.href);
+          
+          let targetId = this.getAttribute('href');
+          
+          // Handle anchor links
+          if (targetId && targetId.startsWith('#') && targetId !== '#') {
             e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
+            
+            // Remove the # for querySelector
+            const elementId = targetId.replace('#', '');
+            console.log('🎯 Looking for element with ID:', elementId);
+            
+            // Find the target element
+            const targetElement = document.getElementById(elementId) || document.querySelector(targetId);
             
             if (targetElement) {
-              // Calculate header height
-              const header = document.querySelector('header');
-              const headerHeight = header ? header.offsetHeight : 100;
-              const targetPosition = Math.max(0, targetElement.offsetTop - headerHeight - 30);
-              
-              // Smooth scroll
-              window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-              });
+              console.log('✅ Found target element:', targetElement.tagName, 'id="' + targetElement.id + '"');
+              smoothScrollToElement(targetElement, true);
+            } else {
+              console.warn('❌ Target element not found:', targetId);
             }
-          });
-        }
+          }
+        });
       });
+      
+      // List all the important buttons
+      const heroButton = document.querySelector('a[href="#proof-points"]');
+      const servicesButton = document.querySelector('a[href="services.html"]');
+      const grantsButton = document.querySelector('a[href="grants.html"]');
+      
+      console.log('🎯 Key buttons found:');
+      console.log('   Hero button:', heroButton ? 'YES' : 'NO');
+      console.log('   Services button:', servicesButton ? 'YES' : 'NO');
+      console.log('   Grants button:', grantsButton ? 'YES' : 'NO');
     });
   </script>
 </body>
