@@ -94,6 +94,14 @@
         min-height: 50vh;
       }
     }
+    
+    /* KEEP: Ensure buttons are clickable */
+    .btn, .innovation-link {
+      pointer-events: auto !important;
+      position: relative !important;
+      z-index: 999 !important;
+      cursor: pointer !important;
+    }
   </style>
 
   <!-- Structured Data -->
@@ -485,7 +493,36 @@
     </div>
   </footer>
 
-  <!-- Include main.js for smooth scrolling -->
-  <script src="js/main.js"></script>
+  <!-- Working Script - No Popups -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Find all buttons and links
+      const allLinks = document.querySelectorAll('a');
+      
+      // Add click listeners for smooth scrolling
+      allLinks.forEach((link) => {
+        if (link.getAttribute('href') && link.getAttribute('href').startsWith('#')) {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+              // Calculate header height
+              const header = document.querySelector('header');
+              const headerHeight = header ? header.offsetHeight : 100;
+              const targetPosition = Math.max(0, targetElement.offsetTop - headerHeight - 30);
+              
+              // Smooth scroll
+              window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+              });
+            }
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
