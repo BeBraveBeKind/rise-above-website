@@ -25,11 +25,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="/images/brand/favicon/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/brand/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/x-icon" href="images/brand/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/brand/favicon/favicon-32x32.png">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="css/styles.css">
 
   <!-- Grants Page Specific Styles -->
   <style>
@@ -390,18 +390,18 @@
     <div class="container">
       <nav class="navbar">
         <a href="/" class="logo">
-          <img src="/images/brand/logomark.svg" alt="Rise Above Partners" class="logo-mark" width="45" height="45">
+          <img src="images/brand/logomark.svg" alt="Rise Above Partners" class="logo-mark" width="45" height="45">
           <div class="logo-text">
             <span>RISE ABOVE</span>
             <span>PARTNERS</span>
           </div>
         </a>
         <div class="nav-links">
-          <a href="/">Home</a>
-          <a href="/services.html">Services</a>
-          <a href="/grants.html" class="nav-active">Grants</a>
-          <a href="/#about">About</a>
-          <a href="/#contact" class="btn btn-primary">Get Started</a>
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="grants.html" class="nav-active">Grants</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#contact" class="btn btn-primary">Get Started</a>
         </div>
         <div class="menu-toggle">
           <span></span><span></span><span></span>
@@ -495,7 +495,7 @@
           </div>
         </div>
 
-        <a href="#contact" class="btn btn-primary" style="font-size: 1.1rem; padding: 1.2rem 3rem;">Get Full Database Access</a>
+        <a href="index.html#contact" class="btn btn-primary" style="font-size: 1.1rem; padding: 1.2rem 3rem;">Get Full Database Access</a>
       </div>
     </div>
   </section>
@@ -507,7 +507,7 @@
         <h3>Ready to Find Your Perfect Grant?</h3>
         <p>Ready to get personalized grant opportunities and application strategies? Let's discuss your funding needs.</p>
         
-        <a href="#contact" class="btn btn-primary" style="display: inline-block; margin-top: 1.5rem;">Get Grant Help Today</a>
+        <a href="index.html#contact" class="btn btn-primary" style="display: inline-block; margin-top: 1.5rem;">Get Grant Help Today</a>
       </div>
     </div>
   </section>
@@ -532,18 +532,18 @@
         <div class="footer-col">
           <h4>Services</h4>
           <ul class="footer-links">
-            <li><a href="/services.html">Grant Writing</a></li>
-            <li><a href="/services.html">Content Marketing</a></li>
-            <li><a href="/services.html">Digital Advertising</a></li>
-            <li><a href="/services.html">All Services</a></li>
+            <li><a href="services.html">Grant Writing</a></li>
+            <li><a href="services.html">Content Marketing</a></li>
+            <li><a href="services.html">Digital Advertising</a></li>
+            <li><a href="services.html">All Services</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Connect</h4>
           <ul class="footer-links">
             <li><a href="https://www.linkedin.com/company/86726287">LinkedIn</a></li>
-            <li><a href="/#contact">Get Grant Help</a></li>
-            <li><a href="/">Back to Home</a></li>
+            <li><a href="index.html#contact">Get Grant Help</a></li>
+            <li><a href="index.html">Back to Home</a></li>
           </ul>
         </div>
       </div>
@@ -554,9 +554,39 @@
   </footer>
 
   <!-- Include main.js -->
-  <script src="/js/main.js"></script>
+  <!-- <script src="/js/main.js"></script> -->
+  
+  <!-- DEBUG SCRIPT -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('🔧 DEBUG: Grants page loaded, checking buttons...');
+      
+      // Find all buttons and links
+      const allLinks = document.querySelectorAll('a');
+      console.log('📊 Found', allLinks.length, 'links total');
+      
+      // Add click listeners to all links for debugging
+      allLinks.forEach((link, index) => {
+        link.addEventListener('click', function(e) {
+          console.log('🖱️ CLICK #' + (index + 1) + ':', this.textContent.trim().substring(0, 50));
+          console.log('   href:', this.href);
+          console.log('   classes:', this.className);
+          
+          // Show popup for debugging
+          alert('Link clicked: ' + this.href);
+        });
+      });
+      
+      // Check for the Browse Current Opportunities button
+      const browseButton = document.querySelector('a[href="#grants-database"]');
+      console.log('🎯 Browse button found:', browseButton ? 'YES' : 'NO');
+      if (browseButton) {
+        console.log('   Button text:', browseButton.textContent.trim());
+      }
+    });
+  </script>
   
   <!-- Include grants.js -->
-  <script src="/js/grants.js"></script>
+  <!-- <script src="/js/grants.js"></script> -->
 </body>
 </html>
