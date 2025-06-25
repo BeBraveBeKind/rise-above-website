@@ -167,7 +167,7 @@ function createGrantCard(grant) {
         </div>
       </div>
       <div class="grant-cta">
-        <a href="#contact" class="btn btn-primary">Get Full Details</a>
+        <a href="index.html/#contact" class="btn btn-primary">Get Full Details</a>
       </div>
     </div>
   `;
