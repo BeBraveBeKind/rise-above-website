@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultra-Wide Fix Test - Rise Above Partners</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Debug styles */
+    .debug-info {
+      position: fixed;
+      top: 120px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      z-index: 10000;
+      font-family: monospace;
+      font-size: 14px;
+      max-width: 300px;
+    }
+    
+    .debug-info h3 {
+      margin: 0 0 10px 0;
+      color: #333;
+    }
+    
+    .debug-info p {
+      margin: 5px 0;
+      color: #666;
+    }
+    
+    .debug-info .highlight {
+      color: #6D98BA;
+      font-weight: bold;
+    }
+    
+    /* Visual debug grid */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        repeating-linear-gradient(90deg, rgba(255,0,0,0.1) 0, rgba(255,0,0,0.1) 1px, transparent 1px, transparent 200px),
+        repeating-linear-gradient(0deg, rgba(255,0,0,0.1) 0, rgba(255,0,0,0.1) 1px, transparent 1px, transparent 200px);
+      z-index: 999;
+      pointer-events: none;
+      display: none;
+    }
+    
+    .show-grid .hero::after {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <a href="/" class="logo">
+          <img src="images/brand/logomark.svg" alt="Rise Above Partners" class="logo-mark" width="45" height="45">
+          <div class="logo-text">
+            <span>RISE ABOVE</span>
+            <span>PARTNERS</span>
+          </div>
+        </a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="acceleration.html">Acceleration</a>
+          <a href="grants.html">Grants</a>
+          <a href="contact.html" class="btn btn-primary">Get Started</a>
+        </div>
+        <div class="menu-toggle">
+          <span></span><span></span><span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero home-hero">
+    <picture class="hero-background">
+      <source media="(max-width: 768px)" 
+              srcset="images/hero/hero-mobile.webp" 
+              type="image/webp">
+      <source media="(max-width: 768px)" 
+              srcset="images/hero/hero-mobile.jpg">
+      <source media="(min-width: 769px)" 
+              srcset="images/hero/hero-desktop.webp" 
+              type="image/webp">
+      <source media="(min-width: 769px)" 
+              srcset="images/hero/hero-desktop.jpg">
+      <img src="images/hero/hero-desktop.jpg" 
+           alt="Rural business landscape representing digital opportunity"
+           loading="eager"
+           width="1200"
+           height="800"
+           class="hero-image">
+    </picture>
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <div class="hero-content">
+        <h1>Your Biggest Opportunities Are Hiding In Plain Sight</h1>
+        <p>I help growth-minded leaders uncover untapped revenue streams, secure strategic funding, and build systems that multiply results. Real strategies. Real implementation. Real business acceleration.</p>
+        <a href="#test" class="btn btn-light">Test Navigation Click</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Test Section -->
+  <section id="test" class="section">
+    <div class="container">
+      <h2>Ultra-Wide Fix Test</h2>
+      <p>If the hero background image fills the entire width of your screen and the navigation doesn't overlap, the fixes are working!</p>
+      
+      <h3>Known Issues Fixed:</h3>
+      <ul style="text-align: left; max-width: 800px; margin: 2rem auto;">
+        <li>✅ Hero background image only showing on left half</li>
+        <li>✅ Navigation overlapping hero content</li>
+        <li>✅ Header z-index issues</li>
+        <li>✅ "Opportunities" text orphan</li>
+      </ul>
+      
+      <button onclick="document.body.classList.toggle('show-grid')" class="btn btn-primary" style="margin-top: 2rem;">
+        Toggle Debug Grid
+      </button>
+    </div>
+  </section>
+
+  <!-- Debug Info -->
+  <div class="debug-info">
+    <h3>Display Info</h3>
+    <p>Width: <span class="highlight" id="screen-width">0</span>px</p>
+    <p>Height: <span class="highlight" id="screen-height">0</span>px</p>
+    <p>Viewport: <span class="highlight" id="viewport-size">0x0</span></p>
+    <p>Device Pixel Ratio: <span class="highlight" id="pixel-ratio">1</span></p>
+    <p>Hero BG Width: <span class="highlight" id="hero-width">0</span>px</p>
+    <p>Image Coverage: <span class="highlight" id="image-coverage">0</span>%</p>
+  </div>
+
+  <script>
+    // Debug info
+    function updateDebugInfo() {
+      document.getElementById('screen-width').textContent = window.screen.width;
+      document.getElementById('screen-height').textContent = window.screen.height;
+      document.getElementById('viewport-size').textContent = window.innerWidth + 'x' + window.innerHeight;
+      document.getElementById('pixel-ratio').textContent = window.devicePixelRatio;
+      
+      const heroBackground = document.querySelector('.hero-background');
+      const heroImage = document.querySelector('.hero-image');
+      
+      if (heroBackground) {
+        const bgRect = heroBackground.getBoundingClientRect();
+        document.getElementById('hero-width').textContent = Math.round(bgRect.width);
+        
+        const coverage = Math.round((bgRect.width / window.innerWidth) * 100);
+        document.getElementById('image-coverage').textContent = coverage;
+        
+        // Check if image is covering full width
+        if (coverage < 100) {
+          console.warn('Hero background not covering full width:', coverage + '%');
+        } else {
+          console.log('✅ Hero background covering full width');
+        }
+      }
+    }
+    
+    // Update on load and resize
+    updateDebugInfo();
+    window.addEventListener('resize', updateDebugInfo);
+    
+    // Check for specific issues
+    window.addEventListener('load', () => {
+      const hero = document.querySelector('.hero');
+      const heroBackground = document.querySelector('.hero-background');
+      const header = document.querySelector('header');
+      
+      console.log('=== Ultra-Wide Fix Test Results ===');
+      console.log('Window width:', window.innerWidth);
+      
+      if (hero) {
+        const heroRect = hero.getBoundingClientRect();
+        console.log('Hero width:', heroRect.width);
+        console.log('Hero covers viewport:', heroRect.width >= window.innerWidth);
+      }
+      
+      if (heroBackground) {
+        const bgStyles = window.getComputedStyle(heroBackground);
+        console.log('Background position:', bgStyles.position);
+        console.log('Background width:', bgStyles.width);
+      }
+      
+      if (header) {
+        const headerStyles = window.getComputedStyle(header);
+        console.log('Header z-index:', headerStyles.zIndex);
+      }
+    });
+  </script>
+</body>
+</html>
