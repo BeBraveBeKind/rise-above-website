@@ -406,6 +406,17 @@ header {
 .nav-links a:hover::after { width: 100%; }
 .nav-links a:hover { color: var(--primary); transform: translateY(-1px); }
 
+/* Active page indicator */
+.nav-links a.nav-active { 
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.nav-links a.nav-active::after {
+  width: 100%;
+  opacity: 0.8;
+}
+
 /* FIXED: Mobile Menu with better positioning */
 .menu-toggle {
   display: none;
