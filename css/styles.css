@@ -119,6 +119,19 @@ footer .container {
   padding: 0 1.5rem !important;
 }
 
+/* HERO PICTURE ELEMENT FIX - Ensure picture element expands properly */
+picture.hero-background {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: 0 !important;
+  max-width: none !important;
+  min-width: 100% !important;
+}
+
 @media (min-width: 1024px) and (max-width: 1600px) {
   .container { max-width: 85%; padding: 0 2rem !important; }
 }
@@ -385,7 +398,7 @@ header {
     left: 0;
     right: 0;
     width: 100%;
-    z-index: 2000; /* Higher z-index to stay above hero */
+    z-index: 9999; /* Very high to ensure it's above everything */
     background: hsla(var(--glass-h), var(--glass-s), 98%, 0.98);
   }
   
@@ -398,12 +411,19 @@ header {
   /* Prevent nav from getting scrunched */
   .navbar {
     justify-content: space-between;
-    gap: 3rem;
+    gap: 2rem;
+    width: 100%;
   }
   
   .nav-links {
-    gap: 2.5rem;
+    gap: 2rem;
     flex-shrink: 0;
+    flex-wrap: nowrap;
+  }
+  
+  .nav-links a {
+    white-space: nowrap;
+    padding: 0.5rem 1rem !important;
   }
   
   /* Fix hero padding to account for header */
@@ -416,37 +436,55 @@ header {
     padding-top: calc(10rem + 100px) !important; /* Extra padding on ultra-wide */
   }
   
-  /* Prevent orphan text in headlines */
-  .hero h1 {
-    max-width: 850px !important; /* Wider to prevent orphans */
-    font-size: 3.8rem !important; /* Slightly smaller on ultra-wide */
-    line-height: 1.15 !important;
-    word-spacing: -0.02em; /* Tighter word spacing */
-    letter-spacing: -0.01em; /* Tighter letter spacing */
+  /* Prevent orphan text in headlines - MORE AGGRESSIVE */
+  .hero h1,
+  .home-hero h1 {
+    max-width: 900px !important;
+    font-size: 3.6rem !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.02em !important;
+    word-spacing: -0.05em !important;
+    hyphens: none !important;
+    -webkit-hyphens: none !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
   }
   
   /* Ensure hero content stays properly positioned */
-  .hero-content {
-    max-width: 900px !important;
+  .hero-content,
+  .home-hero .hero-content {
+    max-width: 1000px !important;
     position: relative;
     z-index: 100;
   }
   
-  /* Fix hero background/overlay */
-  .hero-background,
-  .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
+  /* Fix hero paragraph width */
+  .hero p,
+  .home-hero p {
+    max-width: 800px !important;
+  }
+  
+  /* Fix strange blue overlay issue */
+  .hero,
+  .home-hero {
+    overflow: hidden !important;
+  }
+  
+  .hero::before,
+  .home-hero::before {
+    display: none !important; /* Remove any floating elements */
   }
   
   /* Ensure all containers are properly constrained */
   .container,
   .section .container {
     max-width: 1600px !important;
+  }
+  
+  /* Remove any side gradients that might be causing issues */
+  body::before,
+  body::after {
+    display: none !important;
   }
 }
 
@@ -469,47 +507,23 @@ header {
   }
   
   /* Larger but controlled headline size */
-  .hero h1 {
-    max-width: 1000px !important;
-    font-size: 4.2rem !important;
+  .hero h1,
+  .home-hero h1 {
+    max-width: 1100px !important;
+    font-size: 4rem !important;
     line-height: 1.2 !important;
   }
   
   /* Control hero content width */
-  .hero-content {
-    max-width: 1000px !important;
+  .hero-content,
+  .home-hero .hero-content {
+    max-width: 1200px !important;
   }
   
   /* Ensure nav doesn't stretch too much */
   .nav-links {
-    gap: 3rem;
-    max-width: 800px;
-  }
-  
-  /* Add subtle side gradient for visual boundaries */
-  body::before,
-  body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    width: 200px;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-  }
-  
-  body::before {
-    left: 0;
-    background: linear-gradient(to right,
-      hsla(var(--glass-h), var(--glass-s), 92%, 0.3) 0%,
-      transparent 100%);
-  }
-  
-  body::after {
-    right: 0;
-    background: linear-gradient(to left,
-      hsla(var(--glass-h), var(--glass-s), 92%, 0.3) 0%,
-      transparent 100%);
+    gap: 2.5rem;
+    max-width: 900px;
   }
 }
 
@@ -779,6 +793,18 @@ a.btn {
   -webkit-backdrop-filter: blur(20px);
 }
 
+/* Ultra-wide: Remove gradient background when image is present */
+@media (min-width: 1920px) {
+  .hero,
+  .home-hero,
+  .services-hero,
+  .grants-hero,
+  .contact-hero,
+  .acceleration-hero {
+    background: #000 !important; /* Solid dark background as fallback */
+  }
+}
+
 /* DESKTOP HERO IMPROVEMENTS */
 @media (min-width: 769px) {
   .hero,
@@ -865,9 +891,17 @@ a.btn {
   animation: float 20s ease-in-out infinite;
 }
 
+/* Remove problematic floating animation that might cause issues */
 @keyframes float {
   0%, 100% { transform: rotate(0deg) scale(1); }
   50% { transform: rotate(180deg) scale(1.1); }
+}
+
+/* Disable hero::before on ultra-wide to prevent visual issues */
+@media (min-width: 1920px) {
+  .hero::before {
+    display: none !important;
+  }
 }
 
 .hero-background { 
@@ -1594,6 +1628,195 @@ footer {
   
   .hero p {
     font-size: 1.5rem;
+  }
+}
+
+/* FIX: Navigation overlap prevention - MORE COMPREHENSIVE */
+/* Critical breakpoint where nav starts to overlap */
+@media (min-width: 1200px) and (max-width: 1700px) {
+  /* Ensure header has solid background */
+  header {
+    background: hsla(var(--glass-h), var(--glass-s), 98%, 0.98) !important;
+    backdrop-filter: blur(20px);
+    z-index: 10000 !important; /* Very high to ensure it's always on top */
+  }
+  
+  /* Add more padding to header container */
+  header .container {
+    max-width: 95%;
+    padding: 0 2rem !important;
+  }
+  
+  /* Reduce gaps to prevent overlap */
+  .navbar {
+    gap: 1rem;
+  }
+  
+  .nav-links {
+    gap: 1.5rem;
+  }
+  
+  .nav-links a {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.6rem !important;
+  }
+  
+  .nav-links .btn {
+    padding: 0.7rem 1.8rem !important;
+    font-size: 0.8rem;
+  }
+  
+  /* Ensure hero content doesn't overlap with nav */
+  .hero,
+  .home-hero,
+  .services-hero,
+  .grants-hero,
+  .contact-hero,
+  .acceleration-hero {
+    padding-top: calc(9rem + 100px) !important;
+  }
+}
+
+/* COMPREHENSIVE ULTRA-WIDE HERO BACKGROUND FIX - COMPLETE VERSION */
+/* Fix hero background for all ultra-wide screens */
+@media (min-width: 1920px) {
+  /* CRITICAL: Full viewport width hero sections */
+  .hero, 
+  .home-hero, 
+  .services-hero, 
+  .grants-hero,
+  .contact-hero,
+  .acceleration-hero {
+    position: relative !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: calc(-50vw + 50%) !important;
+    margin-right: calc(-50vw + 50%) !important;
+    overflow: hidden !important;
+  }
+  
+  /* CRITICAL: Fix picture element to span full width */
+  .hero picture.hero-background,
+  .home-hero picture.hero-background,
+  .services-hero picture.hero-background,
+  .grants-hero picture.hero-background,
+  .contact-hero picture.hero-background,
+  .acceleration-hero picture.hero-background,
+  .hero .hero-background,
+  .home-hero .hero-background,
+  .services-hero .hero-background,
+  .grants-hero .hero-background,
+  .contact-hero .hero-background,
+  .acceleration-hero .hero-background {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100% !important;
+    max-width: none !important;
+    min-width: 100vw !important;
+    display: block !important;
+    z-index: 0 !important;
+  }
+  
+  /* CRITICAL: Ensure image fills entire container */
+  .hero .hero-image,
+  .home-hero .hero-image,
+  .services-hero .hero-image,
+  .grants-hero .hero-image,
+  .contact-hero .hero-image,
+  .acceleration-hero .hero-image,
+  .hero picture.hero-background img,
+  .home-hero picture.hero-background img,
+  .services-hero picture.hero-background img,
+  .grants-hero picture.hero-background img,
+  .contact-hero picture.hero-background img,
+  .acceleration-hero picture.hero-background img {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100% !important;
+    max-width: none !important;
+    min-width: 100vw !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    display: block !important;
+  }
+  
+  /* Keep overlay full width */
+  .hero .hero-overlay,
+  .home-hero .hero-overlay,
+  .services-hero .hero-overlay,
+  .grants-hero .hero-overlay,
+  .contact-hero .hero-overlay,
+  .acceleration-hero .hero-overlay {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100% !important;
+    z-index: 1 !important;
+  }
+  
+  /* Ensure content stays centered and constrained */
+  .hero .container,
+  .home-hero .container,
+  .services-hero .container,
+  .grants-hero .container,
+  .contact-hero .container,
+  .acceleration-hero .container {
+    position: relative !important;
+    z-index: 2 !important;
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+    padding: 0 2rem !important;
+  }
+}
+
+/* Even wider screens (3440px ultrawide and 4K) */
+@media (min-width: 2560px) {
+  .hero .container,
+  .home-hero .container,
+  .services-hero .container,
+  .grants-hero .container,
+  .contact-hero .container,
+  .acceleration-hero .container {
+    max-width: 1600px;
+  }
+  
+  .hero h1 {
+    font-size: 5rem;
+  }
+  
+  .hero p {
+    font-size: 1.6rem;
+    max-width: 800px;
+  }
+}
+
+/* Super ultra-wide (5K+) */
+@media (min-width: 3840px) {
+  .hero .container,
+  .home-hero .container,
+  .services-hero .container,
+  .grants-hero .container,
+  .contact-hero .container,
+  .acceleration-hero .container {
+    max-width: 1800px;
+  }
+  
+  .hero h1 {
+    font-size: 5.5rem;
+  }
+  
+  .hero p {
+    font-size: 1.8rem;
+    max-width: 900px;
   }
 }
 

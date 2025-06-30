@@ -33,19 +33,7 @@
 
   <!-- Home Page Specific Styles -->
   <style>
-    .home-hero {
-      background: linear-gradient(135deg, 
-        hsla(var(--glass-h), var(--glass-s), 60%, 0.95) 0%, 
-        hsla(var(--glass-h), var(--glass-s), 45%, 0.9) 100%);   
-      padding: calc(8rem + 84px) 0 6rem !important;
-      margin-top: 0 !important;
-      color: var(--white);
-      position: relative;
-      overflow: hidden;
-      min-height: 70vh;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-    }
+    /* All hero styles now in styles.css - keeping only page-specific overrides */
 
     /* DESKTOP HERO FIX */
     @media (min-width: 769px) {
@@ -53,40 +41,47 @@
         padding: calc(8rem + 100px) 0 6rem !important;
       }
     }
-
-    .home-hero .hero-background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
+    
+    /* ULTRA-WIDE FIXES */
+    @media (min-width: 1920px) {
+      .home-hero {
+        padding: calc(10rem + 100px) 0 6rem !important;
+      }
+      
+      /* Fix the headline wrapping */
+      .home-hero h1 {
+        max-width: 900px !important;
+        font-size: 3.6rem !important;
+        line-height: 1.2 !important;
+        letter-spacing: -0.02em !important;
+        word-spacing: -0.05em !important;
+      }
+      
+      .home-hero .hero-content {
+        max-width: 1000px !important;
+      }
+      
+      .home-hero p {
+        max-width: 800px !important;
+      }
+    }
+    
+    @media (min-width: 2560px) {
+      .home-hero {
+        padding: calc(12rem + 100px) 0 6rem !important;
+      }
+      
+      .home-hero h1 {
+        max-width: 1100px !important;
+        font-size: 4rem !important;
+      }
+      
+      .home-hero .hero-content {
+        max-width: 1200px !important;
+      }
     }
 
-    .home-hero .hero-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    .home-hero .hero-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, 
-        hsla(var(--glass-h), var(--glass-s), 30%, 0.1) 0%, 
-        hsla(var(--glass-h), var(--glass-s), 20%, 0.05) 100%);
-      z-index: 1;
-    }
-
-    .home-hero .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 700px;
-    }
+    /* Hero structure styles now in styles.css */
 
     @media (max-width: 768px) {
       .home-hero {
