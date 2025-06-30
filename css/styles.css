@@ -211,6 +211,7 @@ header {
     box-shadow: 0 2px 20px rgba(109, 152, 186, 0.15);
     border-bottom: 1px solid hsla(var(--glass-h), var(--glass-s), 80%, 0.2);
     z-index: 1000; /* Ensure header stays above everything */
+    width: 100%; /* Ensure full width */
   }
 }
 
@@ -372,6 +373,208 @@ header {
   .nav-links .btn {
     padding: 1rem 2.5rem !important;
     font-size: 0.9rem;
+  }
+}
+
+/* ULTRA-WIDE FIX: New constraints for 1920px+ */
+@media (min-width: 1920px) {
+  /* Fix header to prevent logo/CTA bleeding */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 2000; /* Higher z-index to stay above hero */
+    background: hsla(var(--glass-h), var(--glass-s), 98%, 0.98);
+  }
+  
+  /* Constrain container but keep header full width */
+  header .container {
+    max-width: 1600px !important;
+    margin: 0 auto !important;
+  }
+  
+  /* Prevent nav from getting scrunched */
+  .navbar {
+    justify-content: space-between;
+    gap: 3rem;
+  }
+  
+  .nav-links {
+    gap: 2.5rem;
+    flex-shrink: 0;
+  }
+  
+  /* Fix hero padding to account for header */
+  .hero,
+  .home-hero,
+  .services-hero,
+  .grants-hero,
+  .acceleration-hero,
+  .contact-hero {
+    padding-top: calc(10rem + 100px) !important; /* Extra padding on ultra-wide */
+  }
+  
+  /* Prevent orphan text in headlines */
+  .hero h1 {
+    max-width: 850px !important; /* Wider to prevent orphans */
+    font-size: 3.8rem !important; /* Slightly smaller on ultra-wide */
+    line-height: 1.15 !important;
+    word-spacing: -0.02em; /* Tighter word spacing */
+    letter-spacing: -0.01em; /* Tighter letter spacing */
+  }
+  
+  /* Ensure hero content stays properly positioned */
+  .hero-content {
+    max-width: 900px !important;
+    position: relative;
+    z-index: 100;
+  }
+  
+  /* Fix hero background/overlay */
+  .hero-background,
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  
+  /* Ensure all containers are properly constrained */
+  .container,
+  .section .container {
+    max-width: 1600px !important;
+  }
+}
+
+/* SUPER ULTRA-WIDE FIX: For screens > 2560px (4K displays) */
+@media (min-width: 2560px) {
+  /* Even tighter constraints */
+  .container,
+  header .container {
+    max-width: 1800px !important;
+  }
+  
+  /* Extra padding on hero for massive screens */
+  .hero,
+  .home-hero,
+  .services-hero,
+  .grants-hero,
+  .acceleration-hero,
+  .contact-hero {
+    padding-top: calc(12rem + 100px) !important;
+  }
+  
+  /* Larger but controlled headline size */
+  .hero h1 {
+    max-width: 1000px !important;
+    font-size: 4.2rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  /* Control hero content width */
+  .hero-content {
+    max-width: 1000px !important;
+  }
+  
+  /* Ensure nav doesn't stretch too much */
+  .nav-links {
+    gap: 3rem;
+    max-width: 800px;
+  }
+  
+  /* Add subtle side gradient for visual boundaries */
+  body::before,
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  body::before {
+    left: 0;
+    background: linear-gradient(to right,
+      hsla(var(--glass-h), var(--glass-s), 92%, 0.3) 0%,
+      transparent 100%);
+  }
+  
+  body::after {
+    right: 0;
+    background: linear-gradient(to left,
+      hsla(var(--glass-h), var(--glass-s), 92%, 0.3) 0%,
+      transparent 100%);
+  }
+}
+
+/* ULTRA-WIDE GRID AND SECTION FIXES */
+@media (min-width: 1920px) {
+  /* Fix all grids to prevent stretching */
+  .proof-grid,
+  .advantage-grid,
+  .innovation-grid,
+  .services-grid,
+  .grants-grid,
+  .process-grid,
+  .investment-options,
+  .solutions-grid {
+    max-width: 1600px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  /* Fix advantage grid to use 3 or 4 columns on ultra-wide */
+  .advantage-grid {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1400px !important;
+  }
+  
+  /* Constrain section headers */
+  .section-header {
+    max-width: 1000px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  /* Fix timeline container */
+  .timeline-container {
+    max-width: 1200px !important;
+  }
+  
+  /* Constrain about section */
+  .about-container {
+    max-width: 1400px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  /* Fix footer */
+  footer .footer-container {
+    max-width: 1600px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  /* Ensure sections don't stretch */
+  .section {
+    overflow-x: hidden;
+  }
+  
+  /* Better hero image handling */
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    max-width: 2560px;
+    height: 100%;
   }
 }
 
@@ -1412,26 +1615,66 @@ footer {
   pointer-events: none;
 }
 
-/* Fix ultra-wide layout issues */
-@media (min-width: 1600px) {
-  .container {
-    max-width: 1400px;
+/* REMOVED problematic hero constraints that were causing gray overlay */
+
+/* COMPREHENSIVE ULTRA-WIDE FIXES */
+@media (min-width: 1920px) {
+  /* Fix all grids to prevent stretching */
+  .proof-grid,
+  .advantage-grid,
+  .innovation-grid,
+  .services-grid,
+  .grants-grid,
+  .process-grid,
+  .investment-options,
+  .solutions-grid {
+    max-width: 1600px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
   
-  .grant-success-image {
-    max-width: 900px;
-    margin: 0 auto;
-    display: block;
+  /* Constrain section headers */
+  .section-header {
+    max-width: 1000px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
   
-  /* Simple constraint for ultra-wide screens without breaking layouts */
-  .hero-content {
-    max-width: 1200px;
-    margin: 0 auto;
+  /* Fix timeline container */
+  .timeline-container {
+    max-width: 1200px !important;
+  }
+  
+  /* Constrain about section */
+  .about-container {
+    max-width: 1400px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  /* Fix footer */
+  footer .footer-container {
+    max-width: 1400px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  /* Ensure sections don't stretch */
+  .section {
+    overflow-x: hidden;
+  }
+  
+  /* Better hero image handling */
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    max-width: 2560px;
+    height: 100%;
   }
 }
-
-/* REMOVED problematic hero constraints that were causing gray overlay */
 
 /* Mobile menu improvements */
 @media (max-width: 768px) {

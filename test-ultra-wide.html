@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultra-Wide Display Test - Rise Above Partners</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Test helper styles */
+    .test-info {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      font-family: monospace;
+      z-index: 10000;
+      max-width: 300px;
+    }
+    
+    .test-info h3 {
+      margin: 0 0 10px 0;
+      color: #6D98BA;
+    }
+    
+    .test-info p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+    
+    .highlight {
+      color: #6D98BA;
+      font-weight: bold;
+    }
+    
+    /* Visual test indicators */
+    .test-indicator {
+      position: fixed;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      background: rgba(109, 152, 186, 0.1);
+      padding: 20px 10px;
+      border-radius: 5px;
+      font-weight: bold;
+      color: #6D98BA;
+    }
+    
+    /* Breakpoint indicators */
+    body::before {
+      content: 'Standard View';
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #6D98BA;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      z-index: 10000;
+      font-weight: bold;
+    }
+    
+    @media (min-width: 1920px) {
+      body::before {
+        content: 'Ultra-Wide View (1920px+)';
+        background: #5a819f;
+      }
+    }
+    
+    @media (min-width: 2560px) {
+      body::before {
+        content: 'Super Ultra-Wide View (2560px+)';
+        background: #4a6b8a;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Test Info Panel -->
+  <div class="test-info">
+    <h3>Viewport Info</h3>
+    <p>Width: <span id="viewport-width" class="highlight">--</span>px</p>
+    <p>Height: <span id="viewport-height" class="highlight">--</span>px</p>
+    <p>Breakpoint: <span id="breakpoint" class="highlight">--</span></p>
+    <p>Hero H1 Width: <span id="h1-width" class="highlight">--</span>px</p>
+    <p>Container Width: <span id="container-width" class="highlight">--</span>px</p>
+  </div>
+
+  <!-- Header (same as production) -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <a href="/" class="logo">
+          <img src="images/brand/logomark.svg" alt="Rise Above Partners" class="logo-mark" width="45" height="45">
+          <div class="logo-text">
+            <span>RISE ABOVE</span>
+            <span>PARTNERS</span>
+          </div>
+        </a>
+        <div class="nav-links">
+          <a href="index.html" class="nav-active">Home</a>
+          <a href="services.html">Services</a>
+          <a href="acceleration.html">Acceleration</a>
+          <a href="grants.html">Grants</a>
+          <a href="contact.html" class="btn btn-primary">Get Started</a>
+        </div>
+        <div class="menu-toggle">
+          <span></span><span></span><span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero (testing the problematic headline) -->
+  <section class="hero home-hero">
+    <picture class="hero-background">
+      <img src="images/hero/hero-desktop.jpg" 
+           alt="Test background"
+           class="hero-image">
+    </picture>
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <div class="hero-content">
+        <h1 id="test-headline">Your Biggest Opportunities Are Hiding In Plain Sight</h1>
+        <p>I help growth-minded leaders uncover untapped revenue streams, secure strategic funding, and build systems that multiply results. Real strategies. Real implementation. Real business acceleration.</p>
+        <a href="#test" class="btn btn-light">Discover Your Hidden Potential</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Test content section -->
+  <section class="section" id="test">
+    <div class="container">
+      <div class="section-header">
+        <h2>Ultra-Wide Test Results</h2>
+        <p>This page helps verify that all ultra-wide display fixes are working correctly.</p>
+      </div>
+      
+      <div class="proof-grid grid grid-3">
+        <div class="proof-item">
+          <div class="proof-number">✓</div>
+          <div class="proof-label">No Orphan Text</div>
+          <div class="proof-detail">Headlines should wrap properly without orphan letters</div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-number">✓</div>
+          <div class="proof-label">Nav Spacing</div>
+          <div class="proof-detail">Navigation should have proper spacing, not scrunched</div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-number">✓</div>
+          <div class="proof-label">Header Z-Index</div>
+          <div class="proof-detail">Logo and CTA should be above hero image</div>
+        </div>
+      </div>
+
+      <div class="advantage-grid">
+        <div class="advantage-pillar">
+          <div class="pillar-header">
+            <h3>Grid Test 1</h3>
+          </div>
+          <div class="pillar-content">
+            <p>Should show 4 columns on ultra-wide</p>
+          </div>
+        </div>
+        <div class="advantage-pillar">
+          <div class="pillar-header">
+            <h3>Grid Test 2</h3>
+          </div>
+          <div class="pillar-content">
+            <p>Should show 4 columns on ultra-wide</p>
+          </div>
+        </div>
+        <div class="advantage-pillar">
+          <div class="pillar-header">
+            <h3>Grid Test 3</h3>
+          </div>
+          <div class="pillar-content">
+            <p>Should show 4 columns on ultra-wide</p>
+          </div>
+        </div>
+        <div class="advantage-pillar">
+          <div class="pillar-header">
+            <h3>Grid Test 4</h3>
+          </div>
+          <div class="pillar-content">
+            <p>Should show 4 columns on ultra-wide</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Update viewport info
+    function updateViewportInfo() {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      
+      document.getElementById('viewport-width').textContent = width;
+      document.getElementById('viewport-height').textContent = height;
+      
+      // Determine breakpoint
+      let breakpoint = 'Standard';
+      if (width >= 2560) {
+        breakpoint = 'Super Ultra-Wide';
+      } else if (width >= 1920) {
+        breakpoint = 'Ultra-Wide';
+      } else if (width >= 1400) {
+        breakpoint = 'Extra Large';
+      } else if (width >= 1200) {
+        breakpoint = 'Large';
+      } else if (width >= 769) {
+        breakpoint = 'Desktop';
+      } else {
+        breakpoint = 'Mobile';
+      }
+      
+      document.getElementById('breakpoint').textContent = breakpoint;
+      
+      // Measure actual h1 width
+      const h1 = document.getElementById('test-headline');
+      if (h1) {
+        document.getElementById('h1-width').textContent = h1.offsetWidth;
+      }
+      
+      // Measure container width
+      const container = document.querySelector('.container');
+      if (container) {
+        document.getElementById('container-width').textContent = container.offsetWidth;
+      }
+    }
+    
+    // Update on load and resize
+    updateViewportInfo();
+    window.addEventListener('resize', updateViewportInfo);
+    
+    // Test button clicks
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        alert('Button click successful! Z-index working correctly.');
+      });
+    });
+  </script>
+</body>
+</html>
