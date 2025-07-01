@@ -1,0 +1,56 @@
+/* NAVIGATION FIX FOR 1900px ISSUE - Add this to your CSS */
+
+/* REFINED FIX: Upper range of 1700-1920px needs more space */
+@media (min-width: 1850px) and (max-width: 1920px) {
+  /* Give nav more breathing room at this critical width */
+  header .container {
+    max-width: 1500px; /* Slightly wider container */
+    padding: 0 3.5rem !important; /* More padding */
+  }
+  
+  .navbar {
+    gap: 2.5rem; /* More gap between logo and nav */
+  }
+  
+  .nav-links {
+    gap: 2.5rem; /* More space between items */
+  }
+  
+  .nav-links a {
+    font-size: 0.92rem; /* Slightly bigger text */
+    padding: 0.6rem 1rem !important; /* More padding */
+  }
+  
+  /* CRITICAL: Give Get Started button more space */
+  .nav-links .btn {
+    padding: 0.85rem 2.2rem !important;
+    font-size: 0.87rem;
+    margin-left: 1.5rem; /* More left margin */
+    flex-shrink: 0; /* Prevent button from shrinking */
+    white-space: nowrap; /* Prevent text wrapping */
+  }
+  
+  /* Ensure logo doesn't take too much space */
+  .logo {
+    flex-shrink: 0;
+    margin-right: 2.5rem;
+  }
+}
+
+/* Additional safety for exactly 1900px */
+@media (min-width: 1895px) and (max-width: 1905px) {
+  .nav-links {
+    gap: 2.8rem !important; /* Even more space at problem width */
+  }
+  
+  .nav-links .btn {
+    margin-left: 2rem !important; /* Extra space before button */
+  }
+}
+
+/* Alternative fix if space is still tight - reduce non-button link padding */
+@media (min-width: 1850px) and (max-width: 1920px) {
+  .nav-links a:not(.btn) {
+    padding: 0.5rem 0.8rem !important; /* Less padding on regular links */
+  }
+}
