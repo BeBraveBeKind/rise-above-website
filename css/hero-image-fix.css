@@ -1,0 +1,92 @@
+/* HERO IMAGE FIX FOR ULTRA-WIDE SCREENS */
+/* Fix the black bar issue on hero images */
+
+/* Remove the problematic background color */
+@media (min-width: 1920px) {
+  .hero,
+  .home-hero,
+  .services-hero,
+  .grants-hero,
+  .contact-hero,
+  .acceleration-hero {
+    background: transparent !important; /* Remove the black background */
+  }
+}
+
+/* Ensure images fill the entire width properly */
+@media (min-width: 1920px) {
+  /* Fix picture element positioning */
+  .hero picture.hero-background,
+  .home-hero picture.hero-background,
+  .services-hero picture.hero-background,
+  .grants-hero picture.hero-background,
+  .contact-hero picture.hero-background,
+  .acceleration-hero picture.hero-background {
+    position: absolute !important;
+    top: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 100vw !important;
+    height: 100% !important;
+    max-width: none !important;
+    min-width: 100vw !important;
+    display: block !important;
+    z-index: 0 !important;
+  }
+  
+  /* Fix image sizing to prevent black bars */
+  .hero .hero-image,
+  .home-hero .hero-image,
+  .services-hero .hero-image,
+  .grants-hero .hero-image,
+  .contact-hero .hero-image,
+  .acceleration-hero .hero-image {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 100vw !important;
+    height: 100% !important;
+    min-width: 100vw !important;
+    min-height: 100% !important;
+    max-width: none !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+  
+  /* Alternative fix using min dimensions */
+  @supports (min-width: 100vw) {
+    .hero .hero-image,
+    .home-hero .hero-image,
+    .services-hero .hero-image,
+    .grants-hero .hero-image,
+    .contact-hero .hero-image,
+    .acceleration-hero .hero-image {
+      width: auto !important;
+      height: auto !important;
+      min-width: 100vw !important;
+      min-height: 100% !important;
+    }
+  }
+}
+
+/* Fallback gradient for areas not covered by image */
+@media (min-width: 1920px) {
+  .hero::before,
+  .home-hero::before,
+  .services-hero::before,
+  .grants-hero::before,
+  .contact-hero::before,
+  .acceleration-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+      hsla(207, 35%, 58%, 0.95) 0%, 
+      hsla(207, 35%, 45%, 0.9) 100%);
+    z-index: -1;
+  }
+}

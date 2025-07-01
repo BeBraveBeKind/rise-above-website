@@ -1,0 +1,196 @@
+/* ULTRA-WIDE DISPLAY FIXES - Include this AFTER styles.css */
+
+/* Aggressive fixes for screens 1920px and wider */
+@media screen and (min-width: 1920px) {
+  /* HEADER FIXES */
+  header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 110px !important;
+    z-index: 9999 !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(20px) !important;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1) !important;
+  }
+  
+  header .container {
+    max-width: 1600px !important;
+    margin: 0 auto !important;
+    padding: 0 60px !important;
+    height: 100% !important;
+  }
+  
+  /* NAVIGATION LAYOUT FIX */
+  .navbar {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 60px !important;
+    height: 100% !important;
+    width: 100% !important;
+  }
+  
+  /* LOGO SECTION */
+  .logo {
+    flex: 0 0 auto !important;
+    min-width: 180px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+  }
+  
+  /* NAV LINKS CONTAINER */
+  .nav-links {
+    flex: 1 1 auto !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    gap: 40px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .nav-links a {
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+    padding: 0.5rem 0 !important;
+    font-size: 1rem !important;
+  }
+  
+  .nav-links .btn {
+    flex: 0 0 auto !important;
+    margin-left: 20px !important;
+    padding: 0.9rem 2.2rem !important;
+  }
+  
+  /* HERO SECTION FIXES */
+  .hero,
+  .home-hero {
+    padding-top: 200px !important; /* Account for fixed header */
+    padding-bottom: 80px !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+  
+  .hero .container {
+    position: relative !important;
+    z-index: 10 !important;
+  }
+  
+  /* HERO HEADLINE FIX - Prevent orphans */
+  .hero h1,
+  .home-hero h1 {
+    max-width: 720px !important; /* Narrower width forces better line breaks */
+    font-size: 3.4rem !important;
+    line-height: 1.25 !important;
+    letter-spacing: -0.03em !important;
+    word-spacing: -0.08em !important; /* Tighter word spacing prevents orphans */
+    margin: 0 0 2rem 0 !important;
+    hyphens: none !important;
+  }
+  
+  /* Alternative: Force specific breaks if needed */
+  .hero h1::after {
+    content: "";
+    display: block;
+    height: 0;
+    width: 100%;
+  }
+  
+  /* HERO CONTENT */
+  .hero-content {
+    max-width: 850px !important;
+    position: relative !important;
+    z-index: 20 !important;
+  }
+  
+  .hero p {
+    max-width: 700px !important;
+    font-size: 1.3rem !important;
+    line-height: 1.7 !important;
+  }
+  
+  /* HERO BUTTON */
+  .hero .btn,
+  .hero-content .btn {
+    position: relative !important;
+    z-index: 30 !important;
+    display: inline-block !important;
+  }
+  
+  /* Ensure background doesn't interfere */
+  .hero-background,
+  .hero-overlay {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+  }
+}
+
+/* Even more aggressive for 2560px+ */
+@media screen and (min-width: 2560px) {
+  header .container {
+    max-width: 1800px !important;
+    padding: 0 80px !important;
+  }
+  
+  .navbar {
+    gap: 80px !important;
+  }
+  
+  .nav-links {
+    gap: 50px !important;
+  }
+  
+  .hero h1,
+  .home-hero h1 {
+    max-width: 800px !important;
+    font-size: 3.6rem !important;
+  }
+  
+  .hero,
+  .home-hero {
+    padding-top: 220px !important;
+  }
+}
+
+/* Force 4-column grid on ultra-wide */
+@media screen and (min-width: 1920px) {
+  .advantage-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 2rem !important;
+    max-width: 1400px !important;
+    margin: 4rem auto 0 auto !important;
+  }
+  
+  .advantage-pillar {
+    aspect-ratio: 1.2 !important;
+  }
+  
+  /* Constrain all grids */
+  .proof-grid,
+  .innovation-grid,
+  .services-grid,
+  .grants-grid {
+    max-width: 1400px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  /* Constrain sections */
+  .section-header {
+    max-width: 900px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
