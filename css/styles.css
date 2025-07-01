@@ -1668,6 +1668,66 @@ footer {
   }
 }
 
+/* FIX: Navigation for 1700-1920px range - CRITICAL GAP */
+@media (min-width: 1700px) and (max-width: 1920px) {
+  /* Ensure header stays fixed and visible */
+  header {
+    background: hsla(var(--glass-h), var(--glass-s), 98%, 0.98) !important;
+    backdrop-filter: blur(20px);
+    z-index: 10000 !important;
+    height: 100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  /* Container adjustments for this range */
+  header .container {
+    max-width: 1400px;
+    padding: 0 3rem !important;
+  }
+  
+  /* Navigation spacing that works for this width */
+  .navbar {
+    gap: 2rem;
+    padding: 1.5rem 0 !important;
+  }
+  
+  .nav-links {
+    gap: 2rem;
+  }
+  
+  .nav-links a {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem !important;
+    white-space: nowrap;
+  }
+  
+  /* Ensure Get Started button has proper spacing */
+  .nav-links .btn {
+    padding: 0.8rem 2rem !important;
+    font-size: 0.85rem;
+    margin-left: 1rem;
+  }
+  
+  /* CRITICAL: Add proper spacing between header and hero */
+  .hero,
+  .home-hero,
+  .services-hero,
+  .grants-hero,
+  .contact-hero,
+  .acceleration-hero {
+    padding-top: calc(8rem + 100px) !important; /* Ensures space below fixed header */
+    margin-top: 0 !important;
+  }
+  
+  /* Ensure hero content doesn't get too close to header */
+  .hero-content {
+    padding-top: 2rem !important;
+  }
+}
+
 /* COMPREHENSIVE ULTRA-WIDE HERO BACKGROUND FIX - COMPLETE VERSION */
 /* Fix hero background for all ultra-wide screens */
 @media (min-width: 1920px) {
