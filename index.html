@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rise Above Partners | Marketing Consultant for Overworked Business Owners</title>
+  <title>Rise Above Partners | AI Marketing Agents That Work 24/7</title>
 
   <!-- SEO Meta -->
-  <meta name="description" content="Marketing consultant helping overworked business owners get clear on their message and build systems that actually work. No more spinning your wheels.">
-  <meta name="keywords" content="rural marketing, small town business, digital strategy, rural innovation, community grants, rural business technology">
+  <meta name="description" content="I build autonomous AI agents that handle the repetitive work killing your marketing team's creativity. Real applications. Real integration with your tech stack. Real results in 2 weeks.">
+  <meta name="keywords" content="AI marketing agents, marketing automation, AI agents, marketing intelligence, AI development, marketing operations, lead intelligence">
 
   <!-- Open Graph Meta -->
-  <meta property="og:title" content="Rise Above Partners - Rural Digital Catalyst">
-  <meta property="og:description" content="I bridge the technology gap for small-town businesses. Strategic marketing meets practical innovation.">
+  <meta property="og:title" content="Rise Above Partners - AI Marketing Agents">
+  <meta property="og:description" content="Your marketing team just got 10X more powerful. AI agents that handle repetitive work so your team can focus on strategy.">
   <meta property="og:image" content="https://rise-above.net/images/brand/logo.png">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://rise-above.net">
@@ -34,6 +34,188 @@
   <!-- Home Page Specific Styles -->
   <style>
     /* All hero styles now in styles.css - keeping only page-specific overrides */
+    
+    /* Hero spacing overrides */
+    .home-hero .hero-content p {
+      margin-bottom: 0.75rem !important;
+    }
+    
+    /* Hero Tagline */
+    .home-hero .hero-tagline {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin: 0 0 1.5rem 0 !important;
+      font-weight: 500;
+      display: block;
+    }
+    
+    /* Hero CTA Group */
+    .home-hero .hero-cta-group {
+      display: flex;
+      gap: 1.5rem;
+      margin: 0 0 1.5rem 0 !important;
+      flex-wrap: wrap;
+    }
+    
+    .hero-cta-group .btn {
+      padding: 1rem 2.5rem !important;
+    }
+    
+    /* Availability Badge */
+    .home-hero .availability-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #d63384 0%, #fd7e14 100%);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 700;
+      animation: pulse 2s infinite;
+      margin-top: 0;
+    }
+    
+    @keyframes pulse {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.9; transform: scale(1.02); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    
+    @media (max-width: 768px) {
+      .hero-cta-group {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .hero-cta-group .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+    
+    /* Problem List - Clean Design */
+    .problem-list {
+      max-width: 800px;
+      margin: 3rem auto;
+    }
+    
+    .problem-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 1.25rem 0;
+    }
+    
+    .problem-icon {
+      color: var(--primary);
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.8;
+      flex-shrink: 0;
+    }
+    
+    .problem-text {
+      font-size: 1.15rem;
+      color: var(--text-primary);
+      line-height: 1.8;
+    }
+    
+    @media (max-width: 768px) {
+      .problem-item {
+        padding: 1rem 0;
+        gap: 1rem;
+      }
+      
+      .problem-text {
+        font-size: 1.05rem;
+        line-height: 1.7;
+      }
+    }
+    
+    /* Service Section - Clean Redesign */
+    section.advantage .advantage-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 2rem !important;
+      max-width: 100% !important;
+      margin: 3rem 0 !important;
+    }
+    
+    section.advantage .advantage-pillar {
+      background: white !important;
+      border-radius: 12px !important;
+      padding: 2rem !important;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08) !important;
+      border: 1px solid #e5e5e5 !important;
+      aspect-ratio: auto !important;
+      text-align: left !important;
+      display: flex !important;
+      flex-direction: column !important;
+      transition: transform 0.3s ease !important;
+    }
+    
+    section.advantage .advantage-pillar:hover {
+      transform: translateY(-4px) !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+    }
+    
+    section.advantage .pillar-icon {
+      width: auto !important;
+      height: auto !important;
+      margin: 0 0 1.5rem 0 !important;
+      background: none !important;
+      box-shadow: none !important;
+      text-align: left !important;
+    }
+    
+    section.advantage .pillar-icon img {
+      width: 50px !important;
+      height: 50px !important;
+      filter: none !important;
+    }
+    
+    .service-price {
+      display: none !important;
+    }
+    
+    section.advantage .pillar-header {
+      text-align: left !important;
+      margin: 0 0 1.5rem 0 !important;
+    }
+    
+    section.advantage .pillar-header h3 {
+      font-size: 1.5rem !important;
+      color: var(--text-primary) !important;
+      margin: 0 !important;
+      text-align: left !important;
+    }
+    
+    section.advantage .pillar-content {
+      text-align: left !important;
+    }
+    
+    section.advantage .pillar-content p {
+      font-size: 1rem !important;
+      line-height: 1.6 !important;
+      color: var(--text-secondary) !important;
+      margin: 0 0 1.5rem 0 !important;
+      text-align: left !important;
+    }
+    
+    section.advantage .service-timeline {
+      font-style: italic !important;
+      color: var(--text-secondary) !important;
+      font-size: 0.9rem !important;
+      margin: auto 0 0 0 !important;
+      padding: 1rem 0 0 0 !important;
+      border-top: 1px solid #e5e5e5 !important;
+      text-align: left !important;
+    }
+    
+    @media (max-width: 1024px) {
+      section.advantage .advantage-grid {
+        grid-template-columns: 1fr !important;
+        max-width: 600px !important;
+      }
+    }
 
     /* DESKTOP HERO FIX */
     @media (min-width: 769px) {
@@ -164,126 +346,116 @@
     <div class="hero-overlay"></div>
     <div class="container">
       <div class="hero-content">
-        <h1>Your Biggest Opportunities Are Hiding In Plain Sight</h1>
-        <p>I help growth-minded leaders uncover untapped revenue streams, secure strategic funding, and build systems that multiply results. Real strategies. Real implementation. Real business acceleration.</p>
-        <a href="#proof-points" 
-        class="btn btn-light" 
-        onclick="event.preventDefault(); document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:'smooth'}); return false;">
-        Discover Your Hidden Potential
-        </a>
+        <h1>Your Marketing Team Just Got 10X More Powerful</h1>
+        <p>I build autonomous AI agents that handle the repetitive work killing your marketing team's creativity. Real applications. Real integration with your tech stack. Real results in 2 weeks.</p>
+        <div class="hero-tagline">20 years of marketing strategy. Now building the future of marketing operations.</div>
+        <div class="hero-cta-group">
+          <a href="#demo" class="btn btn-light">See Live Demo</a>
+          <a href="contact.html" class="btn btn-primary">Book Strategy Call</a>
+        </div>
+        <div class="availability-badge">Currently Taking 2 New Clients for Q3 2025</div>
       </div>
     </div>
   </section>
 
-  <!-- Proof Points -->
+  <!-- The Problem -->
   <section id="proof-points" class="proof-points section section-gray">
     <div class="container">
       <div class="section-header">
-        <h2>Proven Results</h2>
-        <p>Here's what happens when marketing strategy actually works for your business.</p>
+        <h2>Your Marketing Team Is Drowning</h2>
+        <p>Sound familiar? You're not alone.</p>
       </div>
-      <div class="grant-success-showcase">
-        <img src="images/success/grant-award.png" 
-             alt="T-Mobile Grant Success - $50K Secured" 
-             class="grant-success-image"
-             width="600"
-             height="400"
-             loading="lazy">
-      </div>
-      <div class="proof-grid grid grid-3">
-        <div class="proof-item">
-          <div class="proof-number">$50K</div>
-          <div class="proof-label">T-Mobile Grant Secured</div>
-          <div class="proof-detail">Proof that clear strategy wins funding</div>
+      <div class="problem-list">
+        <div class="problem-item">
+          <span class="problem-icon">▸</span>
+          <span class="problem-text">Spending 60% of time on repetitive tasks</span>
         </div>
-        <div class="proof-item">
-          <div class="proof-number">18+</div>
-          <div class="proof-label">Years Marketing Experience</div>
-          <div class="proof-detail">Working with brands you know</div>
+        <div class="problem-item">
+          <span class="problem-icon">▸</span>
+          <span class="problem-text">Losing leads because follow-up takes days</span>
         </div>
-        <div class="proof-item">
-          <div class="proof-number">10hrs</div>
-          <div class="proof-label">Per Week Saved</div>
-          <div class="proof-detail">When you have clear systems that work</div>
+        <div class="problem-item">
+          <span class="problem-icon">▸</span>
+          <span class="problem-text">Creating content that sounds generic because there's no time for strategy</span>
+        </div>
+        <div class="problem-item">
+          <span class="problem-icon">▸</span>
+          <span class="problem-text">Missing opportunities while managing spreadsheets</span>
+        </div>
+        <div class="problem-item">
+          <span class="problem-icon">▸</span>
+          <span class="problem-text">Competing against companies with 3X your headcount</span>
         </div>
       </div>
       <div class="section-callout">
-        <p><strong>Clear marketing works for your business, poor marketing complicates it.</strong></p>
+        <p><strong>Meanwhile, Your Competitors Are Building AI Workforces</strong></p>
       </div>
     </div>
   </section>
 
-  <!-- Digital Advantage Framework -->
+  <!-- AI Services -->
   <section id="advantage" class="advantage section">
     <div class="container">
       <div class="section-header">
-        <h2>Most Popular Services</h2>
-        <p>The three services that generate the best results for rural businesses. See all 10 available services below.</p>
+        <h2>Transform Your Marketing with AI Agents</h2>
+        <p>Stop drowning in repetitive tasks. Start scaling your impact.</p>
       </div>
       <div class="advantage-grid">
         <div class="advantage-pillar">
           <div class="pillar-icon">
-            <img src="images/icons/icon-growth.png" 
-                 alt="Grant Writing Icon"
-                 width="50"
-                 height="50"
-                 loading="lazy">
-          </div>
-          <div class="pillar-header">
-            <h3>Grant Writing & Funding</h3>
-          </div>
-          <div class="pillar-content">
-            <p>Research grants, write compelling proposals, and secure funding for your business. I handle the deadlines and paperwork.</p>
-          </div>
-        </div>
-        <div class="advantage-pillar">
-          <div class="pillar-icon">
-            <img src="images/icons/icon-location.png" 
-                 alt="Content Marketing Icon"
-                 width="50"
-                 height="50"
-                 loading="lazy">
-          </div>
-          <div class="pillar-header">
-            <h3>Content Marketing</h3>
-          </div>
-          <div class="pillar-content">
-            <p>Content strategy that fits your business reality. Email campaigns that bring customers back and social media that works.</p>
-          </div>
-        </div>
-        <div class="advantage-pillar">
-          <div class="pillar-icon">
             <img src="images/icons/icon-nodes.png" 
-                 alt="Digital Advertising Icon"
+                 alt="Marketing Intelligence Suite Icon"
                  width="50"
                  height="50"
                  loading="lazy">
           </div>
           <div class="pillar-header">
-            <h3>Digital Advertising</h3>
+            <h3>Marketing Intelligence Suite</h3>
+            <div class="service-price">$10K setup + $5K/month</div>
           </div>
           <div class="pillar-content">
-            <p>Google Ads and Facebook advertising designed for rural businesses. Get more customers from online with budget-friendly campaigns.</p>
+            <p>Build a team of specialized AI agents that handle lead scoring, content creation, campaign optimization, and competitive intelligence - all working together 24/7.</p>
+            <p class="service-timeline">Deploys in 2-3 weeks. Integrates with your existing tech stack.</p>
           </div>
         </div>
         <div class="advantage-pillar">
           <div class="pillar-icon">
             <img src="images/icons/icon-packages.png" 
-                 alt="Service Packages Icon"
+                 alt="Custom AI Agent Development Icon"
                  width="50"
                  height="50"
                  loading="lazy">
           </div>
           <div class="pillar-header">
-            <h3>Service Packages</h3>
+            <h3>Custom AI Agent Development</h3>
+            <div class="service-price">$5K-15K per agent + $500-2K/month</div>
           </div>
           <div class="pillar-content">
-            <p>Combine any services into a custom package or explore a retainer option for prolonged support.</p>
+            <p>Need something specific? I'll build it. From RFP generators to lead qualification systems to personalization engines - custom AI agents designed for your exact needs.</p>
+            <p class="service-timeline">From concept to deployment in 2 weeks.</p>
+          </div>
+        </div>
+        <div class="advantage-pillar">
+          <div class="pillar-icon">
+            <img src="images/icons/icon-growth.png" 
+                 alt="Grant Writing Intelligence Icon"
+                 width="50"
+                 height="50"
+                 loading="lazy">
+          </div>
+          <div class="pillar-header">
+            <h3>Grant Writing Intelligence</h3>
+            <div class="service-price">$7,500 per grant + 10% of award</div>
+          </div>
+          <div class="pillar-content">
+            <p>My AI-powered grant research and writing system has secured $48,000+ in funding. AI monitors funding sources, matches opportunities, and generates compelling proposals.</p>
+            <p class="service-timeline">Because growth shouldn't be limited by funding.</p>
           </div>
         </div>
       </div>
       <div class="services-cta">
-        <a href="services.html/#services-grid" class="btn btn-primary">See All 10 Services Available</a>
+        <a href="services.html" class="btn btn-primary">See All Services & Pricing</a>
+        <a href="contact.html" class="btn btn-secondary">Book Strategy Call</a>
       </div>
     </div>
   </section>
