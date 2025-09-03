@@ -289,6 +289,52 @@
     .problem-text {
       font-size: 1.15rem !important;
     }
+    
+    /* FAQ Styles - Using existing methodology design */
+    .faq-toggle {
+      cursor: pointer;
+      position: relative;
+      transition: color 0.3s ease;
+      user-select: none;
+      font-size: 1.4rem !important;
+      font-weight: 600 !important;
+    }
+    
+    .faq-toggle:hover {
+      color: var(--secondary);
+    }
+    
+    .faq-arrow {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--primary);
+      transition: transform 0.3s ease;
+    }
+    
+    .faq-item.active .faq-arrow {
+      transform: translateY(-50%) rotate(45deg);
+    }
+    
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+      opacity: 0;
+    }
+    
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      opacity: 1;
+      margin-top: 1rem;
+    }
+    
+    .faq-answer p {
+      margin: 0 !important;
+    }
   </style>
 
   <!-- Structured Data -->
@@ -324,7 +370,7 @@
           <a href="services.html">Services</a>
           <a href="acceleration.html">Acceleration</a>
           <a href="grants.html">Grants</a>
-          <a href="contact.html" class="btn btn-primary">Get Started</a>
+          <a href="#contact" class="btn btn-primary">Get in Touch</a>
         </div>
         <div class="menu-toggle">
           <span></span><span></span><span></span>
@@ -360,8 +406,8 @@
         <p>I build autonomous AI agents that handle the repetitive work killing your marketing team's creativity. Real applications. Real integration with your tech stack. Real results in 2 weeks.</p>
         <div class="hero-tagline">20 years of marketing strategy. Now building the future of marketing operations.</div>
         <div class="hero-cta-group">
-          <a href="#demo" class="btn btn-light">See Live Demo</a>
-          <a href="contact.html" class="btn btn-primary">Book Strategy Call</a>
+          <a href="#contact" class="btn btn-light">Get in Touch</a>
+          <a href="https://calendar.app.google/6QPTEjXtfWytxcg98" target="_blank" class="btn btn-primary">Book Strategy Call</a>
         </div>
         <div class="availability-badge">Currently Taking 2 New Clients for Q3 2025</div>
       </div>
@@ -465,7 +511,7 @@
       </div>
       <div class="services-cta">
         <a href="services.html" class="btn btn-primary">See All Services & Pricing</a>
-        <a href="contact.html" class="btn btn-secondary">Book Strategy Call</a>
+        <a href="https://calendar.app.google/6QPTEjXtfWytxcg98" target="_blank" class="btn btn-secondary">Book Strategy Call</a>
       </div>
     </div>
   </section>
@@ -512,9 +558,8 @@
       <div class="about-container grid grid-2">
         <div class="about-content">
           <h2>20 Years of Marketing. Now Building AI That Works.</h2>
-          <p>I'm Michael Browne. After two decades in marketing—from scrappy startups to established brands—I saw the future: AI agents that actually deliver on the promise of automation. While everyone's talking about AI, few are building practical solutions. Even fewer understand marketing deeply enough to build the RIGHT solutions.</p>
-          <p>That's where I come in.</p>
-          <p>I build AI agents and automation systems that handle the repetitive work drowning your marketing team. Real systems to cut RFP response time by 50%, score leads in real-time, and generate on-brand content at scale. My grant-writing AI has already secured $50,000 in funding.</p>
+          <p>I'm Michael Browne. Twenty years in marketing taught me that while everyone's talking about AI, few are building practical solutions that actually work.</p>
+          <p>I build AI agents that handle the repetitive work drowning your marketing team. Real results: 50% faster RFP responses, real-time lead scoring, content at scale. My grant-writing AI has already secured $50,000.</p>
           <p>I'm here to build you competitive advantage. Based in Wisconsin. Serving growth-focused companies nationally.</p>
         </div>
         <div class="about-image">
@@ -569,12 +614,76 @@
     </div>
   </section>
 
+  <!-- FAQ Section -->
+  <section id="faq" class="methodology section section-gray">
+    <div class="container">
+      <div class="section-header">
+        <h2>Straight Answers</h2>
+        <p>Common questions about AI agents for marketing teams.</p>
+      </div>
+      <div class="methodology-content">
+        <div class="methodology-intro faq-item">
+          <h3 class="faq-toggle" onclick="toggleFAQ(this)">
+            I'm not technical. Will I be able to use this?
+            <span class="faq-arrow">+</span>
+          </h3>
+          <div class="faq-answer">
+            <p>That's the point. These are applications with buttons and forms, not code to manage. If you can use Salesforce, you can use these.</p>
+          </div>
+        </div>
+        
+        <div class="methodology-intro faq-item">
+          <h3 class="faq-toggle" onclick="toggleFAQ(this)">
+            How is this different from ChatGPT?
+            <span class="faq-arrow">+</span>
+          </h3>
+          <div class="faq-answer">
+            <p>ChatGPT is a tool. These are complete applications that understand your business, integrate with your systems, and handle entire workflows without prompting.</p>
+          </div>
+        </div>
+        
+        <div class="methodology-intro faq-item">
+          <h3 class="faq-toggle" onclick="toggleFAQ(this)">
+            What about our data security?
+            <span class="faq-arrow">+</span>
+          </h3>
+          <div class="faq-answer">
+            <p>Everything is SOC 2 Type II compliant, GDPR ready, and your data never trains public models. I can work within your security requirements.</p>
+          </div>
+        </div>
+        
+        <div class="methodology-intro faq-item">
+          <h3 class="faq-toggle" onclick="toggleFAQ(this)">
+            What if we already have marketing automation?
+            <span class="faq-arrow">+</span>
+          </h3>
+          <div class="faq-answer">
+            <p>Perfect. I build on top of what you have. These agents make your existing tools exponentially more powerful.</p>
+          </div>
+        </div>
+        
+        <div class="methodology-intro faq-item">
+          <h3 class="faq-toggle" onclick="toggleFAQ(this)">
+            Why should I trust a solo consultant with this?
+            <span class="faq-arrow">+</span>
+          </h3>
+          <div class="faq-answer">
+            <p>Because I'm not really solo. I leverage enterprise platforms and certified specialists for implementation. You get strategic focus plus best-in-class execution.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Contact -->
   <section id="contact" class="contact section section-gray">
     <div class="container">
       <div class="section-header">
         <h2>Ready to 10X Your Marketing Team's Impact?</h2>
         <p>Stop drowning in repetitive tasks. Start building AI agents that work 24/7. Book a strategy call to see what's possible for your team.</p>
+        <div style="text-align: center; margin: 3.5rem 0 2rem 0;">
+          <a href="https://calendar.app.google/6QPTEjXtfWytxcg98" target="_blank" class="btn btn-primary">Book Strategy Call</a>
+        </div>
       </div>
       <div class="contact-single-column">
         <!-- Contact Form Card -->
@@ -583,7 +692,7 @@
             <!-- Tally Form Embed -->
             <iframe src="https://tally.so/embed/w8r0vP?hideTitle=1&transparentBackground=1"
               width="100%" 
-              height="500" 
+              height="350" 
               frameborder="0" 
               marginheight="0" 
               marginwidth="0" 
@@ -621,40 +730,57 @@
       <div class="footer-container grid grid-4">
         <div class="footer-col">
           <h4>Rise Above Partners</h4>
-          <p>Rural business digital catalyst. Technology that works for your reality.</p>
+          <p>AI Agents for Marketing Leaders</p>
         </div>
         <div class="footer-col">
-          <h4>Digital Advantage</h4>
+          <h4>Services</h4>
           <ul class="footer-links">
-            <li><a href="#advantage">Strategic Marketing</a></li>
-            <li><a href="#advantage">Capital Access</a></li>
-            <li><a href="#advantage">Technology Bridges</a></li>
+            <li><a href="#advantage">Marketing Intelligence Suite</a></li>
+            <li><a href="#advantage">Custom Agents</a></li>
+            <li><a href="#advantage">Grant Writing</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Innovation</h4>
+          <h4>Resources</h4>
           <ul class="footer-links">
-            <li><a href="https://gum.new/gum/cmaqe5z1g002o03jlck5c232f">Strategy in Motion</a></li>
-            <li><a href="services.html/#services-grid">Grant Writing</a></li>
-            <li><a href="services.html/#services-grid">Rural Automation</a></li>
+            <li><a href="#">Why Rise Above?</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Connect</h4>
           <ul class="footer-links">
             <li><a href="https://www.linkedin.com/company/86726287">LinkedIn</a></li>
-            <li><a href="contact.html/#contact-form">Schedule Consultation</a></li>
+            <li><a href="https://calendar.app.google/6QPTEjXtfWytxcg98" target="_blank">Book a Call</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 Rise Above Partners. Leading the rural digital revolution.</p>
+        <p>&copy; 2025 Rise Above Partners | <a href="#">Privacy</a> | <a href="#">Terms</a></p>
+        <p>Building the future of marketing operations, one agent at a time.</p>
       </div>
     </div>
   </footer>
 
   <!-- Include Main JavaScript for Smooth Scrolling -->
   <script src="js/main.js"></script>
+  
+  <!-- FAQ Toggle Script -->
+  <script>
+    function toggleFAQ(element) {
+      const faqItem = element.parentElement;
+      const allItems = document.querySelectorAll('.faq-item');
+      
+      // Close other items
+      allItems.forEach(item => {
+        if (item !== faqItem) {
+          item.classList.remove('active');
+        }
+      });
+      
+      // Toggle current item
+      faqItem.classList.toggle('active');
+    }
+  </script>
 
 </body>
 </html>
