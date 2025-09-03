@@ -47,4 +47,78 @@ Recent builds:
 - Handles complete application process
 **Tagline**: Because growth shouldn't be limited by funding.
 
-[Continue with rest of copy from original documents...]
+### How This Works
+**Step 1** Discovery & Design We map your workflows, identify automation opportunities, and design your agent architecture.
+**Step 2** Build & Integration I build your agents using enterprise platforms and integrate with your existing tools.
+**Step 3** Deploy & Optimize Your agents go live, your team gets trained, and we optimize based on real performance.
+Ongoing: Evolution Monthly optimization based on performance data. Your agents get smarter every day.
+
+## Credibility Section
+### Why Marketing Leaders Trust Me
+**20 Years of Marketing Experience** From Billion+ dollar brands to scrappy startups, I've built and scaled marketing operations that win.
+**Technical + Strategic** I speak both languages. I can talk ROI with your CFO and API endpoints with your CTO.
+**Real Implementation, Real Results**
+- 45% traffic increase through AI content systems
+- 100%+ ROI on appointment scheduling automation
+- $48K in grants secured through AI research
+- 15 hours/week saved per marketing team member
+
+### **Investment Levels**
+
+
+## **Choose Your Transformation Speed**
+
+
+### **Pilot Program**
+
+* One focused AI agent
+* Single workflow automation
+* 2-week deployment
+* Perfect for testing the waters
+
+
+### **Growth Platform**
+
+* Multiple integrated agents
+* Complete workflow transformation
+* Monthly optimization
+* Ideal for scaling teams
+
+
+### **Enterprise Transformation**
+
+* Unlimited agent development
+* Full marketing automation
+* Strategic advisory
+* For category leaders
+
+*All packages include: Integration with your tech stack, team training, monthly performance reviews, and direct access to me.*
+
+
+### **FAQ Section**
+## **Straight Answers**
+
+**"I'm not technical. Will I be able to use this?"** That's the point. These are applications with buttons and forms, not code to manage. If you can use Salesforce, you can use these.
+
+**"How is this different from ChatGPT?"** ChatGPT is a tool. These are complete applications that understand your business, integrate with your systems, and handle entire workflows without prompting.
+
+**"What about our data security?"** Everything is SOC 2 Type II compliant, GDPR ready, and your data never trains public models. I can work within your security requirements.
+
+**"What if we already have marketing automation?"** Perfect. I build on top of what you have. These agents make your existing tools exponentially more powerful.
+
+**"Why should I trust a solo consultant with this?"** Because I'm not really solo. I leverage enterprise platforms and certified specialists for implementation. You get strategic focus plus best-in-class execution.
+
+### **About Section**
+
+
+## **Hi, I'm Michael Browne**
+
+After two decades building marketing machines for brands you know, I saw the future: **AI agents that actually deliver on the promise of automation.**
+
+But here's what I noticed: Everyone's talking about AI. Few are building practical solutions. Even fewer understand marketing deeply enough to build the RIGHT solutions.
+
+That's where I come in.
+
+I'm not selling you technology. I'm building you competitive advantage.
+
+Based in Wisconsin. Serving growth-focused companies nationally.

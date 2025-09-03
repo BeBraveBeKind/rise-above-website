@@ -68,7 +68,7 @@ body {
     inset 0 1px 0 hsla(0, 0%, 100%, 0.1);
   --shadow-lg: 0 20px 60px rgba(109, 152, 186, 0.15);
   --shadow-md: 0 8px 30px rgba(109, 152, 186, 0.1);
-  font-size: calc(16px + (20 - 16) * (100vw - 320px) / (1200 - 320));
+  font-size: calc(18px + (22 - 18) * (100vw - 320px) / (1200 - 320));
 }
 
 /* Typography - Global heading styles without hyphens */
@@ -174,7 +174,7 @@ picture.hero-background {
 }
 
 .section-header p {
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   color: #555;
   max-width: 700px;
   margin: 0 auto !important;
@@ -1092,7 +1092,7 @@ a.btn {
 .pillar-icon img { width: 40px; height: 40px; filter: brightness(0) invert(1); object-fit: contain; }
 .pillar-header { text-align: center; margin: 0 0 1rem 0 !important; }
 .pillar-header h3 { color: var(--dark); margin: 0 !important; font-size: 1.25rem; font-weight: 700; line-height: 1.2; }
-.pillar-content p { text-align: center; color: #555; margin: 0 !important; font-size: 0.95rem; line-height: 1.4; }
+.pillar-content p { text-align: center; color: #555; margin: 0 !important; font-size: 1.1rem; line-height: 1.5; }
 
 /* Simplified remaining sections */
 .about-container { align-items: center; gap: 5rem; }
@@ -1263,7 +1263,7 @@ footer {
 .innovation-image img { max-width: 90%; max-height: 90%; object-fit: contain; transition: transform 0.4s ease; }
 .innovation-item:hover .innovation-image img { transform: scale(1.08); }
 .innovation-item h3 { color: var(--primary); margin: 2rem 2rem 1.5rem 2rem !important; font-size: 1.5rem; font-weight: 700; }
-.innovation-item p { color: #555; line-height: 1.7; margin: 0 2rem 2.5rem 2rem !important; font-size: 1rem; font-weight: 500; }
+.innovation-item p { color: #555; line-height: 1.7; margin: 0 2rem 2.5rem 2rem !important; font-size: 1.15rem; font-weight: 500; }
 .innovation-link { display: inline-flex; align-items: center; gap: 0.8rem; color: var(--primary); font-weight: 700; text-decoration: none; transition: all 0.3s ease; margin: 0 0 2rem 0 !important; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.9rem; }
 .innovation-link:hover { color: #5a819f; transform: translateX(8px); }
 
