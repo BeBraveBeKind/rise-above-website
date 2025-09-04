@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why Marketing Leaders Choose Rise Above Partners | AI Marketing Agents</title>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="20 years marketing expertise + proven AI agent results. Real applications that integrate with your existing stack. 2-week implementation, not 6 months. 60-day ROI guarantee.">
+  <meta name="keywords" content="marketing AI experts, AI agent development, marketing automation specialists, enterprise AI implementation, marketing operations transformation">
+
+  <!-- Open Graph Meta -->
+  <meta property="og:title" content="Why Choose Rise Above Partners - AI Marketing Experts">
+  <meta property="og:description" content="Marketing leaders choose us for proven expertise, real integrations, and guaranteed results. See why AI agents deliver 15 hours/week savings per marketer.">
+  <meta property="og:image" content="https://rise-above.net/images/brand/logo.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rise-above.net/why-choose-us">
+
+  <!-- PERFORMANCE: Preconnect to external domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://tally.so">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="images/brand/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/brand/favicon/favicon-32x32.png">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Page Specific Styles -->
+  <style>
+    /* Solutions Grid */
+    .solutions-grid {
+      display: grid;
+      gap: 4rem;
+      margin: 4rem 0 !important;
+    }
+
+    .solution-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      background: hsla(var(--glass-h), var(--glass-s), 98%, 0.8);
+      backdrop-filter: blur(20px);
+      border-radius: var(--rounded-lg);
+      padding: 3rem !important;
+      box-shadow: var(--shadow-glass);
+      border: 1px solid hsla(var(--glass-h), var(--glass-s), 80%, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .solution-showcase:nth-child(even) {
+      direction: rtl;
+    }
+
+    .solution-showcase:nth-child(even) > * {
+      direction: ltr;
+    }
+
+    .solution-content h3 {
+      color: var(--dark);
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0 0 0.5rem 0 !important;
+      line-height: 1.2;
+    }
+
+    .solution-tagline {
+      color: var(--primary);
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 0 0 2rem 0 !important;
+      font-style: italic;
+    }
+
+    .solution-description {
+      color: #555;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin: 0 0 2rem 0 !important;
+    }
+
+    .solution-benefits {
+      list-style: none;
+      padding: 0 !important;
+      margin: 0 0 2rem 0 !important;
+    }
+
+    .solution-benefits li {
+      padding: 1rem 0 !important;
+      margin: 0 !important;
+      border-bottom: 1px solid hsla(var(--glass-h), var(--glass-s), 80%, 0.2);
+      position: relative;
+      padding-left: 3rem !important;
+      color: #555;
+      font-weight: 500;
+    }
+
+    .solution-benefits li:last-child {
+      border-bottom: none;
+    }
+
+    .solution-benefits li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      top: 1rem;
+      color: var(--primary);
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .solution-visual {
+      background: linear-gradient(135deg, 
+        hsla(var(--glass-h), var(--glass-s), 95%, 0.9),
+        hsla(var(--glass-h), var(--glass-s), 90%, 0.95));
+      border-radius: var(--rounded-lg);
+      padding: 3rem !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 400px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .solution-metrics {
+      background: hsla(var(--glass-h), var(--glass-s), 10%, 0.95);
+      color: var(--white);
+      padding: 1.5rem 2rem !important;
+      border-radius: var(--rounded-md);
+      display: inline-block;
+      margin: 0 !important;
+    }
+
+    .solution-metrics strong {
+      color: #ffd700;
+      font-size: 1.3rem;
+    }
+
+    @media (max-width: 950px) {
+      .solution-showcase {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      
+      .solution-showcase:nth-child(even) {
+        direction: ltr;
+      }
+    }
+
+
+    /* Hero styles now handled by global styles.css */
+    
+    /* FAQ Styles to match homepage */
+    .faq-toggle {
+      cursor: pointer;
+      position: relative;
+      transition: color 0.3s ease;
+      user-select: none;
+      font-size: 1.4rem !important;
+      font-weight: 600 !important;
+    }
+    
+    .faq-toggle:hover {
+      color: var(--secondary);
+    }
+    
+    .faq-arrow {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--primary);
+      transition: transform 0.3s ease;
+    }
+    
+    .faq-item.active .faq-arrow {
+      transform: translateY(-50%) rotate(45deg);
+    }
+    
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+      opacity: 0;
+      padding-left: 0;
+    }
+    
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      opacity: 1;
+      margin-top: 1rem;
+    }
+    
+    .faq-answer p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #555;
+      margin: 0 0 1.5rem 0;
+    }
+    
+    /* Investment & ROI Section - Match Homepage Exactly */
+    section#investment.advantage .advantage-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 2rem !important;
+      max-width: 100% !important;
+      margin: 3rem 0 !important;
+    }
+    
+    section#investment.advantage .advantage-pillar {
+      background: white !important;
+      border-radius: 12px !important;
+      padding: 2rem !important;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08) !important;
+      border: 1px solid #e5e5e5 !important;
+      aspect-ratio: auto !important;
+      text-align: left !important;
+      display: flex !important;
+      flex-direction: column !important;
+      transition: transform 0.3s ease !important;
+    }
+    
+    section#investment.advantage .advantage-pillar:hover {
+      transform: translateY(-4px) !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+    }
+    
+    section#investment.advantage .pillar-header {
+      text-align: left !important;
+      margin: 0 0 1.5rem 0 !important;
+      padding: 0 !important;
+      border-bottom: none !important;
+    }
+    
+    section#investment.advantage .pillar-header h3 {
+      font-size: 1.5rem !important;
+      font-weight: 700 !important;
+      color: var(--dark) !important;
+      margin: 0 !important;
+      line-height: 1.2 !important;
+    }
+    
+    section#investment.advantage .pillar-content {
+      text-align: left !important;
+    }
+    
+    section#investment.advantage .pillar-content p {
+      font-size: 1rem !important;
+      line-height: 1.6 !important;
+      color: var(--text-secondary) !important;
+      margin: 0 0 1rem 0 !important;
+      text-align: left !important;
+    }
+    
+    section#investment.advantage .pillar-content p:last-child {
+      margin-bottom: 0 !important;
+    }
+    
+    section#investment.advantage .pillar-content p strong {
+      color: var(--dark) !important;
+      font-weight: 600 !important;
+    }
+    
+    /* Responsive - Stack on mobile */
+    @media (max-width: 1024px) {
+      section#investment.advantage .advantage-grid {
+        grid-template-columns: 1fr !important;
+        max-width: 600px !important;
+        margin: 3rem auto !important;
+      }
+    }
+    
+    /* Client Results Cards */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    
+    .result-card {
+      background: white;
+      border-radius: 12px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e5e5e5;
+      transition: transform 0.3s ease;
+    }
+    
+    .result-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+    
+    .result-card h4 {
+      color: var(--primary);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+    }
+    
+    .result-challenge {
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+    
+    .result-solution {
+      font-weight: 600;
+      color: var(--dark);
+      margin: 1rem 0 0.5rem 0;
+    }
+    
+    .result-results {
+      font-weight: 600;
+      color: var(--dark);
+      margin: 1rem 0 0.5rem 0;
+    }
+    
+    .result-metrics {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+    
+    .result-metrics li {
+      padding: 0.3rem 0;
+      color: #555;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    
+    .result-metrics li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+    
+    /* What Makes Us Different */
+    .difference-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    
+    .difference-item {
+      text-align: left;
+    }
+    
+    .difference-item h4 {
+      color: var(--primary);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+    }
+    
+    .difference-item p {
+      color: #555;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    /* Mobile Optimization */
+    @media (max-width: 768px) {
+      .results-grid,
+      .difference-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .result-card {
+        padding: 2rem;
+      }
+    }
+    
+    /* Clean button fix - ensures all buttons are clickable */
+    .btn, .btn-light, .btn-primary, a.btn {
+      pointer-events: auto !important;
+      position: relative !important;
+      z-index: 10 !important;
+      cursor: pointer !important;
+      display: inline-block !important;
+    }
+    
+    /* Ensure overlays don't block interaction */
+    .hero-overlay, .hero-background {
+      pointer-events: none !important;
+    }
+  </style>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Rise Above Partners",
+    "description": "AI Marketing Agents for Marketing Leaders - 20 years expertise, proven results",
+    "url": "https://rise-above.net",
+    "expertise": "AI Marketing Automation, Custom Agent Development, Marketing Operations",
+    "yearsInBusiness": "20"
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <a href="/" class="logo">
+          <img src="images/brand/logomark.svg" alt="Rise Above Partners" class="logo-mark" width="45" height="45">
+          <div class="logo-text">
+            <span>RISE ABOVE</span>
+            <span>PARTNERS</span>
+          </div>
+        </a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="why-choose-us.html" class="nav-active">Why Choose Us</a>
+          <a href="grants.html">Grants</a>
+          <a href="https://rise-above.net/contact" class="btn btn-primary">Get in Touch</a>
+        </div>
+        <div class="menu-toggle">
+          <span></span><span></span><span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero services-hero">
+    <picture class="hero-background">
+      <source media="(max-width: 768px)" 
+              srcset="images/services/services-mobile.webp" 
+              type="image/webp">
+      <source media="(max-width: 768px)" 
+              srcset="images/services/services-mobile.jpg">
+      <source media="(min-width: 769px)" 
+              srcset="images/services/services-desktop.webp" 
+              type="image/webp">
+      <source media="(min-width: 769px)" 
+              srcset="images/services/services-desktop.jpg">
+      <img src="images/services/services-desktop.jpg" 
+           alt="Marketing leaders choosing proven AI expertise"
+           loading="eager"
+           width="1200"
+           height="800"
+           class="hero-image">
+    </picture>
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <div class="hero-content">
+        <h1>Why Marketing Leaders Choose Rise Above Partners</h1>
+        <p>Real AI agents. Real integration. Real results in 2 weeks. Your marketing team just got 10X more powerful with autonomous AI agents that handle repetitive work, freeing your team to focus on strategy and innovation.</p>
+        <div class="hero-cta-group">
+          <a href="#why-work-with-us" class="btn btn-light">See Our Expertise</a>
+          <a href="https://calendar.app.google/6QPTEjXtfWytxcg98" target="_blank" class="btn btn-primary">Book Strategy Call</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Work With Us -->
+  <section id="expertise" class="section">
+    <div class="container">
+      <div class="methodology-content">
+        <div class="methodology-intro">
+          <h2>Why Work with Rise Above Partners?</h2>
+          <p>20 years of marketing expertise meets cutting-edge AI technology. I understand what actually works vs. what sounds good in theory.</p>
+        </div>
+
+        <div class="advantage-grid">
+          <div class="advantage-pillar">
+            <h3>20 Years of Marketing + Technical Expertise</h3>
+            <p>Built and scaled marketing operations for billion-dollar brands to scrappy startups. I speak both business (ROI, conversions) and technical (APIs, integrations) languages, bridging the gap between marketing strategy and technical implementation.</p>
+          </div>
+
+          <div class="advantage-pillar">
+            <h3>Real Applications, Not ChatGPT Wrappers</h3>
+            <p>Built custom AI agents that integrate with your existing tech stack. Applications with buttons and forms, not code to manage. If you can use Salesforce, you can use these. SOC 2 Type II compliant, GDPR ready.</p>
+          </div>
+
+          <div class="advantage-pillar">
+            <h3>Proven Track Record</h3>
+            <p>45% traffic increase through AI content systems. 100%+ ROI on appointment scheduling automation. $50K in grants secured through AI research. 15 hours/week saved per marketing team member.</p>
+          </div>
+
+          <div class="advantage-pillar">
+            <h3>2-Week Implementation</h3>
+            <p>While others promise results in 6 months, I deliver working agents in 2 weeks. Real integration, real results, real fast. Your data never trains public models.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Real Client Results -->
+  <section class="section section-gray">
+    <div class="container">
+      <div class="section-header">
+        <h2>Real Client Results</h2>
+        <p>See how our AI agents deliver measurable results for marketing teams like yours</p>
+      </div>
+
+      <div class="solutions-grid">
+        
+        <!-- Consumer Service Company -->
+        <article class="solution-showcase">
+          <div class="solution-content">
+            <h3>Consumer Service Company - Content at Scale</h3>
+            <p class="solution-tagline">Challenge: Scale from 0 articles to 3/month while maintaining quality</p>
+            <p class="solution-description">
+              AI content agent that analyzes competitors, generates on-brand articles, optimizes for search.
+            </p>
+            <ul class="solution-benefits">
+              <li>45% organic traffic increase in 90 days</li>
+              <li>15 articles published to date</li>
+              <li>73% reduction in content costs</li>
+              <li>#1 Google result for 12 new keywords and regions</li>
+            </ul>
+          </div>
+          <div class="solution-visual">
+            <div class="solution-metrics">
+              <strong>45%</strong> traffic increase in 90 days
+            </div>
+          </div>
+        </article>
+
+        <!-- Live Example: Grant Research -->
+        <article class="solution-showcase">
+          <div class="solution-content">
+            <h3>Live Example: Grant Research & Service</h3>
+            <p class="solution-tagline">Challenge: Find and secure growth capital without dedicated grant staff</p>
+            <p class="solution-description">
+              Most grants are paywalled. Our AI grant system monitors 120+ sources and automatically updates the website when new matching grants are found.
+            </p>
+            <ul class="solution-benefits">
+              <li>200+ grant sources monitored</li>
+              <li>$48,000 secured in 60 days</li>
+              <li>40 hours of manual research eliminated</li>
+              <li><a href="grants.html" style="color: var(--primary); font-weight: 600;">See our live grant monitoring page →</a></li>
+            </ul>
+          </div>
+          <div class="solution-visual">
+            <div class="solution-metrics">
+              <strong>$48K</strong> secured in 60 days
+            </div>
+          </div>
+        </article>
+
+        <!-- Specialty Retailer -->
+        <article class="solution-showcase">
+          <div class="solution-content">
+            <h3>Specialty Retailer - Strategic Analysis</h3>
+            <p class="solution-tagline">Challenge: Enterprise-level brand strategy on startup budget and timeline</p>
+            <p class="solution-description">
+              AI analysis agents for competitive research, message generation, positioning analysis.
+            </p>
+            <ul class="solution-benefits">
+              <li>14-day enterprise strategy delivery</li>
+              <li>Complete brand framework and messaging hierarchy</li>
+              <li>34% increase in campaign engagement</li>
+              <li>200+ message variation table delivered</li>
+            </ul>
+          </div>
+          <div class="solution-visual">
+            <div class="solution-metrics">
+              <strong>34%</strong> increase in engagement
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- What Makes Us Different -->
+  <section class="section">
+    <div class="container">
+      <div class="methodology-content">
+        <div class="methodology-intro">
+          <h2>What Makes Us Different</h2>
+          <p>While others talk about AI's potential, I deliver AI solutions that work in your business today.</p>
+        </div>
+
+        <div class="advantage-grid">
+          <div class="advantage-pillar">
+            <h3>Built by Marketers, For Marketers</h3>
+            <p>I understand the frustration of manual processes because I've lived it for 20 years. Every agent solves real marketing problems, not theoretical ones.</p>
+          </div>
+
+          <div class="advantage-pillar">
+            <h3>Integration-First Approach</h3>
+            <p>Your agents integrate seamlessly with Salesforce, HubSpot, Marketo, and your entire existing stack. No rip-and-replace required.</p>
+          </div>
+
+          <div class="advantage-pillar">
+            <h3>Transparent Performance</h3>
+            <p>Real-time dashboards show exactly what your agents are doing and the value they're creating. No black boxes.</p>
+          </div>
+
+          <div class="advantage-pillar">
+            <h3>Continuous Learning</h3>
+            <p>Your agents get smarter every day, learning from outcomes and optimizing performance automatically.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Investment & Returns Section -->
+  <section id="investment" class="section advantage">
+    <div class="container">
+      <div class="section-header">
+        <h2>Investment & Typical Returns</h2>
+        <p>Real numbers from real implementations</p>
+      </div>
+      
+      <div class="advantage-grid">
+        <div class="advantage-pillar">
+          <div class="pillar-header">
+            <h3>Marketing Intelligence Suite</h3>
+          </div>
+          <div class="pillar-content">
+            <p><strong>Typical savings:</strong> 15 hours/week per marketer</p>
+            <p><strong>Annual value:</strong> $150K+</p>
+            <p><strong>Payback period:</strong> 2-3 months</p>
+            <p>Complete AI workforce transformation with multiple specialized agents working together.</p>
+          </div>
+        </div>
+        
+        <div class="advantage-pillar">
+          <div class="pillar-header">
+            <h3>Custom AI Agent</h3>
+          </div>
+          <div class="pillar-content">
+            <p><strong>Efficiency gain:</strong> 50-80%</p>
+            <p><strong>Payback period:</strong> 1-4 months</p>
+            <p><strong>Value:</strong> Depends on workflow</p>
+            <p>Targeted solutions for your unique processes and high-value workflows.</p>
+          </div>
+        </div>
+        
+        <div class="advantage-pillar">
+          <div class="pillar-header">
+            <h3>Pilot Program</h3>
+          </div>
+          <div class="pillar-content">
+            <p><strong>Typical result:</strong> 40-60% efficiency gain</p>
+            <p><strong>Credits toward:</strong> Full implementation</p>
+            <p><strong>Decision time:</strong> 30 days</p>
+            <p>Test AI in your organization with one focused agent solving one specific problem.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div style="text-align: center; margin-top: 5rem;">
+        <p style="font-size: 1.2rem; color: var(--primary); font-weight: 600;">ROI Guarantee: If you don't see measurable improvement in 60 days, I refund the setup fee.</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- FAQ Section -->
+  <section id="faq" class="methodology section section-gray">
+    <div class="container">
+      <div class="section-header">
+        <h2>Frequently Asked Questions</h2>
+        <p>Real answers about working with AI marketing experts</p>
+      </div>
+      <div class="methodology-content">
+        <div class="methodology-intro faq-item">
+          <h3 class="faq-toggle" onclick="toggleFAQ(this)">
+            I'm not technical. Will I be able to use this?
+            <span class="faq-arrow">+</span>
+          </h3>
+          <div class="faq-answer">
+            <p>That's the point. These are applications with buttons and forms, not code to manage. If you can use Salesforce, you can use these.</p>
+          </div>
+        </div>
+        
+        <div class="methodology-intro faq-item">
+          <h3 class="faq-toggle" onclick="toggleFAQ(this)">
+            How is this different from ChatGPT?
+            <span class="faq-arrow">+</span>
+          </h3>
+          <div class="faq-answer">
+            <p>ChatGPT is a tool. These are complete applications that understand your business, integrate with your systems, and handle entire workflows without prompting.</p>
+          </div>
+        </div>
+        
+        <div class="methodology-intro faq-item">
+          <h3 class="faq-toggle" onclick="toggleFAQ(this)">
+            What about data security?
+            <span class="faq-arrow">+</span>
+          </h3>
+          <div class="faq-answer">
+            <p>Everything is SOC 2 Type II compliant, GDPR ready, and your data never trains public models. I can work within your security requirements.</p>
+          </div>
+        </div>
+        
+        <div class="methodology-intro faq-item">
+          <h3 class="faq-toggle" onclick="toggleFAQ(this)">
+            What if we already have marketing automation?
+            <span class="faq-arrow">+</span>
+          </h3>
+          <div class="faq-answer">
+            <p>Perfect. I build on top of what you have. These agents make your existing tools exponentially more powerful.</p>
+          </div>
+        </div>
+        
+        <div class="methodology-intro faq-item">
+          <h3 class="faq-toggle" onclick="toggleFAQ(this)">
+            Can we start small and scale up?
+            <span class="faq-arrow">+</span>
+          </h3>
+          <div class="faq-answer">
+            <p>Absolutely. Most clients start with a pilot or single agent, see the value, then expand. No pressure to do everything at once.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact Section -->
+  <section id="contact" class="contact section section-gray">
+    <div class="container">
+      <div class="section-header">
+        <h2>Ready to 10X Your Marketing Team?</h2>
+        <p>Stop drowning in repetitive tasks. Start building AI agents that work 24/7.</p>
+        <div style="text-align: center; margin: 2rem 0;">
+          <a href="https://calendar.app.google/6QPTEjXtfWytxcg98" target="_blank" class="btn btn-primary">Book Strategy Call</a>
+        </div>
+      </div>
+      <div class="contact-single-column">
+        <!-- Contact Form Card -->
+        <div class="contact-form-card">
+          <div class="form-content">
+            <!-- Tally Form Embed -->
+            <iframe src="https://tally.so/embed/w8r0vP?hideTitle=1&transparentBackground=1"
+              width="100%" 
+              height="350" 
+              frameborder="0" 
+              marginheight="0" 
+              marginwidth="0" 
+              title="Contact Form"
+              loading="lazy">
+            </iframe>
+            <p class="form-disclaimer">Your information is secure and will only be used to discuss partnership opportunities.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-container grid grid-4">
+        <div class="footer-col">
+          <h4><a href="index.html" style="color: inherit; text-decoration: none;">Rise Above Partners</a></h4>
+          <p>AI Agents for Marketing Leaders</p>
+        </div>
+        <div class="footer-col">
+          <h4><a href="services.html" style="color: inherit; text-decoration: none;">Services</a></h4>
+          <ul class="footer-links">
+            <li><a href="services.html">Marketing Intelligence Suite</a></li>
+            <li><a href="services.html">Custom Agents</a></li>
+            <li><a href="services.html">Strategic AI Consulting</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4><a href="why-choose-us.html" style="color: inherit; text-decoration: none;">Resources</a></h4>
+          <ul class="footer-links">
+            <li><a href="why-choose-us.html">Why Choose Us</a></li>
+            <li><a href="grants.html">Grants</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul class="footer-links">
+            <li><a href="https://www.linkedin.com/company/86726287" target="_blank">LinkedIn</a></li>
+            <li><a href="https://calendar.app.google/6QPTEjXtfWytxcg98" target="_blank">Book a Call</a></li>
+            <li><a href="https://rise-above.net/contact">Email</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Rise Above Partners | <a href="#">Privacy</a> | <a href="#">Terms</a></p>
+        <p>Building the future of marketing operations, one agent at a time.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Include Main JavaScript for Smooth Scrolling -->
+  <script src="js/main.js"></script>
+  
+  <!-- FAQ Toggle Script -->
+  <script>
+    function toggleFAQ(element) {
+      const faqItem = element.parentElement;
+      faqItem.classList.toggle('active');
+    }
+  </script>
+  
+  <!-- EMERGENCY BUTTON FIX -->
+  <script>
+    // Force all buttons to be clickable - nuclear option
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get all buttons and links that look like buttons
+      const buttons = document.querySelectorAll('.btn, .btn-primary, .btn-light, a[class*="btn"], .innovation-link');
+      
+      buttons.forEach(button => {
+        // Force clickability with inline styles
+        button.style.position = 'relative';
+        button.style.zIndex = '9999';
+        button.style.pointerEvents = 'auto';
+        button.style.cursor = 'pointer';
+      });
+      
+      // Make sure overlays can't block
+      const overlays = document.querySelectorAll('.hero-overlay, .hero-background');
+      overlays.forEach(overlay => {
+        overlay.style.pointerEvents = 'none';
+        overlay.style.zIndex = '1';
+      });
+      
+      // Extra insurance - re-apply after a delay
+      setTimeout(() => {
+        buttons.forEach(button => {
+          button.style.cssText += 'position: relative !important; z-index: 9999 !important; pointer-events: auto !important; cursor: pointer !important;';
+        });
+      }, 100);
+    });
+  </script>
+</body>
+</html>
