@@ -35,34 +35,24 @@
   <style>
     /* All hero styles now in styles.css - keeping only page-specific overrides */
     
-    /* Hero spacing overrides */
-    .home-hero .hero-content p {
-      margin-bottom: 0.75rem !important;
-    }
-    
     /* Hero Tagline */
-    .home-hero .hero-tagline {
+    .hero-tagline {
       font-size: 1.1rem;
       color: rgba(255, 255, 255, 0.9);
-      margin: 0 0 1.5rem 0 !important;
+      margin: 1rem 0 2rem 0;
       font-weight: 500;
-      display: block;
     }
     
     /* Hero CTA Group */
-    .home-hero .hero-cta-group {
+    .hero-cta-group {
       display: flex;
-      gap: 1.5rem;
-      margin: 0 0 1.5rem 0 !important;
+      gap: 1rem;
+      margin: 2rem 0;
       flex-wrap: wrap;
     }
     
-    .hero-cta-group .btn {
-      padding: 1rem 2.5rem !important;
-    }
-    
     /* Availability Badge */
-    .home-hero .availability-badge {
+    .availability-badge {
       display: inline-block;
       background: linear-gradient(135deg, #d63384 0%, #fd7e14 100%);
       color: white;
@@ -70,7 +60,7 @@
       border-radius: 8px;
       font-weight: 700;
       animation: pulse 2s infinite;
-      margin-top: 0;
+      margin-top: 1rem;
     }
     
     @keyframes pulse {
@@ -91,7 +81,7 @@
       }
     }
     
-    /* Problem List - Clean Design */
+    /* Problem List Styles */
     .problem-list {
       max-width: 800px;
       margin: 3rem auto;
@@ -99,121 +89,39 @@
     
     .problem-item {
       display: flex;
-      align-items: flex-start;
-      gap: 1.25rem;
-      padding: 1.25rem 0;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.5rem 2rem;
+      background: white;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+    }
+    
+    .problem-item:hover {
+      transform: translateX(4px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
     
     .problem-icon {
-      color: var(--primary);
-      font-size: 1rem;
-      font-weight: 600;
-      line-height: 1.8;
+      font-size: 2rem;
       flex-shrink: 0;
     }
     
     .problem-text {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       color: var(--text-primary);
-      line-height: 1.8;
+      line-height: 1.5;
     }
     
     @media (max-width: 768px) {
       .problem-item {
-        padding: 1rem 0;
-        gap: 1rem;
+        padding: 1rem 1.5rem;
       }
       
       .problem-text {
-        font-size: 1.05rem;
-        line-height: 1.7;
-      }
-    }
-    
-    /* Service Section - Clean Redesign */
-    section.advantage .advantage-grid {
-      display: grid !important;
-      grid-template-columns: repeat(3, 1fr) !important;
-      gap: 2rem !important;
-      max-width: 100% !important;
-      margin: 3rem 0 !important;
-    }
-    
-    section.advantage .advantage-pillar {
-      background: white !important;
-      border-radius: 12px !important;
-      padding: 2rem !important;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08) !important;
-      border: 1px solid #e5e5e5 !important;
-      aspect-ratio: auto !important;
-      text-align: left !important;
-      display: flex !important;
-      flex-direction: column !important;
-      transition: transform 0.3s ease !important;
-    }
-    
-    section.advantage .advantage-pillar:hover {
-      transform: translateY(-4px) !important;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
-    }
-    
-    section.advantage .pillar-icon {
-      width: auto !important;
-      height: auto !important;
-      margin: 0 0 1.5rem 0 !important;
-      background: none !important;
-      box-shadow: none !important;
-      text-align: left !important;
-    }
-    
-    section.advantage .pillar-icon img {
-      width: 50px !important;
-      height: 50px !important;
-      filter: none !important;
-    }
-    
-    .service-price {
-      display: none !important;
-    }
-    
-    section.advantage .pillar-header {
-      text-align: left !important;
-      margin: 0 0 1.5rem 0 !important;
-    }
-    
-    section.advantage .pillar-header h3 {
-      font-size: 1.5rem !important;
-      color: var(--text-primary) !important;
-      margin: 0 !important;
-      text-align: left !important;
-    }
-    
-    section.advantage .pillar-content {
-      text-align: left !important;
-    }
-    
-    section.advantage .pillar-content p {
-      font-size: 1rem !important;
-      line-height: 1.6 !important;
-      color: var(--text-secondary) !important;
-      margin: 0 0 1.5rem 0 !important;
-      text-align: left !important;
-    }
-    
-    section.advantage .service-timeline {
-      font-style: italic !important;
-      color: var(--text-secondary) !important;
-      font-size: 0.9rem !important;
-      margin: auto 0 0 0 !important;
-      padding: 1rem 0 0 0 !important;
-      border-top: 1px solid #e5e5e5 !important;
-      text-align: left !important;
-    }
-    
-    @media (max-width: 1024px) {
-      section.advantage .advantage-grid {
-        grid-template-columns: 1fr !important;
-        max-width: 600px !important;
+        font-size: 1rem;
       }
     }
 
@@ -279,62 +187,6 @@
       z-index: 10 !important; /* Moderate value instead of 999 */
       cursor: pointer !important;
     }
-    
-    /* Increase font sizes for better readability */
-    .about-content p {
-      font-size: 1.15rem !important;
-      line-height: 1.7 !important;
-    }
-    
-    .problem-text {
-      font-size: 1.15rem !important;
-    }
-    
-    /* FAQ Styles - Using existing methodology design */
-    .faq-toggle {
-      cursor: pointer;
-      position: relative;
-      transition: color 0.3s ease;
-      user-select: none;
-      font-size: 1.4rem !important;
-      font-weight: 600 !important;
-    }
-    
-    .faq-toggle:hover {
-      color: var(--secondary);
-    }
-    
-    .faq-arrow {
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 2rem;
-      font-weight: 300;
-      color: var(--primary);
-      transition: transform 0.3s ease;
-    }
-    
-    .faq-item.active .faq-arrow {
-      transform: translateY(-50%) rotate(45deg);
-    }
-    
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease, opacity 0.3s ease;
-      opacity: 0;
-    }
-    
-    .faq-item.active .faq-answer {
-      max-height: 500px;
-      opacity: 1;
-      margin-top: 1rem;
-    }
-    
-    .faq-answer p {
-      margin: 0 !important;
-    }
   </style>
 
   <!-- Structured Data -->
@@ -368,9 +220,9 @@
         <div class="nav-links">
           <a href="index.html" class="nav-active">Home</a>
           <a href="services.html">Services</a>
-          <a href="why-choose-us.html">Why Choose Us</a>
+          <a href="acceleration.html">Acceleration</a>
           <a href="grants.html">Grants</a>
-          <a href="#contact" class="btn btn-primary">Get in Touch</a>
+          <a href="contact.html" class="btn btn-primary">Get Started</a>
         </div>
         <div class="menu-toggle">
           <span></span><span></span><span></span>
@@ -406,10 +258,10 @@
         <p>I build autonomous AI agents that handle the repetitive work killing your marketing team's creativity. Real applications. Real integration with your tech stack. Real results in 2 weeks.</p>
         <div class="hero-tagline">20 years of marketing strategy. Now building the future of marketing operations.</div>
         <div class="hero-cta-group">
-          <a href="#contact" class="btn btn-light">Get in Touch</a>
-          <a href="https://calendar.app.google/6QPTEjXtfWytxcg98" target="_blank" class="btn btn-primary">Book Strategy Call</a>
+          <a href="#demo" class="btn btn-light">See Live Demo</a>
+          <a href="contact.html" class="btn btn-primary">Book Strategy Call</a>
         </div>
-        <div class="availability-badge">Currently Taking 2 New Clients for Q3 2025</div>
+        <div class="availability-badge">Currently Taking 3 New Clients for Q 2025</div>
       </div>
     </div>
   </section>
@@ -423,23 +275,23 @@
       </div>
       <div class="problem-list">
         <div class="problem-item">
-          <span class="problem-icon">▸</span>
+          <span class="problem-icon">⏰</span>
           <span class="problem-text">Spending 60% of time on repetitive tasks</span>
         </div>
         <div class="problem-item">
-          <span class="problem-icon">▸</span>
+          <span class="problem-icon">📉</span>
           <span class="problem-text">Losing leads because follow-up takes days</span>
         </div>
         <div class="problem-item">
-          <span class="problem-icon">▸</span>
+          <span class="problem-icon">📝</span>
           <span class="problem-text">Creating content that sounds generic because there's no time for strategy</span>
         </div>
         <div class="problem-item">
-          <span class="problem-icon">▸</span>
+          <span class="problem-icon">📊</span>
           <span class="problem-text">Missing opportunities while managing spreadsheets</span>
         </div>
         <div class="problem-item">
-          <span class="problem-icon">▸</span>
+          <span class="problem-icon">🏃</span>
           <span class="problem-text">Competing against companies with 3X your headcount</span>
         </div>
       </div>
@@ -449,103 +301,117 @@
     </div>
   </section>
 
-  <!-- AI Services -->
+  <!-- Digital Advantage Framework -->
   <section id="advantage" class="advantage section">
     <div class="container">
       <div class="section-header">
-        <h2>Transform Your Marketing with AI Agents</h2>
-        <p>Stop drowning in repetitive tasks. Start scaling your impact.</p>
+        <h2>Most Popular Services</h2>
+        <p>The three services that generate the best results for rural businesses. See all 10 available services below.</p>
       </div>
       <div class="advantage-grid">
         <div class="advantage-pillar">
           <div class="pillar-icon">
-            <img src="images/icons/icon-nodes.png" 
-                 alt="Marketing Intelligence Suite Icon"
+            <img src="images/icons/icon-growth.png" 
+                 alt="Grant Writing Icon"
                  width="50"
                  height="50"
                  loading="lazy">
           </div>
           <div class="pillar-header">
-            <h3>Marketing Intelligence Suite</h3>
-            <div class="service-price">$10K setup + $5K/month</div>
+            <h3>Grant Writing & Funding</h3>
           </div>
           <div class="pillar-content">
-            <p>Build a team of specialized AI agents that handle lead scoring, content creation, campaign optimization, and competitive intelligence - all working together 24/7.</p>
-            <p class="service-timeline">Deploys in 2-3 weeks. Integrates with your existing tech stack.</p>
+            <p>Research grants, write compelling proposals, and secure funding for your business. I handle the deadlines and paperwork.</p>
+          </div>
+        </div>
+        <div class="advantage-pillar">
+          <div class="pillar-icon">
+            <img src="images/icons/icon-location.png" 
+                 alt="Content Marketing Icon"
+                 width="50"
+                 height="50"
+                 loading="lazy">
+          </div>
+          <div class="pillar-header">
+            <h3>Content Marketing</h3>
+          </div>
+          <div class="pillar-content">
+            <p>Content strategy that fits your business reality. Email campaigns that bring customers back and social media that works.</p>
+          </div>
+        </div>
+        <div class="advantage-pillar">
+          <div class="pillar-icon">
+            <img src="images/icons/icon-nodes.png" 
+                 alt="Digital Advertising Icon"
+                 width="50"
+                 height="50"
+                 loading="lazy">
+          </div>
+          <div class="pillar-header">
+            <h3>Digital Advertising</h3>
+          </div>
+          <div class="pillar-content">
+            <p>Google Ads and Facebook advertising designed for rural businesses. Get more customers from online with budget-friendly campaigns.</p>
           </div>
         </div>
         <div class="advantage-pillar">
           <div class="pillar-icon">
             <img src="images/icons/icon-packages.png" 
-                 alt="Custom AI Agent Development Icon"
+                 alt="Service Packages Icon"
                  width="50"
                  height="50"
                  loading="lazy">
           </div>
           <div class="pillar-header">
-            <h3>Custom AI Agent Development</h3>
-            <div class="service-price">$5K-15K per agent + $500-2K/month</div>
+            <h3>Service Packages</h3>
           </div>
           <div class="pillar-content">
-            <p>Need something specific? I'll build it. From RFP generators to lead qualification systems to personalization engines - custom AI agents designed for your exact needs.</p>
-            <p class="service-timeline">From concept to deployment in 2 weeks.</p>
-          </div>
-        </div>
-        <div class="advantage-pillar">
-          <div class="pillar-icon">
-            <img src="images/icons/icon-growth.png" 
-                 alt="Strategic AI Consulting Icon"
-                 width="50"
-                 height="50"
-                 loading="lazy">
-          </div>
-          <div class="pillar-header">
-            <h3>Strategic AI Consulting</h3>
-            <div class="service-price">Enterprise Solutions</div>
-          </div>
-          <div class="pillar-content">
-            <p>Transform your marketing operations to deliver 3-5x efficiency gains. From workflow audit to implementation oversight, I architect complete AI transformations.</p>
-            <p class="service-timeline">Because competitive advantage belongs to those who move first.</p>
+            <p>Combine any services into a custom package or explore a retainer option for prolonged support.</p>
           </div>
         </div>
       </div>
       <div class="services-cta">
-        <a href="services.html" class="btn btn-primary">See All Services & Pricing</a>
-        <a href="https://calendar.app.google/6QPTEjXtfWytxcg98" target="_blank" class="btn btn-secondary">Book Strategy Call</a>
+        <a href="services.html/#services-grid" class="btn btn-primary">See All 10 Services Available</a>
       </div>
     </div>
   </section>
 
-  <!-- How This Works -->
-  <section id="how-it-works" class="methodology section section-gray">
+  <!-- Success Methodology -->
+  <section id="methodology" class="methodology section section-gray">
     <div class="container">
       <div class="section-header">
-        <h2>How This Works</h2>
-        <p>From discovery to deployment in weeks, not months.</p>
+        <h2>Case Study: $50K T-Mobile Grant</h2>
+        <p>How I secured $50K in funding and what it means for your business.</p>
       </div>
-      <div class="timeline-container">
-        <div class="timeline-step">
-          <div class="timeline-content">
-            <h4>Step 1: Discovery & Design</h4>
-            <p>We map your workflows, identify automation opportunities, and design your agent architecture.</p>
-          </div>
+      <div class="methodology-content">
+        <div class="methodology-intro">
+          <h3>From Application to Award: Strategic Framework</h3>
+          <p>The T-Mobile Community Challenge wasn't just about technology—it was about demonstrating how digital innovation can strengthen rural communities while creating sustainable economic value.</p>
         </div>
-        <div class="timeline-step">
-          <div class="timeline-content">
-            <h4>Step 2: Build & Integration</h4>
-            <p>I build your agents using enterprise platforms and integrate with your existing tools.</p>
+        <div class="timeline-container">
+          <div class="timeline-step">
+            <div class="timeline-content">
+              <h4>Community Asset Identification</h4>
+              <p>Mapped existing rural strengths and untapped digital opportunities</p>
+            </div>
           </div>
-        </div>
-        <div class="timeline-step">
-          <div class="timeline-content">
-            <h4>Step 3: Deploy & Optimize</h4>
-            <p>Your agents go live, your team gets trained, and we optimize based on real performance.</p>
+          <div class="timeline-step">
+            <div class="timeline-content">
+              <h4>Strategic Narrative Development</h4>
+              <p>Crafted compelling story connecting rural innovation to measurable impact</p>
+            </div>
           </div>
-        </div>
-        <div class="timeline-step">
-          <div class="timeline-content">
-            <h4>Ongoing: Evolution</h4>
-            <p>Monthly optimization based on performance data. Your agents get smarter every day.</p>
+          <div class="timeline-step">
+            <div class="timeline-content">
+              <h4>Technology Integration Planning</h4>
+              <p>Designed solutions that amplify community advantages rather than replace them</p>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-content">
+              <h4>Capital Acquisition Execution</h4>
+              <p>Delivered proposal that secured $50K in 60 days with replicable framework</p>
+            </div>
           </div>
         </div>
       </div>
@@ -557,10 +423,10 @@
     <div class="container">
       <div class="about-container grid grid-2">
         <div class="about-content">
-          <h2>20 Years of Marketing. Now Building AI That Works.</h2>
-          <p>I'm Michael Browne. Twenty years in marketing taught me that while everyone's talking about AI, few are building practical solutions that actually work.</p>
-          <p>I build AI agents that handle the repetitive work drowning your marketing team. Real results: 50% faster RFP responses, real-time lead scoring, content at scale. My grant-writing AI has already secured $50,000.</p>
-          <p>I'm here to build you competitive advantage. Based in Wisconsin. Serving growth-focused companies nationally.</p>
+          <h2>Hi, I'm Michael Browne</h2>
+          <p>After nearly two decades in marketing—working with some of the world's most well-known outdoor, apparel, software, and technology brands—I've learned that most business owners are drowning in marketing advice that doesn't actually work for their reality.</p>
+          <p>I help small and medium sized business owners who are wearing all the hats get clear on what actually moves the needle. No more spinning your wheels on marketing tactics that sound good but don't deliver results.</p>
+          <p>Since stepping away from large corporations, I've been building promotions that deliver results, learning AI optimization tools & techniques, and committed my time to local issues through grant writing, recently securing a $50K T-Mobile grant for Vernon Trails. If that sounds like a lot, it is! I love helping identify marketing strategies that work, and giving small business owners the advantage they deserve.</p>
         </div>
         <div class="about-image">
           <div class="about-image-container">
@@ -576,100 +442,55 @@
       </div>
       <div class="about-quote">
         <blockquote>
-          <p>Are you just getting into AI? I wrote this <a href="https://gum.new/gum/cmaqe5z1g002o03jlck5c232f" target="_blank" style="color: var(--primary); font-weight: 600;">"Strategy in Motion"</a> guide on how to use ChatGPT's Advanced Voice Mode to define your strategy. Download the <a href="https://riseabovepartners.gumroad.com/l/strategy-in-motion-audience/r1aycf4" target="_blank" style="color: var(--primary); font-weight: 600;">first module</a> for FREE on Understanding your Audience.</p>
+          <p>Want to get started? <a href="https://riseabovepartners.gumroad.com/l/strategy-in-motion-audience/r1aycf4" target="_blank" style="color: var(--primary); font-weight: 600;">Download the FREE Audience Module</a> or <a href="https://gum.new/gum/cmaqe5z1g002o03jlck5c232f" target="_blank" style="color: var(--primary); font-weight: 600;">explore the full Strategy in Motion guide</a>.</p>
         </blockquote>
       </div>
     </div>
   </section>
 
-  <!-- Why Trust Me -->
+  <!-- Innovation Showcase -->
   <section class="innovation section">
     <div class="container">
       <div class="section-header">
-        <h2>Why Marketing Leaders Trust Me</h2>
-        <p>Real experience. Real technical skills. Real results.</p>
+        <h2>Tools & Resources</h2>
+        <p>Free resources and tools to help you get started with marketing and funding opportunities.</p>
       </div>
       <div class="innovation-grid grid grid-3">
         <div class="innovation-item">
-          <h3>20 Years of Marketing Experience</h3>
-          <p style="text-align: left;">• Billion-dollar brands to scrappy startups<br>
-          • Built and scaled winning marketing operations<br>
-          • Deep understanding of what actually works</p>
+          <div class="innovation-image">
+            <img src="images/innovation/innovation-strategyinmotion.png" 
+                 alt="Strategy in Motion Interface"
+                 width="300"
+                 height="200"
+                 loading="lazy">
+          </div>
+          <h3>Strategy in Motion</h3>
+          <p>AI-powered business strategy framework that teaches rural entrepreneurs to leverage ChatGPT Advanced Voice Mode for brand development. Technology that speaks your language.</p>
+          <a href="https://gum.new/gum/cmaqe5z1g002o03jlck5c232f" target="_blank" class="innovation-link">Access Framework →</a>
         </div>
         <div class="innovation-item">
-          <h3>Technical + Strategic</h3>
-          <p style="text-align: left;">• Speak both business and technical languages<br>
-          • Talk ROI with your CFO<br>
-          • Discuss API endpoints with your CTO<br>
-          • Bridge the gap between strategy and implementation</p>
+          <div class="innovation-image">
+            <img src="images/innovation/innovation-grants.png" 
+                 alt="Community Capital Navigator Dashboard"
+                 width="300"
+                 height="200"
+                 loading="lazy">
+          </div>
+          <h3>Community Capital Navigator</h3>
+          <p>Grant opportunity identification and proposal development services specifically designed for rural businesses and community development projects.</p>
+          <a href="grants.html/#grants-database" class="innovation-link">Browse Current Grants →</a>
         </div>
         <div class="innovation-item">
-          <h3>Real Implementation, Real Results</h3>
-          <p style="text-align: left;">• 45% traffic increase through AI content systems<br>
-          • 100%+ ROI on appointment scheduling automation<br>
-          • $50K in grants secured through AI research<br>
-          • 15 hours/week saved per marketing team member</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ Section -->
-  <section id="faq" class="methodology section section-gray">
-    <div class="container">
-      <div class="section-header">
-        <h2>Straight Answers</h2>
-        <p>Common questions about AI agents for marketing teams.</p>
-      </div>
-      <div class="methodology-content">
-        <div class="methodology-intro faq-item">
-          <h3 class="faq-toggle" onclick="toggleFAQ(this)">
-            I'm not technical. Will I be able to use this?
-            <span class="faq-arrow">+</span>
-          </h3>
-          <div class="faq-answer">
-            <p>That's the point. These are applications with buttons and forms, not code to manage. If you can use Salesforce, you can use these.</p>
+          <div class="innovation-image">
+            <img src="images/innovation/innovation-seenlocal.png" 
+                 alt="Rural Marketing Automation Platform"
+                 width="300"
+                 height="200"
+                 loading="lazy">
           </div>
-        </div>
-        
-        <div class="methodology-intro faq-item">
-          <h3 class="faq-toggle" onclick="toggleFAQ(this)">
-            How is this different from ChatGPT?
-            <span class="faq-arrow">+</span>
-          </h3>
-          <div class="faq-answer">
-            <p>ChatGPT is a tool. These are complete applications that understand your business, integrate with your systems, and handle entire workflows without prompting.</p>
-          </div>
-        </div>
-        
-        <div class="methodology-intro faq-item">
-          <h3 class="faq-toggle" onclick="toggleFAQ(this)">
-            What about our data security?
-            <span class="faq-arrow">+</span>
-          </h3>
-          <div class="faq-answer">
-            <p>Everything is SOC 2 Type II compliant, GDPR ready, and your data never trains public models. I can work within your security requirements.</p>
-          </div>
-        </div>
-        
-        <div class="methodology-intro faq-item">
-          <h3 class="faq-toggle" onclick="toggleFAQ(this)">
-            What if we already have marketing automation?
-            <span class="faq-arrow">+</span>
-          </h3>
-          <div class="faq-answer">
-            <p>Perfect. I build on top of what you have. These agents make your existing tools exponentially more powerful.</p>
-          </div>
-        </div>
-        
-        <div class="methodology-intro faq-item">
-          <h3 class="faq-toggle" onclick="toggleFAQ(this)">
-            Why should I trust a solo consultant with this?
-            <span class="faq-arrow">+</span>
-          </h3>
-          <div class="faq-answer">
-            <p>Because I'm not really solo. I leverage enterprise platforms and certified specialists for implementation. You get strategic focus plus best-in-class execution.</p>
-          </div>
+          <h3>Rural Marketing Automation</h3>
+          <p>Simplified marketing automation solutions that integrate with existing rural business operations. Technology that amplifies community relationships.</p>
+          <a href="contact.html/#contact-form" class="innovation-link">Learn More →</a>
         </div>
       </div>
     </div>
@@ -679,11 +500,8 @@
   <section id="contact" class="contact section section-gray">
     <div class="container">
       <div class="section-header">
-        <h2>Ready to 10X Your Marketing Team's Impact?</h2>
-        <p>Stop drowning in repetitive tasks. Start building AI agents that work 24/7. Book a strategy call to see what's possible for your team.</p>
-        <div style="text-align: center; margin: 3.5rem 0 2rem 0;">
-          <a href="https://calendar.app.google/6QPTEjXtfWytxcg98" target="_blank" class="btn btn-primary">Book Strategy Call</a>
-        </div>
+        <h2>Ready to Stop Spinning Your Wheels?</h2>
+        <p>If you're a business owner who's tired of marketing advice that doesn't work for your reality—and you're ready to focus on what actually drives results—let's talk.</p>
       </div>
       <div class="contact-single-column">
         <!-- Contact Form Card -->
@@ -692,7 +510,7 @@
             <!-- Tally Form Embed -->
             <iframe src="https://tally.so/embed/w8r0vP?hideTitle=1&transparentBackground=1"
               width="100%" 
-              height="350" 
+              height="500" 
               frameborder="0" 
               marginheight="0" 
               marginwidth="0" 
@@ -705,8 +523,9 @@
         
         <!-- Contact Info Section -->
         <div class="contact-info-section">
-          <h3>Let's Build Your AI Workforce</h3>
-          <p>I only take on 3 new clients per quarter to ensure each AI deployment gets the attention it deserves. If you're ready to transform how your marketing team operates, let's discuss your specific needs.</p>
+          
+          <h3>I'm Michael Browne</h3>
+          <p>I help overworked business owners get clear on their marketing and build systems that actually work. Think of me as your marketing translator: someone who cuts through the noise and focuses on what drives results.</p>
           
           <div class="contact-details">
             <div class="contact-item">
@@ -729,60 +548,41 @@
     <div class="container">
       <div class="footer-container grid grid-4">
         <div class="footer-col">
-          <h4><a href="index.html" style="color: inherit; text-decoration: none;">Rise Above Partners</a></h4>
-          <p>AI Agents for Marketing Leaders</p>
+          <h4>Rise Above Partners</h4>
+          <p>Rural business digital catalyst. Technology that works for your reality.</p>
         </div>
         <div class="footer-col">
-          <h4><a href="services.html" style="color: inherit; text-decoration: none;">Services</a></h4>
+          <h4>Digital Advantage</h4>
           <ul class="footer-links">
-            <li><a href="services.html">Marketing Intelligence Suite</a></li>
-            <li><a href="services.html">Custom Agents</a></li>
-            <li><a href="services.html">Strategic AI Consulting</a></li>
+            <li><a href="#advantage">Strategic Marketing</a></li>
+            <li><a href="#advantage">Capital Access</a></li>
+            <li><a href="#advantage">Technology Bridges</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4><a href="why-choose-us.html" style="color: inherit; text-decoration: none;">Resources</a></h4>
+          <h4>Innovation</h4>
           <ul class="footer-links">
-            <li><a href="why-choose-us.html">Why Choose Us</a></li>
-            <li><a href="grants.html">Grants</a></li>
+            <li><a href="https://gum.new/gum/cmaqe5z1g002o03jlck5c232f">Strategy in Motion</a></li>
+            <li><a href="services.html/#services-grid">Grant Writing</a></li>
+            <li><a href="services.html/#services-grid">Rural Automation</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Connect</h4>
           <ul class="footer-links">
-            <li><a href="https://www.linkedin.com/company/86726287" target="_blank">LinkedIn</a></li>
-            <li><a href="https://calendar.app.google/6QPTEjXtfWytxcg98" target="_blank">Book a Call</a></li>
-            <li><a href="https://rise-above.net/contact">Email</a></li>
+            <li><a href="https://www.linkedin.com/company/86726287">LinkedIn</a></li>
+            <li><a href="contact.html/#contact-form">Schedule Consultation</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 Rise Above Partners | <a href="#">Privacy</a> | <a href="#">Terms</a></p>
-        <p>Building the future of marketing operations, one agent at a time.</p>
+        <p>&copy; 2025 Rise Above Partners. Leading the rural digital revolution.</p>
       </div>
     </div>
   </footer>
 
   <!-- Include Main JavaScript for Smooth Scrolling -->
   <script src="js/main.js"></script>
-  
-  <!-- FAQ Toggle Script -->
-  <script>
-    function toggleFAQ(element) {
-      const faqItem = element.parentElement;
-      const allItems = document.querySelectorAll('.faq-item');
-      
-      // Close other items
-      allItems.forEach(item => {
-        if (item !== faqItem) {
-          item.classList.remove('active');
-        }
-      });
-      
-      // Toggle current item
-      faqItem.classList.toggle('active');
-    }
-  </script>
 
 </body>
 </html>
