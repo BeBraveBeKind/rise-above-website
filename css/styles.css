@@ -1118,7 +1118,7 @@ a.btn {
   flex-shrink: 0;
 }
 
-.pillar-icon img { width: 40px; height: 40px; filter: brightness(0) invert(1); object-fit: contain; }
+.pillar-icon img { width: 40px; height: 40px; object-fit: contain; }
 .pillar-header { text-align: center; margin: 0 0 1rem 0 !important; }
 .pillar-header h3 { color: var(--dark); margin: 0 !important; font-size: 1.25rem; font-weight: 700; line-height: 1.2; }
 .pillar-content p { text-align: center; color: #555; margin: 0 !important; font-size: 1.1rem; line-height: 1.5; }
