@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Services | Rise Above Partners - Rural Business Marketing</title>
+  <title>AI Marketing Agents & Services | Rise Above Partners</title>
 
   <!-- SEO Meta -->
-  <meta name="description" content="10 marketing services designed for rural businesses: grant writing, digital advertising, content marketing, AI automation, websites, and strategic consulting.">
-  <meta name="keywords" content="rural marketing services, grant writing, digital advertising, content marketing, AI automation, rural business websites">
+  <meta name="description" content="AI agents that handle your marketing team's repetitive work. Marketing Intelligence Suite, Custom Agent Development, and Grant Writing Intelligence. Real results in 2 weeks.">
+  <meta name="keywords" content="AI marketing agents, marketing automation, custom AI development, marketing intelligence, grant writing AI, lead scoring automation">
 
   <!-- Open Graph Meta -->
-  <meta property="og:title" content="Services - Rise Above Partners">
-  <meta property="og:description" content="10 marketing services that generate real results for rural businesses. From grant writing to digital advertising to AI automation.">
+  <meta property="og:title" content="AI Marketing Services - Rise Above Partners">
+  <meta property="og:description" content="Build your AI workforce. Marketing agents that score leads, create content, and optimize campaigns 24/7. From $5K setup.">
   <meta property="og:image" content="https://rise-above.net/images/brand/logo.png">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://rise-above.net/services">
@@ -34,6 +34,256 @@
   <!-- Services Page Specific Styles -->
   <style>
     /* Hero styles now handled by global styles.css */
+    
+    /* Services Accordion Container */
+    .services-accordion {
+      max-width: 1400px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+    }
+    
+    /* Service Accordion Item */
+    .service-accordion-item {
+      background: white;
+      border: 2px solid transparent;
+      border-radius: 12px;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .service-accordion-item:hover {
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+      transform: translateY(-2px);
+    }
+    
+    .service-accordion-item.active {
+      border-color: var(--primary);
+      box-shadow: 0 12px 40px rgba(109, 152, 186, 0.15);
+    }
+    
+    /* Service Header (Clickable Area) */
+    .service-header-accordion {
+      padding: 3.5rem 4rem !important;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.2s ease;
+      background: linear-gradient(to right, transparent, transparent);
+      margin: 0 !important;
+    }
+    
+    .service-header-accordion:hover {
+      background: linear-gradient(to right, rgba(109, 152, 186, 0.03), transparent);
+    }
+    
+    .service-header-content {
+      flex: 1;
+      padding-right: 1rem;
+      min-width: 0;
+    }
+    
+    .service-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin: 0 0 0.75rem 0;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      padding-right: 1rem;
+    }
+    
+    .service-price {
+      display: inline-block;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: rgba(109, 152, 186, 0.08);
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      margin: 0.5rem 0 1.5rem 0;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .service-price:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(109, 152, 186, 0.3);
+    }
+    
+    .service-tagline {
+      font-size: 1.15rem;
+      color: #666;
+      margin: 0;
+      line-height: 1.5;
+      padding-right: 1rem;
+    }
+    
+    /* Expand Arrow */
+    .service-arrow {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(109, 152, 186, 0.08);
+      border-radius: 50%;
+      color: var(--primary);
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      margin-left: 2rem;
+    }
+    
+    .service-accordion-item:hover .service-arrow {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .service-accordion-item.active .service-arrow {
+      transform: rotate(180deg);
+      background: var(--primary);
+      color: white;
+    }
+    
+    /* Service Content (Hidden by Default) */
+    .service-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+      opacity: 0;
+    }
+    
+    .service-accordion-item.active .service-content {
+      max-height: 2000px;
+      opacity: 1;
+    }
+    
+    .service-content-inner {
+      padding: 3rem 4rem 4rem 4rem !important;
+      border-top: 1px solid rgba(109, 152, 186, 0.1);
+      margin: -0.5rem 0 0 0 !important;
+    }
+    
+    .service-content-inner > p:first-of-type {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      color: #444;
+      margin: 2rem 0 1.5rem 0;
+      padding-top: 0.5rem;
+    }
+    
+    .service-features {
+      list-style: none;
+      padding: 0;
+      margin: 2rem 0 !important;
+      background: rgba(109, 152, 186, 0.03);
+      border-radius: 8px;
+      padding: 2rem;
+    }
+    
+    .service-features li {
+      padding: 1rem 0 1rem 2.5rem;
+      position: relative;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #333;
+      border-bottom: 1px solid rgba(109, 152, 186, 0.08);
+    }
+    
+    .service-features li:last-child {
+      border-bottom: none;
+    }
+    
+    .service-features li:before {
+      content: "✓";
+      position: absolute;
+      left: 0.5rem;
+      color: var(--primary);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    
+    .service-features li strong {
+      color: var(--dark);
+      font-weight: 700;
+    }
+    
+    /* Timeline and Track Record */
+    .service-content-inner > p:last-of-type {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 2rem 0 !important;
+      border-left: 4px solid var(--primary);
+      font-size: 1.05rem;
+      color: #555;
+    }
+    
+    /* CTA Buttons in Services */
+    .service-cta-group {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    
+    .service-cta-group .btn {
+      padding: 1rem 2rem !important;
+      font-size: 1.05rem !important;
+      font-weight: 600 !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .service-cta-group .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .service-cta-group .btn-secondary {
+      background: white;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+    
+    .service-cta-group .btn-secondary:hover {
+      background: var(--primary);
+      color: white;
+    }
+    
+    /* Mobile Optimization */
+    @media (max-width: 768px) {
+      .services-accordion {
+        padding: 0 1rem;
+      }
+      
+      .service-accordion-item {
+        margin-bottom: 1.5rem;
+      }
+      
+      .service-header-accordion {
+        padding: 2rem 2rem;
+      }
+      
+      .service-content-inner {
+        padding: 1.5rem 2rem 2rem 2rem;
+      }
+      
+      .service-title {
+        font-size: 1.4rem;
+      }
+      
+      .service-arrow {
+        width: 40px;
+        height: 40px;
+      }
+    }
 
     .services-grid {
       display: grid;
@@ -238,10 +488,164 @@
       pointer-events: none !important;
     }
     
-    /* Hide hero button on desktop only */
-    @media (min-width: 769px) {
-      .services-hero .btn-light {
-        display: none !important;
+    /* Hero CTA Group Styling */
+    .services-hero .hero-cta-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    @media (max-width: 768px) {
+      .services-hero .hero-cta-group {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .services-hero .hero-cta-group .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+    
+    /* FAQ Styles to match homepage */
+    .faq-toggle {
+      cursor: pointer;
+      position: relative;
+      transition: color 0.3s ease;
+      user-select: none;
+      font-size: 1.4rem !important;
+      font-weight: 600 !important;
+    }
+    
+    .faq-toggle:hover {
+      color: var(--secondary);
+    }
+    
+    .faq-arrow {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--primary);
+      transition: transform 0.3s ease;
+    }
+    
+    .faq-item.active .faq-arrow {
+      transform: translateY(-50%) rotate(45deg);
+    }
+    
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+      opacity: 0;
+      padding-left: 0;
+    }
+    
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      opacity: 1;
+      margin-top: 1rem;
+    }
+    
+    .faq-answer p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #555;
+      margin: 0 0 1.5rem 0;
+    }
+    
+    /* Investment & ROI Section - Match Homepage Exactly */
+    section#investment.advantage .advantage-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 2rem !important;
+      max-width: 100% !important;
+      margin: 3rem 0 !important;
+    }
+    
+    section#investment.advantage .advantage-pillar {
+      background: white !important;
+      border-radius: 12px !important;
+      padding: 2rem !important;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08) !important;
+      border: 1px solid #e5e5e5 !important;
+      aspect-ratio: auto !important;
+      text-align: left !important;
+      display: flex !important;
+      flex-direction: column !important;
+      transition: transform 0.3s ease !important;
+    }
+    
+    section#investment.advantage .advantage-pillar:hover {
+      transform: translateY(-4px) !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+    }
+    
+    section#investment.advantage .pillar-header {
+      text-align: left !important;
+      margin: 0 0 1.5rem 0 !important;
+      padding: 0 !important;
+      border-bottom: none !important;
+    }
+    
+    section#investment.advantage .pillar-header h3 {
+      font-size: 1.5rem !important;
+      font-weight: 700 !important;
+      color: var(--dark) !important;
+      margin: 0 !important;
+      line-height: 1.2 !important;
+    }
+    
+    section#investment.advantage .pillar-content {
+      text-align: left !important;
+    }
+    
+    section#investment.advantage .pillar-content p {
+      font-size: 1rem !important;
+      line-height: 1.6 !important;
+      color: var(--text-secondary) !important;
+      margin: 0 0 1rem 0 !important;
+      text-align: left !important;
+    }
+    
+    section#investment.advantage .pillar-content p:last-child {
+      margin-bottom: 0 !important;
+    }
+    
+    section#investment.advantage .pillar-content p strong {
+      color: var(--dark) !important;
+      font-weight: 600 !important;
+    }
+    
+    /* Responsive - Stack on mobile */
+    @media (max-width: 1024px) {
+      section#investment.advantage .advantage-grid {
+        grid-template-columns: 1fr !important;
+        max-width: 600px !important;
+        margin: 3rem auto !important;
+      }
+    }
+    
+    /* Fix Get In Touch button cutoff in navigation */
+    .nav-links .btn.btn-primary {
+      white-space: nowrap !important;
+      min-width: fit-content !important;
+      flex-shrink: 0 !important;
+    }
+    
+    @media (min-width: 769px) and (max-width: 1100px) {
+      .nav-links {
+        gap: 1rem !important;
+      }
+      
+      .nav-links .btn.btn-primary {
+        padding: 0.7rem 1.2rem !important;
+        font-size: 0.85rem !important;
       }
     }
   </style>
@@ -277,9 +681,9 @@
         <div class="nav-links">
           <a href="index.html">Home</a>
           <a href="services.html" class="nav-active">Services</a>
-          <a href="acceleration.html">Acceleration</a>
+          <a href="acceleration.html">Why Choose Us</a>
           <a href="grants.html">Grants</a>
-          <a href="contact.html" class="btn btn-primary">Get Started</a>
+          <a href="https://rise-above.net/contact" class="btn btn-primary">Get in Touch</a>
         </div>
         <div class="menu-toggle">
           <span></span><span></span><span></span>
@@ -311,183 +715,289 @@
     <div class="hero-overlay"></div>
     <div class="container">
       <div class="hero-content">
-        <h1>Services That Get Real Results</h1>
-        <p>Marketing services designed specifically for rural business realities. No one-size-fits-all solutions—just services that work for your market, your budget, and your capacity.</p>
-        <a href="#services-grid" class="btn btn-light">Explore Services</a>
+        <h1>Build Your AI Marketing Workforce</h1>
+        <p>Transform your marketing team with AI agents that work 24/7. From lead scoring to content creation, I'll build custom solutions that integrate with your existing tools and deliver measurable results in weeks, not months.</p>
+        <div class="hero-cta-group">
+          <a href="#services-grid" class="btn btn-light">View AI Services</a>
+          <a href="https://calendar.app.google/6QPTEjXtfWytxcg98" target="_blank" class="btn btn-primary">Book Strategy Call</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Services Grid -->
+  <!-- Services Accordion -->
   <section id="services-grid" class="section">
     <div class="container">
-      <div class="services-grid">
+      <div class="section-header">
+        <h2>Choose Your AI Transformation</h2>
+        <p>From pilot programs to enterprise transformation, we have a solution for your team.</p>
+      </div>
+      
+      <div class="services-accordion">
         
-        <!-- Grant Writing & Funding -->
-        <div class="service-card popular">
-          <div class="popular-badge">Most Popular</div>
-          <div class="service-header">
-            <h3>Grant Writing & Funding</h3>
-            <p class="service-description">For businesses needing capital for growth or equipment</p>
+        <!-- Marketing Intelligence Suite -->
+        <div class="service-accordion-item active">
+          <div class="service-header-accordion" onclick="toggleService(this)">
+            <div class="service-header-content">
+              <h3 class="service-title">Marketing Intelligence Suite</h3>
+              <a href="#contact" class="service-price">Contact for Pricing</a>
+              <p class="service-tagline">Build a team of specialized AI agents that work together 24/7</p>
+            </div>
+            <span class="service-arrow">▼</span>
           </div>
-          <ul class="service-features">
-            <li>Research and identify relevant grant opportunities</li>
-            <li>Write compelling proposals using proven frameworks</li>
-            <li>Manage deadlines and submission requirements</li>
-            <li>Follow-up strategy to maximize approval chances</li>
-          </ul>
-          <p class="service-target"><strong>Perfect for:</strong> Growing businesses, equipment purchases, community development projects</p>
-        </div>
-
-        <!-- Digital Advertising -->
-        <div class="service-card">
-          <div class="service-header">
-            <h3>Digital Advertising</h3>
-            <p class="service-description">For businesses wanting more customers from online</p>
+          <div class="service-content">
+            <div class="service-content-inner">
+              <p>Deploy a complete AI workforce that transforms how your marketing team operates. Four specialized agents working in perfect coordination:</p>
+              <ul class="service-features">
+                <li><strong>Lead Intelligence Agent:</strong> Scores, enriches, and routes leads in real-time based on behavior and fit</li>
+                <li><strong>Content Generation Agent:</strong> Creates on-brand content at scale while maintaining your voice</li>
+                <li><strong>Competitive Intelligence Agent:</strong> Monitors competitors and identifies market opportunities</li>
+              </ul>
+              <p><strong>Timeline:</strong> Deploys in 2-3 weeks. Integrates seamlessly with most modern CRMs.</p>
+              <p><strong>Best for:</strong> B2B companies with 10+ person marketing teams, organizations spending $20K+/month on marketing, teams drowning in repetitive tasks.</p>
+              <div class="service-cta-group">
+                <a href="https://calendar.app.google/6QPTEjXtfWytxcg98" target="_blank" class="btn btn-primary">Book Strategy Call</a>
+                <a href="grants.html" class="btn btn-secondary">See Grant Agent Live</a>
+              </div>
+            </div>
           </div>
-          <ul class="service-features">
-            <li>Google Ads for local service searches</li>
-            <li>Facebook/Meta advertising for community reach</li>
-            <li>Local search optimization and map listings</li>
-            <li>Performance tracking and budget optimization</li>
-          </ul>
-          <p class="service-target"><strong>Perfect for:</strong> Service businesses, retail stores, restaurants, contractors</p>
         </div>
-
-        <!-- Content Marketing -->
-        <div class="service-card popular">
-          <div class="popular-badge">Most Popular</div>
-          <div class="service-header">
-            <h3>Content Marketing</h3>
-            <p class="service-description">For businesses that need consistent online presence</p>
+        
+        <!-- Custom AI Agent Development -->
+        <div class="service-accordion-item">
+          <div class="service-header-accordion" onclick="toggleService(this)">
+            <div class="service-header-content">
+              <h3 class="service-title">Custom AI Agent Development</h3>
+              <a href="#contact" class="service-price">Contact for Pricing</a>
+              <p class="service-tagline">Need something specific? I'll build it.</p>
+            </div>
+            <span class="service-arrow">▼</span>
           </div>
-          <ul class="service-features">
-            <li>Content strategy that fits your business reality</li>
-            <li>Email campaigns that bring customers back</li>
-            <li>Social media management that doesn't consume your day</li>
-            <li>Customer communication sequences that run automatically</li>
-          </ul>
-          <p class="service-target"><strong>Perfect for:</strong> Any business with repeat customers or seasonal patterns</p>
-        </div>
-
-        <!-- AI & Business Automation -->
-        <div class="service-card">
-          <div class="service-header">
-            <h3>AI & Business Automation</h3>
-            <p class="service-description">For businesses drowning in repetitive tasks</p>
+          <div class="service-content">
+            <div class="service-content-inner">
+              <p>Your workflow is unique. Your AI should be too. I build custom agents designed for your exact needs.</p>
+              <p><strong>Recent Custom Builds:</strong></p>
+              <ul class="service-features">
+                <li>Grant research tool to automatically update website with live summaries and links</li>
+                <li>Automated tariff intelligence tracker that analyzed news and policy to deliver executive impact briefs in real time</li>
+                <li>Marketing and sales team enablement system that simplified seasonal campaign planning and execution</li>
+                <li><em>In development:</em> Sales deck generator that builds custom PDF decks from templates based on CRM data</li>
+              </ul>
+              <p><strong>Timeline:</strong> From concept to deployment in 2 weeks. Full integration with your existing tech stack.</p>
+              <p><strong>Best for:</strong> Companies with unique workflows, high-value processes worth automating, problems your competitors haven't solved yet.</p>
+              <div class="service-cta-group">
+                <a href="https://calendar.app.google/6QPTEjXtfWytxcg98" target="_blank" class="btn btn-primary">Discuss Your Needs</a>
+                <a href="grants.html" class="btn btn-secondary">See Grant Agent Live</a>
+              </div>
+            </div>
           </div>
-          <ul class="service-features">
-            <li>ChatGPT training for practical business applications</li>
-            <li>Marketing automation that saves 10+ hours per week</li>
-            <li>Custom workflows for your specific business processes</li>
-            <li>Team training on tools that actually help</li>
-          </ul>
-          <p class="service-target"><strong>Perfect for:</strong> Overwhelmed business owners, growing teams, manual processes</p>
         </div>
-
-        <!-- Website & Local SEO -->
-        <div class="service-card">
-          <div class="service-header">
-            <h3>Website & Local SEO</h3>
-            <p class="service-description">For businesses that need professional online presence</p>
+        
+        <!-- Strategic AI Consulting -->
+        <div class="service-accordion-item">
+          <div class="service-header-accordion" onclick="toggleService(this)">
+            <div class="service-header-content">
+              <h3 class="service-title">Strategic AI Consulting</h3>
+              <a href="#contact" class="service-price">Contact for Pricing</a>
+              <p class="service-tagline">For teams ready to completely transform their marketing operations</p>
+            </div>
+            <span class="service-arrow">▼</span>
           </div>
-          <ul class="service-features">
-            <li>Rural business websites that work on any device</li>
-            <li>Google Business Profile optimization and management</li>
-            <li>Local SEO to get found by nearby customers</li>
-            <li>Integration with booking, payments, and communication tools</li>
-          </ul>
-          <p class="service-target"><strong>Perfect for:</strong> Service businesses, retail, professional services, tourism</p>
-        </div>
-
-        <!-- Strategy & Market Analysis -->
-        <div class="service-card">
-          <div class="service-header">
-            <h3>Strategy & Market Analysis</h3>
-            <p class="service-description">For businesses unclear on marketing direction</p>
+          <div class="service-content">
+            <div class="service-content-inner">
+              <p>When you're ready to go all-in on AI transformation, you need more than tools—you need strategy.</p>
+              <ul class="service-features">
+                <li>Complete audit of your marketing workflows and automation opportunities</li>
+                <li>Custom AI roadmap aligned with your business objectives</li>
+                <li>Vendor selection and implementation oversight</li>
+                <li>Team training and change management</li>
+                <li>Ongoing optimization and strategic advisory</li>
+              </ul>
+              <p><strong>Best for:</strong> Marketing teams of 10+ looking to maintain competitive advantage through AI innovation, companies ready for complete digital transformation.</p>
+              <div class="service-cta-group">
+                <a href="https://calendar.app.google/6QPTEjXtfWytxcg98" target="_blank" class="btn btn-primary">Book Strategy Session</a>
+              </div>
+            </div>
           </div>
-          <ul class="service-features">
-            <li>Rural market analysis and competitor research</li>
-            <li>Clear messaging that connects with your customers</li>
-            <li>Marketing strategy that fits your budget and capacity</li>
-            <li>Implementation roadmap with realistic timelines</li>
-          </ul>
-          <p class="service-target"><strong>Perfect for:</strong> New businesses, struggling marketing efforts, major business changes</p>
         </div>
-
-        <!-- Rural Tourism & Event Marketing -->
-        <div class="service-card">
-          <div class="service-header">
-            <h3>Rural Tourism & Event Marketing</h3>
-            <p class="service-description">For tourism boards, festivals, chambers, outdoor recreation</p>
+        
+        <!-- Pilot Program -->
+        <div class="service-accordion-item">
+          <div class="service-header-accordion" onclick="toggleService(this)">
+            <div class="service-header-content">
+              <h3 class="service-title">Pilot Program</h3>
+              <a href="#contact" class="service-price">Contact for Pricing</a>
+              <p class="service-tagline">Test before you invest - Start with one focused AI agent</p>
+            </div>
+            <span class="service-arrow">▼</span>
           </div>
-          <ul class="service-features">
-            <li>Event promotion campaigns that actually fill venues</li>
-            <li>Tourism board digital strategy and execution</li>
-            <li>Festival marketing that brings visitors from outside the region</li>
-            <li>Outdoor recreation business marketing (guides, outfitters, lodges)</li>
-          </ul>
-          <p class="service-target"><strong>Perfect for:</strong> County tourism boards, chamber events, outdoor businesses</p>
-        </div>
-
-        <!-- Rural Business Brand Development -->
-        <div class="service-card">
-          <div class="service-header">
-            <h3>Rural Business Brand Development</h3>
-            <p class="service-description">For family businesses, new owners, succession planning</p>
+          <div class="service-content">
+            <div class="service-content-inner">
+              <p>Not ready for full transformation? Start with a focused pilot to prove the value of AI in your organization.</p>
+              
+              <p><strong>What You Get:</strong></p>
+              <ul class="service-features">
+                <li>One AI agent solving one specific problem</li>
+                <li>2-week deployment timeline</li>
+                <li>Full integration with your existing tools</li>
+                <li>Team training included</li>
+                <li>Success metrics tracking</li>
+                <li>Credit toward full implementation</li>
+              </ul>
+              
+              <p><strong>Best for:</strong> Testing AI in your organization, proving ROI to stakeholders, solving an urgent problem quickly, building confidence in automation.</p>
+              
+              <div class="service-cta-group">
+                <a href="https://calendar.app.google/6QPTEjXtfWytxcg98" target="_blank" class="btn btn-primary">Start Your Pilot</a>
+              </div>
+            </div>
           </div>
-          <ul class="service-features">
-            <li>Brand refresh for businesses going through ownership changes</li>
-            <li>Messaging that connects with rural customers</li>
-            <li>Professional identity design (logos, signage, materials)</li>
-            <li>Positioning against big-box competition</li>
-          </ul>
-          <p class="service-target"><strong>Perfect for:</strong> Family businesses in transition, new owners, established businesses looking outdated</p>
         </div>
-
-        <!-- Business Owner Training & Workshops -->
-        <div class="service-card">
-          <div class="service-header">
-            <h3>Business Owner Training & Workshops</h3>
-            <p class="service-description">Bring marketing expertise directly to rural business groups</p>
-          </div>
-          <ul class="service-features">
-            <li>Chamber of commerce workshop series</li>
-            <li>Farm association marketing training</li>
-            <li>Small business group sessions</li>
-            <li>1:1 coaching for business owners</li>
-          </ul>
-          <p class="service-target"><strong>Perfect for:</strong> Business organizations, individual coaching clients</p>
-        </div>
-
-        <!-- Growth Partnership -->
-        <div class="service-card retainer">
-          <div class="retainer-badge">Retainer Option</div>
-          <div class="service-header">
-            <h3>Growth Partnership</h3>
-            <p class="service-description">Ongoing marketing management for established businesses</p>
-          </div>
-          <ul class="service-features">
-            <li>Monthly strategy sessions and campaign management</li>
-            <li>Quarterly business reviews and planning</li>
-            <li>Priority access to all services as needed</li>
-            <li>Hands-off execution with transparent reporting</li>
-          </ul>
-          <p class="service-target"><strong>Perfect for:</strong> $500K+ businesses ready to scale systematically</p>
-        </div>
-
+        
       </div>
     </div>
   </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="section section-gray">
+  
+  <!-- Investment & ROI Section -->
+  <section id="investment" class="section advantage">
     <div class="container">
-      <div class="services-contact">
-        <h3>Which Services Interest You?</h3>
-        <p>Ready to discuss which services make sense for your business? Let's talk about your goals and challenges.</p>
+      <div class="section-header">
+        <h2>Investment & Typical Returns</h2>
+        <p>Real numbers from real implementations</p>
+      </div>
+      
+      <div class="advantage-grid">
+        <div class="advantage-pillar">
+          <div class="pillar-header">
+            <h3>Marketing Intelligence Suite</h3>
+          </div>
+          <div class="pillar-content">
+            <p><strong>Investment:</strong> One-time setup + monthly maintenance</p>
+            <p><strong>Typical savings:</strong> 15 hours/week per marketer</p>
+            <p><strong>Annual value:</strong> $150K+</p>
+            <p><strong>Payback period:</strong> 2-3 months</p>
+          </div>
+        </div>
         
-        <a href="index.html/#contact" class="btn btn-primary" style="display: inline-block; margin-top: 1.5rem;">Get Started Today</a>
+        <div class="advantage-pillar">
+          <div class="pillar-header">
+            <h3>Custom AI Agent</h3>
+          </div>
+          <div class="pillar-content">
+            <p><strong>Investment:</strong> One-time setup + monthly maintenance</p>
+            <p><strong>Efficiency gain:</strong> 50-80%</p>
+            <p><strong>Value:</strong> Depends on workflow</p>
+            <p><strong>Payback period:</strong> 1-4 months</p>
+          </div>
+        </div>
+        
+        <div class="advantage-pillar">
+          <div class="pillar-header">
+            <h3>Pilot Program</h3>
+          </div>
+          <div class="pillar-content">
+            <p><strong>Investment:</strong> One-time fee can roll into other services</p>
+            <p><strong>Typical result:</strong> 40-60% efficiency gain</p>
+            <p><strong>Credits toward:</strong> Full implementation</p>
+            <p><strong>Decision time:</strong> 30 days</p>
+          </div>
+        </div>
+      </div>
+      
+      <div style="text-align: center; margin-top: 5rem;">
+        <p style="font-size: 1.2rem; color: var(--primary); font-weight: 600;">ROI Guarantee: If you don't see measurable improvement in 60 days, I refund the setup fee.</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- FAQ Section -->
+  <section id="faq" class="methodology section section-gray">
+    <div class="container">
+      <div class="section-header">
+        <h2>Frequently Asked Questions</h2>
+        <p>Real answers about working with AI agents</p>
+      </div>
+      <div class="methodology-content">
+        <div class="methodology-intro faq-item">
+          <h3 class="faq-toggle" onclick="toggleFAQ(this)">
+            How long does implementation really take?
+            <span class="faq-arrow">+</span>
+          </h3>
+          <div class="faq-answer">
+            <p>Marketing Intelligence Suite: 2-3 weeks. Custom agents: 2 weeks. Pilots: 2 weeks. I don't do 6-month implementations.</p>
+          </div>
+        </div>
+        
+        <div class="methodology-intro faq-item">
+          <h3 class="faq-toggle" onclick="toggleFAQ(this)">
+            What if our team resists the change?
+            <span class="faq-arrow">+</span>
+          </h3>
+          <div class="faq-answer">
+            <p>I position agents as assistants, not replacements. Your team gets to stop doing boring work and focus on strategy. Most love it.</p>
+          </div>
+        </div>
+        
+        <div class="methodology-intro faq-item">
+          <h3 class="faq-toggle" onclick="toggleFAQ(this)">
+            Can we start small and scale up?
+            <span class="faq-arrow">+</span>
+          </h3>
+          <div class="faq-answer">
+            <p>Absolutely. Most clients start with a pilot or single agent, see the value, then expand. No pressure to do everything at once.</p>
+          </div>
+        </div>
+        
+        <div class="methodology-intro faq-item">
+          <h3 class="faq-toggle" onclick="toggleFAQ(this)">
+            Do you work with our industry?
+            <span class="faq-arrow">+</span>
+          </h3>
+          <div class="faq-answer">
+            <p>I've worked with B2B SaaS, manufacturing, retail, and professional services. Workflows are similar across industries - content is content, leads are leads.</p>
+          </div>
+        </div>
+        
+        <div class="methodology-intro faq-item">
+          <h3 class="faq-toggle" onclick="toggleFAQ(this)">
+            What if it doesn't work?
+            <span class="faq-arrow">+</span>
+          </h3>
+          <div class="faq-answer">
+            <p>If you don't see measurable improvement in 60 days, I refund the setup fee. But that's never happened.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact Section -->
+  <section id="contact" class="contact section section-gray">
+    <div class="container">
+      <div class="section-header">
+        <h2>Which Services Interest You?</h2>
+        <p>Ready to discuss which services make sense for your business? Let's talk about your goals and challenges.</p>
+        <div style="text-align: center; margin: 2rem 0;">
+          <a href="https://calendar.app.google/6QPTEjXtfWytxcg98" target="_blank" class="btn btn-primary">Book Strategy Call</a>
+        </div>
+      </div>
+      <div class="contact-single-column">
+        <!-- Contact Form Card -->
+        <div class="contact-form-card">
+          <div class="form-content">
+            <!-- Tally Form Embed -->
+            <iframe src="https://tally.so/embed/w8r0vP?hideTitle=1&transparentBackground=1"
+              width="100%" 
+              height="350" 
+              frameborder="0" 
+              marginheight="0" 
+              marginwidth="0" 
+              title="Contact Form"
+              loading="lazy">
+            </iframe>
+            <p class="form-disclaimer">Your information is secure and will only be used to discuss partnership opportunities.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -497,44 +1007,65 @@
     <div class="container">
       <div class="footer-container grid grid-4">
         <div class="footer-col">
-          <h4>Rise Above Partners</h4>
-          <p>Rural business marketing that works for your reality.</p>
+          <h4><a href="index.html" style="color: inherit; text-decoration: none;">Rise Above Partners</a></h4>
+          <p>AI Agents for Marketing Leaders</p>
         </div>
         <div class="footer-col">
-          <h4>Popular Services</h4>
+          <h4><a href="services.html" style="color: inherit; text-decoration: none;">Services</a></h4>
           <ul class="footer-links">
-            <li><a href="#services-grid">Grant Writing & Funding</a></li>
-            <li><a href="#services-grid">Content Marketing</a></li>
-            <li><a href="#services-grid">Digital Advertising</a></li>
-            <li><a href="#services-grid">AI & Automation</a></li>
+            <li><a href="services.html">Marketing Intelligence Suite</a></li>
+            <li><a href="services.html">Custom Agents</a></li>
+            <li><a href="services.html">Strategic AI Consulting</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Specialized Services</h4>
+          <h4><a href="acceleration.html" style="color: inherit; text-decoration: none;">Resources</a></h4>
           <ul class="footer-links">
-            <li><a href="#services-grid">Rural Tourism Marketing</a></li>
-            <li><a href="#services-grid">Business Training</a></li>
-            <li><a href="#services-grid">Brand Development</a></li>
-            <li><a href="#services-grid">Growth Partnership</a></li>
+            <li><a href="acceleration.html">Why Choose Us</a></li>
+            <li><a href="grants.html">Grants</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Connect</h4>
           <ul class="footer-links">
-            <li><a href="https://www.linkedin.com/company/86726287">LinkedIn</a></li>
-            <li><a href="index.html/#contact">Get Started</a></li>
-            <li><a href="index.html">Back to Home</a></li>
+            <li><a href="https://www.linkedin.com/company/86726287" target="_blank">LinkedIn</a></li>
+            <li><a href="https://calendar.app.google/6QPTEjXtfWytxcg98" target="_blank">Book a Call</a></li>
+            <li><a href="https://rise-above.net/contact">Email</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 Rise Above Partners. Marketing that works for rural business reality.</p>
+        <p>&copy; 2025 Rise Above Partners | <a href="#">Privacy</a> | <a href="#">Terms</a></p>
+        <p>Building the future of marketing operations, one agent at a time.</p>
       </div>
     </div>
   </footer>
 
   <!-- Include Main JavaScript for Smooth Scrolling -->
   <script src="js/main.js"></script>
+  
+  <!-- Service Accordion Toggle Script -->
+  <script>
+    function toggleService(element) {
+      const serviceItem = element.parentElement;
+      const allItems = document.querySelectorAll('.service-accordion-item');
+      
+      // Close other items
+      allItems.forEach(item => {
+        if (item !== serviceItem) {
+          item.classList.remove('active');
+        }
+      });
+      
+      // Toggle current item
+      serviceItem.classList.toggle('active');
+    }
+    
+    function toggleFAQ(element) {
+      const faqItem = element.parentElement;
+      faqItem.classList.toggle('active');
+    }
+  </script>
   
   <!-- EMERGENCY BUTTON FIX -->
   <script>

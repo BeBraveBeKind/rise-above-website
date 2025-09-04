@@ -68,7 +68,33 @@ body {
     inset 0 1px 0 hsla(0, 0%, 100%, 0.1);
   --shadow-lg: 0 20px 60px rgba(109, 152, 186, 0.15);
   --shadow-md: 0 8px 30px rgba(109, 152, 186, 0.1);
-  font-size: calc(18px + (22 - 18) * (100vw - 320px) / (1200 - 320));
+  /* Stable base font size - no viewport calculations */
+  font-size: 16px;
+}
+
+/* Responsive font sizing with discrete breakpoints for consistency */
+@media (min-width: 768px) {
+  :root {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1400px) {
+  :root {
+    font-size: 19px;
+  }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    font-size: 20px;
+  }
 }
 
 /* Typography - Global heading styles without hyphens */
@@ -715,16 +741,19 @@ a.btn {
   box-sizing: border-box !important;
 }
 
-/* Extra specific for nav button */
+/* Extra specific for nav button - FIX CUTOFF */
 .nav-links .btn {
-  padding: 1.2rem 2.8rem !important;
+  padding: 1rem 2rem !important;
+  white-space: nowrap !important;
+  min-width: fit-content !important;
+  flex-shrink: 0 !important;
 }
 
 /* DESKTOP NAV BUTTON IMPROVEMENTS */
 @media (min-width: 769px) {
   .nav-links .btn {
-    padding: 1rem 2.5rem !important;
-    margin-left: 1rem; /* Add space before the button */
+    padding: 0.9rem 1.8rem !important;
+    margin-left: 0.5rem; /* Add space before the button */
   }
 }
 
