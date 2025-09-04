@@ -83,15 +83,15 @@
 
     .contact-main {
       display: grid;
-      grid-template-columns: 1.5fr 1fr;
-      gap: 4rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin: 0 !important;
+      width: 100%;
       align-items: stretch;
-      margin: 0 !important;
-      max-width: 1200px;
-      margin: 0 auto !important;
     }
 
-    .contact-form-section {
+    .contact-form-section,
+    .contact-call-section {
       background: hsla(var(--glass-h), var(--glass-s), 98%, 0.8);
       backdrop-filter: blur(20px);
       border-radius: var(--rounded-lg);
@@ -99,107 +99,24 @@
       box-shadow: var(--shadow-glass);
       border: 1px solid hsla(var(--glass-h), var(--glass-s), 80%, 0.2);
       margin: 0 !important;
-    }
-
-    .contact-info-section {
-      background: hsla(var(--glass-h), var(--glass-s), 98%, 0.8);
-      backdrop-filter: blur(20px);
-      border-radius: var(--rounded-lg);
-      padding: 3rem !important;
-      box-shadow: var(--shadow-glass);
-      border: 1px solid hsla(var(--glass-h), var(--glass-s), 80%, 0.2);
-      margin: 0 !important;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-
-    .contact-info-section h2 {
-      color: var(--dark);
-      margin: 0 0 1.5rem 0 !important;
-      font-size: 1.8rem;
-      font-weight: 700;
-    }
-
-    .contact-info-section p {
-      color: #555;
-      margin: 0 0 2.5rem 0 !important;
-      line-height: 1.6;
-    }
-
-    .contact-details {
-      margin: 0 0 2rem 0 !important;
-      display: grid;
-      gap: 1.5rem;
-      flex-grow: 1;
-    }
-
-    .contact-item {
-      margin: 0 !important;
-      padding: 1.5rem !important;
-      background: hsla(var(--glass-h), var(--glass-s), 95%, 0.6);
-      border-radius: var(--rounded-md);
-      border-left: 4px solid var(--primary);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     
-    .contact-item:hover {
-      transform: translateX(5px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .contact-item h3 {
-      color: var(--primary);
-      margin: 0 0 0.5rem 0 !important;
-      font-size: 1.1rem;
-      font-weight: 700;
-    }
-
-    .contact-item a {
-      color: var(--dark);
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-
-    .contact-item a:hover {
-      color: var(--primary);
-    }
-
-    .contact-item p {
-      margin: 0 !important;
-      color: #666;
-      font-weight: 500;
-    }
-
-    .response-time {
-      background: linear-gradient(135deg, 
-        hsla(var(--glass-h), var(--glass-s), 95%, 0.9) 0%, 
-        hsla(var(--glass-h), var(--glass-s), 90%, 0.95) 100%);
-      color: var(--dark);
-      padding: 2rem !important;
-      border-radius: var(--rounded-md);
+    .contact-call-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       text-align: center;
-      margin: 2rem 0 0 0 !important;
-      border: 2px solid var(--primary);
-      box-shadow: var(--shadow-glass);
     }
-
-    .response-time h3 {
-      margin: 0 0 0.5rem 0 !important;
+    
+    .contact-call-section .btn {
+      padding: 1.5rem 2rem;
       font-size: 1.2rem;
-      color: var(--primary);
-      font-weight: 700;
+      margin: 1rem auto;
     }
 
-    .response-time p {
-      margin: 0 !important;
-      color: #555;
-      font-weight: 600;
-    }
 
     /* Mobile Responsive */
-    @media (max-width: 768px) {
+    @media (max-width: 950px) {
       .contact-hero {
         padding: calc(6rem + 84px) 0 4rem !important;
         min-height: 50vh;
@@ -210,12 +127,8 @@
         gap: 3rem;
       }
       
-      .contact-info-section {
-        position: static;
-      }
-      
       .contact-form-section,
-      .contact-info-section {
+      .contact-call-section {
         padding: 2rem !important;
       }
     }
@@ -288,7 +201,7 @@
       <div class="hero-content">
         <h1>Transform Your Marketing with AI Agents</h1>
         <p>Join marketing leaders who are saving 15+ hours per week with custom AI agents. Real implementation in 2 weeks, not 6 months.</p>
-        <a href="#contact-form" class="btn btn-light">Schedule Discovery Call</a>
+        <a href="https://calendar.app.google/6QPTEjXtfWytxcg98" target="_blank" class="btn btn-light">Schedule Discovery Call</a>
       </div>
     </div>
   </section>
@@ -297,14 +210,15 @@
   <section id="contact-form" class="section">
     <div class="container">
       <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
-        <h2>Two Ways to Connect</h2>
-        <p>Choose the option that works best for your timeline</p>
+        <h2>Let's Transform Your Marketing Operations</h2>
+        <p>Two ways to start: send a message or book a call</p>
       </div>
+      
       <div class="contact-main">
-        
-        <!-- Contact Form -->
+        <!-- Get in Touch Form -->
         <div class="contact-form-section">
-          <h2 style="margin: 0 0 2rem 0; color: var(--dark); font-size: 1.8rem;">Schedule a Discovery Call</h2>
+          <h2 style="margin: 0 0 1rem 0; color: var(--dark); font-size: 1.8rem; text-align: center;">Get in Touch</h2>
+          <p style="text-align: center; color: #666; margin-bottom: 2rem;">Tell me about your challenges and I'll design a custom solution</p>
           
           <!-- Tally Form Embed -->
           <iframe src="https://tally.so/embed/w8r0vP?hideTitle=1&transparentBackground=1"
@@ -316,37 +230,27 @@
             title="Contact Form"
             loading="lazy">
           </iframe>
-          
-          <p style="margin-top: 1.5rem; color: #666; font-size: 0.9rem; text-align: center;">
-            Your information is secure and will only be used to discuss how AI agents can transform your marketing operations.
-          </p>
         </div>
-
-        <!-- Contact Info Sidebar -->
-        <div class="contact-info-section">
-          <h2>Work with Michael Browne</h2>
-          <p>20 years building marketing operations + deep AI expertise. I bridge the gap between what's technically possible and what actually drives marketing results.</p>
-          
-          <div class="contact-details">
-            <div class="contact-item">
-              <h3>📧 Direct Contact</h3>
-              <a href="mailto:hello@rise-above.net">hello@rise-above.net</a>
-            </div>
-            
-            <div class="contact-item">
-              <h3>🎯 Perfect For</h3>
-              <p>Marketing teams drowning in manual tasks who need real automation, not more tools</p>
-            </div>
-            
-            <div class="contact-item">
-              <h3>⚡ What to Expect</h3>
-              <p>Working AI agents in 2 weeks<br>ROI within 60 days<br>No black boxes - full transparency</p>
-            </div>
+        
+        <!-- Book Discovery Call -->
+        <div class="contact-call-section">
+          <div>
+            <h2 style="margin: 0 0 1rem 0; color: var(--dark); font-size: 1.8rem; text-align: center;">Book a Discovery Call</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 0;">Jump straight into a conversation about transforming your marketing operations</p>
           </div>
-
-          <div class="response-time">
-            <h3>⚡ QUICK RESPONSE</h3>
-            <p>I typically respond within 24 hours during business days</p>
+          
+          <div style="margin: calc(1.5rem - 35px) 0 calc(1.5rem - 20px) 0;">
+            <p style="font-size: 1.2rem; color: var(--primary); font-weight: 600; margin-bottom: 1.5rem; text-align: center;">30-Minute Call Agenda:</p>
+            <ul style="list-style: none; padding: 0; text-align: left; max-width: 380px; margin: 0 auto;">
+              <li style="padding: 0.9rem 0; border-bottom: 1px solid #eee; color: #555; font-size: 1.05rem;">✓ Current marketing workflows</li>
+              <li style="padding: 0.9rem 0; border-bottom: 1px solid #eee; color: #555; font-size: 1.05rem;">✓ Biggest time wasters</li>
+              <li style="padding: 0.9rem 0; color: #555; font-size: 1.05rem;">✓ Custom AI agent opportunities</li>
+            </ul>
+          </div>
+          
+          <div>
+            <a href="https://calendar.app.google/6QPTEjXtfWytxcg98" target="_blank" class="btn btn-primary">Schedule Your Call →</a>
+            <p style="margin-top: 1.5rem; margin-bottom: 0; font-size: 0.95rem; color: #888;">⚡ Typical response within 24 hours</p>
           </div>
         </div>
       </div>

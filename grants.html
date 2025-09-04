@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grant Opportunities | Rise Above Partners - Rural Business Funding</title>
+  <title>AI-Powered Grant Discovery | Rise Above Partners - Never Miss Funding</title>
 
   <!-- SEO Meta -->
-  <meta name="description" content="Current grant opportunities for rural businesses, small towns, and community development projects. Updated weekly with new funding sources.">
-  <meta name="keywords" content="rural business grants, small town funding, community development grants, agricultural grants, technology grants">
+  <meta name="description" content="AI agents scan thousands of funding sources 24/7, finding grant opportunities your competitors miss. Updated daily with personalized matching for Southwest Wisconsin businesses.">
+  <meta name="keywords" content="AI grant discovery, automated grant research, business funding AI, grant matching technology, Wisconsin business grants">
 
   <!-- Open Graph Meta -->
   <meta property="og:title" content="Grant Opportunities - Rise Above Partners">
@@ -63,14 +63,33 @@
       border-color: var(--primary);
     }
 
+    /* Wider container for grants page */
+    #grants-database .container {
+      max-width: 1600px !important;
+      padding: 0 2rem !important;
+    }
+    
     .grants-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 2.5rem;
       margin: 0 !important;
       min-height: 400px;
+      width: 100%;
+      max-width: 100% !important; /* Override styles.css */
     }
 
+    /* Category Colors - Optimized for readability */
+    :root {
+      --cat-rural: #059669;        /* Emerald green for Rural Business */
+      --cat-tech: #3b82f6;         /* Bright blue for Technology */
+      --cat-community: #f59e0b;    /* Amber for Community Development */
+      --cat-agriculture: #10b981;  /* Green for Agriculture */
+      --cat-environmental: #06b6d4;/* Cyan for Environmental */
+      --cat-arts: #a855f7;         /* Purple for Arts & Education */
+      --cat-default: #6b7280;      /* Gray for uncategorized */
+    }
+    
     .grant-card {
       background: hsla(var(--glass-h), var(--glass-s), 98%, 0.8);
       backdrop-filter: blur(20px);
@@ -81,6 +100,75 @@
       transition: all 0.4s ease;
       position: relative;
       margin: 0 !important;
+      border-top: 4px solid var(--cat-default);
+      overflow: hidden;
+    }
+    
+    /* Category-specific borders */
+    .grant-card[data-category="Rural Business"] {
+      border-top-color: var(--cat-rural);
+    }
+    .grant-card[data-category="Technology"] {
+      border-top-color: var(--cat-tech);
+    }
+    .grant-card[data-category="Community Development"] {
+      border-top-color: var(--cat-community);
+    }
+    .grant-card[data-category="Agriculture"] {
+      border-top-color: var(--cat-agriculture);
+    }
+    .grant-card[data-category="Environmental"] {
+      border-top-color: var(--cat-environmental);
+    }
+    .grant-card[data-category="Arts Education"] {
+      border-top-color: var(--cat-arts);
+    }
+    
+    .grant-category {
+      display: inline-block;
+      background: transparent;
+      color: var(--cat-default);
+      padding: 0.2rem 0.6rem !important;
+      border: 1px solid var(--cat-default);
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      margin: 0 0 1rem 0 !important;
+      opacity: 0.7;
+    }
+    
+    /* Category-specific badge colors with accessibility */
+    .grant-card[data-category="Rural Business"] .grant-category {
+      background: var(--cat-rural);
+      color: white;
+      border-color: var(--cat-rural);
+    }
+    .grant-card[data-category="Technology"] .grant-category {
+      background: var(--cat-tech);
+      color: white;
+      border-color: var(--cat-tech);
+    }
+    .grant-card[data-category="Community Development"] .grant-category {
+      background: var(--cat-community);
+      color: white; /* White text on amber for better contrast */
+      border-color: var(--cat-community);
+    }
+    .grant-card[data-category="Agriculture"] .grant-category {
+      background: var(--cat-agriculture);
+      color: white;
+      border-color: var(--cat-agriculture);
+    }
+    .grant-card[data-category="Environmental"] .grant-category {
+      background: var(--cat-environmental);
+      color: white; /* White on cyan for accessibility */
+      border-color: var(--cat-environmental);
+    }
+    .grant-card[data-category="Arts Education"] .grant-category {
+      background: var(--cat-arts);
+      color: white;
+      border-color: var(--cat-arts);
     }
 
     .grant-card:hover {
@@ -97,7 +185,7 @@
 
     .featured-badge {
       position: absolute;
-      top: -12px;
+      top: 10px;
       right: 20px;
       background: linear-gradient(135deg, #2d5530 0%, #3d6b40 100%);
       color: var(--white);
@@ -296,6 +384,25 @@
       background: #5a819f;
     }
 
+    /* Ultra-wide screens */
+    @media (min-width: 1920px) {
+      #grants-database .container {
+        max-width: 1800px !important;
+      }
+      
+      .grants-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 100% !important;
+      }
+    }
+    
+    @media (max-width: 1200px) {
+      .grants-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+    }
+    
     @media (max-width: 768px) {
       .grants-grid {
         grid-template-columns: 1fr;
@@ -408,19 +515,25 @@
     <div class="hero-overlay"></div>
     <div class="container">
       <div class="hero-content">
-        <h1>Available Grant Funding</h1>
-        <p>Real funding opportunities for rural businesses, community development, and growth projects. Updated regularly with new sources and deadlines.</p>
-        <a href="#grants-database" class="btn btn-light">Browse Current Opportunities</a>
+        <h1>AI-Powered Grant Discovery That Never Sleeps</h1>
+        <p>While you focus on your business, our custom AI agents scan thousands of funding sources 24/7—finding opportunities your competitors miss.</p>
+        <p style="font-size: 1.1rem; margin-top: 1.5rem; font-weight: 600;">Updated daily with new sources. Personalized matching. Zero manual searching.</p>
+        <a href="#grants-database" class="btn btn-light">View Live Grant Feed</a>
       </div>
     </div>
   </section>
 
-  <!-- Grant Opportunities -->
+  <!-- Live Grant Intelligence Feed -->
   <section id="grants-database" class="section">
     <div class="container">
       <div class="section-header">
-        <h2>Available Funding Opportunities</h2>
-        <p>Live database of current opportunities. Get access to application strategies and personalized matching.</p>
+        <h2>Live Grant Intelligence Feed</h2>
+        <p style="max-width: 900px; margin: 0 auto; font-size: 1.15rem; line-height: 1.7;">This isn't a static database—it's a living ecosystem powered by specialized AI agents. Our grant research bots continuously crawl corporate CSR pages, foundation announcements, and government portals, delivering fresh opportunities matched to Southwest Wisconsin businesses.</p>
+      </div>
+      
+      <div class="section-header" style="margin-top: 3rem;">
+        <h3 style="font-size: 1.5rem;">Recent Discoveries</h3>
+        <p>Click any tag to filter by category</p>
       </div>
 
       <!-- Filter Tags -->
@@ -442,51 +555,18 @@
           <p>Loading current grant opportunities...</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Access Full Database -->
-  <section class="section section-gray">
-    <div class="container">
-      <div class="access-full-database">
-        <h3>Access the Full Grant Database</h3>
-        <p>These opportunities are just a preview. Get access to our complete database with personalized matching and step-by-step application strategies.</p>
-        
-        <div class="database-stats">
-          <div class="stat-item">
-            <div class="stat-number" id="total-grants">11+</div>
-            <div class="stat-label">Active Grants</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">Weekly</div>
-            <div class="stat-label">Updates</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">$50K</div>
-            <div class="stat-label">Avg Award</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">15+</div>
-            <div class="stat-label">Categories</div>
-          </div>
+      
+      <!-- CTA Buttons -->
+      <div style="text-align: center; margin: 4rem 0 2rem 0; padding: 2rem; background: hsla(var(--glass-h), var(--glass-s), 95%, 0.5); border-radius: var(--rounded-lg);">
+        <p style="font-size: 1.2rem; color: var(--dark); font-weight: 600; margin-bottom: 1.5rem;">Want these agents or ones like them working for your business?</p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a href="services.html" class="btn btn-primary">See How It Works</a>
+          <a href="contact.html" class="btn btn-primary" style="background: var(--dark);">Get Full Access</a>
         </div>
-
-        <a href="index.html/#contact" class="btn btn-primary" style="font-size: 1.1rem; padding: 1.2rem 3rem;">Get Full Database Access</a>
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="section">
-    <div class="container">
-      <div class="services-contact">
-        <h3>Ready to Find Your Perfect Grant?</h3>
-        <p>Ready to get personalized grant opportunities and application strategies? Let's discuss your funding needs.</p>
-        
-        <a href="index.html/#contact" class="btn btn-primary" style="display: inline-block; margin-top: 1.5rem;">Get Grant Help Today</a>
-      </div>
-    </div>
-  </section>
 
   <!-- Footer -->
   <footer>

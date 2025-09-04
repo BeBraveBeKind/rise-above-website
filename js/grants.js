@@ -110,6 +110,13 @@ function displayGrants(grants) {
 
 // Create HTML for a single grant card
 function createGrantCard(grant) {
+  // Debug: Check all available fields
+  console.log('Grant fields available:', Object.keys(grant));
+  console.log('Full grant data:', grant);
+  
+  // Try to get category from multiple possible field names
+  const category = grant.Category || grant.category || grant.Categories || grant.Grant_Category || grant.Type || 'General';
+  
   const isFeatured = grant.Featured === 'TRUE' || grant.Featured === true;
   const featuredBadge = isFeatured ? '<div class="featured-badge">Featured</div>' : '';
   
@@ -137,8 +144,9 @@ function createGrantCard(grant) {
   const complexityClass = getComplexityClass(grant.Complexity);
 
   return `
-    <div class="grant-card ${isFeatured ? 'featured' : ''}" data-category="${grant.Category}">
+    <div class="grant-card ${isFeatured ? 'featured' : ''}" data-category="${category}">
       ${featuredBadge}
+      <span class="grant-category">${category}</span>
       <div class="grant-header">
         <h3 class="grant-title">${grant.Grant_Name || 'Grant Opportunity'}</h3>
         <p class="grant-source">${grant.Source_Organization || 'Various Sources'}</p>
