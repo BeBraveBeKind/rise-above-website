@@ -1,0 +1,78 @@
+/* ============================================
+   HERO IMAGE SHARPNESS FIX
+   Removes blur effects from hero backgrounds
+   ============================================ */
+
+/* Remove backdrop blur from hero sections */
+.hero,
+.home-hero,
+.services-hero,
+.grants-hero,
+.contact-hero,
+.acceleration-hero {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Ensure background images are sharp */
+.hero-background,
+.hero-image,
+picture.hero-background img {
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  transform: translateZ(0); /* Hardware acceleration */
+  backface-visibility: hidden; /* Prevent blur during transforms */
+}
+
+/* Keep overlay but remove any blur */
+.hero-overlay {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: linear-gradient(135deg, 
+    rgba(109, 152, 186, 0.85) 0%,  /* Darker overlay for text readability */
+    rgba(109, 152, 186, 0.70) 100%);
+}
+
+/* Optimize image quality for different screen sizes */
+@media (min-width: 1920px) {
+  .hero-image {
+    image-rendering: high-quality;
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* For retina displays */
+@media (-webkit-min-device-pixel-ratio: 2),
+       (min-resolution: 192dpi) {
+  .hero-image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Prevent blur from parent elements */
+.hero::before,
+.home-hero::before,
+.services-hero::before,
+.grants-hero::before,
+.contact-hero::before,
+.acceleration-hero::before {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  filter: none !important;
+}
+
+/* Remove the gradient background that was causing issues */
+@media (min-width: 769px) {
+  .hero,
+  .home-hero,
+  .services-hero,
+  .grants-hero,
+  .contact-hero,
+  .acceleration-hero {
+    background: none !important; /* Remove gradient background */
+  }
+}
