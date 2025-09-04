@@ -31,8 +31,15 @@ async function loadGrantsData() {
         updateStats();
       }, 1000);
     } else {
-      // Actual API call to Google Sheets Web App
-      const response = await fetch(GOOGLE_SHEETS_WEB_APP_URL + '?action=getGrants');
+      // Actual API call to Google Sheets Web App with timeout
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+      
+      const response = await fetch(GOOGLE_SHEETS_WEB_APP_URL + '?action=getGrants', {
+        signal: controller.signal
+      });
+      
+      clearTimeout(timeoutId);
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -51,7 +58,31 @@ async function loadGrantsData() {
     
   } catch (error) {
     console.error('Error loading grants:', error);
-    showError('Unable to load grant opportunities. Please try again later.');
+    
+    // Provide more specific error messages
+    let errorMessage = 'Unable to load grant opportunities. ';
+    
+    if (!navigator.onLine) {
+      errorMessage += 'Please check your internet connection.';
+    } else if (error.name === 'AbortError') {
+      errorMessage += 'Request timed out. Please check your connection and try again.';
+    } else if (error.message.includes('404')) {
+      errorMessage += 'Grant database not found. Please contact support.';
+    } else if (error.message.includes('500') || error.message.includes('503')) {
+      errorMessage += 'Server is temporarily unavailable. Please try again in a few minutes.';
+    } else {
+      errorMessage += 'Please try again later or contact support if the issue persists.';
+    }
+    
+    showError(errorMessage);
+    
+    // Log to analytics if available
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'exception', {
+        'description': 'Grant loading failed: ' + error.message,
+        'fatal': false
+      });
+    }
   }
 }
 

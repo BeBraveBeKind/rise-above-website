@@ -44,9 +44,7 @@
     }
 
     .filter-tag {
-      background: hsla(var(--glass-h), var(--glass-s), 98%, 0.8);
-      border: 2px solid hsla(var(--glass-h), var(--glass-s), 80%, 0.3);
-      color: var(--dark);
+      color: var(--white);
       padding: 0.8rem 1.5rem !important;
       border-radius: var(--rounded-md);
       font-weight: 600;
@@ -54,13 +52,49 @@
       cursor: pointer;
       transition: all 0.3s ease;
       margin: 0 !important;
+      border: 2px solid transparent;
     }
-
-    .filter-tag.active,
+    
+    /* Color-coded filter tags matching grant categories */
+    .filter-tag[data-filter="all"] {
+      background: #6b7280;
+      border-color: #6b7280;
+    }
+    .filter-tag[data-filter="Rural Business"] {
+      background: #059669;
+      border-color: #059669;
+    }
+    .filter-tag[data-filter="Technology"] {
+      background: #3b82f6;
+      border-color: #3b82f6;
+    }
+    .filter-tag[data-filter="Community Development"] {
+      background: #f59e0b;
+      border-color: #f59e0b;
+    }
+    .filter-tag[data-filter="Agriculture"] {
+      background: #10b981;
+      border-color: #10b981;
+    }
+    .filter-tag[data-filter="Environmental"] {
+      background: #06b6d4;
+      border-color: #06b6d4;
+    }
+    .filter-tag[data-filter="Arts Education"] {
+      background: #a855f7;
+      border-color: #a855f7;
+    }
+    
+    .filter-tag.active {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      filter: brightness(1.1);
+    }
+    
     .filter-tag:hover {
-      background: var(--primary);
-      color: var(--white);
-      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+      filter: brightness(1.2);
     }
 
     /* Wider container for grants page */
@@ -73,7 +107,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2.5rem;
-      margin: 0 !important;
+      margin: 0 0 5rem 0 !important;
       min-height: 400px;
       width: 100%;
       max-width: 100% !important; /* Override styles.css */
@@ -557,7 +591,7 @@
       </div>
       
       <!-- CTA Buttons -->
-      <div style="text-align: center; margin: 4rem 0 2rem 0; padding: 2rem; background: hsla(var(--glass-h), var(--glass-s), 95%, 0.5); border-radius: var(--rounded-lg);">
+      <div style="text-align: center; margin: 0 0 2rem 0 !important; padding: 2rem 2rem 15px 2rem; background: hsla(var(--glass-h), var(--glass-s), 95%, 0.5); border-radius: var(--rounded-lg);">
         <p style="font-size: 1.2rem; color: var(--dark); font-weight: 600; margin-bottom: 1.5rem;">Want these agents or ones like them working for your business?</p>
         <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
           <a href="services.html" class="btn btn-primary">See How It Works</a>
@@ -613,35 +647,5 @@
   <!-- Include Grants Database JavaScript -->
   <script src="js/grants.js"></script>
   
-  <!-- EMERGENCY BUTTON FIX -->
-  <script>
-    // Force all buttons to be clickable - nuclear option
-    document.addEventListener('DOMContentLoaded', function() {
-      // Get all buttons and links that look like buttons
-      const buttons = document.querySelectorAll('.btn, .btn-primary, .btn-light, a[class*="btn"], .filter-tag');
-      
-      buttons.forEach(button => {
-        // Force clickability with inline styles
-        button.style.position = 'relative';
-        button.style.zIndex = '9999';
-        button.style.pointerEvents = 'auto';
-        button.style.cursor = 'pointer';
-      });
-      
-      // Make sure overlays can't block
-      const overlays = document.querySelectorAll('.hero-overlay, .hero-background');
-      overlays.forEach(overlay => {
-        overlay.style.pointerEvents = 'none';
-        overlay.style.zIndex = '1';
-      });
-      
-      // Extra insurance - re-apply after a delay
-      setTimeout(() => {
-        buttons.forEach(button => {
-          button.style.cssText += 'position: relative !important; z-index: 9999 !important; pointer-events: auto !important; cursor: pointer !important;';
-        });
-      }, 100);
-    });
-  </script>
 </body>
 </html>

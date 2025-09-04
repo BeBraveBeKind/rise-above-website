@@ -62,3 +62,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 100);
   }
 });
+
+// FAQ Toggle Function - Available globally
+function toggleFAQ(element) {
+  const faqItem = element.closest('.faq-item');
+  if (faqItem) {
+    faqItem.classList.toggle('active');
+  }
+}
