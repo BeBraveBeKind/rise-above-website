@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy & Terms | Rise Above Partners</title>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Privacy Policy and Terms of Service for Rise Above Partners.">
+  <meta name="keywords" content="privacy policy, terms of service, Rise Above Partners">
+
+  <!-- Open Graph Meta -->
+  <meta property="og:title" content="Legal - Rise Above Partners">
+  <meta property="og:description" content="Privacy Policy and Terms of Service">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rise-above.net/legal">
+
+  <!-- PERFORMANCE: Preconnect to external domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="images/brand/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/brand/favicon/favicon-32x32.png">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/compatibility-fixes.css">
+  <link rel="stylesheet" href="css/hero-image-sharp.css">
+
+  <!-- Legal Page Specific Styles -->
+  <style>
+    /* Override aggressive global resets for legal page */
+    .legal-hero {
+      background: linear-gradient(135deg, 
+        hsla(var(--glass-h), var(--glass-s), 50%, 0.95) 0%, 
+        hsla(var(--glass-h), var(--glass-s), 40%, 0.9) 100%);
+      padding: calc(7rem + 84px) 0 5rem !important;
+      margin-top: 0 !important;
+      color: var(--white);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .legal-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: drift 20s linear infinite;
+    }
+
+    @keyframes drift {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    .legal-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .legal-hero p {
+      font-size: 1.2rem;
+      opacity: 0.95;
+      position: relative;
+      z-index: 1;
+    }
+
+    .legal-container {
+      max-width: 800px;
+      margin: 0 auto !important;
+      padding: 4rem 2rem !important;
+    }
+
+    .legal-card {
+      background: white;
+      border-radius: 16px;
+      padding: 3rem 3rem !important;
+      margin: 0 0 3rem 0 !important;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e5e5e5;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .legal-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), #5a819f);
+    }
+
+    .legal-card h2 {
+      color: var(--dark);
+      font-size: 2.2rem;
+      margin: 0 0 2rem 0 !important;
+      padding: 0 !important;
+      text-align: center;
+    }
+
+    .legal-card h3 {
+      color: var(--primary);
+      font-size: 1.3rem;
+      margin: 2.5rem 0 1rem 0 !important;
+      padding: 0 !important;
+      text-align: center;
+    }
+
+    .legal-card p {
+      line-height: 1.8;
+      color: #555;
+      font-size: 1.05rem;
+      text-align: left;
+      margin: 0 0 1.5rem 0 !important;
+      padding: 0 !important;
+    }
+
+    .legal-card ul {
+      margin: 2rem 0 !important;
+      padding: 0 !important;
+      list-style: none;
+    }
+
+    .legal-card li {
+      margin: 0 0 1rem 0 !important;
+      padding: 0 0 0 35px !important;
+      position: relative;
+      line-height: 1.7;
+      color: #555;
+      text-align: left;
+    }
+
+    .legal-card li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--primary);
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, 
+        hsla(var(--glass-h), var(--glass-s), 95%, 0.5),
+        hsla(var(--glass-h), var(--glass-s), 90%, 0.3));
+      border-left: 4px solid var(--primary);
+      padding: 1.5rem !important;
+      border-radius: 8px;
+      margin: 2rem 0 !important;
+    }
+
+    .highlight-box p {
+      margin: 0 !important;
+      padding: 0 !important;
+      font-weight: 500;
+      color: var(--dark);
+      text-align: left;
+    }
+
+    .contact-card {
+      background: linear-gradient(135deg, var(--primary), #5a819f);
+      color: white;
+      border-radius: 16px;
+      padding: 2.5rem !important;
+      text-align: center;
+      margin: 3rem 0 0 0 !important;
+    }
+
+    .contact-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-card p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      opacity: 0.95;
+    }
+
+    .contact-card a {
+      color: white;
+      font-weight: 600;
+      text-decoration: underline;
+      transition: opacity 0.3s ease;
+    }
+
+    .contact-card a:hover {
+      opacity: 0.8;
+    }
+
+    .last-updated {
+      text-align: center;
+      color: #888;
+      font-style: italic;
+      margin: 0 0 3rem 0 !important;
+      padding: 1rem !important;
+      background: #f8f9fa;
+      border-radius: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .legal-hero h1 {
+        font-size: 2rem;
+      }
+      
+      .legal-container {
+        padding: 3rem 1rem !important;
+      }
+
+      .legal-card {
+        padding: 2rem 1.5rem !important;
+      }
+
+      .legal-card h2 {
+        font-size: 1.8rem;
+      }
+      
+      .legal-card p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <a href="/" class="logo">
+          <img src="images/brand/logomark.svg" alt="Rise Above Partners" class="logo-mark" width="45" height="45">
+          <div class="logo-text">
+            <span>RISE ABOVE</span>
+            <span>PARTNERS</span>
+          </div>
+        </a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="why-choose-us.html">Why Choose Us</a>
+          <a href="grants.html">Grants</a>
+          <a href="contact.html" class="btn btn-primary">Get Started</a>
+        </div>
+        <div class="menu-toggle">
+          <span></span><span></span><span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Legal Hero -->
+  <section class="legal-hero">
+    <div class="container">
+      <h1>Privacy & Terms</h1>
+      <p>Simple, transparent policies for working together</p>
+    </div>
+  </section>
+
+  <!-- Legal Content -->
+  <section class="section">
+    <div class="container">
+      <div class="legal-container">
+        <div class="last-updated">
+        Last Updated: August 2025
+      </div>
+
+      <!-- Privacy Policy -->
+      <div class="legal-card">
+        <h2>Privacy Policy</h2>
+        
+        <p>Your privacy matters. Here's how we handle your information:</p>
+
+        <h3>What We Collect</h3>
+        <p>When you work with us, we collect basic information like your name, email, company details, and project requirements. We only collect what we need to deliver great service.</p>
+
+        <h3>How We Use It</h3>
+        <ul>
+          <li>To provide and improve our AI marketing services</li>
+          <li>To communicate about your projects</li>
+          <li>To send occasional updates (you can opt out anytime)</li>
+          <li>To understand how to serve you better</li>
+        </ul>
+
+        <h3>Your Data & AI</h3>
+        <div class="highlight-box">
+          <p>Important: Your data is never used to train public AI models. All client information remains confidential and is processed only for your specific projects.</p>
+        </div>
+
+        <h3>Data Security</h3>
+        <p>We use industry-standard security measures to protect your information. Our systems are SOC 2 Type II compliant, and we follow GDPR guidelines.</p>
+
+        <h3>Your Rights</h3>
+        <p>You can request to see, update, or delete your data at any time. Just send us an email and we'll take care of it promptly.</p>
+      </div>
+
+      <!-- Terms of Service -->
+      <div class="legal-card">
+        <h2>Terms of Service</h2>
+        
+        <p>Working with Rise Above Partners is straightforward. Here's what you need to know:</p>
+
+        <h3>Our Services</h3>
+        <p>We provide AI-powered marketing solutions including automated agents, content systems, and strategic consulting. Each project includes a clear scope of work and timeline.</p>
+
+        <h3>How We Work</h3>
+        <ul>
+          <li>We start with a discovery call to understand your needs</li>
+          <li>We provide a clear proposal with deliverables and pricing</li>
+          <li>Implementation typically takes 2-3 weeks</li>
+          <li>We offer ongoing support and optimization</li>
+        </ul>
+
+        <h3>Our Guarantee</h3>
+        <div class="highlight-box">
+          <p>If you don't see measurable improvement in 60 days, we'll refund your setup fee. It's that simple.</p>
+        </div>
+
+        <h3>Payments</h3>
+        <p>Setup fees are due at signing. Monthly services are billed in advance. We accept all major payment methods.</p>
+
+        <h3>Intellectual Property</h3>
+        <p>You own the custom solutions we build for you. We retain rights to our methodologies and frameworks, allowing us to help other clients (but never with your specific data or business logic).</p>
+
+        <h3>Confidentiality</h3>
+        <p>We keep your business information strictly confidential. We won't share your data, strategies, or results without your permission.</p>
+
+        <h3>Ending Services</h3>
+        <p>Either party can end ongoing services with 30 days notice. Project work continues until completion unless otherwise agreed.</p>
+      </div>
+
+      <!-- Contact Card -->
+      <div class="contact-card">
+        <h3>Questions?</h3>
+        <p>We're here to help clarify anything</p>
+        <a href="mailto:hello@rise-above.net">hello@rise-above.net</a>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-container grid grid-4">
+        <div class="footer-col">
+          <h4><a href="index.html" style="color: inherit; text-decoration: none;">Rise Above Partners</a></h4>
+          <p>AI Agents for Marketing Leaders</p>
+        </div>
+        <div class="footer-col">
+          <h4><a href="services.html" style="color: inherit; text-decoration: none;">Services</a></h4>
+          <ul class="footer-links">
+            <li><a href="services.html#services-grid">Marketing Intelligence Suite</a></li>
+            <li><a href="services.html#services-grid">Content Systems</a></li>
+            <li><a href="services.html#services-grid">Competition Monitoring</a></li>
+            <li><a href="services.html#services-grid">Custom Agents</a></li>
+            <li><a href="services.html#services-grid">Strategic AI Consulting</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4><a href="why-choose-us.html" style="color: inherit; text-decoration: none;">Resources</a></h4>
+          <ul class="footer-links">
+            <li><a href="why-choose-us.html">Why Choose Us</a></li>
+            <li><a href="grants.html">Grants</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul class="footer-links">
+            <li><a href="https://www.linkedin.com/company/86726287" target="_blank">LinkedIn</a></li>
+            <li><a href="https://calendar.app.google/6QPTEjXtfWytxcg98" target="_blank">Book a Call</a></li>
+            <li><a href="https://rise-above.net/contact">Email</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Rise Above Partners | <a href="legal.html">Privacy</a> | <a href="legal.html#terms">Terms</a></p>
+        <p>Building the future of marketing operations, one agent at a time.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Include Main JavaScript -->
+  <script src="js/main.js"></script>
+  <script src="js/browser-fixes.js"></script>
+</body>
+</html>

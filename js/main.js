@@ -35,7 +35,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (targetElement) {
       e.preventDefault();
       const headerHeight = document.querySelector('header').offsetHeight || 100;
-      const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+      // Add extra offset for services-grid to position heading at top
+      const extraOffset = targetId === 'services-grid' ? 30 : 20;
+      const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - extraOffset;
       
       window.scrollTo({
         top: targetPosition,
@@ -52,7 +54,9 @@ document.addEventListener('DOMContentLoaded', function() {
       
       if (targetElement) {
         const headerHeight = document.querySelector('header').offsetHeight || 100;
-        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+        // Add extra offset for services-grid to position heading at top
+        const extraOffset = targetId === 'services-grid' ? 30 : 20;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - extraOffset;
         
         window.scrollTo({
           top: targetPosition,
