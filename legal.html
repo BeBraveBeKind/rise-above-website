@@ -31,6 +31,21 @@
   <link rel="stylesheet" href="css/compatibility-fixes.css">
   <link rel="stylesheet" href="css/hero-image-sharp.css">
 
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://rise-above.net/legal.html">
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJNRR6GPV8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-QJNRR6GPV8', {
+      send_page_view: true,
+      cookie_flags: 'SameSite=None;Secure'
+    });
+  </script>
+
   <!-- Legal Page Specific Styles -->
   <style>
     /* Override aggressive global resets for legal page */
@@ -397,5 +412,6 @@
   <!-- Include Main JavaScript -->
   <script src="js/main.js"></script>
   <script src="js/browser-fixes.js"></script>
+  <script src="js/analytics.js"></script>
 </body>
 </html>

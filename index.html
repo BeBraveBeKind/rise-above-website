@@ -16,12 +16,19 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://rise-above.net">
 
-  <!-- PERFORMANCE: Preconnect to external domains -->
+  <!-- PERFORMANCE: Enhanced Resource Hints -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://tally.so">
-
-  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="css/styles.css" as="style">
+  <link rel="preload" href="images/brand/logomark.svg" as="image">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" as="style">
+  
+  <!-- Google Fonts with display swap for better performance -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
 
   <!-- Favicon -->
@@ -32,6 +39,21 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/compatibility-fixes.css">
   <link rel="stylesheet" href="css/hero-image-sharp.css">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://rise-above.net/">
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJNRR6GPV8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-QJNRR6GPV8', {
+      send_page_view: true,
+      cookie_flags: 'SameSite=None;Secure'
+    });
+  </script>
 
   <!-- Home Page Specific Styles -->
   <style>
@@ -340,16 +362,161 @@
   </style>
 
   <!-- Structured Data -->
+  <!-- Enhanced Structured Data for SEO -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "MarketingAgency",
+    "@type": "ProfessionalService",
+    "@id": "https://rise-above.net/#organization",
     "name": "Rise Above Partners",
-    "description": "Digital catalyst for business excellence",
+    "alternateName": "Rise Above AI Marketing",
+    "description": "AI marketing agents and automation solutions. We build autonomous AI agents that handle repetitive marketing tasks, integrate with your tech stack, and deliver results in 2 weeks.",
     "url": "https://rise-above.net",
     "logo": "https://rise-above.net/images/brand/logomark.svg",
+    "image": "https://rise-above.net/images/brand/logo.png",
+    "telephone": "+1-608-XXX-XXXX",
+    "email": "contact@rise-above.net",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Viroqua",
+      "addressRegion": "WI",
+      "postalCode": "54665",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 43.5569,
+      "longitude": -90.8887
+    },
+    "areaServed": [
+      {
+        "@type": "State",
+        "name": "Wisconsin"
+      },
+      {
+        "@type": "Country",
+        "name": "United States"
+      }
+    ],
+    "priceRange": "$$$",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "17:00"
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Michael Browne",
+      "jobTitle": "Founder & AI Marketing Strategist"
+    },
     "sameAs": [
       "https://linkedin.com/company/rise-above-partners"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "AI Marketing Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "name": "Marketing Intelligence Suite",
+          "description": "Complete AI workforce with 4 specialized agents for lead scoring, content creation, competitive intelligence, and campaign optimization",
+          "price": "5000",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "url": "https://rise-above.net/services.html#marketing-intelligence"
+        },
+        {
+          "@type": "Offer",
+          "name": "Custom AI Agent Development",
+          "description": "Tailored AI solutions designed for your specific marketing workflows and tech stack integration",
+          "price": "10000",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "url": "https://rise-above.net/services.html#custom-development"
+        },
+        {
+          "@type": "Offer",
+          "name": "Grant Writing Intelligence",
+          "description": "AI-powered grant discovery and application assistance for Southwest Wisconsin businesses",
+          "price": "2500",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "url": "https://rise-above.net/grants.html"
+        }
+      ]
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "12",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  }
+  </script>
+  
+  <!-- WebSite Schema for Sitelinks Search Box -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Rise Above Partners",
+    "url": "https://rise-above.net",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://rise-above.net/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "I'm not technical. Will I be able to use this?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "That's the point. These are applications with buttons and forms, not code to manage. If you can use Salesforce, you can use these."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is this different from ChatGPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ChatGPT is a tool. These are complete applications that understand your business, integrate with your systems, and handle entire workflows without prompting."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What about our data security?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Everything is SOC 2 Type II compliant, GDPR ready, and your data never trains public models. I can work within your security requirements."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if we already have marketing automation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Perfect. I build on top of what you have. These agents make your existing tools exponentially more powerful."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why should I trust a solo consultant with this?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Because I'm not really solo. I leverage enterprise platforms and certified specialists for implementation. You get strategic focus plus best-in-class execution."
+        }
+      }
     ]
   }
   </script>
@@ -451,6 +618,42 @@
     </div>
   </section>
 
+  <!-- Metrics Section -->
+  <section class="metrics-section section section-gray">
+    <div class="container">
+      <div class="metrics-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; text-align: center; padding: 2rem 0;">
+        <div class="metric-item">
+          <div class="metric-number" style="font-size: 3rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">
+            <span data-counter="15" data-duration="2000">0</span>+
+          </div>
+          <div class="metric-label" style="font-size: 1.1rem; color: var(--text-primary);">Hours Saved Per Week</div>
+          <div class="metric-sublabel" style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Per marketing team member</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-number" style="font-size: 3rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">
+            <span data-counter="2" data-duration="1500">0</span>
+          </div>
+          <div class="metric-label" style="font-size: 1.1rem; color: var(--text-primary);">Week Implementation</div>
+          <div class="metric-sublabel" style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">From kickoff to production</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-number" style="font-size: 3rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">
+            $<span data-counter="48" data-duration="2000">0</span>K+
+          </div>
+          <div class="metric-label" style="font-size: 1.1rem; color: var(--text-primary);">Grants Secured</div>
+          <div class="metric-sublabel" style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">For Wisconsin businesses</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-number" style="font-size: 3rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">
+            <span data-counter="20" data-duration="2000">0</span>
+          </div>
+          <div class="metric-label" style="font-size: 1.1rem; color: var(--text-primary);">Years Experience</div>
+          <div class="metric-sublabel" style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">In marketing strategy</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- AI Services -->
   <section id="advantage" class="advantage section">
     <div class="container">
@@ -474,6 +677,7 @@
           <div class="pillar-content">
             <p>Build a team of specialized AI agents that handle lead scoring, content creation, campaign optimization, and competitive intelligence - all working together 24/7.</p>
             <p class="service-timeline">Deploys in 2-3 weeks. Integrates with your existing tech stack.</p>
+            <p><a href="services.html#marketing-intelligence" style="color: var(--primary); text-decoration: underline;">Learn more about Marketing Intelligence →</a></p>
           </div>
         </div>
         <div class="advantage-pillar">
@@ -491,6 +695,7 @@
           <div class="pillar-content">
             <p>Need something specific? I'll build it. From RFP generators to lead qualification systems to personalization engines - custom AI agents designed for your exact needs.</p>
             <p class="service-timeline">From concept to deployment in 2 weeks.</p>
+            <p><a href="services.html#custom-development" style="color: var(--primary); text-decoration: underline;">Explore custom AI solutions →</a></p>
           </div>
         </div>
         <div class="advantage-pillar">
@@ -508,6 +713,7 @@
           <div class="pillar-content">
             <p>My AI-powered grant research and writing system has secured $48,000+ in funding. AI monitors funding sources, matches opportunities, and generates compelling proposals.</p>
             <p class="service-timeline">Because growth shouldn't be limited by funding.</p>
+            <p><a href="grants.html" style="color: var(--primary); text-decoration: underline;">View current grant opportunities →</a></p>
           </div>
         </div>
       </div>
@@ -768,6 +974,10 @@
   <!-- Include Main JavaScript for Smooth Scrolling -->
   <script src="js/main.js"></script>
   <script src="js/browser-fixes.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/performance.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/lazy-load.js"></script>
   
   <!-- FAQ Toggle Script -->
   <script>

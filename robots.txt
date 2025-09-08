@@ -1,0 +1,38 @@
+# Robots.txt for Rise Above Partners
+# https://rise-above.net
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Disallow test directories
+Disallow: /tests/
+Disallow: /_data/
+
+# Sitemap location
+Sitemap: https://rise-above.net/sitemap.xml
+
+# Crawl delay for polite crawling
+Crawl-delay: 1
+
+# Specific rules for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
