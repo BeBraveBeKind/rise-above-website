@@ -527,7 +527,7 @@ if (document.readyState === 'loading') {
     minScrollDepth: 35,
     cookieDays: 14,
     mobileScrollTrigger: 70,
-    tallyFormId: 'YOUR_TALLY_FORM_ID', // TODO: Replace with your actual Tally form ID
+    tallyFormId: 'mKq9p7', // Your Tally form ID
     enabled: true,
     debugMode: false
   });
