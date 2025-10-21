@@ -492,7 +492,16 @@ class ExitIntentPopup {
   
   // Public methods for manual control
   show() {
-    this.triggerPopup('manual');
+    // Mark as shown to prevent auto-trigger
+    this.state.hasShown = true;
+    
+    // Show the popup directly
+    this.showPopup();
+    
+    // Track manual trigger
+    this.trackEvent('popup_triggered', {
+      trigger_type: 'manual'
+    });
   }
   
   hide() {
